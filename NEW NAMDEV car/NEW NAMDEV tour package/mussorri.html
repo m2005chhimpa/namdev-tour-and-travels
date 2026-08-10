@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="./images/logo03.png">
+
+<title>What's in Mussoorie | Namdev's Tour & Travels</title>
+
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./finalanimation.css">
+<link rel="stylesheet" href="./experimental_claude.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6.12,400;6.12,500;6.12,600;6.12,700;6.12,800;6.12,900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --blue:#328ADF; --blue-deep:#0E76BC;
+    --khaki:#9AA04A; --khaki-light:#D9DBB0;
+    --coral:#F2653F; --coral-light:#FAAB78;
+    --ink:#1A1815; --paper:#FFFFFF; --mist:#F3F6FA;
+    --line:rgba(26,24,21,0.12);
+    /* --font:'Nunito Sans',sans-serif; */
+}
+
+*{box-sizing:border-box;}
+
+.mussoorie-page{
+    /* font-family:var(--font); */
+    color:var(--ink);
+    background:var(--paper);
+}
+
+.mussoorie-page h1,
+.mussoorie-page h2,
+.mussoorie-page h3{
+    /* font-family:var(--font); */
+    font-weight:800;
+}
+
+@media (prefers-reduced-motion:reduce){
+    .mussoorie-page *{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+    }
+    .dd-hero-bg{transform:none !important;}
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.dd-hero{
+    position:relative;
+    height:73vh;
+    min-height:26rem;
+    overflow:hidden;
+}
+
+.dd-hero-bg{
+     position:absolute; 
+        inset:0;
+        background-image:url("/images/paid/himalaya-mountain-kashmir-snow-village-gulmarg-india-landscape-beautiful-nature-himalaya-mountain-sky.jpg");
+        background-size:cover;
+        background-position:center;
+        animation: jslKenBurns 10s ease-in-out infinite alternate; /* 2. Ken Burns background zoom */
+      }
+      @keyframes jslKenBurns{
+        0%{ transform: scale(1) translate(0,0); }
+        100%{ transform: scale(1.14) translate(-1.5%, -1%); }
+      }
+
+.dd-hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        180deg,
+        rgba(14,60,90,.35),
+        rgba(26,24,21,.80)
+    );
+}
+
+.dd-hero-content{
+    position:relative;
+    z-index:1;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 1.5rem;
+    color:#fff;
+}
+
+.dd-hero-eyebrow{
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--coral-light);
+    margin-bottom:.8rem;
+    opacity:0;
+    animation:ddRise .7s ease forwards;
+}
+
+.dd-hero-content h1{
+    font-size:clamp(2.2rem,5vw,3.6rem);
+    margin:0 0 .8rem;
+    opacity:0;
+    animation:ddRise .8s ease .12s forwards;
+}
+
+.dd-hero-content p{
+    max-width:38rem;
+    color:rgba(255,255,255,.85);
+    font-size:1rem;
+    line-height:1.7;
+    opacity:0;
+    animation:ddRise .8s ease .24s forwards;
+}
+
+@keyframes ddRise{
+    from{opacity:0;transform:translateY(18px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.dd-hero-stats{
+    display:flex;
+    gap:2.4rem;
+    margin-top:1.6rem;
+    flex-wrap:wrap;
+    justify-content:center;
+    opacity:0;
+    animation:ddRise .8s ease .36s forwards;
+}
+
+.dd-hero-stats .stat strong{
+    display:block;
+    font-size:1.3rem;
+    color:var(--coral-light);
+}
+
+.dd-hero-stats .stat span{
+    font-size:.74rem;
+    opacity:.85;
+}
+
+.dd-scroll-cue{
+    position:absolute;
+    bottom:1.2rem;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:1;
+    animation:ddBounce 1.8s infinite;
+}
+
+@keyframes ddBounce{
+    0%,100%{transform:translate(-50%,0);}
+    50%{transform:translate(-50%,8px);}
+}
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+.dd-intro{
+    max-width:52rem;
+    margin:4rem auto 3rem;
+    padding:0 1.5rem;
+    text-align:center;
+}
+
+.dd-intro .eyebrow{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:.6rem;
+}
+
+.dd-intro h2{
+    font-size:1.9rem;
+    margin:0 0 1rem;
+}
+
+.dd-intro p{
+    color:#585858;
+    font-size:.96rem;
+    line-height:1.75;
+}
+
+/* ============================================================
+   ATTRACTION RAIL
+   ============================================================ */
+.dd-tour-wrap{
+    max-width:74rem;
+    margin:0 auto 4rem;
+    padding:0 1.5rem;
+    display:grid;
+    grid-template-columns:3.5rem 1fr;
+    gap:2rem;
+}
+
+.dd-rail{
+    position:sticky;
+    top:2rem;
+    height:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.dd-rail-line{
+    position:relative;
+    width:3px;
+    background:var(--line);
+    border-radius:999px;
+}
+
+.dd-rail-fill{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    background:linear-gradient(180deg,var(--khaki),var(--coral));
+    border-radius:999px;
+    height:0%;
+    transition:height .2s linear;
+}
+
+.dd-cards{
+    display:flex;
+    flex-direction:column;
+    gap:2.2rem;
+}
+
+.dd-card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    background:#fff;
+    border-radius:1.2rem;
+    overflow:hidden;
+    box-shadow:0 12px 32px rgba(26,24,21,.07);
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .6s ease,transform .6s ease;
+}
+
+.dd-card.in-view{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.dd-card.reverse{direction:rtl;}
+.dd-card.reverse > *{direction:ltr;}
+
+.dd-card-media{
+    position:relative;
+    overflow:hidden;
+    min-height:16rem;
+    cursor:zoom-in;
+    background:var(--mist);
+}
+
+.dd-card-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .5s ease;
+}
+
+.dd-card-media:hover img{
+    transform:scale(1.08);
+}
+
+.dd-card-badge{
+    position:absolute;
+    top:1rem;
+    left:1rem;
+    background:var(--coral);
+    color:#fff;
+    font-size:.68rem;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:.35rem .65rem;
+    border-radius:999px;
+}
+
+.dd-card-body{
+    padding:2rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.dd-card-body .type{
+    color:var(--blue);
+    font-size:.72rem;
+    font-weight:800;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin-bottom:.5rem;
+}
+
+.dd-card-body h3{
+    font-size:1.55rem;
+    margin:0 0 .55rem;
+}
+
+.dd-card-body p{
+    color:#585858;
+    font-size:.9rem;
+    line-height:1.7;
+    margin:0;
+}
+
+.dd-card-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin-top:1rem;
+}
+
+.dd-card-meta span{
+    font-size:.7rem;
+    font-weight:700;
+    color:#666;
+    background:var(--mist);
+    padding:.35rem .6rem;
+    border-radius:999px;
+}
+
+.dd-card-actions{
+    display:flex;
+    align-items:center;
+    gap:.7rem;
+    margin-top:1.25rem;
+    flex-wrap:wrap;
+}
+
+.dd-add-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    background:#fff;
+    border:1.5px solid var(--line);
+    padding:.6rem 1rem;
+    border-radius:999px;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--ink);
+    transition:all .2s ease;
+    cursor:pointer;
+}
+
+.dd-add-btn:hover{border-color:var(--khaki);}
+
+.dd-add-btn.added{
+    background:var(--khaki);
+    border-color:var(--khaki);
+    color:#fff;
+}
+
+.dd-add-btn .check{
+    width:16px;
+    height:16px;
+}
+
+.dd-book-link{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    text-decoration:none;
+    font-weight:700;
+    font-size:.85rem;
+    color:#fff;
+    background:linear-gradient(90deg,var(--blue-deep),var(--blue));
+    padding:.6rem 1.1rem;
+    border-radius:999px;
+    box-shadow:0 8px 18px rgba(50,138,223,.28);
+    transition:transform .2s ease;
+}
+
+.dd-book-link:hover{transform:translateY(-2px);}
+
+@media(max-width:900px){
+    .dd-tour-wrap{grid-template-columns:1fr;}
+    .dd-rail{display:none;}
+    .dd-card,
+    .dd-card.reverse{
+        grid-template-columns:1fr;
+        direction:ltr;
+    }
+    .dd-card-media{min-height:13rem;}
+}
+
+/* ============================================================
+   SHARED SECTION HEADING
+   ============================================================ */
+.dd-section{
+    max-width:74rem;
+    margin:5rem auto;
+    padding:0 1.5rem;
+}
+
+.dd-section .heading{
+    text-align:center;
+    margin-bottom:2.2rem;
+}
+
+.dd-section .heading .eyebrow{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--blue);
+}
+
+.dd-section .heading h2{
+    font-size:1.9rem;
+    margin:.4rem 0 0;
+}
+
+.dd-section .heading p{
+    color:#585858;
+    font-size:.92rem;
+    max-width:36rem;
+    margin:.7rem auto 0;
+}
+
+/* ============================================================
+   ITINERARY
+   ============================================================ */
+.dd-itin-tabs{
+    display:flex;
+    justify-content:center;
+    gap:.6rem;
+    margin-bottom:2rem;
+    flex-wrap:wrap;
+}
+
+.dd-itin-tab{
+    background:#fff;
+    border:1.5px solid var(--line);
+    color:var(--ink);
+    font-weight:700;
+    font-size:.85rem;
+    padding:.6rem 1.3rem;
+    border-radius:999px;
+    cursor:pointer;
+    transition:all .2s ease;
+}
+
+.dd-itin-tab:hover{border-color:var(--blue);}
+
+.dd-itin-tab.active{
+    background:var(--blue);
+    border-color:var(--blue);
+    color:#fff;
+}
+
+.dd-itin-panel{display:none;}
+
+.dd-itin-panel.active{
+    display:block;
+    animation:ddRise .4s ease;
+}
+
+.dd-itin-days{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+    max-width:44rem;
+    margin:0 auto;
+}
+
+.dd-itin-day{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:1rem;
+    padding:1.3rem 1.5rem;
+    display:flex;
+    gap:1.2rem;
+}
+
+.dd-itin-daynum{
+    flex-shrink:0;
+    width:2.6rem;
+    height:2.6rem;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--khaki),var(--blue-deep));
+    color:#fff;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.dd-itin-day h4{
+    margin:0 0 .3rem;
+    font-size:1rem;
+}
+
+.dd-itin-day p{
+    margin:0;
+    font-size:.85rem;
+    color:#585858;
+    line-height:1.6;
+}
+
+/* ============================================================
+   PRACTICAL INFO
+   ============================================================ */
+.dd-practical-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.6rem;
+}
+
+.dd-practical-card{
+    background:var(--mist);
+    border-radius:1.1rem;
+    padding:1.6rem 1.7rem;
+}
+
+.dd-practical-card h3{
+    font-size:1.1rem;
+    margin:0 0 .8rem;
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+}
+
+.dd-practical-card h3 svg{
+    width:20px;
+    height:20px;
+    color:var(--blue);
+}
+
+.dd-practical-card ul{
+    margin:0;
+    padding-left:1.1rem;
+}
+
+.dd-practical-card li{
+    font-size:.87rem;
+    color:#585858;
+    line-height:1.75;
+}
+
+.dd-practical-card p{
+    font-size:.87rem;
+    color:#585858;
+    line-height:1.75;
+    margin:0;
+}
+
+@media(max-width:800px){
+    .dd-practical-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   FOOD / SHOPPING / LOCAL EXPERIENCES
+   ============================================================ */
+.dd-strip-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+    gap:1.1rem;
+}
+
+.dd-strip-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:1rem;
+    padding:1.3rem;
+    text-align:center;
+    transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.dd-strip-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 26px rgba(26,24,21,.08);
+}
+
+.dd-strip-icon{
+    font-size:1.8rem;
+    margin-bottom:.6rem;
+}
+
+.dd-strip-card h4{
+    margin:0 0 .3rem;
+    font-size:.95rem;
+}
+
+.dd-strip-card p{
+    margin:0;
+    font-size:.8rem;
+    color:#8A8A8A;
+    line-height:1.5;
+}
+
+/* ============================================================
+   MAP
+   ============================================================ */
+.dd-map-wrap{
+    border-radius:1.1rem;
+    overflow:hidden;
+    box-shadow:0 12px 32px rgba(26,24,21,.08);
+    border:1px solid var(--line);
+}
+
+.dd-map-wrap iframe{
+    width:100%;
+    height:24rem;
+    border:0;
+    display:block;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.dd-faq-list{
+    max-width:46rem;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:.8rem;
+}
+
+.dd-faq-item{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:.8rem;
+    overflow:hidden;
+}
+
+.dd-faq-q{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:none;
+    border:none;
+    padding:1.1rem 1.3rem;
+    font-size:.92rem;
+    font-weight:700;
+    color:var(--ink);
+    text-align:left;
+    cursor:pointer;
+}
+
+.dd-faq-icon{
+    flex-shrink:0;
+    color:var(--blue);
+    transition:transform .3s ease;
+}
+
+.dd-faq-item.open .dd-faq-icon{
+    transform:rotate(45deg);
+}
+
+.dd-faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease,padding .35s ease;
+    padding:0 1.3rem;
+}
+
+.dd-faq-item.open .dd-faq-a{
+    max-height:12rem;
+    padding:0 1.3rem 1.2rem;
+}
+
+.dd-faq-a p{
+    margin:0;
+    color:#585858;
+    font-size:.87rem;
+    line-height:1.7;
+}
+
+/* ============================================================
+   REVIEWS
+   ============================================================ */
+.dd-reviews{
+    max-width:74rem;
+    margin:5rem auto;
+    padding:0 1.5rem;
+}
+
+.dd-reviews .heading{
+    text-align:center;
+    margin-bottom:2.2rem;
+}
+
+.dd-reviews .eyebrow{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--blue);
+}
+
+.dd-reviews h2{
+    font-size:1.9rem;
+    margin:.4rem 0 0;
+}
+
+.dd-review-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.1rem;
+}
+
+.dd-review-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:1rem;
+    padding:1.5rem;
+    box-shadow:0 10px 26px rgba(26,24,21,.05);
+}
+
+.dd-review-card .stars{
+    color:var(--coral);
+    letter-spacing:.08em;
+    margin-bottom:.8rem;
+}
+
+.dd-review-card p{
+    color:#585858;
+    font-size:.86rem;
+    line-height:1.7;
+    margin:0 0 1rem;
+}
+
+.dd-review-card .who{
+    font-size:.8rem;
+    font-weight:800;
+}
+
+/* ============================================================
+   PLAN FAB
+   ============================================================ */
+.dd-plan-fab{
+    position:fixed;
+    right:1.5rem;
+    bottom:1.5rem;
+    z-index:70;
+    background:#1A1815;
+    color:#fff;
+    border-radius:1.1rem;
+    padding:1rem 1.2rem;
+    width:15.5rem;
+    box-shadow:0 16px 36px rgba(26,24,21,.28);
+    transform:translateY(140%);
+    transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+
+.dd-plan-fab.show{
+    transform:translateY(0);
+}
+
+.dd-plan-fab h4{
+    margin:0 0 .2rem;
+    font-size:.95rem;
+}
+
+.dd-plan-fab .sub{
+    font-size:.74rem;
+    opacity:.75;
+    margin-bottom:.8rem;
+}
+
+.dd-plan-fab .count{
+    font-weight:800;
+    color:var(--coral-light);
+}
+
+.dd-plan-fab a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:.4rem;
+    text-decoration:none;
+    background:var(--coral);
+    color:#fff;
+    font-weight:700;
+    font-size:.85rem;
+    padding:.65rem;
+    border-radius:.7rem;
+    transition:transform .2s ease;
+}
+
+.dd-plan-fab a:hover{transform:translateY(-2px);}
+
+/* ============================================================
+   STICKY BAR
+   ============================================================ */
+.dd-sticky-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:850;
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    box-shadow:0 6px 18px rgba(26,24,21,.06);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:.7rem 1.5rem;
+    transform:translateY(-110%);
+    transition:transform .35s ease;
+}
+
+.dd-sticky-bar.show{transform:translateY(0);}
+
+.dd-sticky-bar span{
+    font-weight:700;
+    font-size:.9rem;
+}
+
+.dd-sticky-bar a{
+    text-decoration:none;
+    background:var(--blue);
+    color:#fff;
+    font-weight:700;
+    font-size:.82rem;
+    padding:.55rem 1.1rem;
+    border-radius:999px;
+    transition:transform .2s ease;
+}
+
+.dd-sticky-bar a:hover{transform:translateY(-2px);}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.dd-lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(26,24,21,.90);
+    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:2rem;
+}
+
+.dd-lightbox.show{display:flex;}
+
+.dd-lightbox img{
+    max-width:90vw;
+    max-height:85vh;
+    border-radius:.6rem;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.dd-lightbox-close{
+    position:absolute;
+    top:1.5rem;
+    right:1.8rem;
+    color:#fff;
+    font-size:2rem;
+    cursor:pointer;
+    line-height:1;
+    background:none;
+    border:none;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:900px){
+    .dd-review-grid{grid-template-columns:1fr;}
+}
+
+@media(max-width:700px){
+    .dd-hero h1{font-size:2.1rem;}
+    .dd-hero-stats{gap:1.3rem;}
+    .dd-plan-fab{right:1rem;bottom:1rem;}
+}
+
+</style>
+</head>
+
+<body class="mussoorie-page">
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)"> 
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+            <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+            <!-- <li onclick="showsidebar()" style="font-size: 32px;"><a href=""><img src="./icons/menu.png" alt=""></a></li> -->
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a  href="./index.html">Home</a></li>
+                <li class="hideonmobile navHasDropdown">
+    <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+    <div class="navDropdown">
+        <div class="navDropdownCol">
+            <h4>Luxury Buses</h4>
+            <a href="">Volvo Bus</a>
+            <a href="">Winger</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Luxury Cars</h4>
+            <a href="">Innova Crysta</a>
+            <a href="">Kia Carnival</a>
+            <a href="">Honda City</a>
+            <a href="">Etios</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Economical Cars</h4>
+            <a href="">Swift Dzire</a>
+            <a href="">Ertiga</a>
+            <a href="">Innova</a>
+        </div>
+    </div>
+</li>
+            <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+<!-- ============================================================
+     LOADER
+     ============================================================ -->
+<div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="dd-hero" id="ddHero">
+
+    <div class="dd-hero-bg" id="ddHeroBg"></div>
+    <div class="dd-hero-overlay"></div>
+
+    <div class="dd-hero-content">
+
+        <div class="dd-hero-eyebrow">The Queen of the Hills</div>
+
+        <h1>What's in Mussoorie</h1>
+
+        <p>
+            A city where Mughal grandeur, colonial avenues, spiritual landmarks,
+            living bazaars and modern India come together. From Old Mussoorie to
+            New Mussoorie, here's what's worth your time.
+        </p>
+
+        <div class="dd-hero-stats">
+            <div class="stat">
+                <strong>9</strong>
+                <span>Must-see spots</span>
+            </div>
+
+            <div class="stat">
+                <strong>2-3</strong>
+                <span>Days recommended</span>
+            </div>
+
+            <div class="stat">
+                <strong>5</strong>
+                <span>Travel styles</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="dd-scroll-cue">↓</div>
+
+</section>
+
+<!-- ============================================================
+     INTRO
+     ============================================================ -->
+<section class="dd-intro">
+
+    <div class="eyebrow">The Mussoorie Experience</div>
+
+    <h2>A timeless hill station of mountain views, colonial charm and forested walks.</h2>
+
+    <p>
+        Mussoorie is one of Uttarakhand's most loved mountain escapes, rising
+        along the Himalayan foothills above Dehradun. From Mall Road and Gun
+        Hill to Kempty Falls, Lal Tibba, Landour and Camel's Back Road, the
+        destination combines scenic viewpoints, waterfalls, heritage, cafés,
+        peaceful walks and classic hill-station character.
+    </p>
+
+</section>
+
+<!-- ============================================================
+     ATTRACTIONS
+     ============================================================ -->
+<div class="dd-tour-wrap">
+
+    <div class="dd-rail">
+        <div class="dd-rail-line" id="ddRailLine">
+            <div class="dd-rail-fill" id="ddRailFill"></div>
+        </div>
+    </div>
+
+    <div class="dd-cards" id="ddCards"></div>
+
+</div>
+
+<!-- ============================================================
+     SUGGESTED ITINERARIES
+     ============================================================ -->
+<section class="dd-section">
+
+    <div class="heading">
+        <div class="eyebrow">Plan It Out</div>
+        <h2>Suggested Mussoorie itineraries</h2>
+        <p>
+            Keep it relaxed with classic viewpoints and Mall Road, or add
+            waterfalls, Landour and forest experiences for a fuller mountain trip.
+        </p>
+    </div>
+
+    <div class="dd-itin-tabs" id="ddItinTabs">
+        <button class="dd-itin-tab active" data-day="1">1 Day</button>
+        <button class="dd-itin-tab" data-day="2">2 Days</button>
+        <button class="dd-itin-tab" data-day="3">3 Days</button>
+    </div>
+
+    <div class="dd-itin-panel active" data-day="1">
+        <div class="dd-itin-days">
+
+            <div class="dd-itin-day">
+                <div class="dd-itin-daynum">1</div>
+                <div>
+                    <h4>Morning — Gun Hill &amp; central Mussoorie</h4>
+                    <p>
+                        Start with the hilltop views and explore the central
+                        heritage and market area.
+                    </p>
+                </div>
+            </div>
+
+            <div class="dd-itin-day">
+                <div class="dd-itin-daynum">2</div>
+                <div>
+                    <h4>Afternoon — Kempty Falls</h4>
+                    <p>
+                        Head towards the famous waterfall and enjoy the
+                        mountain scenery on the route.
+                    </p>
+                </div>
+            </div>
+
+            <div class="dd-itin-day">
+                <div class="dd-itin-daynum">3</div>
+                <div>
+                    <h4>Evening — Mall Road &amp; Camel's Back Road</h4>
+                    <p>
+                        Finish with a relaxed hill walk, shopping and
+                        sunset views.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="dd-itin-panel" data-day="2">
+        <div class="dd-itin-days">
+
+            <div class="dd-itin-day">
+                <div class="dd-itin-daynum">1</div>
+                <div>
+                    <h4>Day 1 — Classic Mussoorie</h4>
+                    <p>
+                        Gun Hill, Christ Church, Mall Road, Camel's Back Road
+                        and an evening around the central market.
+                    </p>
+                </div>
+            </div>
+
+            <div class="dd-itin-day">
+                <div class="dd-itin-daynum">2</div>
+                <div>
+                    <h4>Day 2 — Waterfall &amp; Landour</h4>
+                    <p>
+                        Kempty Falls followed by Landour, Lal Tibba and
+                        a relaxed café experience.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="dd-itin-panel" data-day="3">
+        <div class="dd-itin-days">
+
+            <div class="dd-itin-day">
+                <div class="dd-itin-daynum">1</div>
+                <div>
+                    <h4>Day 1 — Central Mussoorie</h4>
+                    <p>
+                        Gun Hill, Christ Church, Mall Road and Camel's Back Road.
+                    </p>
+                </div>
+            </div>
+
+            <div class="dd-itin-day">
+                <div class="dd-itin-daynum">2</div>
+                <div>
+                    <h4>Day 2 — Waterfalls &amp; viewpoints</h4>
+                    <p>
+                        Kempty Falls, Company Garden and scenic stops around
+                        the western side of Mussoorie.
+                    </p>
+                </div>
+            </div>
+
+            <div class="dd-itin-day">
+                <div class="dd-itin-daynum">3</div>
+                <div>
+                    <h4>Day 3 — Landour &amp; the quieter hills</h4>
+                    <p>
+                        Lal Tibba, Landour, Cloud's End and a slow café-and-walk
+                        experience away from the busiest areas.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- ============================================================
+     PRACTICAL INFO
+     ============================================================ -->
+<section class="dd-section">
+
+    <div class="heading">
+        <div class="eyebrow">Before You Go</div>
+        <h2>Good to know</h2>
+    </div>
+
+    <div class="dd-practical-grid">
+
+        <div class="dd-practical-card">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
+                </svg>
+                Best time to visit
+            </h3>
+            <p>
+                March to June is popular for pleasant summer weather. Autumn
+                often brings clearer mountain views, while winter is cold and
+                can bring occasional snowfall. Monsoon can make hill roads
+                wet and visibility changeable.
+            </p>
+        </div>
+
+        <div class="dd-practical-card">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M3 17h18M5 17V8l7-4 7 4v9"/>
+                    <path d="M8 17v3M16 17v3"/>
+                </svg>
+                Getting there
+            </h3>
+            <p>
+                Mussoorie is reached by road from Dehradun, which is the main
+                gateway to the hill station. Dehradun Railway Station and
+                Jolly Grant Airport provide convenient onward connections.
+            </p>
+        </div>
+
+        <div class="dd-practical-card">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M4 18h16M5 18l2-8h10l2 8M8 10V6h8v4"/>
+                    <circle cx="8" cy="18" r="1.5"/>
+                    <circle cx="16" cy="18" r="1.5"/>
+                </svg>
+                Getting around
+            </h3>
+            <p>
+                Central Mussoorie is walkable in many places, while a private
+                cab is more practical for Kempty Falls, Lal Tibba, Cloud's End,
+                Company Garden and other attractions spread across the hills.
+            </p>
+        </div>
+
+        <div class="dd-practical-card">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M12 2l2.4 6.2L21 10l-5 4.1 1.7 6.4-5.7-3.5-5.7 3.5L8 14.1 3 10l6.6-1.8L12 2z"/>
+                </svg>
+                What to carry
+            </h3>
+            <ul>
+                <li>Comfortable walking shoes for slopes and hill paths.</li>
+                <li>Warm layers, especially in evenings and winter.</li>
+                <li>Water, sun protection and a light rain layer.</li>
+                <li>Extra care on wet or steep paths during monsoon.</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     LOCAL FOOD / SHOPPING
+     ============================================================ -->
+<section class="dd-section">
+
+    <div class="heading">
+        <div class="eyebrow">Taste &amp; Explore</div>
+        <h2>Don't leave Mussoorie without experiencing its mountain character.</h2>
+        <p>
+            The destination is best enjoyed slowly — through viewpoints,
+            forest walks, cafés, local shopping and cool mountain evenings.
+        </p>
+    </div>
+
+    <div class="dd-strip-grid">
+
+        <div class="dd-strip-card">
+            <div class="dd-strip-icon">🏔️</div>
+            <h4>Himalayan Views</h4>
+            <p>
+                Visit Lal Tibba, Gun Hill and other viewpoints for broad
+                mountain and valley panoramas.
+            </p>
+        </div>
+
+        <div class="dd-strip-card">
+            <div class="dd-strip-icon">💦</div>
+            <h4>Waterfall Escape</h4>
+            <p>
+                Add Kempty Falls for a classic Mussoorie experience surrounded
+                by the hills.
+            </p>
+        </div>
+
+        <div class="dd-strip-card">
+            <div class="dd-strip-icon">☕</div>
+            <h4>Landour Cafés</h4>
+            <p>
+                Slow down around Landour's quiet lanes and distinctive café
+                culture with mountain views.
+            </p>
+        </div>
+
+        <div class="dd-strip-card">
+            <div class="dd-strip-icon">🛍️</div>
+            <h4>Mall Road</h4>
+            <p>
+                Shop for souvenirs, local products and mountain essentials
+                while enjoying an evening walk.
+            </p>
+        </div>
+
+        <div class="dd-strip-card">
+            <div class="dd-strip-icon">🌲</div>
+            <h4>Forest Walks</h4>
+            <p>
+                Oak, pine and deodar forests make the quieter routes around
+                Landour and Cloud's End especially atmospheric.
+            </p>
+        </div>
+
+        <div class="dd-strip-card">
+            <div class="dd-strip-icon">🌅</div>
+            <h4>Sunset Walks</h4>
+            <p>
+                Camel's Back Road and other western-facing routes are ideal
+                for a slow evening with changing mountain light.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     MAP
+     ============================================================ -->
+<section class="dd-section">
+
+    <div class="heading">
+        <div class="eyebrow">Get Your Bearings</div>
+        <h2>Where everything is</h2>
+        <p>
+            A quick look at Mussoorie before you plan your sightseeing route.
+        </p>
+    </div>
+
+    <div class="dd-map-wrap">
+        <iframe
+            src="./https://www.google.com/maps?q=Mussoorie,India&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map of Mussoorie">
+        </iframe>
+    </div>
+
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="dd-section">
+
+    <div class="heading">
+        <div class="eyebrow">Quick Answers</div>
+        <h2>Frequently asked questions</h2>
+    </div>
+
+    <div class="dd-faq-list" id="ddFaqList">
+
+        <div class="dd-faq-item">
+            <button class="dd-faq-q">
+                <span>What is Mussoorie famous for?</span>
+                <svg class="dd-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            <div class="dd-faq-a">
+                <p>
+                    Mussoorie is famous for its Himalayan views, Mall Road,
+                    Kempty Falls, Gun Hill, Lal Tibba, Landour, colonial
+                    heritage and classic hill-station atmosphere.
+                </p>
+            </div>
+        </div>
+
+        <div class="dd-faq-item">
+            <button class="dd-faq-q">
+                <span>How many days do I need in Mussoorie?</span>
+                <svg class="dd-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            <div class="dd-faq-a">
+                <p>
+                    Two days cover the classic highlights comfortably. Three
+                    days allow a slower trip with Landour, Lal Tibba, Cloud's
+                    End and additional nature experiences.
+                </p>
+            </div>
+        </div>
+
+        <div class="dd-faq-item">
+            <button class="dd-faq-q">
+                <span>Can Mussoorie be combined with Dehradun?</span>
+                <svg class="dd-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            <div class="dd-faq-a">
+                <p>
+                    Yes. Mussoorie and Dehradun are commonly combined in one
+                    Uttarakhand itinerary, with Dehradun serving as the main
+                    road and rail gateway to the hill station.
+                </p>
+            </div>
+        </div>
+
+        <div class="dd-faq-item">
+            <button class="dd-faq-q">
+                <span>Is Mussoorie good for families?</span>
+                <svg class="dd-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            <div class="dd-faq-a">
+                <p>
+                    Yes. Mall Road, Gun Hill, Company Garden, Kempty Falls and
+                    the many easy scenic stops make Mussoorie suitable for
+                    family holidays.
+                </p>
+            </div>
+        </div>
+
+        <div class="dd-faq-item">
+            <button class="dd-faq-q">
+                <span>Can Namdev's Tour &amp; Travels arrange a Mussoorie sightseeing car?</span>
+                <svg class="dd-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            <div class="dd-faq-a">
+                <p>
+                    Yes — select your preferred places using "Add to my plan"
+                    and continue to booking so your sightseeing route and
+                    vehicle can be arranged around your Mussoorie itinerary.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     REVIEWS
+     ============================================================ -->
+<section class="dd-reviews">
+
+    <div class="heading">
+        <div class="eyebrow">Traveler Stories</div>
+        <h2>What visitors say about Mussoorie trips</h2>
+    </div>
+
+    <div class="dd-review-grid">
+
+        <div class="dd-review-card">
+            <div class="stars">★★★★★</div>
+            <p>
+                "Landour and Lal Tibba were our favourite parts of Mussoorie.
+                The views, cafés and quiet lanes gave us a completely different
+                side of the hill station."
+            </p>
+            <div class="who">— Riya S.</div>
+        </div>
+
+        <div class="dd-review-card">
+            <div class="stars">★★★★★</div>
+            <p>
+                "We used a private car for Kempty Falls, Company Garden and
+                the viewpoints. It made moving around the hills much easier."
+            </p>
+            <div class="who">— Ankit M.</div>
+        </div>
+
+        <div class="dd-review-card">
+            <div class="stars">★★★★☆</div>
+            <p>
+                "Mall Road in the evening and the mountain views in the morning
+                were perfect for our family. Mussoorie felt relaxed and easy to
+                explore."
+            </p>
+            <div class="who">— Neha K.</div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     FLOATING ITINERARY PANEL
+     ============================================================ -->
+<div class="dd-plan-fab" id="ddPlanFab">
+
+    <h4>Your Mussoorie plan</h4>
+
+    <div class="sub">
+        <span class="count" id="ddPlanCount">0</span>
+        spots selected
+    </div>
+
+    <a href="./booktour.html" id="ddPlanLink" target="_blank">
+        Continue to booking →
+    </a>
+
+</div>
+
+<!-- ============================================================
+     LIGHTBOX
+     ============================================================ -->
+<div class="dd-lightbox" id="ddLightbox">
+
+    <button class="dd-lightbox-close" id="ddLightboxClose">&times;</button>
+
+    <img id="ddLightboxImg" src="" alt="">
+
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+
+<!-- ============ FOOTER (matches the rest of the site) ============ -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <!-- <form class="footer-form" form-type="footer_GIT" data-formtype="Get in Touch" id="heroEnquiryForm">
+                <div class="form-row">
+                    <input name="name" type="text" placeholder="Your Name">
+                </div>
+                <div class="form-row">
+                    <input name="email" type="email" placeholder="Your Email">
+                </div>
+                <div class="form-row">
+                    <input name="phone" type="text" placeholder="Mobile Number">
+                </div>
+                <div class="form-row form-row-split">
+                    <input name="count" type="text" placeholder="No. of People">
+                    <input name="car" type="text" placeholder="Car">
+                </div>
+                <div class="form-row">
+                    <input name="destination" type="text" placeholder="Destination">
+                </div>
+                <button type="submit" class="footer-submit-btn">
+                    Send Enquiry
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </form> -->
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+<!-- footer form backend linking -->
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+
+function showsidebar(){
+    const sidebar=document.querySelector('.sidebar');
+    if(sidebar) sidebar.classList.add('show');
+}
+
+function hidesidebar(){
+    const sidebar=document.querySelector('.sidebar');
+    if(sidebar) sidebar.classList.remove('show');
+}
+
+/* ============================================================
+   ATTRACTION DATA
+   ============================================================ */
+const ATTRACTIONS = [
+
+    {
+        name:"Mall Road",
+        type:"Shopping & Local Life",
+        badge:"Must Visit",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Mall%20Road%20Mussoorie.jpg",
+        text:"The lively heart of Mussoorie, Mall Road is perfect for an evening stroll, local shopping, cafés and panoramic views across the surrounding hills.",
+        duration:"~1–2 hrs",
+        tag:"Hill Town"
+    },
+
+    {
+        name:"Gun Hill",
+        type:"Viewpoint & Cable Car",
+        badge:"Popular",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Gun%20Hill%2C%20Mussoorie.jpg",
+        text:"Gun Hill is one of Mussoorie's best-known viewpoints, offering broad views of the Himalayan ranges, Doon Valley and surrounding mountain landscape.",
+        duration:"~1 hr",
+        tag:"Viewpoint"
+    },
+
+    {
+        name:"Kempty Falls",
+        type:"Waterfall & Nature",
+        badge:"Family",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Kempty%20Falls%20Mussoorie.jpg",
+        text:"One of Mussoorie's most famous nearby attractions, Kempty Falls is a classic stop for visitors looking for flowing water, mountain scenery and a lively outdoor experience.",
+        duration:"~1.5–2 hrs",
+        tag:"Waterfall"
+    },
+
+    {
+        name:"Lal Tibba",
+        type:"Mountain Viewpoint",
+        badge:"Scenic",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Lal%20Tibba%20Mussoorie.jpg",
+        text:"Lal Tibba is the highest point in Mussoorie and the signature viewpoint of Landour, known for its long Himalayan vistas and peaceful atmosphere.",
+        duration:"~1 hr",
+        tag:"Himalayas"
+    },
+
+    {
+        name:"Company Garden",
+        type:"Garden & Family",
+        badge:"Relax",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Company%20Garden%20Mussoorie.jpg",
+        text:"A landscaped garden attraction with flowers, greenery and family-friendly spaces, making it an easy addition to a relaxed Mussoorie itinerary.",
+        duration:"~1–1.5 hrs",
+        tag:"Garden"
+    },
+
+    {
+        name:"Cloud's End",
+        type:"Forest & Nature",
+        badge:"Quiet",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Cloud%27s%20End%2C%20Mussoorie.jpg",
+        text:"A peaceful forested corner of Mussoorie surrounded by oak, deodar and pine, ideal for travellers who want to experience the quieter side of the hills.",
+        duration:"~1–2 hrs",
+        tag:"Forest"
+    },
+
+    {
+        name:"Landour",
+        type:"Heritage & Cafés",
+        badge:"Charming",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Landour%20Mussoorie.jpg",
+        text:"The old cantonment area of Landour is known for its colonial-era character, quiet lanes, Himalayan views and distinctive café culture.",
+        duration:"~2 hrs",
+        tag:"Heritage"
+    },
+
+    {
+        name:"Camel's Back Road",
+        type:"Walk & Sunset",
+        badge:"Relax",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Camel%27s%20Back%20Road%2C%20Mussoorie.jpg",
+        text:"A scenic road and walking route named after a camel-shaped rock formation, popular for relaxed walks, mountain views and sunset moments.",
+        duration:"~1 hr",
+        tag:"Walk"
+    },
+
+    {
+        name:"Christ Church",
+        type:"Colonial Heritage",
+        badge:"Historic",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Christ%20Church%20Mussoorie.jpg",
+        text:"A historic Gothic-style church overlooking Mussoorie, offering a quiet heritage stop close to the central hill-town area.",
+        duration:"~45–60 min",
+        tag:"Heritage"
+    }
+
+];
+
+/* ============================================================
+   RENDER ATTRACTIONS
+   ============================================================ */
+const ddCards=document.getElementById("ddCards");
+
+ATTRACTIONS.forEach((place,index)=>{
+
+    const card=document.createElement("article");
+
+    card.className="dd-card"+(index%2===1 ? " reverse" : "");
+
+    card.innerHTML=`
+
+        <div class="dd-card-media" data-img="${place.img}" data-name="${place.name}">
+            <img src="./${place.img}" alt="${place.name}" loading="lazy">
+            <span class="dd-card-badge">${place.badge}</span>
+        </div>
+
+        <div class="dd-card-body">
+
+            <div class="type">${place.type}</div>
+
+            <h3>${place.name}</h3>
+
+            <p>${place.text}</p>
+
+            <div class="dd-card-meta">
+                <span>${place.duration}</span>
+                <span>${place.tag}</span>
+            </div>
+
+            <div class="dd-card-actions">
+
+                <button class="dd-add-btn" data-name="${place.name}">
+                    <span class="check">＋</span>
+                    Add to my plan
+                </button>
+
+                <a class="dd-book-link" href="./booktour.html" target="_blank">
+                    Plan this →
+                </a>
+
+            </div>
+
+        </div>
+    `;
+
+    ddCards.appendChild(card);
+
+});
+
+/* ============================================================
+   PLAN SELECTION
+   ============================================================ */
+let selectedPlaces=[];
+
+const ddPlanFab=document.getElementById("ddPlanFab");
+const ddPlanCount=document.getElementById("ddPlanCount");
+
+document.querySelectorAll(".dd-add-btn").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        const name=button.dataset.name;
+
+        if(selectedPlaces.includes(name)){
+
+            selectedPlaces=selectedPlaces.filter(place=>place!==name);
+
+            button.classList.remove("added");
+            button.innerHTML='<span class="check">＋</span> Add to my plan';
+
+        }else{
+
+            selectedPlaces.push(name);
+
+            button.classList.add("added");
+            button.innerHTML='<span class="check">✓</span> Added';
+
+        }
+
+        ddPlanCount.textContent=selectedPlaces.length;
+
+        ddPlanFab.classList.toggle("show",selectedPlaces.length>0);
+
+    });
+
+});
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+const lightbox=document.getElementById("ddLightbox");
+const lightboxImg=document.getElementById("ddLightboxImg");
+const lightboxClose=document.getElementById("ddLightboxClose");
+
+document.querySelectorAll(".dd-card-media").forEach(media=>{
+
+    media.addEventListener("click",()=>{
+
+        lightboxImg.src=media.dataset.img;
+        lightboxImg.alt=media.dataset.name;
+        lightbox.classList.add("show");
+
+    });
+
+});
+
+lightboxClose.addEventListener("click",()=>{
+    lightbox.classList.remove("show");
+});
+
+lightbox.addEventListener("click",(event)=>{
+
+    if(event.target===lightbox){
+        lightbox.classList.remove("show");
+    }
+
+});
+
+/* ============================================================
+   ITINERARY TABS
+   ============================================================ */
+document.querySelectorAll("#ddItinTabs .dd-itin-tab").forEach(tab=>{
+
+    tab.addEventListener("click",()=>{
+
+        const day=tab.dataset.day;
+
+        document.querySelectorAll("#ddItinTabs .dd-itin-tab")
+            .forEach(item=>item.classList.remove("active"));
+
+        tab.classList.add("active");
+
+        document.querySelectorAll(".dd-itin-panel")
+            .forEach(panel=>{
+                panel.classList.toggle(
+                    "active",
+                    panel.dataset.day===day
+                );
+            });
+
+    });
+
+});
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+document.querySelectorAll(".dd-faq-q").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        const item=button.closest(".dd-faq-item");
+        const wasOpen=item.classList.contains("open");
+
+        document.querySelectorAll(".dd-faq-item.open")
+            .forEach(openItem=>openItem.classList.remove("open"));
+
+        if(!wasOpen){
+            item.classList.add("open");
+        }
+
+    });
+
+});
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const revealTargets=document.querySelectorAll(".dd-card,.dd-review-card");
+
+const observer=new IntersectionObserver(
+    entries=>{
+
+        entries.forEach(entry=>{
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("in-view");
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {threshold:.15}
+);
+
+revealTargets.forEach(target=>observer.observe(target));
+
+/* ============================================================
+   HERO PARALLAX + RAIL + STICKY BAR
+   ============================================================ */
+const heroBg=document.getElementById("ddHeroBg");
+const hero=document.getElementById("ddHero");
+const stickyBar=document.getElementById("ddStickyBar");
+const railFill=document.getElementById("ddRailFill");
+const tourWrap=document.querySelector(".dd-tour-wrap");
+
+function onScroll(){
+
+    const y=window.scrollY;
+    const heroH=hero.offsetHeight;
+
+    if(y<heroH+200){
+        heroBg.style.transform=`translateY(${y*.35}px)`;
+    }
+
+    stickyBar.classList.toggle("show",y>heroH-80);
+
+    if(tourWrap){
+
+        const rect=tourWrap.getBoundingClientRect();
+        const total=rect.height-window.innerHeight*.5;
+        const passed=Math.min(
+            Math.max(-rect.top,0),
+            total
+        );
+
+        const pct=total>0 ? (passed/total)*100 : 0;
+
+        railFill.style.height=pct+"%";
+
+    }
+
+}
+
+window.addEventListener(
+    "scroll",
+    onScroll,
+    {passive:true}
+);
+
+onScroll();
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+window.addEventListener("load",()=>{
+
+    const loader=document.getElementById("loader");
+
+    if(loader){
+
+        setTimeout(()=>{
+            loader.classList.add("hide");
+        },650);
+
+    }
+
+});
+
+</script>
+
+<script src="././finalanimation.js"></script>
+<script src="././experimental_claude.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Tour | Namdev's Tour & Travels</title>
+
+<!-- Standalone page: no nav/footer here — those already live on your site shell -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+    <!--  -->
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="finalanimation.css">
+ <link rel="stylesheet" href="experimental_claude.css">
+
+
+<style>
+/* ============ TOKENS — pulled from the actual logo pixels ============ */
+:root{
+    --blue:        #328ADF;
+    --blue-deep:   #0E76BC;
+    --khaki:       #9AA04A;
+    --khaki-light: #D9DBB0;
+    --coral:       #F2653F;
+    --coral-light: #FAAB78;
+    --ink:         #1A1815;
+    --paper:       #FFFFFF;
+    --mist:        #F3F6FA;
+    --line:        rgba(26,24,21,0.12);
+    --font: 'Nunito Sans', sans-serif;
+    --mx: 0px; --my: 0px;
+}
+
+*{ box-sizing:border-box; }
+body{ font-family: var(--font); background: var(--paper); color: var(--ink); margin:0; overflow-x:hidden; }
+
+@media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior:auto !important; }
+    .heroPlane{ animation:none !important; offset-distance:35% !important; }
+    #heroTrail, #energyFlow{ animation:none !important; stroke-dashoffset:400 !important; }
+    .heroSkyline, .cloud, #roadCar, .flightMeter .fill{ animation:none !important; }
+    .heroGlobe{ animation:none !important; }
+}
+
+/* ============ HERO ============ */
+.bookHero{
+    position: relative;
+    padding: 1.6rem 1.5rem 1.2rem;
+    text-align:center;
+    overflow:hidden;
+    background:
+        radial-gradient(ellipse at 15% -10%, rgba(50,138,223,0.14), transparent 55%),
+        radial-gradient(ellipse at 90% 5%, rgba(154,160,74,0.14), transparent 50%),
+        var(--paper);
+}
+.bookHero .eyebrow{
+    display:inline-flex; align-items:center; gap:.55rem;
+    font-size:.78rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color: var(--coral); background:#fff; border:1px solid var(--line);
+    padding:.5rem 1.1rem 0.5rem .8rem; border-radius:999px;
+    box-shadow:0 6px 18px rgba(26,24,21,0.06);
+    opacity:0; animation: riseIn .7s ease forwards;
+}
+.eyebrowDot{ width:7px; height:7px; border-radius:50%; background: var(--coral); animation: dotPulse 1.6s ease-in-out infinite; }
+@keyframes dotPulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(242,101,63,.5);} 50%{ box-shadow:0 0 0 6px rgba(242,101,63,0);} }
+.bookHero h1{
+    font-family: var(--font); font-weight:800;
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+    line-height:1.2; margin: .6rem auto .4rem; max-width: 38rem;
+    opacity:0; animation: riseIn .8s ease .12s forwards;
+}
+.bookHero h1 .grad{
+    background: linear-gradient(90deg, var(--blue-deep), var(--blue), var(--khaki));
+    background-size: 200% auto;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation: gradShift 5s ease-in-out infinite;
+}
+@keyframes gradShift{ 0%,100%{ background-position:0% center;} 50%{ background-position:100% center;} }
+.bookHero p{
+    color:#585858; max-width: 33rem; margin: 0 auto; font-size:.9rem; line-height:1.5; font-weight:500;
+    opacity:0; animation: riseIn .8s ease .22s forwards;
+}
+@keyframes riseIn{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+
+.bookHero .eyebrow, .bookHero h1, .bookHero p{ position:relative; z-index:1; }
+.heroScene{
+    position:absolute; inset:0; max-width:66rem; margin:0 auto;
+    overflow:hidden; z-index:0; pointer-events:none; opacity:.55;
+}
+.heroGlobe{
+    position:absolute; top:-1.5rem; left:50%;
+    width:11rem; height:11rem; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, var(--blue), var(--blue-deep) 70%);
+    opacity:.12;
+    transform: translateX(-50%) translate(calc(var(--mx) * -6px), calc(var(--my) * -6px)) rotate(0deg);
+    animation: spinGlobe 80s linear infinite;
+    transition: transform .3s ease-out;
+}
+@keyframes spinGlobe{ from{ rotate:0deg;} to{ rotate:360deg;} }
+.heroScene svg.sceneSvg{ position:relative; width:100%; height:100%; overflow:visible; }
+#heroPath{ fill:none; stroke: var(--line); stroke-width:2; stroke-dasharray:6 8; }
+#heroTrail{
+    fill:none; stroke: var(--khaki); stroke-width:3; stroke-linecap:round;
+    stroke-dasharray: 1400; stroke-dashoffset:1400;
+    animation: drawTrail 9s linear infinite;
+}
+@keyframes drawTrail{ 0%{ stroke-dashoffset:1400; opacity:1;} 62%{ stroke-dashoffset:0; opacity:1;} 78%{ opacity:1;} 100%{ stroke-dashoffset:0; opacity:0;} }
+.heroPlane{
+    position:absolute; top:0; left:0; width:26px; height:26px;
+    offset-path: path('M40,205 C260,60 520,255 760,95 S1050,140 1120,120');
+    offset-rotate:auto;
+    animation: flyPath 9s linear infinite;
+    filter: drop-shadow(0 2px 4px rgba(242,101,63,.4));
+}
+@keyframes flyPath{ from{ offset-distance:0%; } to{ offset-distance:100%; } }
+.heroPin{ opacity:.25; transform-origin:center; }
+.heroPin.p1{ animation: pinIdle1 9s ease-in-out infinite; }
+.heroPin.p2{ animation: pinIdle2 9s ease-in-out infinite; }
+.heroPin.p3{ animation: pinIdle3 9s ease-in-out infinite; }
+@keyframes pinIdle1{ 0%,10%,100%{opacity:.25; transform:scale(1);} 24%{opacity:1; transform:scale(1.3);} 36%{opacity:.6; transform:scale(1);} }
+@keyframes pinIdle2{ 0%,40%,100%{opacity:.25; transform:scale(1);} 54%{opacity:1; transform:scale(1.3);} 66%{opacity:.6; transform:scale(1);} }
+@keyframes pinIdle3{ 0%,70%,100%{opacity:.25; transform:scale(1);} 82%{opacity:1; transform:scale(1.3);} 94%{opacity:.6; transform:scale(1);} }
+.heroSkyline{ position:absolute; bottom:0; left:-40px; opacity:.85; animation: driftSkyline 45s linear infinite alternate; }
+@keyframes driftSkyline{ from{ transform:translateX(0);} to{ transform:translateX(-40px);} }
+.cloud{ position:absolute; background: var(--mist); border-radius:999px; }
+.cloud.c1{ width:70px; height:22px; top:1rem; left:6%; animation: driftCloud 26s linear infinite; }
+.cloud.c2{ width:50px; height:16px; top:3.2rem; right:10%; animation: driftCloud 34s linear infinite reverse; }
+.cloud.c3{ width:40px; height:14px; top:.4rem; right:32%; animation: driftCloud 20s linear infinite; }
+@keyframes driftCloud{ from{ transform:translateX(0);} to{ transform:translateX(24px);} }
+
+/* ============ LAYOUT ============ */
+.bookWrap{
+    max-width: 78rem; margin: 0 auto 6rem; padding: 0 1.5rem;
+    display:grid; grid-template-columns: 4.5rem 1fr 20rem; gap: 2.2rem; align-items:start;
+}
+
+/* ---- route spine: a literal little road, car parked at the head ---- */
+.routeSpine{ position:sticky; top:2.5rem; height:35.5rem; display:flex; justify-content:center; }
+.routeSpine svg{ height:100%; overflow:visible; }
+#routeLine{ fill:none; stroke: var(--line); stroke-width:4; stroke-linecap:round; }
+#routeLineFill{
+    fill:none; stroke: var(--khaki); stroke-width:4; stroke-linecap:round;
+    stroke-dasharray:600; stroke-dashoffset:600;
+    transition: stroke-dashoffset .7s cubic-bezier(.65,0,.35,1);
+}
+#energyFlow{
+    fill:none; stroke: rgba(255,255,255,0.85); stroke-width:1.6; stroke-linecap:round;
+    stroke-dasharray: 2 14; stroke-dashoffset:0;
+    animation: flowDash 1.1s linear infinite;
+}
+@keyframes flowDash{ from{ stroke-dashoffset:16; } to{ stroke-dashoffset:0; } }
+.routeStop circle.outer{ fill:#fff; stroke:var(--line); stroke-width:2; transition: stroke .4s ease; }
+.routeStop circle.inner{ fill: var(--line); transition: fill .4s ease, r .3s ease; }
+.routeStop.done circle.outer{ stroke: var(--khaki); }
+.routeStop.done circle.inner{ fill: var(--khaki); }
+.routeStop.active circle.outer{ stroke: var(--blue); animation: ringPulse 1.4s ease-in-out infinite; }
+.routeStop.active circle.inner{ fill: var(--blue); r:5; }
+@keyframes ringPulse{ 0%,100%{ filter:drop-shadow(0 0 0 rgba(50,138,223,.5)); } 50%{ filter:drop-shadow(0 0 5px rgba(50,138,223,.6)); } }
+#planeMarker{ transition: transform .7s cubic-bezier(.65,0,.35,1); filter: drop-shadow(0 3px 5px rgba(26,24,21,0.25)); }
+
+/* the car sitting at the head (top) of the route */
+.roadCarWrap{ position:absolute; top:-2.3rem; left:50%; transform:translateX(-50%); }
+#roadCar{ animation: carIdle 2.4s ease-in-out infinite; transform-origin: center bottom; }
+@keyframes carIdle{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-3px);} }
+.carShadow{ fill: rgba(26,24,21,0.18); animation: shadowPulse 2.4s ease-in-out infinite; }
+@keyframes shadowPulse{ 0%,100%{ opacity:.5; } 50%{ opacity:.28; } }
+
+/* ---- form card ---- */
+.bookCard{
+    background:#fff; border-radius: 1.4rem; box-shadow: 0 20px 50px rgba(26,24,21,0.09);
+    border: 1px solid var(--line); position:relative; overflow:hidden;
+}
+.cardBadge{
+    position:absolute; top:-2.1rem; left:50%; transform:translateX(-50%);
+    width:4.4rem; height:4.4rem; border-radius:50%;
+    background: linear-gradient(135deg, var(--blue-deep), var(--blue));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 10px 24px rgba(14,118,188,0.35);
+    border: 3px solid #fff;
+}
+.stepHead{ position:relative; text-align:center; padding: 3rem 2rem 1.5rem; }
+.stepHead .stepTag{ font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color: var(--blue); }
+.stepHead h2{ font-family: var(--font); font-weight:800; font-size:1.6rem; margin:.35rem 0 .35rem; }
+.stepHead p{ color:#585858; font-size:.9rem; max-width:26rem; margin:0 auto; }
+
+.stepBody{ padding: 0 2.4rem 2.4rem; }
+
+.field{ margin-bottom: 1.35rem; opacity:0; transform:translateY(10px); animation: fieldIn .5s ease forwards; }
+.stepPanel.active .field:nth-of-type(1){ animation-delay:.05s; }
+.stepPanel.active .field:nth-of-type(2){ animation-delay:.12s; }
+.stepPanel.active .field:nth-of-type(3){ animation-delay:.19s; }
+.stepPanel.active .field:nth-of-type(4){ animation-delay:.26s; }
+.stepPanel.active .field:nth-of-type(5){ animation-delay:.33s; }
+@keyframes fieldIn{ to{ opacity:1; transform:translateY(0); } }
+.field.shake{ animation: shakeField .4s ease; }
+@keyframes shakeField{ 0%,100%{ transform:translateX(0);} 20%{ transform:translateX(-6px);} 40%{ transform:translateX(5px);} 60%{ transform:translateX(-4px);} 80%{ transform:translateX(3px);} }
+
+.field label{ display:block; font-size:.82rem; font-weight:700; color: var(--ink); margin-bottom:.45rem; }
+.field .hint{ font-weight:500; color:#8A8A8A; font-size:.78rem; }
+.field input, .field select, .field textarea{
+    width:100%; font-family: var(--font); font-size:.95rem; padding:.85rem 1rem;
+    border-radius:.7rem; border:1.5px solid var(--line); background: var(--mist); color: var(--ink);
+    outline:none; transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+    border-color: var(--blue); background:#fff; box-shadow: 0 0 0 4px rgba(50,138,223,0.12);
+}
+.field.valid input, .field.valid select{ border-color: var(--khaki); }
+.field.invalid input, .field.invalid select{ border-color:#D9534F; box-shadow: 0 0 0 4px rgba(217,83,79,0.1); }
+.field .err{ display:none; color:#D9534F; font-size:.76rem; margin-top:.35rem; }
+.field.invalid .err{ display:block; }
+.row2{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+/* pill choices — passport-stamp snap on select, plus a quick ripple ping */
+.pillGroup{ display:flex; flex-wrap:wrap; gap:.6rem; }
+.pillChoice{
+    position:relative; overflow:hidden;
+    cursor:pointer; border:1.5px solid var(--line); background:#fff;
+    padding:.65rem 1.1rem; border-radius:999px; font-size:.85rem; font-weight:600; color: var(--ink);
+    display:flex; align-items:center; gap:.4rem; transition: all .2s ease; user-select:none;
+}
+.pillChoice:hover{ border-color: var(--blue); transform: translateY(-2px); }
+.pillChoice.selected{
+    background: var(--blue); border-color: var(--blue); color:#fff;
+    box-shadow:0 8px 20px rgba(50,138,223,0.3);
+    animation: stampIn .45s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes stampIn{
+    0%{ transform:scale(1.5) rotate(-10deg); opacity:.4; }
+    60%{ transform:scale(0.94) rotate(3deg); }
+    100%{ transform:scale(1) rotate(0deg); }
+}
+.pillPing{
+    position:absolute; inset:0; border-radius:999px; background:#fff; opacity:.6;
+    animation: pingOut .5s ease-out forwards; pointer-events:none;
+}
+@keyframes pingOut{ from{ transform:scale(0); opacity:.6; } to{ transform:scale(1.8); opacity:0; } }
+
+.intentGroup{ display:grid; grid-template-columns:1fr 1fr; gap:.9rem; margin-bottom:.4rem; }
+.intentCard{ position:relative; overflow:hidden; cursor:pointer; border:1.5px solid var(--line); background:#fff; border-radius:1rem; padding:1.1rem; transition: all .2s ease; }
+.intentCard:hover{ border-color: var(--blue); transform: translateY(-2px); }
+.intentCard.selected{
+    border-color: var(--blue); background: rgba(50,138,223,0.06);
+    box-shadow: 0 8px 20px rgba(50,138,223,0.15);
+    animation: stampIn .45s cubic-bezier(.34,1.56,.64,1);
+}
+.intentCard .tag{ font-size:1.3rem; }
+.intentCard h4{ margin:.5rem 0 .2rem; font-size:.95rem; font-weight:800; }
+.intentCard p{ margin:0; font-size:.78rem; color:#8A8A8A; line-height:1.5; }
+
+/* traveler counter */
+.counterRow{ display:flex; align-items:center; gap:.8rem; }
+.suitcase{ transition: transform .25s ease; }
+.suitcase.bump{ animation: suitcaseBump .35s ease; }
+@keyframes suitcaseBump{ 0%{transform:translateY(0);} 40%{transform:translateY(-6px) rotate(-4deg);} 100%{transform:translateY(0);} }
+.counter{ display:flex; align-items:center; gap:1rem; border:1.5px solid var(--line); border-radius:.7rem; padding:.5rem .8rem; width:fit-content; background: var(--mist); }
+.counter button{
+    width:2rem; height:2rem; border-radius:50%; border:1.5px solid var(--line); background:#fff; color: var(--blue);
+    font-size:1.1rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition: transform .15s ease, background .15s ease;
+}
+.counter button:hover{ background: var(--blue); color:#fff; }
+.counter button:active{ transform: scale(.9); }
+.counter span{ min-width:1.4rem; text-align:center; font-weight:800; display:inline-block; }
+.counter span.pop{ animation: numberPop .3s ease; }
+@keyframes numberPop{ 0%{ transform:scale(1);} 50%{ transform:scale(1.35);} 100%{ transform:scale(1);} }
+
+.reviewGrid{ display:flex; flex-direction:column; gap:.1rem; }
+.reviewRow{ display:flex; justify-content:space-between; gap:1rem; padding:.85rem 0; border-bottom:1px dashed var(--line); font-size:.9rem; opacity:0; transform:translateY(6px); animation: fieldIn .4s ease forwards; }
+.reviewRow:nth-child(1){ animation-delay:.03s; } .reviewRow:nth-child(2){ animation-delay:.06s; }
+.reviewRow:nth-child(3){ animation-delay:.09s; } .reviewRow:nth-child(4){ animation-delay:.12s; }
+.reviewRow:nth-child(5){ animation-delay:.15s; } .reviewRow:nth-child(6){ animation-delay:.18s; }
+.reviewRow:nth-child(7){ animation-delay:.21s; } .reviewRow:nth-child(8){ animation-delay:.24s; }
+.reviewRow:nth-child(9){ animation-delay:.27s; } .reviewRow:nth-child(10){ animation-delay:.30s; }
+.reviewRow:nth-child(11){ animation-delay:.33s; }
+.reviewRow span:first-child{ color:#8A8A8A; }
+.reviewRow span:last-child{ font-weight:700; text-align:right; }
+
+.terms{ display:flex; align-items:flex-start; gap:.6rem; margin-top:1.3rem; font-size:.84rem; color:#585858; }
+.terms input{ margin-top:.2rem; }
+
+.otpBlock{ background: var(--mist); border:1px dashed var(--line); border-radius:.9rem; padding:1.1rem 1.2rem; margin-top:.4rem; }
+.otpRow{ display:flex; gap:.7rem; }
+.otpRow input{ flex:1; }
+.btnGhost{
+    position:relative; overflow:hidden;
+    white-space:nowrap; background:#fff; border:1.5px solid var(--blue); color: var(--blue);
+    font-weight:700; font-size:.85rem; padding:0 1.1rem; border-radius:.7rem; cursor:pointer; transition: all .2s ease;
+}
+.btnGhost:hover{ background: var(--blue); color:#fff; }
+.btnGhost:disabled{ opacity:.55; cursor:default; }
+.otpStatus{ font-size:.8rem; margin-top:.5rem; min-height:1.1rem; display:flex; align-items:center; gap:.4rem; }
+.otpStatus.ok{ color: var(--khaki); font-weight:700; }
+.otpStatus.bad{ color:#D9534F; }
+.otpStatus .stampTick{ display:none; }
+.otpStatus.ok .stampTick{ display:inline-flex; animation: stampIn .4s cubic-bezier(.34,1.56,.64,1); }
+
+.idProofBlock{
+    background: var(--mist); border:1px dashed var(--line); border-radius:.9rem; padding:0 1.2rem;
+    margin-top:.4rem; max-height:0; opacity:0; overflow:hidden;
+    transition: max-height .45s ease, opacity .35s ease, padding .45s ease, margin .45s ease;
+}
+.idProofBlock.open{ max-height:26rem; opacity:1; padding:1.1rem 1.2rem; }
+.idProofBlock .field{ margin-bottom:1rem; }
+.idProofBlock .field:last-child{ margin-bottom:0; }
+.fileNote{ font-size:.76rem; color:#8A8A8A; margin-top:.35rem; }
+
+.stepNav{ display:flex; justify-content:space-between; align-items:center; margin-top:1.6rem; padding-top:1.6rem; border-top:1px solid var(--line); }
+.btnPrimary, .btnBack{
+    position:relative; overflow:hidden;
+    font-family: var(--font); font-weight:700; font-size:.92rem; padding:.85rem 1.7rem; border-radius:.8rem; cursor:pointer;
+    display:inline-flex; align-items:center; gap:.5rem; border:none; transition: transform .2s ease, box-shadow .2s ease;
+}
+.btnPrimary{
+    background: linear-gradient(90deg, var(--blue-deep), var(--blue));
+    color:#fff; box-shadow: 0 10px 24px rgba(50,138,223,0.3); margin-left:auto;
+}
+.btnPrimary:hover{ transform: translateY(-2px); box-shadow: 0 14px 30px rgba(50,138,223,0.4); }
+.btnPrimary:disabled{ opacity:.6; cursor:default; transform:none; box-shadow:none; }
+.btnBack{ background:transparent; color:#8A8A8A; }
+.btnBack:hover{ color: var(--ink); }
+.ripple{ position:absolute; border-radius:50%; background: rgba(255,255,255,0.55); transform:scale(0); animation: rippleOut .55s ease-out forwards; pointer-events:none; }
+@keyframes rippleOut{ to{ transform:scale(3); opacity:0; } }
+
+.stepPanel{ display:none; }
+.stepPanel.active{ display:block; animation: panelIn .5s cubic-bezier(.2,.8,.2,1); }
+@keyframes panelIn{ from{ opacity:0; transform: translateX(18px) scale(.98); filter:blur(3px); } to{ opacity:1; transform: translateX(0) scale(1); filter:blur(0); } }
+
+.mobileProgress{ display:none; }
+.hidden{ display:none !important; }
+
+/* ============ SIDE SUMMARY CARD ============ */
+.tripCard{
+    position:sticky; top:2.5rem;
+    background: linear-gradient(160deg, var(--blue-deep), var(--ink) 130%);
+    color:#fff; border-radius: 1.4rem; padding: 1.8rem 1.6rem;
+    box-shadow: 0 22px 45px rgba(14,118,188,0.3); overflow:hidden;
+}
+.tripCard::before{ content:""; position:absolute; right:-3rem; top:-3rem; width:9rem; height:9rem; border-radius:50%; background: rgba(154,160,74,0.22); }
+.tripCard h3{ font-family: var(--font); font-weight:800; font-size:1.2rem; margin:0 0 .2rem; position:relative; }
+.tripCard .sub{ font-size:.78rem; opacity:.75; margin-bottom:1.2rem; position:relative; }
+.tripLine{ display:flex; justify-content:space-between; gap:.6rem; font-size:.85rem; padding:.65rem 0; border-bottom:1px solid rgba(255,255,255,0.14); position:relative; }
+.tripLine span:first-child{ opacity:.7; }
+.tripLine span:last-child{ font-weight:700; text-align:right; transition: transform .25s ease; }
+.tripLine span:last-child.pop{ animation: numberPop .3s ease; }
+.tripLine .placeholder{ opacity:.45; font-style:italic; font-weight:400; }
+.tripCard .badge{ margin-top:1.3rem; display:flex; align-items:center; gap:.5rem; font-size:.76rem; background: rgba(255,255,255,0.1); padding:.6rem .8rem; border-radius:.7rem; position:relative; }
+.tripCard .badge svg{ width:16px; height:16px; flex-shrink:0; }
+
+.flightMeter{ position:relative; height:5px; background: rgba(255,255,255,0.18); border-radius:999px; margin: 1rem 0 1.6rem; overflow:visible; }
+.flightMeter .fill{
+    position:absolute; left:0; top:0; height:100%; width:0%; border-radius:999px; transition: width .5s ease;
+    background: linear-gradient(90deg, var(--khaki), var(--khaki-light), var(--khaki));
+    background-size: 200% 100%;
+    animation: shimmerMove 2s linear infinite;
+}
+@keyframes shimmerMove{ from{ background-position:0% 0;} to{ background-position:200% 0;} }
+.flightMeter .planeDot{ position:absolute; top:50%; left:0%; transform:translate(-50%,-50%); font-size:.85rem; transition: left .5s ease; filter: drop-shadow(0 2px 3px rgba(0,0,0,.3)); }
+
+/* ============ SUCCESS — stamp + route burst + plane takeoff ============ */
+.successScreen{ text-align:center; padding: 3.5rem 2rem 3.5rem; display:none; position:relative; overflow:hidden; }
+.successScreen.show{ display:block; }
+.takeoffStage{ position:relative; height:7rem; margin-bottom:1rem; }
+
+.stampBadge{
+    position:absolute; left:50%; top:50%; width:4.6rem; height:4.6rem; border-radius:50%;
+    background: linear-gradient(135deg, var(--khaki), var(--blue-deep));
+    display:flex; align-items:center; justify-content:center;
+    transform: translate(-50%,-50%) scale(0); opacity:0;
+}
+.successScreen.show .stampBadge{ animation: stampSlam .5s cubic-bezier(.34,1.56,.64,1) forwards; }
+@keyframes stampSlam{ 0%{ transform:translate(-50%,-50%) scale(2) rotate(-15deg); opacity:0;} 55%{ transform:translate(-50%,-50%) scale(0.9) rotate(4deg); opacity:1;} 100%{ transform:translate(-50%,-50%) scale(1) rotate(0deg); opacity:1;} }
+
+.burstLine{ position:absolute; left:50%; top:50%; width:2px; height:2rem; background: var(--khaki); border-radius:2px; opacity:0; transform-origin: center bottom; }
+.successScreen.show .burstLine{ animation: burstOut .6s ease-out .45s forwards; }
+.burstLine:nth-child(1){ transform: translate(-50%,-100%) rotate(0deg); background:var(--blue); }
+.burstLine:nth-child(2){ transform: translate(-50%,-100%) rotate(45deg); background:var(--coral); }
+.burstLine:nth-child(3){ transform: translate(-50%,-100%) rotate(90deg); background:var(--khaki); }
+.burstLine:nth-child(4){ transform: translate(-50%,-100%) rotate(135deg); background:var(--blue); }
+.burstLine:nth-child(5){ transform: translate(-50%,-100%) rotate(180deg); background:var(--coral); }
+.burstLine:nth-child(6){ transform: translate(-50%,-100%) rotate(225deg); background:var(--khaki); }
+.burstLine:nth-child(7){ transform: translate(-50%,-100%) rotate(270deg); background:var(--blue); }
+.burstLine:nth-child(8){ transform: translate(-50%,-100%) rotate(315deg); background:var(--coral); }
+@keyframes burstOut{ 0%{ opacity:1; height:0;} 60%{ opacity:1; height:2.2rem;} 100%{ opacity:0; height:2.6rem;} }
+
+.takeoffPlane{ position:absolute; left:50%; top:50%; width:34px; height:34px; opacity:0; }
+.successScreen.show .takeoffPlane{ animation: takeoff 1s cubic-bezier(.4,0,.2,1) .75s forwards; }
+@keyframes takeoff{
+    0%{ opacity:0; transform: translate(-50%,-50%) rotate(-35deg) scale(.6); }
+    18%{ opacity:1; transform: translate(-50%,-50%) rotate(-35deg) scale(1); }
+    100%{ opacity:0; transform: translate(160%,-320%) rotate(-35deg) scale(1.3); }
+}
+.takeoffTrail{ position:absolute; left:50%; top:50%; width:2px; height:2px; border-radius:999px; background: var(--khaki); opacity:0; }
+.successScreen.show .takeoffTrail{ animation: trailGrow 1s ease-out .85s forwards; }
+@keyframes trailGrow{ 0%{ opacity:0; } 15%{ opacity:.6; width:2px; height:2px;} 100%{ opacity:0; width:12rem; height:2px; transform: translate(-10%,-140%) rotate(-35deg); } }
+
+.successScreen h2{ font-family:var(--font); font-weight:800; font-size:1.6rem; margin:.4rem 0; opacity:0; animation: riseIn .6s ease 1.5s forwards; }
+.successScreen p{ color:#585858; max-width:24rem; margin:0 auto 1.5rem; opacity:0; animation: riseIn .6s ease 1.62s forwards; }
+.successScreen a.btnPrimary{ opacity:0; animation: riseIn .6s ease 1.74s forwards; text-decoration:none; display:inline-flex; margin:0 auto; }
+
+/* ============ RESPONSIVE ============ */
+@media screen and (max-width: 1024px){
+    .bookWrap{ grid-template-columns: 1fr; }
+    .routeSpine{ display:none; }
+    .tripCard{ position:static; }
+    .mobileProgress{ display:flex; gap:.4rem; max-width:78rem; margin: 1.5rem auto 0; padding: 0 1.5rem 1.2rem; }
+    .mobileProgress .dot{ flex:1; height:4px; border-radius:999px; background: var(--line); transition: background .3s ease; }
+    .mobileProgress .dot.done, .mobileProgress .dot.active{ background: var(--blue); }
+}
+@media screen and (max-width: 600px){
+    .bookHero{ padding: 1.2rem 1.2rem 1rem; }
+    .heroGlobe{ width:9rem; height:9rem; top:-1rem; }
+    .bookWrap{ padding:0 1rem; }
+    .bookCard{ margin-top:2.4rem; }
+    .stepHead{ padding: 2.6rem 1.4rem 1.2rem; }
+    .stepBody{ padding: 0 1.4rem 1.8rem; }
+    .row2{ grid-template-columns:1fr; }
+    .otpRow{ flex-direction:column; }
+    .intentGroup{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+    <!-- ============ animation ============ -->
+         <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+
+
+    <!-- ============ nav ============ -->
+         <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a  href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a href="./index.html">Home</a></li>
+            <li class="hideonmobile"><a  href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+            <li class="hideonmobile"><a href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+
+<!-- ============ HERO ============ -->
+<section class="bookHero" id="heroSection">
+    <span class="eyebrow"><span class="eyebrowDot"></span>4 quick steps</span>
+    <h1>Let's chart your <span class="grad">journey</span></h1>
+    <p>Tell us where you're headed and we'll build the itinerary, vehicle and timing around it.</p>
+
+    <div class="heroScene" aria-hidden="true">
+        <div class="heroGlobe" id="heroGlobe"></div>
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+        <svg class="sceneSvg" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid meet">
+            <path id="heroPath" d="M40,205 C260,60 520,255 760,95 S1050,140 1120,120"></path>
+            <path id="heroTrail" d="M40,205 C260,60 520,255 760,95 S1050,140 1120,120"></path>
+
+            <g class="heroPin p1" transform="translate(280,120)">
+                <circle r="5" fill="#F2653F"></circle>
+                <circle r="10" fill="none" stroke="#F2653F" stroke-width="1.4"></circle>
+            </g>
+            <g class="heroPin p2" transform="translate(620,170)">
+                <circle r="5" fill="#328ADF"></circle>
+                <circle r="10" fill="none" stroke="#328ADF" stroke-width="1.4"></circle>
+            </g>
+            <g class="heroPin p3" transform="translate(960,110)">
+                <circle r="5" fill="#9AA04A"></circle>
+                <circle r="10" fill="none" stroke="#9AA04A" stroke-width="1.4"></circle>
+            </g>
+
+            <g class="heroSkyline" fill="#1A1815" opacity="0.85">
+                <rect x="20" y="230" width="18" height="30"></rect>
+                <rect x="42" y="215" width="14" height="45"></rect>
+                <rect x="60" y="235" width="20" height="25"></rect>
+                <rect x="86" y="222" width="12" height="38"></rect>
+                <rect x="102" y="240" width="16" height="20"></rect>
+                <rect x="960" y="232" width="16" height="28"></rect>
+                <rect x="980" y="218" width="14" height="42"></rect>
+                <rect x="998" y="238" width="20" height="22"></rect>
+                <rect x="1022" y="224" width="12" height="36"></rect>
+            </g>
+        </svg>
+
+        <svg class="heroPlane" viewBox="0 0 24 24" fill="none">
+            <path d="M2 16l20-7-7 20-3-8-8-3-2-2z" fill="#F2653F" stroke="#fff" stroke-width=".6"></path>
+        </svg>
+    </div>
+</section>
+
+<!-- ============ BODY ============ -->
+<div class="bookWrap">
+
+    <div class="mobileProgress" id="mobileProgress"></div>
+
+    <div class="routeSpine">
+        <div class="roadCarWrap">
+            <svg id="roadCar" width="46" height="30" viewBox="0 0 46 30" fill="none">
+                <ellipse class="carShadow" cx="23" cy="26" rx="16" ry="3"></ellipse>
+                <path d="M6 19c0-2 1.5-3 3-3l2-5c1-2 3-3 5-3h6c2 0 4 1 5 3l2 5c1.5 0 3 1 3 3v3c0 1-1 2-2 2h-1a3 3 0 01-6 0H15a3 3 0 01-6 0H8c-1 0-2-1-2-2v-3z" fill="#F2653F"></path>
+                <path d="M15 11l1-3.5c.3-.9 1.1-1.5 2-1.5h5c.9 0 1.7.6 2 1.5L26 11H15z" fill="#328ADF" opacity=".85"></path>
+                <circle cx="15" cy="22" r="3" fill="#1A1815"></circle>
+                <circle cx="31" cy="22" r="3" fill="#1A1815"></circle>
+            </svg>
+        </div>
+
+        <svg viewBox="0 0 60 560" width="60">
+            <path id="routeLine" d="M30,20 C10,140 50,180 30,300 C10,400 50,440 30,540"></path>
+            <path id="routeLineFill" d="M30,20 C10,140 50,180 30,300 C10,400 50,440 30,540"></path>
+            <path id="energyFlow" d="M30,20 C10,140 50,180 30,300 C10,400 50,440 30,540"></path>
+
+            <g class="routeStop active" data-stop="0"><circle class="outer" cx="30" cy="20" r="9"/><circle class="inner" cx="30" cy="20" r="3.5"/></g>
+            <g class="routeStop" data-stop="1"><circle class="outer" cx="30" cy="193" r="9"/><circle class="inner" cx="30" cy="193" r="3.5"/></g>
+            <g class="routeStop" data-stop="2"><circle class="outer" cx="30" cy="366" r="9"/><circle class="inner" cx="30" cy="366" r="3.5"/></g>
+            <g class="routeStop" data-stop="3"><circle class="outer" cx="30" cy="540" r="9"/><circle class="inner" cx="30" cy="540" r="3.5"/></g>
+
+            <g id="planeMarker" transform="translate(30,20) rotate(120)">
+                <path d="M-8,3 L7,-2 L-2,8 L-3,3 L-8,3z" fill="#328ADF"></path>
+            </g>
+        </svg>
+    </div>
+
+    <!-- ============ FORM CARD ============ -->
+    <form class="bookCard" id="bookingForm" novalidate>
+        <div class="cardBadge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 16l20-7-7 20-3-8-8-3-2-2z" fill="#fff"/></svg>
+        </div>
+
+        <!-- STEP 0 -->
+        <div class="stepPanel active" data-step="0">
+            <div class="stepHead">
+                <span class="stepTag">Step 1 of 4</span>
+                <h2>Where &amp; when?</h2>
+                <p>Pick your destination and the dates you have in mind — approximate is fine.</p>
+            </div>
+            <div class="stepBody">
+                <div class="field" data-field="intent">
+                    <label>What are you looking to do?</label>
+                    <div class="intentGroup" id="intentGroup">
+                        <div class="intentCard" data-value="enquiry">
+                            <div class="tag">💬</div><h4>Just enquire</h4>
+                            <p>Get pricing and details first — no commitment.</p>
+                        </div>
+                        <div class="intentCard" data-value="booking">
+                            <div class="tag">✅</div><h4>Confirm this booking</h4>
+                            <p>I've decided — reserve this tour for me.</p>
+                        </div>
+                    </div>
+                    <div class="err">Please choose one to continue.</div>
+                </div>
+                <div class="field" data-field="destination">
+                    <label for="f-destination">Destination</label>
+                    <input id="f-destination" type="text" placeholder="e.g. Jaisalmer, Golden Triangle, Dubai...">
+                    <div class="err">Please enter at least 2 characters.</div>
+                </div>
+                <div class="row2">
+                    <div class="field" data-field="startDate">
+                        <label for="f-start">Start date</label>
+                        <input id="f-start" type="date">
+                        <div class="err">Pick a start date (today or later).</div>
+                    </div>
+                    <div class="field" data-field="days">
+                        <label for="f-days">Trip length <span class="hint">(days)</span></label>
+                        <input id="f-days" type="number" min="1" max="60" placeholder="e.g. 5">
+                        <div class="err">Enter a number between 1 and 60.</div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Travelers</label>
+                    <div class="counterRow">
+                        <svg class="suitcase" id="suitcaseIcon" width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="#328ADF" stroke-width="1.6"/><path d="M9 8V6a1 1 0 011-1h4a1 1 0 011 1v2" stroke="#328ADF" stroke-width="1.6"/></svg>
+                        <div class="counter">
+                            <button type="button" id="travelerMinus">−</button>
+                            <span id="travelerCount">2</span>
+                            <button type="button" id="travelerPlus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stepBody" style="padding-top:0;">
+                <div class="stepNav">
+                    <span></span>
+                    <button type="button" class="btnPrimary nextBtn">Continue <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="stepPanel" data-step="1">
+            <div class="stepHead">
+                <span class="stepTag">Step 2 of 4</span>
+                <h2>Your travel style</h2>
+                <p>This helps us match you with the right guide, route and vehicle.</p>
+            </div>
+            <div class="stepBody">
+                <div class="field" data-field="nationality">
+                    <label>Traveler type</label>
+                    <div class="pillGroup" id="nationalityGroup">
+                        <div class="pillChoice" data-value="Indian National">🇮🇳 Indian National</div>
+                        <div class="pillChoice" data-value="Foreign National">🌍 Foreign National</div>
+                    </div>
+                    <div class="err">Let us know so we can guide you on ID/visa needs.</div>
+                </div>
+                <div class="field" data-field="tourType">
+                    <label>Type of tour</label>
+                    <div class="pillGroup" id="tourTypeGroup">
+                        <div class="pillChoice" data-value="Heritage">🏰 Heritage &amp; Forts</div>
+                        <div class="pillChoice" data-value="Desert Safari">🐫 Desert Safari</div>
+                        <div class="pillChoice" data-value="Religious">🛕 Religious</div>
+                        <div class="pillChoice" data-value="Wildlife">🐅 Wildlife</div>
+                        <div class="pillChoice" data-value="Himalayas">🏔️ Himalayas</div>
+                        <div class="pillChoice" data-value="International">✈️ International</div>
+                    </div>
+                    <div class="err">Pick a tour style that fits.</div>
+                </div>
+                <div class="field" data-field="vehicle">
+                    <label>Preferred vehicle</label>
+                    <div class="pillGroup" id="vehicleGroup">
+                        <div class="pillChoice" data-value="Sedan (Swift Dzire / Etios)">Sedan</div>
+                        <div class="pillChoice" data-value="SUV (Innova / Ertiga)">SUV</div>
+                        <div class="pillChoice" data-value="Luxury (Innova Crysta / Kia Carnival)">Luxury</div>
+                        <div class="pillChoice" data-value="Winger / Tempo Traveller">Group (Winger)</div>
+                        <div class="pillChoice" data-value="Volvo Bus">Volvo Bus</div>
+                        <div class="pillChoice" data-value="Not sure yet">Not sure yet</div>
+                    </div>
+                    <div class="err">Pick one, or "Not sure yet" is fine.</div>
+                </div>
+            </div>
+            <div class="stepBody" style="padding-top:0;">
+                <div class="stepNav">
+                    <button type="button" class="btnBack prevBtn">← Back</button>
+                    <button type="button" class="btnPrimary nextBtn">Continue <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="stepPanel" data-step="2">
+            <div class="stepHead">
+                <span class="stepTag">Step 3 of 4</span>
+                <h2>How do we reach you?</h2>
+                <p>We'll send a one-time code to your email just to confirm it's really you.</p>
+            </div>
+            <div class="stepBody">
+                <div class="row2">
+                    <div class="field" data-field="name">
+                        <label for="f-name">Full name</label>
+                        <input id="f-name" type="text" placeholder="Your name">
+                        <div class="err">Please enter your full name.</div>
+                    </div>
+                    <div class="field" data-field="phone">
+                        <label for="f-phone">Phone number</label>
+                        <input id="f-phone" type="tel" placeholder="+91 9XXXXXXXXX">
+                        <div class="err">Enter a valid 10-digit number (with optional country code).</div>
+                    </div>
+                </div>
+                <div class="field" data-field="email">
+                    <label for="f-email">Email address</label>
+                    <input id="f-email" type="email" placeholder="you@example.com">
+                    <div class="err">Enter a valid email to receive your OTP.</div>
+                </div>
+
+                <div class="otpBlock">
+                    <div class="otpRow">
+                        <input type="text" id="f-otp" placeholder="Enter OTP" disabled inputmode="numeric" maxlength="6">
+                        <button type="button" class="btnGhost" id="sendOtpBtn">Send OTP</button>
+                    </div>
+                    <div class="otpStatus" id="otpStatus">
+                        <svg class="stampTick" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#9AA04A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span id="otpStatusText"></span>
+                    </div>
+                </div>
+
+                <div class="idProofBlock" id="idProofBlock">
+                    <div class="field" data-field="idType">
+                        <label>ID proof type <span class="hint">(needed to confirm your booking)</span></label>
+                        <select id="f-idType">
+                            <option value="" disabled selected>Select ID type</option>
+                        </select>
+                        <div class="err">Please select an ID type.</div>
+                    </div>
+                    <div class="field" data-field="idNumber">
+                        <label for="f-idNumber">ID number</label>
+                        <input id="f-idNumber" type="text" placeholder="As printed on the document">
+                        <div class="err">Enter at least 4 characters.</div>
+                    </div>
+                    <div class="field" data-field="idFile">
+                        <label for="f-idFile">Upload a photo/scan <span class="hint">(optional now — can also share later)</span></label>
+                        <input id="f-idFile" type="file" accept="image/*,.pdf">
+                        <div class="fileNote">We'll ask for the original at pickup — this just speeds up verification.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="stepBody" style="padding-top:0;">
+                <div class="stepNav">
+                    <button type="button" class="btnBack prevBtn">← Back</button>
+                    <button type="button" class="btnPrimary nextBtn" id="toReviewBtn">Review booking <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="stepPanel" data-step="3">
+            <div class="stepHead">
+                <span class="stepTag">Step 4 of 4</span>
+                <h2 id="reviewHeading">Review &amp; confirm</h2>
+                <p id="reviewSub">Double-check the details below — you can still go back and edit anything.</p>
+            </div>
+            <div class="stepBody">
+                <div class="reviewGrid" id="reviewGrid"></div>
+                <label class="terms">
+                    <input type="checkbox" id="f-terms">
+                    I agree to be contacted by Namdev's Tour &amp; Travels regarding this enquiry.
+                </label>
+            </div>
+            <div class="stepBody" style="padding-top:0;">
+                <div class="stepNav">
+                    <button type="button" class="btnBack prevBtn">← Back</button>
+                    <button type="submit" class="btnPrimary" id="confirmBookingBtn">Confirm booking ✓</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="successScreen" id="successScreen">
+            <div class="takeoffStage">
+                <div class="stampBadge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="burstLine"></div><div class="burstLine"></div><div class="burstLine"></div><div class="burstLine"></div>
+                <div class="burstLine"></div><div class="burstLine"></div><div class="burstLine"></div><div class="burstLine"></div>
+                <div class="takeoffTrail"></div>
+                <svg class="takeoffPlane" viewBox="0 0 24 24" fill="none"><path d="M2 16l20-7-7 20-3-8-8-3-2-2z" fill="#F2653F"/></svg>
+            </div>
+            <h2 id="successHeading">Booking request sent!</h2>
+            <p id="successSub">Thank you — our team will reach out on the phone number or email you shared within a few hours to finalize your itinerary.</p>
+            <a href="./index.html" class="btnPrimary">Back to home</a>
+        </div>
+    </form>
+
+    <!-- ============ LIVE SUMMARY CARD ============ -->
+    <aside class="tripCard" id="tripCard">
+        <h3>Your trip so far</h3>
+        <div class="sub">Updates as you fill the form</div>
+
+        <div class="flightMeter">
+            <div class="fill" id="flightFill"></div>
+            <span class="planeDot" id="flightPlaneDot">✈️</span>
+        </div>
+
+        <div class="tripLine"><span>Request type</span><span id="sumIntent" class="placeholder">—</span></div>
+        <div class="tripLine"><span>Destination</span><span id="sumDestination" class="placeholder">—</span></div>
+        <div class="tripLine"><span>Dates</span><span id="sumDates" class="placeholder">—</span></div>
+        <div class="tripLine"><span>Traveler type</span><span id="sumNationality" class="placeholder">—</span></div>
+        <div class="tripLine"><span>Travelers</span><span id="sumTravelers">2</span></div>
+        <div class="tripLine"><span>Style</span><span id="sumStyle" class="placeholder">—</span></div>
+        <div class="tripLine"><span>Vehicle</span><span id="sumVehicle" class="placeholder">—</span></div>
+
+        <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="#fff" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            No payment required to enquire
+        </div>
+    </aside>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Jaisalmer</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/490280174/photo/green-lagoon.jpg?s=612x612&w=0&k=20&c=HW7F8IqCLsCS83HYkZsB42UAsq40soJJ3zze16ni7b4=" alt="Rann of Kutch">
+                <span>Rann of Kutch</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/1397977352/photo/ancient-nabataean-palace-tomb-carved-in-sandstone-rock-petra-jordan.jpg?s=612x612&w=0&k=20&c=oJWboHdIDXt8-ftELq16NrmxjYEckBm2sAJ6YeNl8fs=" alt="Heritage Forts">
+                <span>Heritage Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://lp-cms-production.imgix.net/2022-06/Qatar_Families_beach.jpg?uto=compress&fit=crop&format=auto&q=50&w=1200&h=800" alt="Dubai">
+                <span>Dubai</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Beach Retreats</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./tourpack.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./tourpack.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./tourpack.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Agra Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./tourpack.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./tourpack.html">Desert Triangle Tour</a></li>
+            <li><a href="./tourpack.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./tourpack.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./tourpack.html">Rajasthan Tour Package</a></li>
+            <li><a href="./tourpack.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./tourpack.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./tourpack.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./tourpack.html">Spiritual India Tour</a></li>
+            <li><a href="./tourpack.html">Classical India Tour</a></li>
+            <li><a href="./tourpack.html">Best of India Tour</a></li>
+            <li><a href="./tourpack.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/NEW NAMDEV tour package/new delhi.html">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Get in Touch" id="heroEnquiryForm">
+                <div class="form-row">
+                    <input name="name" type="text" placeholder="Your Name">
+                </div>
+                <div class="form-row">
+                    <input name="email" type="email" placeholder="Your Email">
+                </div>
+                <div class="form-row">
+                    <input name="phone" type="text" placeholder="Mobile Number">
+                </div>
+                <div class="form-row form-row-split">
+                    <input name="no of people" type="text" placeholder="No. of People">
+                    <input name="car" type="text" placeholder="Car">
+                </div>
+                <div class="form-row">
+                    <input name="destination" type="text" placeholder="Destination">
+                </div>
+                <button type="submit" class="footer-submit-btn">
+                    Send Enquiry
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+
+<script>
+/* =========================================================================
+   CONFIG — this is the only line you need to touch.
+   Paste your deployed Google Apps Script Web App URL below.
+   (See the Code.gs file for the backend that goes with this.)
+========================================================================= */
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+
+/* ---------- hero mouse parallax ---------- */
+const hero = document.getElementById('heroSection');
+hero.addEventListener('mousemove', (e)=>{
+    const r = hero.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    hero.style.setProperty('--mx', (px*10) + 'px');
+    hero.style.setProperty('--my', (py*10) + 'px');
+});
+
+/* ---------- button ripple ---------- */
+document.querySelectorAll('.btnPrimary, .btnBack, .btnGhost').forEach(btn=>{
+    btn.addEventListener('click', function(e){
+        const rect = this.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        const size = Math.max(rect.width, rect.height);
+        ripple.className = 'ripple';
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+        this.appendChild(ripple);
+        setTimeout(()=>ripple.remove(), 600);
+    });
+});
+
+/* ---------- state ---------- */
+let currentStep = 0;
+const TOTAL_STEPS = 4;
+let travelerCount = 2;
+let selectedTourType = null;
+let selectedVehicle = null;
+let selectedIntent = null;
+let selectedNationality = null;
+let otpVerified = false;
+
+const ID_OPTIONS = {
+    'Indian National': ['Aadhaar Card', 'PAN Card', 'Voter ID', 'Driving Licence', 'Passport'],
+    'Foreign National': ['Passport', 'Visa copy']
+};
+
+const form = document.getElementById('bookingForm');
+const panels = [...document.querySelectorAll('.stepPanel')];
+const routeStops = [...document.querySelectorAll('.routeStop')];
+const planeMarker = document.getElementById('planeMarker');
+const mobileProgress = document.getElementById('mobileProgress');
+
+for(let i=0;i<TOTAL_STEPS;i++){
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===0 ? ' active' : '');
+    mobileProgress.appendChild(d);
+}
+
+const stopY = [20, 193, 366, 540];
+const stopRotate = [120, 60, 120, 60];
+
+function renderStep(){
+    panels.forEach(p => p.classList.toggle('active', Number(p.dataset.step) === currentStep));
+    routeStops.forEach(stop=>{
+        const i = Number(stop.dataset.stop);
+        stop.classList.toggle('done', i < currentStep);
+        stop.classList.toggle('active', i === currentStep);
+    });
+    planeMarker.setAttribute('transform', `translate(30,${stopY[currentStep]}) rotate(${stopRotate[currentStep]})`);
+
+    const fill = document.getElementById('routeLineFill');
+    const totalLen = 600;
+    const progress = currentStep / (TOTAL_STEPS - 1);
+    fill.style.strokeDashoffset = totalLen - (totalLen * progress);
+
+    [...mobileProgress.children].forEach((dot,i)=>{
+        dot.classList.toggle('done', i < currentStep);
+        dot.classList.toggle('active', i === currentStep);
+    });
+
+    updateFlightMeter();
+    if(currentStep === 3){ buildReview(); }
+    window.scrollTo({top: document.querySelector('.bookWrap').offsetTop - 40, behavior:'smooth'});
+}
+
+function updateFlightMeter(){
+    const pct = Math.round((currentStep / (TOTAL_STEPS - 1)) * 100);
+    document.getElementById('flightFill').style.width = pct + '%';
+    document.getElementById('flightPlaneDot').style.left = pct + '%';
+}
+
+function popNumber(el){
+    el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
+}
+function shakeField(el){
+    el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+}
+function setFieldState(el, valid, showError){
+    el.classList.toggle('invalid', !valid && showError);
+    el.classList.toggle('valid', valid);
+    if(!valid && showError) shakeField(el);
+}
+
+/* ---------- real-time field validators ---------- */
+const validators = {
+    destination: v => v.trim().length >= 2,
+    startDate: v => !!v,
+    days: v => Number(v) >= 1 && Number(v) <= 60,
+    name: v => v.trim().length >= 2,
+    phone: v => /^(\+?\d{1,3}[-\s]?)?\d{10}$/.test(v.trim()),
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+    idNumber: v => v.trim().length >= 4
+};
+
+function bindLiveValidation(inputId, fieldKey){
+    const input = document.getElementById(inputId);
+    const wrap = input.closest('.field');
+    input.addEventListener('blur', ()=>{
+        if(input.value.trim() === '') return; // don't scold empty untouched fields
+        setFieldState(wrap, validators[fieldKey](input.value), true);
+    });
+    input.addEventListener('input', ()=>{
+        if(wrap.classList.contains('invalid') && validators[fieldKey](input.value)){
+            setFieldState(wrap, true, false);
+        }
+    });
+}
+bindLiveValidation('f-destination','destination');
+bindLiveValidation('f-start','startDate');
+bindLiveValidation('f-days','days');
+bindLiveValidation('f-name','name');
+bindLiveValidation('f-phone','phone');
+bindLiveValidation('f-email','email');
+bindLiveValidation('f-idNumber','idNumber');
+
+function markInvalid(el, invalid){ el.classList.toggle('invalid', invalid); if(invalid) shakeField(el); }
+
+function validateStep(step){
+    let ok = true;
+    if(step === 0){
+        const dest = document.getElementById('f-destination');
+        const start = document.getElementById('f-start');
+        const days = document.getElementById('f-days');
+        if(!selectedIntent){ markInvalid(document.querySelector('[data-field="intent"]'), true); ok=false; }
+        if(!validators.destination(dest.value)){ markInvalid(dest.closest('.field'), true); ok=false; } else setFieldState(dest.closest('.field'), true, false);
+        if(!validators.startDate(start.value)){ markInvalid(start.closest('.field'), true); ok=false; } else setFieldState(start.closest('.field'), true, false);
+        if(!validators.days(days.value)){ markInvalid(days.closest('.field'), true); ok=false; } else setFieldState(days.closest('.field'), true, false);
+    }
+    if(step === 1){
+        if(!selectedNationality){ markInvalid(document.querySelector('[data-field="nationality"]'), true); ok=false; }
+        if(!selectedTourType){ markInvalid(document.querySelector('[data-field="tourType"]'), true); ok=false; }
+        if(!selectedVehicle){ markInvalid(document.querySelector('[data-field="vehicle"]'), true); ok=false; }
+    }
+    if(step === 2){
+        const name = document.getElementById('f-name');
+        const phone = document.getElementById('f-phone');
+        const email = document.getElementById('f-email');
+        if(!validators.name(name.value)){ markInvalid(name.closest('.field'), true); ok=false; } else setFieldState(name.closest('.field'), true, false);
+        if(!validators.phone(phone.value)){ markInvalid(phone.closest('.field'), true); ok=false; } else setFieldState(phone.closest('.field'), true, false);
+        if(!validators.email(email.value)){ markInvalid(email.closest('.field'), true); ok=false; } else setFieldState(email.closest('.field'), true, false);
+        if(!otpVerified){
+            ok=false;
+            const st = document.getElementById('otpStatus');
+            st.classList.remove('ok'); st.classList.add('bad');
+            document.getElementById('otpStatusText').textContent = 'Please verify the OTP sent to your email.';
+        }
+        if(selectedIntent === 'booking'){
+            const idType = document.getElementById('f-idType');
+            const idNumber = document.getElementById('f-idNumber');
+            if(!idType.value){ markInvalid(idType.closest('.field'), true); ok=false; }
+            if(!validators.idNumber(idNumber.value)){ markInvalid(idNumber.closest('.field'), true); ok=false; } else setFieldState(idNumber.closest('.field'), true, false);
+        }
+    }
+    return ok;
+}
+
+document.querySelectorAll('.nextBtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        if(!validateStep(currentStep)) return;
+        currentStep = Math.min(currentStep+1, TOTAL_STEPS-1);
+        renderStep();
+    });
+});
+document.querySelectorAll('.prevBtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        currentStep = Math.max(currentStep-1, 0);
+        renderStep();
+    });
+});
+
+/* ---------- intent ---------- */
+document.querySelectorAll('#intentGroup .intentCard').forEach(card=>{
+    card.addEventListener('click', ()=>{
+        document.querySelectorAll('#intentGroup .intentCard').forEach(c=>c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedIntent = card.dataset.value;
+
+        const sumIntent = document.getElementById('sumIntent');
+        sumIntent.textContent = selectedIntent === 'booking' ? 'Confirm booking' : 'Enquiry only';
+        sumIntent.classList.remove('placeholder'); popNumber(sumIntent);
+
+        document.getElementById('idProofBlock').classList.toggle('open', selectedIntent === 'booking');
+
+        const btn = document.getElementById('confirmBookingBtn');
+        const heading = document.getElementById('reviewHeading');
+        const sub = document.getElementById('reviewSub');
+        if(selectedIntent === 'booking'){
+            btn.textContent = 'Confirm booking ✓';
+            heading.textContent = 'Review & confirm your booking';
+            sub.textContent = "Double-check everything — once confirmed, our team will lock in your slot and reach out to finalize payment.";
+        } else {
+            btn.textContent = 'Send enquiry ✓';
+            heading.textContent = 'Review your enquiry';
+            sub.textContent = "We'll get back to you with pricing and options — no commitment yet.";
+        }
+        markInvalid(document.querySelector('[data-field="intent"]'), false);
+    });
+});
+
+/* ---------- traveler counter ---------- */
+function bumpSuitcase(){
+    const s = document.getElementById('suitcaseIcon');
+    s.classList.remove('bump'); void s.offsetWidth; s.classList.add('bump');
+}
+document.getElementById('travelerPlus').addEventListener('click', ()=>{
+    travelerCount = Math.min(travelerCount+1, 30);
+    updateTravelers(); bumpSuitcase();
+});
+document.getElementById('travelerMinus').addEventListener('click', ()=>{
+    travelerCount = Math.max(travelerCount-1, 1);
+    updateTravelers(); bumpSuitcase();
+});
+function updateTravelers(){
+    const a = document.getElementById('travelerCount');
+    const b = document.getElementById('sumTravelers');
+    a.textContent = travelerCount; b.textContent = travelerCount;
+    popNumber(a); popNumber(b);
+}
+
+/* ---------- pill groups w/ ripple ping ---------- */
+function pillPing(pill){
+    const ping = document.createElement('span');
+    ping.className = 'pillPing';
+    pill.appendChild(ping);
+    setTimeout(()=>ping.remove(), 550);
+}
+document.querySelectorAll('#nationalityGroup .pillChoice').forEach(pill=>{
+    pill.addEventListener('click', ()=>{
+        document.querySelectorAll('#nationalityGroup .pillChoice').forEach(p=>p.classList.remove('selected'));
+        pill.classList.add('selected'); pillPing(pill);
+        selectedNationality = pill.dataset.value;
+
+        const sumNat = document.getElementById('sumNationality');
+        sumNat.textContent = selectedNationality; sumNat.classList.remove('placeholder'); popNumber(sumNat);
+        markInvalid(document.querySelector('[data-field="nationality"]'), false);
+
+        const idSelect = document.getElementById('f-idType');
+        idSelect.innerHTML = '<option value="" disabled selected>Select ID type</option>' +
+            ID_OPTIONS[selectedNationality].map(o=>`<option value="${o}">${o}</option>`).join('');
+    });
+});
+document.querySelectorAll('#tourTypeGroup .pillChoice').forEach(pill=>{
+    pill.addEventListener('click', ()=>{
+        document.querySelectorAll('#tourTypeGroup .pillChoice').forEach(p=>p.classList.remove('selected'));
+        pill.classList.add('selected'); pillPing(pill);
+        selectedTourType = pill.dataset.value;
+        const el = document.getElementById('sumStyle');
+        el.textContent = selectedTourType; el.classList.remove('placeholder'); popNumber(el);
+        markInvalid(document.querySelector('[data-field="tourType"]'), false);
+    });
+});
+document.querySelectorAll('#vehicleGroup .pillChoice').forEach(pill=>{
+    pill.addEventListener('click', ()=>{
+        document.querySelectorAll('#vehicleGroup .pillChoice').forEach(p=>p.classList.remove('selected'));
+        pill.classList.add('selected'); pillPing(pill);
+        selectedVehicle = pill.dataset.value;
+        const el = document.getElementById('sumVehicle');
+        el.textContent = selectedVehicle; el.classList.remove('placeholder'); popNumber(el);
+        markInvalid(document.querySelector('[data-field="vehicle"]'), false);
+    });
+});
+
+/* ---------- live summary for step 0 fields ---------- */
+document.getElementById('f-destination').addEventListener('input', e=>{
+    const val = e.target.value.trim();
+    const el = document.getElementById('sumDestination');
+    el.textContent = val || '—';
+    el.classList.toggle('placeholder', !val);
+});
+function updateDatesSummary(){
+    const start = document.getElementById('f-start').value;
+    const days = document.getElementById('f-days').value;
+    const el = document.getElementById('sumDates');
+    if(start && days){ el.textContent = `${start} · ${days}d`; el.classList.remove('placeholder'); }
+    else { el.textContent = '—'; el.classList.add('placeholder'); }
+}
+document.getElementById('f-start').addEventListener('input', updateDatesSummary);
+document.getElementById('f-days').addEventListener('input', updateDatesSummary);
+
+/* ---------- OTP flow ---------- */
+const sendOtpBtn = document.getElementById('sendOtpBtn');
+const otpInput = document.getElementById('f-otp');
+const otpStatus = document.getElementById('otpStatus');
+const otpStatusText = document.getElementById('otpStatusText');
+
+sendOtpBtn.addEventListener('click', async ()=>{
+    const email = document.getElementById('f-email').value;
+    if(!validators.email(email)){
+        markInvalid(document.getElementById('f-email').closest('.field'), true);
+        return;
+    }
+    sendOtpBtn.disabled = true;
+    sendOtpBtn.textContent = 'Sending...';
+    otpStatus.className = 'otpStatus';
+    otpStatusText.textContent = '';
+
+    try{
+        const res = await fetch(GOOGLE_SHEET_URL, {
+            method: 'POST', headers: {'Content-Type':'text/plain'},
+            body: JSON.stringify({ action:'sendOtp', email })
+        });
+        const result = await res.json();
+        if(result.result === 'success'){
+            otpInput.disabled = false;
+            otpInput.focus();
+            sendOtpBtn.textContent = 'Resend OTP';
+            otpStatusText.textContent = `Code sent to ${email}`;
+            otpStatus.classList.add('ok');
+        } else {
+            otpStatusText.textContent = result.message || 'Could not send OTP. Please try again.';
+            otpStatus.classList.add('bad');
+            sendOtpBtn.textContent = 'Send OTP';
+        }
+    }catch(err){
+        console.error(err);
+        otpStatusText.textContent = 'Network issue — check the GOOGLE_SHEET_URL is set, then try again.';
+        otpStatus.classList.add('bad');
+        sendOtpBtn.textContent = 'Send OTP';
+    }
+    sendOtpBtn.disabled = false;
+});
+
+// otpInput.addEventListener('input', ()=>{
+//     otpVerified = otpInput.value.trim().length >= 4;
+//     if(otpVerified){
+//         otpStatus.className = 'otpStatus ok';
+//         otpStatusText.textContent = 'Looks good — you can continue.';
+//     }
+// });
+
+// 
+otpInput.addEventListener('input', ()=>{
+    otpVerified = otpInput.value.trim().length >= 4; // format check only — server verifies for real on submit
+});
+// 
+
+/* ---------- review step ---------- */
+function buildReview(){
+    const grid = document.getElementById('reviewGrid');
+    const rows = [
+        ['Request type', selectedIntent === 'booking' ? 'Confirm booking' : 'Enquiry only'],
+        ['Destination', document.getElementById('f-destination').value],
+        ['Start date', document.getElementById('f-start').value],
+        ['Trip length', document.getElementById('f-days').value + ' days'],
+        ['Traveler type', selectedNationality],
+        ['Travelers', travelerCount],
+        ['Tour style', selectedTourType],
+        ['Vehicle', selectedVehicle],
+        ['Name', document.getElementById('f-name').value],
+        ['Phone', document.getElementById('f-phone').value],
+        ['Email', document.getElementById('f-email').value],
+    ];
+    if(selectedIntent === 'booking'){
+        const idFile = document.getElementById('f-idFile').files[0];
+        rows.push(['ID type', document.getElementById('f-idType').value]);
+        rows.push(['ID number', document.getElementById('f-idNumber').value]);
+        rows.push(['ID document', idFile ? idFile.name : 'Not attached yet']);
+    }
+    grid.innerHTML = rows.map(([label,val])=>`<div class="reviewRow"><span>${label}</span><span>${val || '—'}</span></div>`).join('');
+}
+
+/* ---------- final submit ---------- */
+form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    if(!document.getElementById('f-terms').checked){
+        alert('Please confirm you agree to be contacted regarding this enquiry.');
+        return;
+    }
+    const confirmBtn = document.getElementById('confirmBookingBtn');
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = 'Sending...';
+
+    const payload = {
+        action: 'verifySubmit',
+        formType: 'Tour Booking',
+        requestType: selectedIntent === 'booking' ? 'Confirm Booking' : 'Enquiry Only',
+        destination: document.getElementById('f-destination').value,
+        startDate: document.getElementById('f-start').value,
+        days: document.getElementById('f-days').value,
+        travelerType: selectedNationality,
+        travelers: travelerCount,
+        tourType: selectedTourType,
+        vehicle: selectedVehicle,
+        name: document.getElementById('f-name').value,
+        phone: document.getElementById('f-phone').value,
+        email: document.getElementById('f-email').value,
+        otp: otpInput.value.trim()
+    };
+    if(selectedIntent === 'booking'){
+        payload.idType = document.getElementById('f-idType').value;
+        payload.idNumber = document.getElementById('f-idNumber').value;
+        const idFile = document.getElementById('f-idFile').files[0];
+        payload.idFileName = idFile ? idFile.name : 'not attached';
+    }
+
+   try{
+        const res = await fetch(GOOGLE_SHEET_URL, {
+            method: 'POST', headers: {'Content-Type':'text/plain'},
+            body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+
+        if(result.result !== 'success'){
+            // Wrong/expired OTP, or a sheet error — show it and let them fix the OTP field, don't wipe the form
+            otpStatus.className = 'otpStatus bad';
+            otpStatusText.textContent = result.message || 'Something went wrong. Please try again.';
+            confirmBtn.disabled = false;
+            confirmBtn.textContent = selectedIntent === 'booking' ? 'Confirm booking ✓' : 'Send enquiry ✓';
+            return;
+        }
+
+        const successHeading = document.getElementById('successHeading');
+        const successSub = document.getElementById('successSub');
+        if(selectedIntent === 'booking'){
+            successHeading.textContent = 'Your booking is confirmed!';
+            successSub.textContent = "Thank you — we've reserved your slot. Our team will call you on the phone number you shared to arrange payment and final details.";
+        } else {
+            successHeading.textContent = 'Enquiry sent!';
+            successSub.textContent = "Thank you — our team will reach out with pricing and options on the phone number or email you shared.";
+        }
+
+        // panels.forEach(p=>p.classList.remove('active'));
+        // document.getElementById('successScreen').classList.add('show');
+        // document.querySelector('.routeSpine').style.display = 'none';
+        // document.getElementById('mobileProgress').style.display = 'none';
+
+        panels.forEach(p=>p.classList.remove('active'));
+document.getElementById('successScreen').classList.add('show');
+document.querySelector('.routeSpine').style.display = 'none';
+document.getElementById('mobileProgress').style.display = 'none';
+document.getElementById('tripCard').style.display = 'none';
+document.querySelector('.bookWrap').style.gridTemplateColumns = '1fr';
+document.querySelector('.bookWrap').style.maxWidth = '40rem';
+document.querySelector('.bookWrap').style.margin = '0 auto 6rem';
+
+        }catch(err){
+        console.error(err);
+        alert("Something went wrong sending your booking. Please check the GOOGLE_SHEET_URL and try again.");
+        confirmBtn.disabled = false;
+        confirmBtn.textContent = 'Confirm booking ✓';
+    }
+});
+
+renderStep();
+
+</script>
+
+// <!-- nav responsive -->
+    <script>
+    function showsidebar(){ document.querySelector('.sidebar').classList.add('show'); }
+    function hidesidebar(){ document.querySelector('.sidebar').classList.remove('show'); }
+     </script>
+        <!-- FOR LOADER ANIMATIONS -->
+    <script src="././finalanimation.js" ></script>
+    <script src="././experimental_claude.js" ></script>
+    
+
+</body>
+</html>

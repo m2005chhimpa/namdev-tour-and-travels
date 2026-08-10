@@ -1,0 +1,89 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family:mainfont;
+
+}
+.container1{
+    height: 31.25rem;
+    width: 100%;
+    background-image: url(./image\ 76.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar ul  li .active{
+    color: #328ADF;
+    border-bottom:.8px solid #328ADF;
+    /* text-decoration: underline; */
+}
+.navbar{
+    /* background-color: blue; */
+    height: 5.625rem;
+    display: flex;
+    width: 100%;
+    /* box-shadow: 0px 0px 0px  1px #328ADF; */
+    flex-shrink: 0;
+}
+.navbar img{
+    padding: .8rem;
+    position: relative;
+    margin-left: 9.4rem;
+}
+.navbar ul{
+    margin-left: 17rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.8rem;
+
+}
+.navbar a{
+    color: #fff;
+    text-decoration: none;
+}
+.navbar a:hover{
+    color: #328ADF;
+    border-bottom:.8px solid #328ADF;
+}
+.navbar .book{
+    margin-left: 13.5rem;
+    display: inline-flex;
+padding: 0.8125rem 1.375rem;
+justify-content: center;
+align-items: center;
+gap: 0.625rem;
+border-radius: 0.5rem;
+background: #328ADF;
+
+    color: var(--white, #FBFBFB);
+/* font-family: Genos; */
+font-size: 1rem;
+font-style: normal;
+font-weight: 500;
+line-height: 1.5rem; /* 150% */
+}
+
+
+.text1{
+    color: var(--black-color, #121212);
+text-align: center;
+margin-top: 9rem;
+/* secondary heading */
+/* font-family: Odor Mean Chey; */
+font-size: 3rem;
+font-style: normal;
+font-weight: 400;
+line-height: 3.625rem; /* 120.833% */
+}
+.container2{
+    width: 80rem;
+    padding: 1rem 2rem;
+    margin-left:9.1rem;
+    background-color:antiquewhite;
+    height: auto;
+}

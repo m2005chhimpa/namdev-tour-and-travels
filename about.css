@@ -1,0 +1,136 @@
+
+@font-face {
+    font-family: manfont;
+    src: url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200&display=swap');
+  
+}
+
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: mainfont;
+}
+
+
+@media screen and (max-width:600px) {
+    .data{
+        margin-left: 0vw;
+        width: 92vw;
+    }
+    .container1{
+        width: 100vw;
+    }
+    .data p{
+        text-align: left;
+    }
+    body{
+        width: 92vw;
+   }
+   .data{
+    text-align: left;
+   }
+   
+}
+
+@media screen and (min-width:1000px) {
+
+#frt{
+    display: none;
+}
+#menuicon{
+    display: none;
+}
+}
+
+
+
+
+
+
+
+
+
+
+.container1{
+    height: 31.25rem;
+    width: 100%;
+    background-image: url("./images/image\ 76.png");
+    background-size: cover;
+    background-position: center;
+}
+.navbar ul  li .active{
+    color: #328ADF;
+    border-bottom:.8px solid #328ADF;
+    /* text-decoration: underline; */
+}
+.navbar{
+    /* background-color: blue; */
+    height: 5.625rem;
+    display: flex;
+    width: 100%;
+    /* box-shadow: 0px 0px 0px  1px #328ADF; */
+    flex-shrink: 0;
+}
+.navbar img{
+    padding: .8rem;
+    position: relative;
+    margin-left: 9.4rem;
+}
+.navbar ul{
+    margin-left: 17rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.8rem;
+
+}
+.navbar a{
+    color: #fff;
+    text-decoration: none;
+}
+.navbar ul a:hover{
+    color: #328ADF;
+    border-bottom:.8px solid #328ADF;
+}
+.navbar .book{
+    margin-left: 10.5rem;
+    display: inline-flex;
+padding: 0.8125rem 1.375rem;
+justify-content: center;
+margin-top: 1rem;
+align-items: center;
+gap: 0.625rem;
+border-radius: 0.5rem;
+background: #328ADF;
+
+    color: var(--white, #FBFBFB);
+/* font-family: Genos; */
+font-size: 1rem;
+font-style: normal;
+font-weight: 500;
+line-height: 1.5rem; /* 150% */
+}
+.navbar .book:hover{
+    background-color:  #252F36;
+}
+.heading{
+    display: flex;
+     align-items: center;
+     flex-direction: column;
+     text-align: center;
+     width: 70%;
+     margin:auto;
+     margin-top: 5rem;
+     /* border: 1px solid rebeccapurple; */
+}
+.data{
+    width:70%; 
+    margin-left: 14.2rem; 
+    margin-top: 3rem;
+}
+
+/* why choose us */

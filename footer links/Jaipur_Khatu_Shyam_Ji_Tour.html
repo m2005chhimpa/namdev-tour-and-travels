@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="png" href="./images/logo03.png">
+<title>Jaipur Khatu Shyam Ji Tour | Namdev's Tour &amp; Travels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./finalanimation.css">
+<link rel="stylesheet" href="./experimental_claude.css">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --nt-primary:#328ADF;
+    --nt-primary-light:#4EA8FF;
+    --nt-secondary:#6B4A2E;
+    --nt-gold:#F2C14E;
+    --nt-ink:#23201C;
+    --nt-muted:#8A7F70;
+    --nt-bg:#F8F7F4;
+    --paper:#FFFFFF;
+    --line: rgba(35,32,28,0.12);
+    --line-strong: rgba(35,32,28,0.22);
+    --shadow: 0 8px 24px rgba(35,32,28,0.08);
+    --shadow-hover: 0 20px 44px rgba(35,32,28,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--nt-bg);
+    color:var(--nt-ink);
+    font-family:'Inter', sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Rajdhani', sans-serif;
+    font-weight:700;
+    color:var(--nt-ink);
+    margin:0;
+  }
+  .mono{ font-family:'Rajdhani', sans-serif; font-weight:600; letter-spacing:.1em; }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+
+  .jali{
+    background-image: radial-gradient(circle at 10px 10px, rgba(255,255,255,0.10) 2px, transparent 2.4px);
+    background-size:26px 26px;
+  }
+
+  /* ---------- SCROLL PROGRESS ---------- */
+  .jsp-progress{
+    position:fixed; top:0; left:0; height:3px;
+    background: linear-gradient(90deg, var(--nt-primary), var(--nt-gold));
+    width:0%; z-index: 999; transition: width .1s linear;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:64px 0 0;
+    color:var(--paper);
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url('/images/paid/khatu-shyam-ji-temple.jpg');
+    background-size:cover; background-position:center;
+    animation: jspKenBurns 16s ease-in-out infinite alternate;
+  }
+  @keyframes jspKenBurns{
+    0%{ transform: scale(1) translate(0,0); }
+    100%{ transform: scale(1.12) translate(-1.5%, -1%); }
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(35,32,28,0.55) 0%, rgba(35,32,28,0.4) 40%, var(--nt-ink) 100%);
+  }
+  .hero-arches{
+    position:absolute; bottom:-2px; left:0; right:0; height:120px; display:flex;
+  }
+  .hero-arches svg{ width:100%; height:100%; display:block; }
+
+  .eyebrow-row{
+    position:relative; z-index:2;
+    display:flex; align-items:center; gap:14px;
+    font-family:'Rajdhani', sans-serif; font-weight:700;
+    font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--nt-gold);
+    margin-bottom:22px;
+    opacity:0; animation: jspFadeUp .7s ease forwards; animation-delay:.1s;
+  }
+  .eyebrow-row .rule{ width:36px; height:1px; background:var(--nt-gold); opacity:.7; }
+  @keyframes jspFadeUp{ to{ opacity:1; transform:translateY(0); } }
+
+  .hero-grid{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns: 1.35fr 1fr;
+    gap:48px; align-items:end; padding-bottom:56px;
+  }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; padding-bottom:40px; } }
+
+  .hero h1{
+    font-size:clamp(2.2rem, 5vw, 3.6rem);
+    line-height:1.05; font-weight:700; max-width:640px; color:#fff;
+    opacity:0; transform:translateY(24px); animation: jspFadeUp .75s cubic-bezier(.2,.8,.25,1) forwards; animation-delay:.22s;
+  }
+  .hero h1 em{ font-style:normal; color:var(--nt-gold); }
+  .hero-sub{
+    margin-top:20px; max-width:480px; font-size:16px; line-height:1.7;
+    color:rgba(255,255,255,0.82); font-weight:300;
+    opacity:0; transform:translateY(20px); animation: jspFadeUp .75s ease forwards; animation-delay:.36s;
+  }
+
+  .stat-strip{
+    display:flex; gap:0; margin-top:36px;
+    border-top:1px solid rgba(242,193,78,0.28);
+    padding-top:22px; flex-wrap:wrap;
+    opacity:0; animation: jspFadeUp .75s ease forwards; animation-delay:.5s;
+  }
+  .stat{ padding-right:28px; margin-right:28px; border-right:1px solid rgba(255,255,255,0.16); }
+  .stat:last-child{ border-right:none; }
+  .stat .num{ font-family:'Rajdhani', sans-serif; font-weight:700; font-size:1.6rem; color:var(--nt-gold); }
+  .stat .lbl{ font-size:12px; letter-spacing:.06em; color:rgba(255,255,255,0.65); margin-top:2px; }
+
+  /* ticket card */
+  .ticket{
+    position:relative; z-index:2;
+    background:var(--paper); color:var(--nt-ink);
+    border-radius:1rem; padding:30px 30px 26px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+    opacity:0; transform:translateY(28px) scale(.98);
+    animation: jspTicketIn .8s cubic-bezier(.2,.8,.25,1) forwards; animation-delay:.55s;
+  }
+  @keyframes jspTicketIn{ to{ opacity:1; transform:translateY(0) scale(1); } }
+  .ticket::after{
+    content:""; position:absolute; left:-11px; top:50%; transform:translateY(-50%);
+    width:22px; height:22px; border-radius:50%; background:var(--nt-ink);
+  }
+  .ticket-row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px; }
+  .ticket-label{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--nt-muted); }
+  .ticket-price{ font-family:'Rajdhani', sans-serif; font-weight:700; font-size:2.5rem; color:var(--nt-primary); line-height:1; margin-top:6px; }
+  .ticket-price sup{ font-size:1.1rem; top:-0.9em; }
+  .ticket-price small{ font-size:0.95rem; color:var(--nt-muted); font-family:'Inter',sans-serif; font-weight:400; }
+  .ticket-dash{ border-top:1.5px dashed var(--line-strong); margin:18px 0; }
+  .ticket-facts{ display:grid; grid-template-columns:1fr 1fr; gap:14px 10px; font-size:13.5px; }
+  .ticket-facts div span{ display:block; color:var(--nt-muted); font-size:11px; letter-spacing:.05em; text-transform:uppercase; margin-bottom:2px;}
+  .cta-btn{
+    display:inline-flex; align-items:center; gap:10px; width:100%; justify-content:center;
+    margin-top:22px;
+    background: linear-gradient(90deg, var(--nt-primary), var(--nt-primary-light));
+    color:#fff; border:none; padding:15px 20px;
+    font-family:'Rajdhani',sans-serif; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+    font-size:15px; border-radius:.7rem; cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+    text-decoration:none;
+    box-shadow: 0 8px 20px rgba(50,138,223,0.3);
+  }
+  .cta-btn:hover{ transform:translateY(-2px); box-shadow: 0 12px 26px rgba(50,138,223,0.4); }
+  .cta-ghost{ background:transparent; border:1.5px solid var(--line-strong); color:var(--nt-ink); box-shadow:none; }
+  .cta-ghost:hover{ background:rgba(35,32,28,0.05); box-shadow:none; }
+
+  /* ---------- SECTION generic ---------- */
+  section{ padding:76px 0; }
+  .section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:44px; flex-wrap:wrap; }
+  .section-head .kicker{
+    font-family:'Rajdhani', sans-serif; font-weight:700;
+    font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--nt-primary); margin-bottom:10px; display:block;
+  }
+  .section-head h2{ font-size:clamp(1.7rem,3vw,2.4rem); font-weight:700; }
+  .section-head p{ max-width:420px; color:var(--nt-muted); font-size:15px; line-height:1.6; }
+
+  /* ---------- OVERVIEW ---------- */
+  .overview{ background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .overview-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:60px; }
+  @media (max-width:860px){ .overview-grid{ grid-template-columns:1fr; gap:36px; } }
+  .overview-grid p{ font-size:16px; line-height:1.85; color:var(--nt-muted); font-weight:300; margin-bottom:16px; }
+  .overview-grid p:first-child{ font-size:19px; color:var(--nt-ink); font-weight:500; }
+  .highlight-list{ list-style:none; margin:0; padding:0; display:grid; gap:16px; }
+  .highlight-list li{ display:flex; gap:14px; align-items:flex-start; font-size:14.5px; color:var(--nt-ink); }
+  .highlight-list .mark{
+    flex:none; width:26px; height:26px; border-radius:50%;
+    border:1.5px solid var(--nt-primary); color:var(--nt-primary);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Rajdhani',sans-serif; font-weight:700; font-size:12px; margin-top:1px;
+  }
+
+  /* ---------- ITINERARY (signature element) ---------- */
+  .itinerary{ background:var(--nt-bg); }
+  .day-pass{ background:var(--paper); border:1px solid var(--line); border-radius:1rem; overflow:hidden; box-shadow: var(--shadow); }
+  .day-pass-head{
+    background: linear-gradient(120deg, var(--nt-ink), var(--nt-secondary));
+    color:var(--paper); padding:22px 32px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+  }
+  .day-pass-head .serif{ color:#fff; font-size:1.15rem; font-weight:700; }
+  .day-pass-head .mono{ font-size:12px; color:var(--nt-gold); letter-spacing:.1em; }
+
+  .stop{
+    display:grid; grid-template-columns:110px 40px 1fr; padding:26px 32px;
+    border-bottom:1px dashed var(--line); gap:0;
+    opacity:0; transform:translateY(16px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .stop.in-view{ opacity:1; transform:translateY(0); }
+  .stop:last-child{ border-bottom:none; }
+  .stop-time{ font-family:'Rajdhani', sans-serif; font-weight:700; font-size:14px; color:var(--nt-primary); padding-top:2px; }
+  .stop-rail{ position:relative; display:flex; justify-content:center; }
+  .stop-rail::before{ content:""; position:absolute; top:26px; bottom:-26px; left:50%; width:1px; background:var(--line-strong); }
+  .stop:last-child .stop-rail::before{ display:none; }
+  .stop-dot{
+    width:15px; height:15px; border-radius:50% 50% 50% 0; transform:rotate(45deg);
+    background:var(--nt-gold); border:2px solid var(--paper); box-shadow:0 0 0 1px var(--line-strong); z-index:1;
+  }
+  .stop-body h3{ font-size:1.15rem; font-weight:700; margin-bottom:6px; }
+  .stop-body p{ margin:0; font-size:14.5px; line-height:1.65; color:var(--nt-muted); font-weight:300; max-width:560px; }
+  .stop-tag{
+    display:inline-block; font-family:'Rajdhani',sans-serif; font-weight:600;
+    font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--nt-primary); background:rgba(50,138,223,0.08);
+    border:1px solid rgba(50,138,223,0.2); padding:3px 9px; border-radius:20px; margin-top:10px;
+  }
+  @media (max-width:600px){ .stop{ grid-template-columns:32px 1fr; } .stop-time{ display:none; } }
+
+  /* ---------- INCLUSIONS ---------- */
+  .incl{
+    background: linear-gradient(120deg, var(--nt-ink), var(--nt-secondary), var(--nt-primary), var(--nt-secondary), var(--nt-ink));
+    background-size: 300% 300%;
+    animation: jspGradientShift 12s ease infinite;
+    color:var(--paper); position:relative; overflow:hidden;
+  }
+  @keyframes jspGradientShift{ 0%{ background-position:0% 50%; } 50%{ background-position:100% 50%; } 100%{ background-position:0% 50%; } }
+  .incl::before{
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(242,193,78,0.18) 1px, transparent 1.6px);
+    background-size:22px 22px; opacity:.5;
+  }
+  .incl .wrap{ position:relative; z-index:1; }
+  .incl .section-head h2{ color:var(--paper); }
+  .incl .section-head p{ color:rgba(255,255,255,0.68); }
+  .incl-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  @media (max-width:700px){ .incl-grid{ grid-template-columns:1fr; } }
+  .incl-card h3{
+    font-family:'Rajdhani',sans-serif; font-weight:700;
+    font-size:13px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--nt-gold); margin-bottom:18px;
+  }
+  .incl-card ul{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+  .incl-card li{ font-size:14.5px; font-weight:300; padding-left:22px; position:relative; color:rgba(255,255,255,0.88); }
+  .incl-card.yes li::before{ content:"✓"; position:absolute; left:0; color:var(--nt-gold); font-weight:700; }
+  .incl-card.no li::before{ content:"–"; position:absolute; left:0; color:rgba(255,255,255,0.4); }
+  .incl-card.no li{ color:rgba(255,255,255,0.55); }
+
+  /* ---------- RIDE OPTIONS ---------- */
+  .rides{ background:var(--paper); border-top:1px solid var(--line); }
+  .ride-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
+  @media (max-width:760px){ .ride-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:480px){ .ride-grid{ grid-template-columns:1fr; } }
+  .ride-card{
+    border:1px solid var(--line); border-radius:1rem; padding:26px 22px;
+    background:var(--nt-bg);
+    box-shadow: var(--shadow);
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    opacity:0; transform:translateY(20px);
+  }
+  .ride-card.in-view{ opacity:1; transform:translateY(0); }
+  .ride-card:hover{ border-color:var(--nt-primary); transform:translateY(-5px); box-shadow: var(--shadow-hover); }
+  .ride-card .ride-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; }
+  .ride-card h3{ font-size:1.15rem; font-weight:700; }
+  .ride-card .seats{
+    font-family:'Rajdhani',sans-serif; font-weight:600; font-size:11px; color:var(--nt-muted);
+    border:1px solid var(--line-strong); padding:3px 8px; border-radius:20px;
+  }
+  .ride-card .price{ font-family:'Rajdhani',sans-serif; font-weight:700; color:var(--nt-primary); font-size:1.6rem; }
+  .ride-card .price small{ font-family:'Inter',sans-serif; font-weight:400; font-size:13px; color:var(--nt-muted); }
+  .ride-card .best{
+    display:inline-block; margin-top:10px; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--nt-ink); background: var(--nt-gold); padding:3px 9px; border-radius:20px;
+    font-family:'Rajdhani',sans-serif; font-weight:700;
+  }
+
+  /* ---------- CTA STRIP ---------- */
+  .cta-strip{ background: linear-gradient(120deg, var(--nt-primary) 0%, var(--nt-primary-light) 100%); color:var(--paper); }
+  .cta-strip .wrap{ display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding-top:50px; padding-bottom:50px; }
+  .cta-strip h2{ color:var(--paper); font-size:clamp(1.5rem,3vw,2.1rem); max-width:480px; }
+  .cta-strip p{ margin-top:8px; color:rgba(255,255,255,0.9); font-size:14.5px; }
+  .cta-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+  .cta-actions a.cta-btn{ background:var(--nt-ink); width:auto; padding:14px 26px; box-shadow:none; }
+  .cta-actions a.cta-btn:hover{ background:#100e0b; }
+  .cta-actions a.cta-outline{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1.5px solid rgba(255,255,255,0.6); color:var(--paper);
+    padding:13px 24px; border-radius:.7rem; text-decoration:none; font-size:15px;
+    font-family:'Rajdhani',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.03em;
+    transition: background .2s ease;
+  }
+  .cta-actions a.cta-outline:hover{ background:rgba(255,255,255,0.12); }
+
+  /* ---------- FLOATING BOOK BUTTON ---------- */
+  .jsp-float-btn{
+    position:fixed; bottom: 1.6rem; right: 1.6rem; z-index: 60;
+    display:flex; align-items:center; gap:.5rem;
+    background: linear-gradient(90deg, var(--nt-primary), var(--nt-primary-light)); color:#fff;
+    font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.88rem; letter-spacing:.03em; text-transform:uppercase;
+    padding:.85rem 1.3rem; border-radius: 999px; text-decoration:none;
+    box-shadow: 0 10px 28px rgba(50,138,223,0.4);
+    opacity:0; transform: translateY(20px) scale(.9); pointer-events:none;
+    transition: opacity .35s ease, transform .35s ease;
+  }
+  .jsp-float-btn.show{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+  .jsp-float-btn:hover{ transform: translateY(-3px) scale(1.03); }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-bg{ animation:none; }
+    .eyebrow-row,.hero h1,.hero-sub,.stat-strip,.ticket,.stop,.ride-card{ opacity:1; transform:none; animation:none; transition:none; }
+    .incl{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="jsp-progress" id="jspProgress"></div>
+
+<!-- loader -->
+<div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+<nav>
+    <ul class="sidebar">
+        <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+<path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+        </a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+        <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./contact.html">Contact us</a></li>
+    </ul>
+
+    <ul id="firstnav">
+        <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+            src="././images/logo03.png" alt="">
+        <li class="hideonmobile"><a href="./index.html">Home</a></li>
+        <li class="hideonmobile navHasDropdown">
+            <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+            <div class="navDropdown">
+                <div class="navDropdownCol">
+                    <h4>Luxury Buses</h4>
+                    <a href="">Volvo Bus</a>
+                    <a href="">Winger</a>
+                </div>
+                <div class="navDropdownCol">
+                    <h4>Luxury Cars</h4>
+                    <a href="">Innova Crysta</a>
+                    <a href="">Kia Carnival</a>
+                    <a href="">Honda City</a>
+                    <a href="">Etios</a>
+                </div>
+                <div class="navDropdownCol">
+                    <h4>Economical Cars</h4>
+                    <a href="">Swift Dzire</a>
+                    <a href="">Ertiga</a>
+                    <a href="">Innova</a>
+                </div>
+            </div>
+        </li>
+        <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+        <li class="hideonmobile"><a href="./about.html">About</a></li>
+        <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+        <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="./icons/menu.png" alt=""></a></li>
+    </ul>
+    <a class="booka" href="./booktour.html" target="_blank">
+        <div class="book">Book a Tour</div>
+    </a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span class="rule"></span> Sightseeing &amp; Day Tours — Jaipur
+    </div>
+    <div class="hero-grid">
+      <div>
+        <h1>Jaipur Khatu Shyam Ji <em>Package&nbsp;</em></h1>
+        <p class="hero-sub">Visit the sacred Khatu Shyam Ji Temple from Jaipur with a comfortable private taxi. Seek blessings at one of Rajasthan's most revered temples and enjoy a peaceful spiritual journey with convenient pickup and drop.</p>
+
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="num">4</div>
+            <div class="lbl">Stops covered</div>
+          </div>
+          <div class="stat">
+            <div class="num">8–9<span style="font-size:1rem;">hrs</span></div>
+            <div class="lbl">Full day, AC vehicle</div>
+          </div>
+          <div class="stat">
+            <div class="num">4.9★</div>
+            <div class="lbl">Rated by travelers</div>
+          </div>
+          <div class="stat">
+            <div class="num">1–6</div>
+            <div class="lbl">Travelers per car</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket">
+        <div class="ticket-row">
+          <span class="ticket-label">Starting from</span>
+          <span class="ticket-label">Per vehicle</span>
+        </div>
+        <div class="ticket-price">₹2,499<small>&nbsp;/ day</small></div>
+        <div class="ticket-dash"></div>
+        <div class="ticket-facts">
+          <div><span>Pickup</span>Your hotel, Jaipur</div>
+          <div><span>Vehicle</span>Sedan / SUV / Tempo</div>
+          <div><span>Guide</span>Optional, on request</div>
+          <div><span>Timing</span>8:00 AM – 5:00 PM</div>
+        </div>
+        <a href="#enquire" class="cta-btn">Send Enquiry →</a>
+        <a href="#itinerary" class="cta-btn cta-ghost" style="margin-top:10px;">View full itinerary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="hero-arches">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,120 L0,60
+        Q25,10 50,60 Q75,10 100,60 Q125,10 150,60 Q175,10 200,60
+        Q225,10 250,60 Q275,10 300,60 Q325,10 350,60 Q375,10 400,60
+        Q425,10 450,60 Q475,10 500,60 Q525,10 550,60 Q575,10 600,60
+        Q625,10 650,60 Q675,10 700,60 Q725,10 750,60 Q775,10 800,60
+        Q825,10 850,60 Q875,10 900,60 Q925,10 950,60 Q975,10 1000,60
+        Q1025,10 1050,60 Q1075,10 1100,60 Q1125,10 1150,60 Q1175,10 1200,60
+        L1200,120 Z" fill="#F8F7F4"/>
+    </svg>
+  </div> -->
+</header>
+
+<!-- ================= OVERVIEW ================= -->
+<section class="overview">
+  <div class="wrap overview-grid">
+    <div>
+      <p>Jaipur rewards a single, well-paced day more than almost any city in Rajasthan — if the route is right.</p>
+      <p>This package strings together the city's essential monuments in the order they're best seen: Khatu Shyam Ji Temple while the light is still soft and the crowds thin, the pink sandstone façade of Hawa Mahal at a civil hour, and the marble courtyards of Shyam Kund before the afternoon heat sets in. Your driver knows the entry lines, the parking, and which viewpoints are worth the extra five minutes.</p>
+      <p>Built for first-time visitors, families, and anyone with one day in Jaipur who wants to see it properly rather than quickly.</p>
+    </div>
+    <ul class="highlight-list">
+      <li><span class="mark">01</span> Private AC vehicle with driver, fuel and parking included</li>
+      <li><span class="mark">02</span> Route sequenced to avoid the midday sun at outdoor sites</li>
+      <li><span class="mark">03</span> Flexible stops — skip or linger at any monument</li>
+      <li><span class="mark">04</span> English/Hindi speaking driver; local guide available on request</li>
+      <li><span class="mark">05</span> Free cancellation up to 24 hours before pickup</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= ITINERARY ================= -->
+<section class="itinerary" id="itinerary">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">The Route</span>
+        <h2>How the day unfolds</h2>
+      </div>
+      <p>A suggested sequence — timings flex around your pickup hour and pace.</p>
+    </div>
+
+    <div class="day-pass">
+      <div class="day-pass-head">
+        <span class="serif">Jaipur Khatu Shyam Ji — Day Pass</span>
+        <span class="mono">PKG-JPR-01</span>
+      </div>
+
+      <div class="stop">
+        <div class="stop-time">8:00 AM</div>
+        <div class="stop-rail"><div class="stop-dot"></div></div>
+        <div class="stop-body">
+          <h3>Khatu Shyam Ji Temple</h3>
+          <p>Start early to beat the heat and the crowds. Walk the ramparts and courtyards of this hilltop fort, with time for photos over the Maota Lake below.</p>
+          <span class="stop-tag">Allow 90 min</span>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-time">10:00 AM</div>
+        <div class="stop-rail"><div class="stop-dot"></div></div>
+        <div class="stop-body">
+          <h3>Reengus</h3>
+          <p>A short drive-by halt at the "Water Palace," floating at the centre of Man Sagar Lake. Best for photographs from the road.</p>
+          <span class="stop-tag">Allow 15 min</span>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-time">11:00 AM</div>
+        <div class="stop-rail"><div class="stop-dot"></div></div>
+        <div class="stop-body">
+          <h3>Shyam Kund</h3>
+          <p>Explore the courtyards, museums and gates of the royal residence, still partly home to Jaipur's former ruling family.</p>
+          <span class="stop-tag">Allow 75 min</span>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-time">1:00 PM</div>
+        <div class="stop-rail"><div class="stop-dot"></div></div>
+        <div class="stop-body">
+          <h3>Local Market</h3>
+          <p>Walk among the giant stone astronomical instruments of this 18th-century observatory, right next door to Shyam Kund.</p>
+          <span class="stop-tag">Allow 45 min</span>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-time">2:15 PM</div>
+        <div class="stop-rail"><div class="stop-dot"></div></div>
+        <div class="stop-body">
+          <h3>Lunch Break</h3>
+          <p>A stop at a local Rajasthani thali restaurant along the route (meal cost not included in the package price).</p>
+          <span class="stop-tag">Allow 45 min</span>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-time">3:30 PM</div>
+        <div class="stop-rail"><div class="stop-dot"></div></div>
+        <div class="stop-body">
+          <h3>Return to Jaipur</h3>
+          <p>View the honeycombed façade of the "Palace of Winds" from the street, then browse Johari Bazaar for lac bangles, textiles and gemstones before drop-off.</p>
+          <span class="stop-tag">Allow 60 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INCLUSIONS ================= -->
+<section class="incl jali">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker" style="color:var(--nt-gold);">The Fine Print</span>
+        <h2>What's covered</h2>
+      </div>
+      <p>No surprise charges at drop-off — here's exactly what's built into the price.</p>
+    </div>
+    <div class="incl-grid">
+      <div class="incl-card yes">
+        <h3>Included</h3>
+        <ul>
+          <li>AC vehicle with driver for the full day</li>
+          <li>Fuel, driver allowance and parking charges</li>
+          <li>Pickup and drop at your Jaipur hotel</li>
+          <li>All toll and state taxes</li>
+          <li>Bottled water on board</li>
+        </ul>
+      </div>
+      <div class="incl-card no">
+        <h3>Not included</h3>
+        <ul>
+          <li>Monument entry tickets and camera fees</li>
+          <li>Lunch and personal expenses</li>
+          <li>Local guide (available on request)</li>
+          <li>Elephant / jeep ride at Khatu Shyam Ji Temple</li>
+          <li>Tips and gratuities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RIDE OPTIONS ================= -->
+<section class="rides">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">Choose Your Ride</span>
+        <h2>Pick a vehicle for the day</h2>
+      </div>
+      <p>Same route and itinerary — the price scales with group size and comfort.</p>
+    </div>
+    <div class="ride-grid">
+      <div class="ride-card">
+        <div class="ride-top">
+          <h3>Swift Dzire</h3>
+          <span class="seats">4 seater · AC</span>
+        </div>
+        <div class="price">₹2,499<small> / day</small></div>
+        <span class="best">Best for couples &amp; solo</span>
+      </div>
+      <div class="ride-card">
+        <div class="ride-top">
+          <h3>Innova Crysta</h3>
+          <span class="seats">6 seater · AC</span>
+        </div>
+        <div class="price">₹3,799<small> / day</small></div>
+        <span class="best">Most booked</span>
+      </div>
+      <div class="ride-card">
+        <div class="ride-top">
+          <h3>Winger</h3>
+          <span class="seats">12 seater · AC</span>
+        </div>
+        <div class="price">₹5,999<small> / day</small></div>
+        <span class="best">Best for groups</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta-strip" id="enquire">
+  <div class="wrap">
+    <div>
+      <h2>Ready to see Jaipur properly?</h2>
+      <p>Tell us your dates and we'll hold a vehicle for you — no advance payment to enquire.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="tel:+919784568787" class="cta-btn">Call +91 97845 68787 →</a>
+      <a href="https://wa.me/919784568787" class="cta-outline">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<a class="jsp-float-btn" id="jspFloatBtn" href="./booktour.html" target="_blank">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Book a Tour</span>
+</a>
+
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Jaisalmer</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/490280174/photo/green-lagoon.jpg?s=612x612&w=0&k=20&c=HW7F8IqCLsCS83HYkZsB42UAsq40soJJ3zze16ni7b4=" alt="Rann of Kutch">
+                <span>Rann of Kutch</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/1397977352/photo/ancient-nabataean-palace-tomb-carved-in-sandstone-rock-petra-jordan.jpg?s=612x612&w=0&k=20&c=oJWboHdIDXt8-ftELq16NrmxjYEckBm2sAJ6YeNl8fs=" alt="Heritage Forts">
+                <span>Heritage Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://lp-cms-production.imgix.net/2022-06/Qatar_Families_beach.jpg?uto=compress&fit=crop&format=auto&q=50&w=1200&h=800" alt="Dubai">
+                <span>Dubai</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Beach Retreats</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-linkgrid">
+        <div class="linkgrid-col">
+            <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+            <ul class="arrow-links">
+                <li><a href="./tourpack.html">Jaipur Khatu Shyam Ji Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Khatu Shyam Ji Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Khatushyamji Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Abhaneri Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Agra Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Pushkar Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Ranthambore Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Ajmer Pushkar Tour</a></li>
+            </ul>
+        </div>
+        <div class="linkgrid-col">
+            <h3 class="footer-heading">Rajasthan Tours</h3>
+            <ul class="arrow-links">
+                <li><a href="./tourpack.html">Rajasthan Wildlife Tour</a></li>
+                <li><a href="./tourpack.html">Desert Triangle Tour</a></li>
+                <li><a href="./tourpack.html">Exclusive Rajasthan Tour</a></li>
+                <li><a href="./tourpack.html">Religious Rajasthan Tour</a></li>
+                <li><a href="./tourpack.html">Rajasthan Tour Package</a></li>
+                <li><a href="./tourpack.html">Cultural Rajasthan Tour</a></li>
+            </ul>
+        </div>
+        <div class="linkgrid-col">
+            <h3 class="footer-heading">Special India Tours</h3>
+            <ul class="arrow-links">
+                <li><a href="./tourpack.html">Taj &amp; Tiger Safari Tour</a></li>
+                <li><a href="./tourpack.html">Golden Triangle Tour (5N/6D)</a></li>
+                <li><a href="./tourpack.html">Spiritual India Tour</a></li>
+                <li><a href="./tourpack.html">Classical India Tour</a></li>
+                <li><a href="./tourpack.html">Best of India Tour</a></li>
+                <li><a href="./tourpack.html">India Wildlife Tour</a></li>
+            </ul>
+        </div>
+        <div class="linkgrid-col">
+            <h3 class="footer-heading">Taxi Services</h3>
+            <ul class="arrow-links two-col-list">
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-inner">
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+            <div class="footer-socials">
+                <a href="" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/NEW NAMDEV tour package/new delhi.html">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+            <form class="footer-form" data-formtype="Get in Touch" id="heroEnquiryForm">
+                <div class="form-row"><input name="name" type="text" placeholder="Your Name"></div>
+                <div class="form-row"><input name="email" type="email" placeholder="Your Email"></div>
+                <div class="form-row"><input name="phone" type="text" placeholder="Mobile Number"></div>
+                <div class="form-row form-row-split">
+                    <input name="no of people" type="text" placeholder="No. of People">
+                    <input name="car" type="text" placeholder="Car">
+                </div>
+                <div class="form-row"><input name="destination" type="text" placeholder="Destination"></div>
+                <button type="submit" class="footer-submit-btn">
+                    Send Enquiry
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+<script>
+    function showsidebar(){ document.querySelector('.sidebar').classList.add('show'); }
+    function hidesidebar(){ document.querySelector('.sidebar').classList.remove('show'); }
+</script>
+
+<script>
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+    document.querySelectorAll("form[data-formtype]").forEach(form => {
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const payload = { formType: form.dataset.formtype };
+            formData.forEach((value, key) => { payload[key] = value; });
+            try {
+                await fetch(GOOGLE_SHEET_URL, {
+                    method: "POST", mode: "no-cors",
+                    headers: { "Content-Type": "text/plain" },
+                    body: JSON.stringify(payload)
+                });
+                alert("Thank you! Your request has been submitted. We'll get back to you soon.");
+                form.reset();
+            } catch (err) {
+                console.error(err);
+                alert("Something went wrong. Please try again or call us directly at +91 9784568787.");
+            }
+        });
+    });
+</script>
+
+<script src="././finalanimation.js"></script>
+<script src="././experimental_claude.js"></script>
+
+<script>
+(function(){
+  // Scroll-reveal for itinerary stops and ride cards
+  const revealTargets = document.querySelectorAll('.stop, .ride-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealTargets.forEach(t => observer.observe(t));
+
+  // Scroll progress bar + floating book button
+  const progress = document.getElementById('jspProgress');
+  const floatBtn = document.getElementById('jspFloatBtn');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+    floatBtn.classList.toggle('show', h.scrollTop > 500);
+  });
+})();
+</script>
+          <script>
+             function showsidebar(){
+                 document.querySelector('.sidebar').classList.add('show');
+                    }
+                function hidesidebar(){
+                 document.querySelector('.sidebar').classList.remove('show');
+                }
+          </script>
+
+        <!-- loader -->
+        <script src="././finalanimation.js"></script>
+        <script src="././experimental_claude.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    *{
+        margin: 0%;
+        padding: 0%;
+    }
+    body{
+        min-height: 100%;
+        background-image: url(/images/Black_Bulbul.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+    }
+    nav{
+        background-color: palegreen;
+        box-shadow: 3px 4px 5px 6px;
+    }
+    nav ul{
+        width: 100%;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    nav li{
+        height: 50px;
+
+    }
+    nav a{
+        height: 100%;
+        padding: 0 30px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        color: black;
+    }
+    
+        nav a:hover{
+            background-color: aqua;
+        }
+        .first #menuicon:last-child{
+            margin-right: -80rem;
+            position: absolute;
+            /* justify-content: end; */
+        }
+        #menuicon{
+            height: 26px;
+            width: 26px;
+            display: none;
+        }
+
+    .sidebar{
+        position: fixed;
+        top: 0%;
+        right: 0%;
+        height: 100vh;
+        width: 20rem;
+        z-index: 999;
+        background-color: khaki;
+        box-shadow: -10px 0 10px rgba(0, 0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        display: none;
+    }
+    .sidebar li{
+        width: 100%;
+
+    }
+    .sidebar a{
+        width: 100%;
+    }
+    @media screen and (max-width:600px) {
+        .hideonmobile{
+            display: none;
+        }
+        #menuicon{
+            display: block;
+        }
+    }
+
+
+</style>
+<body>
+    <nav>
+        
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="#"> x</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Tour Package</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact us</a></li>
+
+        </ul>
+        <ul class="first">
+            <li><a href="#">Home</a></li>
+            <li class="hideonmobile"><a href="#">Services</a></li>
+            <li class="hideonmobile"><a href="#">Tour Package</a></li>
+            <li class="hideonmobile"><a href="#">About</a></li>
+            <li class="hideonmobile"><a href="#">Contact us</a></li>
+            <li onclick="showsidebar()" id="menuicon"><a href="#"><img src="././icons/menu.png" alt=""></a></li>
+
+        </ul>
+    </nav>
+
+
+    <script>
+        function showsidebar(){
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+        }
+        function hidesidebar(){
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+         
+        }
+
+    </script>
+</body>
+</html>

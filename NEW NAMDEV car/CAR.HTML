@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="png" href="./images/logo03.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./finalanimation.css">
+    <link rel="stylesheet" href="./style.css">
+     <link rel="stylesheet" href="./experimental_claude.css"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Namdev's Tour Car</title>
+
+    <style>
+      /* ============================================================
+         FLEET REBUILD — scoped under .fleet-page so nothing here
+         collides with your existing site-wide CSS files.
+      ============================================================ */
+      :root{
+        --nt-primary: #328ADF;
+        --nt-primary-light: #4EA8FF;
+        --nt-secondary: #6B4A2E;
+        --nt-gold: #F2C14E;
+        --nt-ink: #23201C;
+        --nt-muted: #8A7F70;
+        --nt-bg: #F8F7F4;
+        --nt-shadow: 0 8px 24px rgba(35,32,28,0.08);
+        --nt-shadow-hover: 0 20px 44px rgba(35,32,28,0.16);
+      }
+
+      .fleet-page{
+        background: var(--nt-bg);
+        font-family: 'Inter', sans-serif;
+        color: var(--nt-ink);
+      }
+      .fleet-page h1, .fleet-page h2, .fleet-page h3, .fleet-page .brand-font{
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 700;
+      }
+
+      /* ---------- Hero ---------- */
+      .fleet-hero{
+        background: linear-gradient(120deg, var(--nt-ink) 0%, var(--nt-secondary) 45%, var(--nt-primary) 100%);
+        color:#fff;
+        padding: 3.4rem 1.5rem 4.2rem;
+        text-align:center;
+      }
+      .fleet-hero .eyebrow{
+        font-family:'Rajdhani', sans-serif;
+        letter-spacing:.2em;
+        text-transform:uppercase;
+        font-size:.82rem;
+        color: var(--nt-gold);
+        margin-bottom:.6rem;
+      }
+      .fleet-hero h1{
+        font-size: clamp(2rem, 4.4vw, 3rem);
+        margin: 0 0 .8rem 0;
+      }
+      .fleet-hero p{
+        max-width: 40rem;
+        margin: 0 auto;
+        color: rgba(255,255,255,0.82);
+        font-size: .96rem;
+        line-height:1.65;
+      }
+      .fleet-hero-stats{
+        display:flex;
+        justify-content:center;
+        gap: 2.4rem;
+        margin-top: 1.6rem;
+        flex-wrap:wrap;
+      }
+      .fleet-hero-stats .stat{ display:flex; flex-direction:column; align-items:center; }
+      .fleet-hero-stats strong{ font-family:'Rajdhani',sans-serif; font-size:1.25rem; color: var(--nt-gold); }
+      .fleet-hero-stats span{ font-size:.7rem; opacity:.85; }
+
+      /* ---------- Filter bar ---------- */
+      .fleet-filters{
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(248,247,244,0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(35,32,28,0.08);
+        padding: 1rem 1.5rem;
+        display:flex;
+        justify-content:center;
+        gap:.6rem;
+        flex-wrap:wrap;
+        margin-top: -1.6rem;
+      }
+      .fleet-filter-pill{
+        background:#fff;
+        border:1.5px solid rgba(35,32,28,0.14);
+        color: var(--nt-ink);
+        font-size:.85rem;
+        font-weight:600;
+        padding: .55rem 1.2rem;
+        border-radius: 999px;
+        cursor:pointer;
+        transition: all .2s ease;
+      }
+      .fleet-filter-pill:hover{ border-color: var(--nt-primary); color: var(--nt-primary); }
+      .fleet-filter-pill.active{
+        background: var(--nt-primary);
+        border-color: var(--nt-primary);
+        color:#fff;
+      }
+
+      /* ---------- Grid ---------- */
+      .fleet-grid-wrap{
+        max-width: 78rem;
+        margin: 2.6rem auto 1rem;
+        padding: 0 1.5rem;
+      }
+      .fleet-grid{
+        display:grid;
+        grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+        gap: 1.6rem;
+      }
+
+      .fleet-card{
+        background:#fff;
+        border-radius: 1rem;
+        overflow:hidden;
+        box-shadow: var(--nt-shadow);
+        display:flex;
+        flex-direction:column;
+        opacity:0;
+        transform: translateY(28px);
+        transition: opacity .6s ease, transform .6s ease, box-shadow .3s ease;
+      }
+      .fleet-card.in-view{ opacity:1; transform:translateY(0); }
+      .fleet-card:hover{
+        box-shadow: var(--nt-shadow-hover);
+        transform: translateY(-6px);
+      }
+      .fleet-card.in-view:hover{ transform: translateY(-6px); }
+
+      .fleet-card-media{
+        position:relative;
+        height: 12rem;
+        overflow:hidden;
+        background: #eee;
+      }
+      .fleet-card-media img{
+        width:100%; height:100%;
+        object-fit: cover;
+        display:block;
+        transition: transform .5s ease;
+      }
+      .fleet-card:hover .fleet-card-media img{ transform: scale(1.08); }
+
+      .fleet-badge{
+        position:absolute;
+        top:.8rem; left:.8rem;
+        background: rgba(255,255,255,0.92);
+        color: var(--nt-primary);
+        font-size:.68rem;
+        font-weight:700;
+        letter-spacing:.03em;
+        text-transform:uppercase;
+        padding: .3rem .7rem;
+        border-radius: 999px;
+      }
+      .fleet-price-badge{
+        position:absolute;
+        bottom:.8rem; right:.8rem;
+        background: var(--nt-ink);
+        color:#fff;
+        font-size:.72rem;
+        font-weight:600;
+        padding: .35rem .75rem;
+        border-radius: 999px;
+      }
+
+      .fleet-card-body{
+        padding: 1.2rem 1.3rem 1.4rem;
+        display:flex;
+        flex-direction:column;
+        flex:1;
+      }
+      .fleet-card-body h3{
+        font-size: 1.25rem;
+        margin: 0 0 .3rem;
+      }
+      .fleet-rating{
+        display:flex;
+        align-items:center;
+        gap:.3rem;
+        font-size:.78rem;
+        color: var(--nt-muted);
+        margin-bottom: .7rem;
+      }
+      .fleet-rating svg{ width:.9rem; height:.9rem; fill: var(--nt-gold); }
+
+      .fleet-specs{
+        display:flex;
+        flex-wrap:wrap;
+        gap: .5rem;
+        margin-bottom: .9rem;
+      }
+      .fleet-spec{
+        display:flex;
+        align-items:center;
+        gap:.35rem;
+        background: var(--nt-bg);
+        border-radius: .5rem;
+        padding: .35rem .6rem;
+        font-size:.74rem;
+        color: var(--nt-ink);
+        font-weight:500;
+      }
+      .fleet-spec svg{ width:.9rem; height:.9rem; stroke: var(--nt-primary); flex-shrink:0; }
+
+      .fleet-card-text{
+        font-size:.82rem;
+        color: var(--nt-muted);
+        line-height:1.55;
+        margin: 0 0 1.1rem;
+        flex:1;
+      }
+
+      .fleet-book-btn{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:.5rem;
+        background: linear-gradient(90deg, var(--nt-primary), var(--nt-primary-light));
+        color:#fff;
+        border:none;
+        padding: .75rem;
+        border-radius: .7rem;
+        font-family:'Rajdhani', sans-serif;
+        font-weight:700;
+        font-size:.92rem;
+        letter-spacing:.03em;
+        text-transform:uppercase;
+        cursor:pointer;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .fleet-book-btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(50,138,223,0.35);
+      }
+
+      /* ---------- Booking form ---------- */
+      .fleet-form-section{
+        max-width: 46rem;
+        margin: 4.5rem auto 4rem;
+        padding: 0 1.5rem;
+        opacity:0;
+        transform: translateY(28px);
+        transition: opacity .6s ease, transform .6s ease;
+      }
+      .fleet-form-section.in-view{ opacity:1; transform:translateY(0); }
+
+      .fleet-form-heading{
+        text-align:center;
+        margin-bottom: 2rem;
+      }
+      .fleet-form-heading h2{
+        font-size: 1.9rem;
+        position:relative;
+        display:inline-block;
+        padding-bottom: .8rem;
+      }
+      .fleet-form-heading h2::after{
+        content:"";
+        position:absolute;
+        left:50%; bottom:0;
+        transform: translateX(-50%);
+        width: 3.4rem; height:3px;
+        background: linear-gradient(90deg, var(--nt-primary), transparent);
+      }
+      .fleet-form-heading p{
+        color: var(--nt-muted);
+        font-size:.88rem;
+        margin-top:.6rem;
+      }
+
+      .fleet-form-card{
+        background:#fff;
+        border-radius: 1rem;
+        box-shadow: var(--nt-shadow);
+        padding: 2rem 2rem 1.8rem;
+      }
+
+      .fleet-selected-car{
+        display:flex;
+        align-items:center;
+        gap: .8rem;
+        background: var(--nt-bg);
+        border-radius: .8rem;
+        padding: .8rem 1rem;
+        margin-bottom: 1.4rem;
+        font-size:.85rem;
+      }
+      .fleet-selected-car img{
+        width: 3rem; height:3rem;
+        object-fit:cover;
+        border-radius: .5rem;
+      }
+      .fleet-selected-car .label{ color: var(--nt-muted); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; }
+      .fleet-selected-car .name{ font-weight:700; font-family:'Rajdhani',sans-serif; font-size:1rem; }
+
+      .fleet-grid2{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .fleet-field{ margin-bottom: 1rem; }
+      .fleet-field label{
+        display:block;
+        font-size:.8rem;
+        font-weight:600;
+        margin-bottom:.4rem;
+      }
+      .fleet-field select,
+      .fleet-field input{
+        width:100%;
+        font-family:'Inter', sans-serif;
+        font-size:.9rem;
+        padding: .7rem .8rem;
+        border-radius: .6rem;
+        border: 1.5px solid rgba(35,32,28,0.14);
+        background: #FCFBF9;
+        outline:none;
+        transition: border-color .2s ease, box-shadow .2s ease;
+      }
+      .fleet-field select:focus,
+      .fleet-field input:focus{
+        border-color: var(--nt-primary);
+        box-shadow: 0 0 0 3px rgba(50,138,223,0.15);
+      }
+      .fleet-field.err input, .fleet-field.err select{ border-color:#C1443A; }
+      .fleet-error-msg{ font-size:.74rem; color:#C1443A; margin-top:.3rem; display:none; }
+      .fleet-field.err .fleet-error-msg{ display:block; }
+
+      .fleet-submit-btn{
+        width:100%;
+        margin-top:.6rem;
+        display:flex; align-items:center; justify-content:center; gap:.5rem;
+        background: linear-gradient(90deg, var(--nt-primary), var(--nt-primary-light));
+        box-shadow: 0 8px 24px rgba(50,138,223,0.35);
+        color:#fff; border:none;
+        padding: 1rem;
+        border-radius:.8rem;
+        font-family:'Rajdhani', sans-serif;
+        font-weight:700; font-size:1rem;
+        letter-spacing:.03em; text-transform:uppercase;
+        cursor:pointer;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .fleet-submit-btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 30px rgba(50,138,223,0.45); }
+
+      .fleet-form-note{
+        font-size:.75rem;
+        color: var(--nt-muted);
+        text-align:center;
+        margin-top:.8rem;
+      }
+
+      /* confirmation modal */
+      .fleet-confirm-overlay{
+        position:fixed; inset:0;
+        background: rgba(35,32,28,0.55);
+        display:none;
+        align-items:center; justify-content:center;
+        z-index:999;
+        padding:1.2rem;
+      }
+      .fleet-confirm-overlay.show{ display:flex; }
+      .fleet-confirm-card{
+        background:#fff; border-radius:1rem;
+        max-width:26rem; width:100%;
+        padding: 2.2rem 2rem;
+        text-align:center;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      }
+      .fleet-confirm-card .tick{
+        width:3.4rem; height:3.4rem; border-radius:50%;
+        background: var(--nt-primary); color:#fff;
+        display:flex; align-items:center; justify-content:center;
+        font-size:1.5rem; margin: 0 auto 1rem;
+      }
+      .fleet-confirm-card h3{ margin:0 0 .6rem; }
+      .fleet-confirm-card p{ font-size:.88rem; color:var(--nt-muted); line-height:1.6; margin:0 0 1.3rem; }
+      .fleet-confirm-card button{
+        background: var(--nt-ink); color:#fff; border:none;
+        padding:.75rem 1.8rem; border-radius:.6rem;
+        font-family:'Rajdhani',sans-serif; font-weight:700;
+        letter-spacing:.03em; text-transform:uppercase; cursor:pointer;
+      }
+
+      @media (max-width: 700px){
+        .fleet-grid2{ grid-template-columns: 1fr; }
+        .fleet-grid{ grid-template-columns: 1fr; }
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        .fleet-card, .fleet-form-section{ transition:none; opacity:1; transform:none; }
+      }
+    </style>
+</head>
+<body class="fleet-page">
+
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a class="active" href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a href="./index.html">Home</a></li>
+            <li class="hideonmobile"><a class="active" href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+            <li class="hideonmobile"><a href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+    <div id="loader">
+        <div class="logo-wrap">
+            <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+        </div>
+        <div class="road-wrap">
+            <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+                <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+                <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+                <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+                <g id="car">
+                    <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                    <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                    <circle cx="-16" cy="10" r="7"></circle>
+                    <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                    <circle cx="16" cy="10" r="7"></circle>
+                    <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+                </g>
+            </svg>
+        </div>
+        <p class="loader-text" id="loaderText">Starting the journey…</p>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <div class="fleet-hero">
+        <div class="eyebrow">Namdev's Tour &amp; Travels</div>
+        <h1>Rent a Car, Your Way</h1>
+        <p>From a compact sedan for a quick city run to a 45-seater coach for a group pilgrimage — pick the ride that fits your trip, and we'll handle the rest.</p>
+        <div class="fleet-hero-stats">
+            <div class="stat"><strong>10+</strong><span>Vehicle Types</span></div>
+            <div class="stat"><strong>15+</strong><span>Years Experience</span></div>
+            <div class="stat"><strong>4.9★</strong><span>Average Rating</span></div>
+        </div>
+    </div>
+
+    <!-- ============ FILTERS ============ -->
+    <div class="fleet-filters" id="fleetFilters">
+        <button class="fleet-filter-pill active" data-filter="all">All Vehicles</button>
+        <button class="fleet-filter-pill" data-filter="Sedan">Sedan</button>
+        <button class="fleet-filter-pill" data-filter="SUV/MPV">SUV / MPV</button>
+        <button class="fleet-filter-pill" data-filter="Van">Van / Tempo</button>
+        <button class="fleet-filter-pill" data-filter="Bus">Bus</button>
+    </div>
+
+    <!-- ============ CAR GRID (rendered by JS from one data source) ============ -->
+    <div class="fleet-grid-wrap">
+        <div class="fleet-grid" id="fleetGrid"></div>
+    </div>
+
+    <!-- ============ BOOKING FORM ============ -->
+    <div class="fleet-form-section" id="carform">
+        <div class="fleet-form-heading">
+            <h2>Book Your Car</h2>
+            <p>Fill in your trip details and our team will confirm availability &amp; pricing.</p>
+        </div>
+
+        <form class="fleet-form-card" id="fleetBookingForm" data-formtype="Car Booking" novalidate>
+
+            <div class="fleet-selected-car" id="fleetSelectedCar">
+                <img id="fleetSelectedImg" src="" alt="" style="display:none;">
+                <div>
+                    <div class="label">Selected vehicle</div>
+                    <div class="name" id="fleetSelectedName">Choose a car below</div>
+                </div>
+            </div>
+
+            <div class="fleet-grid2">
+                <div class="fleet-field" data-field="name">
+                    <label for="fleetName">Full name</label>
+                    <input type="text" id="fleetName" name="name" required placeholder="Your full name">
+                    <div class="fleet-error-msg">Please enter your full name.</div>
+                </div>
+                <div class="fleet-field" data-field="phone">
+                    <label for="fleetPhone">Contact number</label>
+                    <input type="tel" id="fleetPhone" name="phone" required placeholder="+91 98765 43210">
+                    <div class="fleet-error-msg">Please enter a valid contact number.</div>
+                </div>
+            </div>
+
+            <div class="fleet-field" data-field="email">
+                <label for="fleetEmail">Email address</label>
+                <input type="email" id="fleetEmail" name="email" required placeholder="you@example.com">
+                <div class="fleet-error-msg">Please enter a valid email address.</div>
+            </div>
+
+            <div class="fleet-grid2">
+                <div class="fleet-field" data-field="date">
+                    <label for="fleetDate">Pickup date</label>
+                    <input type="date" id="fleetDate" name="date" required>
+                    <div class="fleet-error-msg">Please choose a pickup date.</div>
+                </div>
+                <div class="fleet-field" data-field="days">
+                    <label for="fleetDays">Number of days</label>
+                    <input type="number" id="fleetDays" name="days" min="1" required placeholder="e.g. 3">
+                    <div class="fleet-error-msg">Please enter number of days.</div>
+                </div>
+            </div>
+
+            <div class="fleet-grid2">
+                <div class="fleet-field" data-field="travelers">
+                    <label for="fleetTravelers">Number of travelers</label>
+                    <input type="number" id="fleetTravelers" name="no of people" min="1" required placeholder="e.g. 4">
+                    <div class="fleet-error-msg">Please enter number of travelers.</div>
+                </div>
+                <div class="fleet-field" data-field="cartype">
+                    <label for="fleetCarType">Car type</label>
+                    <select id="fleetCarType" name="car" required>
+                        <option value="" selected>Select a car</option>
+                    </select>
+                    <div class="fleet-error-msg">Please select a car.</div>
+                </div>
+            </div>
+
+            <div class="fleet-field">
+                <label for="fleetDestination">Destination <span style="font-weight:400;font-style:italic;color:var(--nt-muted);">(optional)</span></label>
+                <input type="text" id="fleetDestination" name="destination" placeholder="e.g. Jaipur to Udaipur">
+            </div>
+
+            <button type="submit" class="fleet-submit-btn">
+                Confirm Car Booking
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="fleet-form-note">We'll never share your details. Our team will call to confirm.</div>
+        </form>
+    </div>
+
+    <!-- ============ CONFIRMATION MODAL ============ -->
+    <div class="fleet-confirm-overlay" id="fleetConfirmOverlay">
+        <div class="fleet-confirm-card">
+            <div class="tick">&#10003;</div>
+            <h3>Request received</h3>
+            <p>Thanks<span id="fleetConfName"></span> — our travel desk will reach out shortly to confirm your car and pricing.</p>
+            <button type="button" id="fleetCloseConfirm">Done</button>
+        </div>
+    </div>
+
+    <!--  -->
+    <!--  -->
+        <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+
+<!-- footer form connection  -->\
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+    <script>
+        function notify() {
+            alert("Sorry we are Unalbe to fetch data \n Please use +91 4154545854 OR namdevtourandtravels@gmail.com \n To communicate with us..");
+        }
+    </script>
+    <script>
+        function showsidebar(){
+            document.querySelector('.sidebar').classList.add('show');
+        }
+        function hidesidebar(){
+            document.querySelector('.sidebar').classList.remove('show');
+        }
+    </script>
+
+    <script src="././finalanimation.js"></script>
+
+    <!-- ============================================================
+         FLEET REBUILD — data-driven cards, filters, animations, form
+    ============================================================ -->
+    <script>
+    (function(){
+      // ---- Single source of truth for all vehicles (edit this array to add/update cars) ----
+      const FLEET = [
+        {
+          name: "Innova Crysta",
+          category: "SUV/MPV",
+          img: "/icons/web ivon/vehicels/innova-crysta-exterior-left-front-three-quarter.webp",
+          seats: 7, ac: true, luggage: "Large", transmission: "Manual/Auto",
+          text: "Spacious and comfortable — ideal for families and groups who want room to relax on longer routes.",
+          badge: "Popular"
+        },
+        {
+          name: "Etios",
+          category: "Sedan",
+          img: "/images/ETIOS.png",
+          seats: 4, ac: true, luggage: "Medium", transmission: "Manual",
+          text: "Big boot space and reliable air-conditioning make this a comfortable pick for city-to-city trips."
+        },
+        {
+          name: "Honda City",
+          category: "Sedan",
+          img: "/icons/web ivon/vehicels/nhc.jpg",
+          seats: 4, ac: true, luggage: "Medium", transmission: "Manual/Auto",
+          text: "A smooth, dependable ride with modern safety features — great for highway journeys."
+        },
+        {
+          name: "Kia Carnival",
+          category: "SUV/MPV",
+          img: "/icons/web ivon/vehicels/Carens 3.jpg",
+          seats: 7, ac: true, luggage: "Large", transmission: "Automatic",
+          text: "A premium, brawny MPV with excellent ride quality even when fully seated.",
+          badge: "Premium"
+        },
+        {
+          name: "Swift Dzire",
+          category: "Sedan",
+          img: "/icons/web ivon/vehicels/nndez.jpg",
+          seats: 4, ac: true, luggage: "Medium", transmission: "Manual",
+          text: "One of our most-booked cabs — spacious interiors and a comfortable ride for the driver too."
+        },
+        {
+          name: "Ertiga",
+          category: "SUV/MPV",
+          img: "/icons/web ivon/vehicels/ertiga-fronw.jpg",
+          seats: 7, ac: true, luggage: "Large", transmission: "Manual",
+          text: "Excellent fuel economy and easy handling — a versatile choice for group trips on a budget."
+        },
+        {
+          name: "Winger",
+          category: "Van",
+          img: "/icons/web ivon/vehicels/winger-16-34-codriver-side-1.png",
+          seats: 12, ac: true, luggage: "Extra Large", transmission: "Manual",
+          text: "Ergonomic seating and generous headspace, built for comfort on longer group journeys."
+        },
+        {
+          name: "Volvo Bus",
+          category: "Bus",
+          img: "/images/45-seater-bus-hire-jaipur.jpg",
+          seats: 45, ac: true, luggage: "Extra Large", transmission: "Automatic",
+          text: "GPS-tracked, seat-belted, and speed-governed — built for large groups who value safety.",
+          badge: "Large Groups"
+        },
+        {
+          name: "Mahindra Marazzo",
+          category: "SUV/MPV",
+          img: "https://imgd-ct.aeplcdn.com/1056x660/n/c9o4cta_1488498.jpg?q=80",
+          seats: 7, ac: true, luggage: "Large", transmission: "Manual",
+          text: "Strong build quality with a smooth engine — good performance and fuel efficiency together."
+        },
+        {
+          name: "Honda Amaze",
+          category: "Sedan",
+          img: "https://etautolytics.com/files/retail_files/amaze-1503916874-prod-var.png",
+          seats: 4, ac: true, luggage: "Medium", transmission: "Manual",
+          text: "Sleek and comfortable for long drives — a smart pick for regal city-hopping tours."
+        }
+      ];
+
+      const ICONS = {
+        seats: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v7"/><path d="M4 21h16"/><circle cx="12" cy="6" r="3"/></svg>',
+        ac: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1M2 12h20"/></svg>',
+        luggage: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>',
+        transmission: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.2 7l3.5 2M16.3 15l3.5 2M4.2 17l3.5-2M16.3 9l3.5-2"/></svg>'
+      };
+
+      const grid = document.getElementById('fleetGrid');
+      const carTypeSelect = document.getElementById('fleetCarType');
+
+      // Render cards + populate the select — one loop, one source of truth
+      FLEET.forEach((car, i) => {
+        const card = document.createElement('div');
+        card.className = 'fleet-card';
+        card.dataset.category = car.category;
+        card.innerHTML = `
+          <div class="fleet-card-media">
+            ${car.badge ? `<span class="fleet-badge">${car.badge}</span>` : ''}
+            <img src="./${car.img}" alt="${car.name}" loading="lazy">
+            <span class="fleet-price-badge">Price on request</span>
+          </div>
+          <div class="fleet-card-body">
+            <h3>${car.name}</h3>
+            <div class="fleet-rating">
+              <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.4 1.4 6.3L10 15l-5.6 3.2 1.4-6.3L1 7.5l6.4-.6z"/></svg>
+              <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.4 1.4 6.3L10 15l-5.6 3.2 1.4-6.3L1 7.5l6.4-.6z"/></svg>
+              <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.4 1.4 6.3L10 15l-5.6 3.2 1.4-6.3L1 7.5l6.4-.6z"/></svg>
+              <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.4 1.4 6.3L10 15l-5.6 3.2 1.4-6.3L1 7.5l6.4-.6z"/></svg>
+              <span>Highly rated</span>
+            </div>
+            <div class="fleet-specs">
+              <span class="fleet-spec">${ICONS.seats} ${car.seats} Seats</span>
+              ${car.ac ? `<span class="fleet-spec">${ICONS.ac} AC</span>` : ''}
+              <span class="fleet-spec">${ICONS.luggage} ${car.luggage}</span>
+              <span class="fleet-spec">${ICONS.transmission} ${car.transmission}</span>
+            </div>
+            <p class="fleet-card-text">${car.text}</p>
+            <button type="button" class="fleet-book-btn" data-car="${car.name}" data-img="${car.img}">
+              Book This Car
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        `;
+        card.style.transitionDelay = (i % 6) * 0.06 + 's';
+        grid.appendChild(card);
+
+        const opt = document.createElement('option');
+        opt.value = car.name;
+        opt.textContent = car.name + ' (' + car.category + ')';
+        carTypeSelect.appendChild(opt);
+      });
+
+      // Filters
+      document.querySelectorAll('.fleet-filter-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          document.querySelectorAll('.fleet-filter-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          const f = pill.dataset.filter;
+          document.querySelectorAll('.fleet-card').forEach(card => {
+            const show = (f === 'all' || card.dataset.category === f);
+            card.style.display = show ? '' : 'none';
+          });
+        });
+      });
+
+      // "Book This Car" -> scroll to form + prefill
+      document.querySelectorAll('.fleet-book-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const name = btn.dataset.car;
+          const img = btn.dataset.img;
+          carTypeSelect.value = name;
+          document.getElementById('fleetSelectedName').textContent = name;
+          const imgEl = document.getElementById('fleetSelectedImg');
+          imgEl.src = img;
+          imgEl.style.display = 'block';
+          document.getElementById('carform').scrollIntoView({ behavior:'smooth', block:'start' });
+        });
+      });
+
+      // Scroll-reveal via IntersectionObserver
+      const revealTargets = document.querySelectorAll('.fleet-card, .fleet-form-section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealTargets.forEach(t => observer.observe(t));
+
+      // // ---- Booking form validation + submit ----
+      // const form = document.getElementById('fleetBookingForm');
+      // const requiredFields = ['fleetName','fleetPhone','fleetEmail','fleetDate','fleetDays','fleetTravelers','fleetCarType'];
+
+      // function validateField(id){
+      //   const el = document.getElementById(id);
+      //   const wrap = el.closest('.fleet-field');
+      //   const valid = el.checkValidity() && el.value.trim() !== '';
+      //   wrap.classList.toggle('err', !valid);
+      //   return valid;
+      // }
+      // requiredFields.forEach(id => {
+      //   const el = document.getElementById(id);
+      //   el.addEventListener('blur', () => validateField(id));
+      //   el.addEventListener('input', () => { if (el.closest('.fleet-field').classList.contains('err')) validateField(id); });
+      //   el.addEventListener('change', () => { if (el.closest('.fleet-field').classList.contains('err')) validateField(id); });
+      // });
+
+      // Reuses the same webhook already wired up on your homepage forms
+      const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        let allValid = true;
+        requiredFields.forEach(id => { if (!validateField(id)) allValid = false; });
+        if (!allValid) {
+          const firstError = form.querySelector('.fleet-field.err');
+          if (firstError) firstError.scrollIntoView({ behavior:'smooth', block:'center' });
+          return;
+        }
+
+        const formData = new FormData(form);
+        const payload = { formType: form.dataset.formtype };
+        formData.forEach((value, key) => { payload[key] = value; });
+
+        try{
+          await fetch(GOOGLE_SHEET_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify(payload)
+          });
+        } catch(err){
+          console.error(err);
+        }
+
+        const nameVal = document.getElementById('fleetName').value.trim().split(' ')[0];
+        document.getElementById('fleetConfName').textContent = nameVal ? ', ' + nameVal : '';
+        document.getElementById('fleetConfirmOverlay').classList.add('show');
+      });
+
+      document.getElementById('fleetCloseConfirm').addEventListener('click', () => {
+        document.getElementById('fleetConfirmOverlay').classList.remove('show');
+        form.reset();
+        document.getElementById('fleetSelectedName').textContent = 'Choose a car below';
+        document.getElementById('fleetSelectedImg').style.display = 'none';
+        document.querySelectorAll('.fleet-field').forEach(f => f.classList.remove('err'));
+      });
+    })();
+    </script>
+    <script src="./https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+   <script src="././files (7)/config.js"></script>
+   <script src="././files (7)/nav.js"></script>
+   <script src="././files (7)/car-booking.js"></script>
+   <script src="././files (7)/form-handler.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="./images/logo03.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International Tour Packages — Namdev's Tour &amp; Travels</title>
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./finalanimation.css">
+<link rel="stylesheet" href="./experimental_claude.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+
+:root{
+    --intlInk:#23201C; --intlMuted:#8A7F70; --intlAccent:#328ADF; --intlIce:#6BB4EE; --intlGold:#C9973A;
+    /* TODO: replace with the font-family declared in /style.css once shared, e.g. --intlFont: 'Poppins', sans-serif; */
+    --intlFont:'Nunito Sans', sans-serif;
+}
+*{ margin:0; padding:0; box-sizing:border-box; text-decoration:none; list-style:none; }
+body{ overflow-x:hidden; font-family:var(--intlFont); color:var(--intlInk); background:#FBFAF8; }
+html{ scroll-behavior:smooth; }
+
+.intlReveal{ opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.16,.84,.44,1), transform .7s cubic-bezier(.16,.84,.44,1); }
+.intlReveal.intlInView{ opacity:1; transform:translateY(0); }
+.intlReveal.intlDelay1{ transition-delay:.08s; } .intlReveal.intlDelay2{ transition-delay:.16s; } .intlReveal.intlDelay3{ transition-delay:.24s; }
+
+/* ===== HERO ===== */
+.intlHero{ position:relative; height:32rem; width:100%; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.intlHeroBg{
+    position:absolute; inset:-2%; width:104%; height:104%; background-size:cover; background-position:center;
+    background-image:url(https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=1920&auto=format&fit=crop);
+    animation:intlKenBurns 22s ease-in-out infinite alternate; filter:saturate(1.05);
+}
+@keyframes intlKenBurns{ 0%{ transform:scale(1) translate(0,0); } 100%{ transform:scale(1.14) translate(-1.2%,-1.5%); } }
+.intlHeroOverlay{
+    position:absolute; inset:0; z-index:2;
+    background:linear-gradient(180deg, rgba(10,18,26,0.22) 0%, rgba(8,14,22,0.58) 55%, rgba(6,11,18,0.9) 100%);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:0 1.5rem;
+}
+.intlHeroGlow{
+    position:absolute; z-index:1; inset:0; pointer-events:none;
+    background:radial-gradient(60% 50% at 50% 40%, rgba(50,138,223,0.28), transparent 70%); mix-blend-mode:screen;
+}
+.intlCloudLayer{ position:absolute; inset:0; z-index:3; pointer-events:none; overflow:hidden; }
+.intlCloudLayer span{
+    position:absolute; top:-5%; display:block; width:.32rem; height:.32rem; border-radius:50%;
+    background:rgba(255,255,255,0.8); filter:blur(.2px); animation:intlDrift linear infinite;
+}
+@keyframes intlDrift{
+    0%{ transform:translateY(-5vh) translateX(0); opacity:0; }
+    8%{ opacity:.85; }
+    100%{ transform:translateY(105vh) translateX(3rem); opacity:.12; }
+}
+.intlTag{
+    font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); backdrop-filter:blur(6px);
+    padding:.4rem 1.1rem; border-radius:999px; display:inline-flex; align-items:center; gap:.4rem;
+    opacity:0; animation:intlFadeUp .9s ease .15s forwards;
+}
+.intlTag i{ font-size:.85rem; color:var(--intlGold); }
+.intlHeroOverlay h1{
+    font-size:2.9rem; font-weight:400; margin:.8rem 0 .5rem; letter-spacing:.01em;
+    opacity:0; animation:intlFadeUp .9s ease .32s forwards;
+    background:linear-gradient(100deg,#fff 30%, #E7F1FC 55%, #fff 80%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+}
+.intlHeroOverlay p{ font-size:.98rem; opacity:0; max-width:38rem; line-height:1.7; color:#E7ECEF; animation:intlFadeUp .9s ease .48s forwards; }
+@keyframes intlFadeUp{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
+.intlScrollCue{
+    position:absolute; z-index:4; bottom:1.6rem; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:.3rem; color:#fff; opacity:.85;
+    opacity:0; animation:intlFadeUp .9s ease .75s forwards;
+}
+.intlScrollCue span{ font-size:.68rem; text-transform:uppercase; letter-spacing:.1em; }
+.intlScrollCue i{ font-size:1.1rem; animation:intlBounce 1.8s ease-in-out infinite; }
+@keyframes intlBounce{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(7px); } }
+@media screen and (max-width:600px){ .intlHero{ height:26rem; } .intlHeroOverlay h1{ font-size:2.1rem; } }
+
+/* ===== OVERVIEW ===== */
+.intlOverview{ width:74%; max-width:60rem; margin:3rem auto; text-align:center; }
+.intlOverview p{ color:#585858; line-height:1.7; font-size:.95rem; }
+
+/* ===== TABS ===== */
+.intlTabsBar{
+    position:sticky; top:0; z-index:200; background:rgba(251,250,248,0.92); backdrop-filter:blur(10px);
+    max-width:100%; margin:0 auto; padding:1.2rem 1.5rem;
+    display:flex; justify-content:center; gap:.7rem; flex-wrap:wrap;
+    border-bottom:1px solid rgba(35,32,28,0.08);
+}
+.intlTabBtn{
+    position:relative; background:#fff; border:1px solid rgba(35,32,28,0.15); color:var(--intlInk);
+    padding:.62rem 1.25rem; border-radius:999px; font-size:.82rem; font-weight:600; cursor:pointer;
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, border-color .25s ease, color .25s ease, background .25s ease;
+}
+.intlTabBtn:hover{ border-color:var(--intlAccent); color:var(--intlAccent); transform:translateY(-2px); box-shadow:0 8px 18px rgba(50,138,223,0.16); }
+.intlTabBtn.intlTabActive{ background:var(--intlAccent); border-color:var(--intlAccent); color:#fff; box-shadow:0 8px 20px rgba(50,138,223,0.3); }
+
+/* ===== PANEL ===== */
+.intlPanel{ display:none; max-width:72rem; margin:0 auto; padding:2.5rem 1.5rem 4rem; opacity:0; }
+.intlPanel.intlPanelActive{ display:block; animation:intlPanelIn .55s cubic-bezier(.16,.84,.44,1) forwards; }
+@keyframes intlPanelIn{ from{ opacity:0; transform:translateY(18px); } to{ opacity:1; transform:translateY(0); } }
+
+.intlPanelBanner{ position:relative; height:19rem; border-radius:1.2rem; overflow:hidden; margin-bottom:2rem; box-shadow:0 16px 36px rgba(35,32,28,0.14); }
+.intlPanelBanner img{ width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.16,.84,.44,1); }
+.intlPanelBanner:hover img{ transform:scale(1.07); }
+.intlPanelBannerText{
+    position:absolute; inset:0; background:linear-gradient(0deg, rgba(10,14,20,0.92), rgba(10,14,20,0.1) 65%, transparent 100%);
+    display:flex; flex-direction:column; justify-content:flex-end; padding:1.8rem; color:#fff;
+}
+.intlPanelBannerText span{ font-size:.75rem; color:var(--intlGold); text-transform:uppercase; letter-spacing:.07em; font-weight:700; display:inline-flex; align-items:center; gap:.4rem; }
+.intlPanelBannerText h2{ font-size:1.95rem; font-weight:400; margin-top:.3rem; }
+
+.intlPanelIntro{ color:#585858; font-size:.95rem; line-height:1.75; margin-bottom:2rem; }
+
+.intlStatsRow{ display:grid; grid-template-columns:repeat(4, 1fr); gap:1rem; margin-bottom:2.5rem; }
+.intlStatBox{
+    background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; padding:1.1rem; text-align:center;
+    box-shadow:0 4px 14px rgba(35,32,28,0.05);
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, border-color .3s ease;
+}
+.intlStatBox:hover{ transform:translateY(-5px); box-shadow:0 14px 28px rgba(50,138,223,0.15); border-color:rgba(50,138,223,0.3); }
+.intlStatBox i{ font-size:1.3rem; color:var(--intlAccent); margin-bottom:.4rem; display:inline-block; transition:transform .3s ease; }
+.intlStatBox:hover i{ transform:scale(1.15) rotate(-4deg); }
+.intlStatBox strong{ display:block; font-size:1.05rem; color:var(--intlInk); }
+.intlStatBox span{ font-size:.75rem; color:var(--intlMuted); }
+
+.intlPanel h3.intlSubHeading{ font-size:1.3rem; font-weight:600; margin:2.5rem 0 1.2rem; position:relative; padding-left:1rem; }
+.intlPanel h3.intlSubHeading::before{ content:""; position:absolute; left:0; top:.15rem; bottom:.15rem; width:4px; background:var(--intlAccent); border-radius:2px; }
+
+.intlItinerary{ display:flex; flex-direction:column; gap:.7rem; }
+.intlDay{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; overflow:hidden; transition:border-color .25s ease, box-shadow .25s ease; }
+.intlDay:hover{ border-color:rgba(50,138,223,0.3); box-shadow:0 6px 16px rgba(35,32,28,0.06); }
+.intlDayHead{ width:100%; display:flex; align-items:center; gap:1rem; background:none; border:none; padding:1rem 1.3rem; cursor:pointer; text-align:left; }
+.intlDayNum{
+    flex-shrink:0; width:2.4rem; height:2.4rem; border-radius:50%; background:rgba(50,138,223,0.1);
+    color:var(--intlAccent); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem;
+    transition:background .3s ease, color .3s ease, transform .3s ease;
+}
+.intlDay.intlDayOpen .intlDayNum{ background:var(--intlAccent); color:#fff; transform:scale(1.06); }
+.intlDayHead strong{ flex:1; font-size:.92rem; }
+.intlDayIcon{ color:var(--intlMuted); transition:transform .35s cubic-bezier(.34,1.56,.64,1), color .3s ease; }
+.intlDay.intlDayOpen .intlDayIcon{ transform:rotate(180deg); color:var(--intlAccent); }
+.intlDayBody{ max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,.84,.44,1), padding .4s ease; padding:0 1.3rem; }
+.intlDay.intlDayOpen .intlDayBody{ max-height:14rem; padding:0 1.3rem 1.2rem 4.1rem; }
+.intlDayBody p{ font-size:.85rem; color:#585858; line-height:1.65; }
+
+.intlPlacesGrid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1.3rem; }
+.intlPlaceCard{ background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 6px 18px rgba(35,32,28,0.07); transition:transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease; }
+.intlPlaceCard:hover{ transform:translateY(-6px); box-shadow:0 18px 34px rgba(35,32,28,0.14); }
+.intlPlaceCard img{ width:100%; height:9rem; object-fit:cover; transition:transform .8s cubic-bezier(.16,.84,.44,1); display:block; }
+.intlPlaceCard:hover img{ transform:scale(1.1); }
+.intlPlaceCard .intlPlaceBody{ padding:1rem 1.1rem 1.2rem; }
+.intlPlaceCard h4{ font-size:.98rem; margin-bottom:.4rem; }
+.intlPlaceCard p{ font-size:.8rem; color:var(--intlMuted); line-height:1.55; }
+
+.intlIncExc{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.intlIncBox, .intlExcBox{ background:#fff; border-radius:.8rem; padding:1.3rem 1.4rem; border:1px solid rgba(35,32,28,0.08); transition:transform .3s ease, box-shadow .3s ease; }
+.intlIncBox:hover, .intlExcBox:hover{ transform:translateY(-3px); box-shadow:0 10px 22px rgba(35,32,28,0.08); }
+.intlIncBox h4{ color:#2E7D46; font-size:.95rem; margin-bottom:.8rem; display:flex; align-items:center; gap:.4rem; }
+.intlExcBox h4{ color:#B33A3A; font-size:.95rem; margin-bottom:.8rem; display:flex; align-items:center; gap:.4rem; }
+.intlIncBox ul, .intlExcBox ul{ display:flex; flex-direction:column; gap:.55rem; }
+.intlIncBox li, .intlExcBox li{ font-size:.83rem; color:#585858; display:flex; align-items:flex-start; gap:.5rem; }
+.intlIncBox li i{ color:#2E7D46; margin-top:.15rem; }
+.intlExcBox li i{ color:#B33A3A; margin-top:.15rem; }
+
+.intlWhyBox{
+    position:relative; overflow:hidden;
+    background:linear-gradient(135deg, rgba(50,138,223,0.09), rgba(201,151,58,0.09));
+    border:1px solid rgba(50,138,223,0.12); border-radius:1rem; padding:1.6rem 1.8rem; margin:2.5rem 0; display:flex; gap:1.2rem; align-items:flex-start;
+}
+.intlWhyBox::before{ content:""; position:absolute; top:-40%; right:-10%; width:12rem; height:12rem; border-radius:50%; background:radial-gradient(circle, rgba(50,138,223,0.15), transparent 70%); pointer-events:none; }
+.intlWhyBox i{ font-size:1.6rem; color:var(--intlGold); flex-shrink:0; margin-top:.2rem; }
+.intlWhyBox p{ font-size:.9rem; color:#585858; line-height:1.7; position:relative; }
+
+/* ===== enquiry (no price) / trip essentials / reviews / faq / carry ===== */
+.intlBookingRow{ display:grid; grid-template-columns:1.1fr 1fr; gap:1.3rem; margin-bottom:1rem; }
+.intlEnquireCard{
+    background:linear-gradient(135deg,#fff,#F6F9FC); border:1px solid rgba(50,138,223,0.18); border-radius:1rem;
+    padding:1.4rem 1.5rem; display:flex; flex-direction:column; gap:.8rem; box-shadow:0 6px 18px rgba(35,32,28,0.05);
+}
+.intlEnquireCard .intlPriceLabel{ font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--intlMuted); font-weight:700; }
+.intlEnquireCard .intlPriceHeadline{ font-size:1.25rem; font-weight:700; color:var(--intlInk); }
+.intlEnquireCard .intlPriceNote{ font-size:.78rem; color:var(--intlMuted); }
+.intlActionRow{ display:flex; gap:.7rem; flex-wrap:wrap; }
+.intlCallBtn, .intlWhatsappBtn{
+    display:inline-flex; align-items:center; gap:.5rem; font-weight:700; font-size:.85rem; padding:.7rem 1.2rem; border-radius:.6rem;
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+}
+.intlCallBtn{ background:var(--intlAccent); color:#fff; }
+.intlCallBtn:hover{ transform:translateY(-3px); box-shadow:0 10px 22px rgba(50,138,223,0.35); }
+.intlWhatsappBtn{ background:#25D366; color:#fff; }
+.intlWhatsappBtn:hover{ transform:translateY(-3px); box-shadow:0 10px 22px rgba(37,211,102,0.35); }
+.intlBatchCard{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:1rem; padding:1.4rem 1.5rem; display:flex; flex-direction:column; gap:.7rem; box-shadow:0 6px 18px rgba(35,32,28,0.05); }
+.intlBatchCard h5{ font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; color:var(--intlMuted); font-weight:700; }
+.intlBatchDates{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.intlBatchPill{ font-size:.78rem; font-weight:600; padding:.4rem .8rem; border-radius:999px; background:rgba(50,138,223,0.08); color:var(--intlAccent); border:1px solid rgba(50,138,223,0.2); }
+@media screen and (max-width:760px){ .intlBookingRow{ grid-template-columns:1fr; } }
+
+.intlEssentialsGrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.intlEssentialStat{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; padding:1.1rem; text-align:center; }
+.intlEssentialStat strong{ display:block; font-size:1.02rem; color:var(--intlInk); margin-bottom:.15rem; }
+.intlEssentialStat span{ font-size:.73rem; color:var(--intlMuted); }
+.intlEaseBarWrap{ grid-column:1 / -1; background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; padding:1.1rem 1.3rem; }
+.intlEaseBarWrap .intlEaseBarLabel{ display:flex; justify-content:space-between; font-size:.78rem; color:var(--intlMuted); margin-bottom:.5rem; font-weight:600; }
+.intlEaseBarTrack{ height:.55rem; border-radius:999px; background:rgba(35,32,28,0.07); overflow:hidden; }
+.intlEaseBarFill{ height:100%; border-radius:999px; background:linear-gradient(90deg,var(--intlAccent),var(--intlIce)); transition:width 1.1s cubic-bezier(.16,.84,.44,1); }
+@media screen and (max-width:760px){ .intlEssentialsGrid{ grid-template-columns:1fr 1fr; } }
+
+.intlReviewsGrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.3rem; }
+.intlReviewCard{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:1rem; padding:1.3rem 1.4rem; box-shadow:0 6px 18px rgba(35,32,28,0.05); }
+.intlReviewTop{ display:flex; align-items:center; gap:.7rem; margin-bottom:.6rem; }
+.intlReviewAvatar{ width:2.4rem; height:2.4rem; border-radius:50%; background:linear-gradient(135deg,var(--intlAccent),var(--intlIce)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem; flex-shrink:0; }
+.intlReviewName{ font-size:.88rem; font-weight:700; color:var(--intlInk); }
+.intlReviewStars{ color:var(--intlGold); font-size:.75rem; letter-spacing:.1em; }
+.intlReviewCard p{ font-size:.84rem; color:#585858; line-height:1.65; }
+@media screen and (max-width:900px){ .intlReviewsGrid{ grid-template-columns:1fr; } }
+
+.intlFaqList{ display:flex; flex-direction:column; gap:.7rem; }
+.intlFaqItem{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; overflow:hidden; transition:border-color .25s ease; }
+.intlFaqItem:hover{ border-color:rgba(50,138,223,0.3); }
+.intlFaqHead{ width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem; background:none; border:none; padding:1rem 1.3rem; cursor:pointer; text-align:left; font-size:.88rem; font-weight:700; color:var(--intlInk); }
+.intlFaqIcon{ color:var(--intlMuted); flex-shrink:0; transition:transform .35s cubic-bezier(.34,1.56,.64,1), color .3s ease; }
+.intlFaqItem.intlFaqOpen .intlFaqIcon{ transform:rotate(45deg); color:var(--intlAccent); }
+.intlFaqBody{ max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,.84,.44,1), padding .4s ease; padding:0 1.3rem; }
+.intlFaqItem.intlFaqOpen .intlFaqBody{ max-height:12rem; padding:0 1.3rem 1.1rem; }
+.intlFaqBody p{ font-size:.84rem; color:#585858; line-height:1.65; }
+
+.intlPackGrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:.7rem 1.5rem; }
+.intlPackItem{ display:flex; align-items:flex-start; gap:.6rem; font-size:.85rem; color:#585858; }
+.intlPackItem i{ color:var(--intlAccent); margin-top:.2rem; flex-shrink:0; }
+@media screen and (max-width:600px){ .intlPackGrid{ grid-template-columns:1fr; } }
+
+.intlPanelCta{
+    position:relative; overflow:hidden;
+    margin-top:2.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+    background:linear-gradient(120deg, var(--intlInk) 60%, #35302A 100%); border-radius:1rem; padding:1.6rem 1.8rem; color:#fff;
+}
+.intlPanelCta::after{ content:""; position:absolute; top:-60%; right:-6%; width:14rem; height:14rem; border-radius:50%; background:radial-gradient(circle, rgba(50,138,223,0.22), transparent 70%); pointer-events:none; }
+.intlPanelCta div h4{ font-size:1.1rem; margin-bottom:.2rem; }
+.intlPanelCta div p{ font-size:.82rem; color:#D3C9C9; }
+.intlPanelCtaBtn{
+    position:relative; background:var(--intlAccent); color:#fff; padding:.8rem 1.6rem; border-radius:.6rem;
+    font-weight:600; font-size:.9rem; white-space:nowrap; display:inline-flex; align-items:center; gap:.5rem;
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1), background .3s ease, box-shadow .3s ease;
+}
+.intlPanelCtaBtn:hover{ background:var(--intlIce); transform:translateY(-3px); box-shadow:0 10px 22px rgba(107,180,238,0.4); }
+
+@media screen and (max-width:900px){ .intlStatsRow{ grid-template-columns:1fr 1fr; } .intlPlacesGrid{ grid-template-columns:1fr 1fr; } .intlIncExc{ grid-template-columns:1fr; } }
+@media screen and (max-width:600px){ .intlPlacesGrid{ grid-template-columns:1fr; } .intlPanelBanner{ height:12rem; } .intlPanelBannerText h2{ font-size:1.4rem; } }
+
+/* ===== ENQUIRY FORM (replaces booking form — no price field, just contact) ===== */
+.intlBookForm{ max-width:32rem; margin:4rem auto; background:#fff; border-radius:1rem; padding:2rem; box-shadow:0 8px 24px rgba(35,32,28,0.09); display:flex; flex-direction:column; gap:1rem; }
+.intlBookForm h2{ font-size:1.3rem; text-align:center; }
+.intlBookForm p.intlFormNote{ font-size:.82rem; color:var(--intlMuted); text-align:center; margin-top:-.5rem; }
+.intlBookForm input, .intlBookForm select{ width:100%; background:#F3F1EC; border:1px solid rgba(35,32,28,0.1); border-radius:.6rem; padding:.75rem .9rem; font-size:.9rem; outline:none; font-family:inherit; color:var(--intlInk); }
+.intlBookForm input:focus, .intlBookForm select:focus{ border-color:var(--intlAccent); }
+.intlBookForm button{ background:var(--intlAccent); color:#fff; border:none; border-radius:.6rem; padding:.9rem; font-weight:600; cursor:pointer; }
+.intlBookForm button:hover{ background:var(--intlInk); }
+.intlSendOtpBtn{ background:var(--intlInk); color:#fff; border:none; border-radius:.5rem; padding:.7rem 1rem; cursor:pointer; }
+.intlOtpInput{ width:100%; padding:.7rem; border-radius:.5rem; border:1px solid #ccc; }
+
+</style>
+</head>
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a  href="./index.html">Home</a></li>
+                <li class="hideonmobile navHasDropdown">
+    <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+    <div class="navDropdown">
+        <div class="navDropdownCol">
+            <h4>Luxury Buses</h4>
+            <a href="">Volvo Bus</a>
+            <a href="">Winger</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Luxury Cars</h4>
+            <a href="">Innova Crysta</a>
+            <a href="">Kia Carnival</a>
+            <a href="">Honda City</a>
+            <a href="">Etios</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Economical Cars</h4>
+            <a href="">Swift Dzire</a>
+            <a href="">Ertiga</a>
+            <a href="">Innova</a>
+        </div>
+    </div>
+</li>
+            <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="./icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+    <!-- loader / animation -->
+    <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+<div class="intlHero">
+    <div class="intlHeroBg"></div>
+    <div class="intlHeroGlow"></div>
+    <div class="intlCloudLayer" id="intlCloudLayer"></div>
+    <div class="intlHeroOverlay">
+        <span class="intlTag"><i class="ti ti-world"></i> International Getaways</span>
+        <h1>International Tour Packages</h1>
+        <p>Six handpicked international escapes — Thailand, Malaysia, Turkey, Dubai, Indonesia, and Singapore — each planned door to door.</p>
+    </div>
+    <div class="intlScrollCue"><span>Explore Packages</span><i class="ti ti-chevron-down"></i></div>
+</div>
+
+<div class="intlOverview intlReveal intlInView">
+    <p>Choose a destination below to see the full journey — day-by-day itinerary, every place you'll visit, what's included, and everything you need to know before you fly. Pricing varies by season and group size, so just call or WhatsApp us for a tailored quote.</p>
+</div>
+
+<div class="intlTabsBar">
+    <button class="intlTabBtn intlTabActive" onclick="intlShowPanel('thailand')">Thailand</button>
+    <button class="intlTabBtn" onclick="intlShowPanel('malaysia')">Malaysia</button>
+    <button class="intlTabBtn" onclick="intlShowPanel('turkey')">Turkey</button>
+    <button class="intlTabBtn" onclick="intlShowPanel('dubai')">Dubai</button>
+    <button class="intlTabBtn" onclick="intlShowPanel('indonesia')">Indonesia (Bali)</button>
+    <button class="intlTabBtn" onclick="intlShowPanel('singapore')">Singapore</button>
+</div>
+
+
+<!-- ===================== 1. THAILAND ===================== -->
+<div class="intlPanel intlPanelActive" id="intlPanel-thailand">
+    <div class="intlPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=1600&auto=format&fit=crop" alt="Thailand — Bangkok &amp; Phuket Getaway">
+        <div class="intlPanelBannerText"><span><i class="ti ti-world"></i> Beach &amp; City Circuit · Thailand</span><h2>Thailand — Bangkok &amp; Phuket Getaway</h2></div>
+    </div>
+    <p class="intlPanelIntro">Thailand pairs two very different sides of Southeast Asia in one trip — Bangkok's gilded temples, street-food alleys, and rooftop skyline, followed by Phuket's turquoise bays and island-hopping. This circuit opens in Bangkok with the Grand Palace and river life along the Chao Phraya, then flies south to Phuket for beach time and a day trip out to the limestone cliffs of the Phi Phi Islands. It's one of the most accessible international trips for first-time overseas travelers from India — short flight time, visa on arrival for Indian passport holders, and a well-worn tourist infrastructure that makes getting around genuinely easy.</p>
+    <div class="intlStatsRow"><div class="intlStatBox"><i class="ti ti-plane"></i><strong>Direct 4hrs</strong><span>Flight Duration</span></div><div class="intlStatBox"><i class="ti ti-calendar-event"></i><strong>6 Days</strong><span>Duration</span></div><div class="intlStatBox"><i class="ti ti-passport"></i><strong>Visa on Arrival</strong><span>Entry</span></div><div class="intlStatBox"><i class="ti ti-sun"></i><strong>Nov – Feb</strong><span>Best Time</span></div></div>
+    <div class="intlWhyBox"><i class="ti ti-map"></i><p>Very few international circuits let you combine a major capital city and a proper beach holiday in six days without feeling rushed — Bangkok and Phuket are close enough by air that you get both experiences in full rather than a compressed version of each.</p></div>
+
+    <h3 class="intlSubHeading">Day-by-Day Itinerary</h3>
+    <div class="intlItinerary"><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">1</span><strong>Arrival in Bangkok</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Arrive in Bangkok, check in, evening at leisure exploring the riverside night markets.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">2</span><strong>Grand Palace &amp; Wat Arun</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Visit the Grand Palace and Wat Phra Kaew, cross the river to Wat Arun, evening free for shopping or a rooftop bar.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">3</span><strong>Fly to Phuket</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Morning flight to Phuket, check in, evening at Patong Beach.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">4</span><strong>Phi Phi Islands day trip</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Full-day boat trip to the Phi Phi Islands for snorkeling and Maya Bay, return to Phuket by evening.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">5</span><strong>Phuket Old Town &amp; beaches</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Morning exploring Phuket's Sino-Portuguese Old Town, afternoon at leisure on the beach.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">6</span><strong>Departure</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Transfer to Phuket airport for your flight home.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Places You'll Visit</h3>
+    <div class="intlPlacesGrid"><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=800&auto=format&fit=crop" alt="Grand Palace, Bangkok"><div class="intlPlaceBody"><h4>Grand Palace, Bangkok</h4><p>The former royal residence and Thailand's most iconic architectural landmark.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop" alt="Phi Phi Islands"><div class="intlPlaceBody"><h4>Phi Phi Islands</h4><p>Limestone cliffs and turquoise water, best seen on a full-day boat trip from Phuket.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1552550049-db097c9480d1?q=80&w=800&auto=format&fit=crop" alt="Phuket Old Town"><div class="intlPlaceBody"><h4>Phuket Old Town</h4><p>Colourful Sino-Portuguese shophouses and a lively café and street-art scene.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="intlIncExc">
+        <div class="intlIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> International + domestic flights (Bangkok-Phuket)</li><li><i class="ti ti-check"></i> 4-star hotel stays</li><li><i class="ti ti-check"></i> Daily breakfast</li><li><i class="ti ti-check"></i> Airport &amp; sightseeing transfers</li><li><i class="ti ti-check"></i> Phi Phi Islands boat trip</li></ul></div>
+        <div class="intlExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Visa on arrival fee (paid locally)</li><li><i class="ti ti-x"></i> Lunch &amp; dinner</li><li><i class="ti ti-x"></i> Travel insurance</li><li><i class="ti ti-x"></i> Personal expenses</li></ul></div>
+    </div>
+
+    <h3 class="intlSubHeading">Ask Us for the Best Price</h3>
+    <div class="intlBookingRow">
+        <div class="intlEnquireCard">
+            <span class="intlPriceLabel">Pricing</span>
+            <div class="intlPriceHeadline">Prices vary by group size, season &amp; hotel category</div>
+            <span class="intlPriceNote">Call us or send a WhatsApp message and we'll get back with a tailored quote within a few hours.</span>
+            <div class="intlActionRow">
+                <a class="intlCallBtn" href="tel:+919784568787"><i class="ti ti-phone-call"></i> Call Now</a>
+                <a class="intlWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Thailand%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> WhatsApp Enquiry</a>
+            </div>
+        </div>
+        <div class="intlBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="intlBatchDates"><span class="intlBatchPill">12 Nov</span><span class="intlBatchPill">3 Dec</span><span class="intlBatchPill">21 Dec</span><span class="intlBatchPill">18 Jan</span><span class="intlBatchPill">8 Feb</span></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Trip Essentials</h3>
+    <div class="intlEssentialsGrid">
+        <div class="intlEssentialStat"><i class="ti ti-plane" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>~4 hrs direct</strong><span>Flight Duration</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-passport" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>Visa on Arrival</strong><span>Entry Requirement</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-users" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>2-16 travelers</strong><span>Group Size</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-shield-check" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>80%</strong><span>Travel Ease</span></div>
+        <div class="intlEaseBarWrap">
+            <div class="intlEaseBarLabel"><span>Complex</span><span>Very Easy — visa on arrival for Indians</span><span>Effortless</span></div>
+            <div class="intlEaseBarTrack"><div class="intlEaseBarFill" style="width:80%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Traveler Reviews</h3>
+    <div class="intlReviewsGrid"><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">RM</div><div><div class="intlReviewName">Rhea M.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Perfect first international trip — everything from the visa to getting around felt effortless. Phi Phi Islands were stunning.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">KS</div><div><div class="intlReviewName">Karthik S.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Bangkok's street food alone was worth the trip. Loved that we didn't have to rush between the two cities.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">AT</div><div><div class="intlReviewName">Ananya T.</div><div class="intlReviewStars">★★★★☆</div></div></div><p>Great itinerary overall. Phuket in Nov-Dec had a bit of rain some evenings — worth checking the exact dates.</p></div></div>
+
+    <h3 class="intlSubHeading">Frequently Asked Questions</h3>
+    <div class="intlFaqList"><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Do Indian citizens need a visa in advance?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>No, Thailand offers visa-on-arrival for Indian passport holders for short tourist stays; you'll need passport photos and proof of onward travel.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">What's the best time to visit?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>November through February offers the most pleasant weather with lower humidity and less rain across both Bangkok and Phuket.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is the domestic flight to Phuket included?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, the Bangkok-Phuket domestic flight is included in the package.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is this trip suitable for families with children?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, both Bangkok and Phuket are very family-friendly, though the Phi Phi Islands boat trip involves a fair amount of time at sea.</p></div></div></div>
+
+    <h3 class="intlSubHeading">What to Carry</h3>
+    <div class="intlPackGrid"><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Passport (valid 6+ months)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Passport-size photos (for visa on arrival)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Forex card / US dollars for exchange</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Universal power adapter</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen &amp; swimwear</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking shoes</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Modest clothing for temple visits</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Light rain jacket</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Copy of travel insurance</span></div></div>
+
+    <div class="intlPanelCta">
+        <div><h4>Interested in Thailand — Bangkok &amp; Phuket Getaway?</h4><p>Call us or drop a WhatsApp message — we'll share a tailored quote and available dates.</p></div>
+        <div class="intlActionRow">
+            <a href="tel:+919784568787" class="intlPanelCtaBtn"><i class="ti ti-phone-call"></i> Call Now</a>
+            <a href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Thailand%20package" target="_blank" class="intlPanelCtaBtn" style="background:#25D366;"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 2. MALAYSIA ===================== -->
+<div class="intlPanel" id="intlPanel-malaysia">
+    <div class="intlPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1600&auto=format&fit=crop" alt="Malaysia — Kuala Lumpur &amp; Langkawi">
+        <div class="intlPanelBannerText"><span><i class="ti ti-world"></i> City &amp; Island Circuit · Malaysia</span><h2>Malaysia — Kuala Lumpur &amp; Langkawi</h2></div>
+    </div>
+    <p class="intlPanelIntro">Malaysia offers one of the smoothest short-haul international trips from India, pairing Kuala Lumpur's futuristic skyline with the laid-back island of Langkawi. In KL, the Petronas Twin Towers and the limestone Batu Caves anchor a city that blends Malay, Chinese, and Indian influences into a genuinely distinct food and culture scene. Flying north to Langkawi swaps skyscrapers for beaches, mangroves, and the striking Sky Bridge suspended over the rainforest canopy. With Malaysia's visa-free entry for Indian e-passport holders and a short flight time, this is an easy five-day trip that doesn't feel rushed despite the short duration.</p>
+    <div class="intlStatsRow"><div class="intlStatBox"><i class="ti ti-plane"></i><strong>Direct 5hrs</strong><span>Flight Duration</span></div><div class="intlStatBox"><i class="ti ti-calendar-event"></i><strong>5 Days</strong><span>Duration</span></div><div class="intlStatBox"><i class="ti ti-passport"></i><strong>Visa-Free / eNTRI</strong><span>Entry</span></div><div class="intlStatBox"><i class="ti ti-sun"></i><strong>Dec – Feb</strong><span>Best Time</span></div></div>
+    <div class="intlWhyBox"><i class="ti ti-building-skyscraper"></i><p>Kuala Lumpur's night skyline from the Petronas Towers' observation deck is one of the more underrated city views in Southeast Asia, and pairing it with Langkawi's quieter island pace gives this short trip a nice contrast most five-day circuits don't manage.</p></div>
+
+    <h3 class="intlSubHeading">Day-by-Day Itinerary</h3>
+    <div class="intlItinerary"><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">1</span><strong>Arrival in Kuala Lumpur</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Arrive, check in, evening visit to the Petronas Towers light show and KLCC Park.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">2</span><strong>KL City Tour &amp; Batu Caves</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Morning visit to Batu Caves, afternoon city tour covering Merdeka Square and Petaling Street.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">3</span><strong>Fly to Langkawi</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Morning flight to Langkawi, check in, evening at Cenang Beach.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">4</span><strong>Langkawi Sky Bridge &amp; Island Hopping</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Cable car and Sky Bridge in the morning, afternoon island-hopping boat tour.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">5</span><strong>Departure</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Transfer to Langkawi airport for your flight home.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Places You'll Visit</h3>
+    <div class="intlPlacesGrid"><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=800&auto=format&fit=crop" alt="Petronas Twin Towers"><div class="intlPlaceBody"><h4>Petronas Twin Towers</h4><p>Once the tallest buildings in the world, still Kuala Lumpur's defining skyline feature.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1596402184320-417e7178b2cd?q=80&w=800&auto=format&fit=crop" alt="Batu Caves"><div class="intlPlaceBody"><h4>Batu Caves</h4><p>A limestone hill temple complex reached by 272 brightly painted steps.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1583417319070-4a69db38a482?q=80&w=800&auto=format&fit=crop" alt="Langkawi Sky Bridge"><div class="intlPlaceBody"><h4>Langkawi Sky Bridge</h4><p>A curved pedestrian bridge suspended above the rainforest canopy.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="intlIncExc">
+        <div class="intlIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> International + domestic flights (KL-Langkawi)</li><li><i class="ti ti-check"></i> 4-star hotel stays</li><li><i class="ti ti-check"></i> Daily breakfast</li><li><i class="ti ti-check"></i> Airport &amp; sightseeing transfers</li><li><i class="ti ti-check"></i> Langkawi cable car &amp; island-hopping tour</li></ul></div>
+        <div class="intlExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Lunch &amp; dinner</li><li><i class="ti ti-x"></i> Travel insurance</li><li><i class="ti ti-x"></i> Personal expenses</li><li><i class="ti ti-x"></i> Batu Caves temple donations</li></ul></div>
+    </div>
+
+    <h3 class="intlSubHeading">Ask Us for the Best Price</h3>
+    <div class="intlBookingRow">
+        <div class="intlEnquireCard">
+            <span class="intlPriceLabel">Pricing</span>
+            <div class="intlPriceHeadline">Prices vary by group size, season &amp; hotel category</div>
+            <span class="intlPriceNote">Call us or send a WhatsApp message and we'll get back with a tailored quote within a few hours.</span>
+            <div class="intlActionRow">
+                <a class="intlCallBtn" href="tel:+919784568787"><i class="ti ti-phone-call"></i> Call Now</a>
+                <a class="intlWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Malaysia%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> WhatsApp Enquiry</a>
+            </div>
+        </div>
+        <div class="intlBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="intlBatchDates"><span class="intlBatchPill">15 Nov</span><span class="intlBatchPill">6 Dec</span><span class="intlBatchPill">27 Dec</span><span class="intlBatchPill">17 Jan</span><span class="intlBatchPill">14 Feb</span></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Trip Essentials</h3>
+    <div class="intlEssentialsGrid">
+        <div class="intlEssentialStat"><i class="ti ti-plane" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>~5 hrs direct</strong><span>Flight Duration</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-passport" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>Visa-Free (eNTRI)</strong><span>Entry Requirement</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-users" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>2-16 travelers</strong><span>Group Size</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-shield-check" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>85%</strong><span>Travel Ease</span></div>
+        <div class="intlEaseBarWrap">
+            <div class="intlEaseBarLabel"><span>Complex</span><span>Very Easy — visa-free entry for short stays</span><span>Effortless</span></div>
+            <div class="intlEaseBarTrack"><div class="intlEaseBarFill" style="width:85%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Traveler Reviews</h3>
+    <div class="intlReviewsGrid"><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">SQ</div><div><div class="intlReviewName">Sameera Q.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Loved the contrast between KL's skyline and Langkawi's beaches. Sky Bridge views were incredible on a clear day.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">FR</div><div><div class="intlReviewName">Faisal R.</div><div class="intlReviewStars">★★★★★</div></div></div><p>KL's food scene surprised us the most — go hungry to Jalan Alor. Batu Caves get busy, go early.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">NV</div><div><div class="intlReviewName">Nidhi V.</div><div class="intlReviewStars">★★★★☆</div></div></div><p>Great short trip. Island-hopping tour was a bit rushed — worth asking for a half-day-only option if you want more beach time.</p></div></div>
+
+    <h3 class="intlSubHeading">Frequently Asked Questions</h3>
+    <div class="intlFaqList"><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Do Indian citizens need a visa?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Most Indian e-passport holders can travel visa-free for short stays under Malaysia's eNTRI/visa-exemption scheme; regular passport holders should check current requirements before booking.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is 5 days enough for this circuit?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, though it's a fairly packed schedule — travelers wanting a more relaxed pace can extend to 6-7 days for an additional cost.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is the Langkawi cable car ride safe?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, it's a well-maintained tourist attraction; the ride can be closed briefly in high winds, in which case we adjust the schedule.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is alcohol available in Malaysia?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, though it's more expensive than in Thailand due to taxation, and less widely available in some areas outside major tourist zones.</p></div></div></div>
+
+    <h3 class="intlSubHeading">What to Carry</h3>
+    <div class="intlPackGrid"><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Passport (valid 6+ months)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Forex card / US dollars for exchange</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Universal power adapter</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen &amp; swimwear</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking shoes</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Modest clothing for Batu Caves</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Light rain jacket</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Insect repellent</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Copy of travel insurance</span></div></div>
+
+    <div class="intlPanelCta">
+        <div><h4>Interested in Malaysia — Kuala Lumpur &amp; Langkawi?</h4><p>Call us or drop a WhatsApp message — we'll share a tailored quote and available dates.</p></div>
+        <div class="intlActionRow">
+            <a href="tel:+919784568787" class="intlPanelCtaBtn"><i class="ti ti-phone-call"></i> Call Now</a>
+            <a href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Malaysia%20package" target="_blank" class="intlPanelCtaBtn" style="background:#25D366;"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 3. TURKEY ===================== -->
+<div class="intlPanel" id="intlPanel-turkey">
+    <div class="intlPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=1600&auto=format&fit=crop" alt="Turkey — Istanbul &amp; Cappadocia">
+        <div class="intlPanelBannerText"><span><i class="ti ti-world"></i> History &amp; Balloons · Turkey</span><h2>Turkey — Istanbul &amp; Cappadocia</h2></div>
+    </div>
+    <p class="intlPanelIntro">Turkey sits at the literal crossroads of Europe and Asia, and this circuit captures both the imperial history of Istanbul and the surreal volcanic landscape of Cappadocia. In Istanbul, the Hagia Sophia, Blue Mosque, and Topkapi Palace trace layers of Byzantine and Ottoman history within walking distance of each other, followed by a Bosphorus cruise between two continents. Flying inland to Cappadocia swaps domes and minarets for fairy chimney rock formations and underground cities, with a pre-dawn hot air balloon ride over the valley as the trip's signature moment — one of the most photographed sunrises anywhere in the world.</p>
+    <div class="intlStatsRow"><div class="intlStatBox"><i class="ti ti-plane"></i><strong>~9hrs (1 stop)</strong><span>Flight Duration</span></div><div class="intlStatBox"><i class="ti ti-calendar-event"></i><strong>6 Days</strong><span>Duration</span></div><div class="intlStatBox"><i class="ti ti-passport"></i><strong>e-Visa</strong><span>Entry</span></div><div class="intlStatBox"><i class="ti ti-sun"></i><strong>Apr – Jun, Sep – Oct</strong><span>Best Time</span></div></div>
+    <div class="intlWhyBox"><i class="ti ti-building-mosque"></i><p>Very few countries let you stand in a single city that has been the capital of two different empires, then fly two hours to a landscape carved by ancient volcanic eruptions — the contrast between Istanbul and Cappadocia is part of what makes this circuit so rewarding.</p></div>
+
+    <h3 class="intlSubHeading">Day-by-Day Itinerary</h3>
+    <div class="intlItinerary"><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">1</span><strong>Arrival in Istanbul</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Arrive, check in, evening walk around Sultanahmet Square.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">2</span><strong>Hagia Sophia, Blue Mosque &amp; Topkapi</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Full day covering Istanbul's three major historic sites within the old city.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">3</span><strong>Bosphorus Cruise &amp; Grand Bazaar</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Morning Bosphorus cruise between Europe and Asia, afternoon at the Grand Bazaar and Spice Market.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">4</span><strong>Fly to Cappadocia</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Morning flight to Cappadocia, afternoon exploring the Goreme Open Air Museum.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">5</span><strong>Hot Air Balloon &amp; Underground City</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Pre-dawn hot air balloon ride over the valley, afternoon visit to an underground city and Uchisar Castle.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">6</span><strong>Departure</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Fly back to Istanbul and onward for your flight home.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Places You'll Visit</h3>
+    <div class="intlPlacesGrid"><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=800&auto=format&fit=crop" alt="Hagia Sophia"><div class="intlPlaceBody"><h4>Hagia Sophia</h4><p>A Byzantine cathedral turned Ottoman mosque, nearly 1,500 years old.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1526897317204-8b1e29e59cf8?q=80&w=800&auto=format&fit=crop" alt="Cappadocia Balloons"><div class="intlPlaceBody"><h4>Cappadocia Balloons</h4><p>Hundreds of hot air balloons rising over the fairy chimney valleys at sunrise.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1602940659805-770d1b3b9911?q=80&w=800&auto=format&fit=crop" alt="Bosphorus Strait"><div class="intlPlaceBody"><h4>Bosphorus Strait</h4><p>The waterway separating — and connecting — Istanbul's European and Asian sides.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="intlIncExc">
+        <div class="intlIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> International + domestic flights (Istanbul-Cappadocia)</li><li><i class="ti ti-check"></i> 4-star hotel stays</li><li><i class="ti ti-check"></i> Daily breakfast</li><li><i class="ti ti-check"></i> Bosphorus cruise</li><li><i class="ti ti-check"></i> Hot air balloon ride</li><li><i class="ti ti-check"></i> Sightseeing transfers &amp; guide</li></ul></div>
+        <div class="intlExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> e-Visa fee (paid online in advance)</li><li><i class="ti ti-x"></i> Lunch &amp; dinner</li><li><i class="ti ti-x"></i> Travel insurance</li><li><i class="ti ti-x"></i> Personal expenses</li></ul></div>
+    </div>
+
+    <h3 class="intlSubHeading">Ask Us for the Best Price</h3>
+    <div class="intlBookingRow">
+        <div class="intlEnquireCard">
+            <span class="intlPriceLabel">Pricing</span>
+            <div class="intlPriceHeadline">Prices vary by group size, season &amp; hotel category</div>
+            <span class="intlPriceNote">Call us or send a WhatsApp message and we'll get back with a tailored quote within a few hours.</span>
+            <div class="intlActionRow">
+                <a class="intlCallBtn" href="tel:+919784568787"><i class="ti ti-phone-call"></i> Call Now</a>
+                <a class="intlWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Turkey%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> WhatsApp Enquiry</a>
+            </div>
+        </div>
+        <div class="intlBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="intlBatchDates"><span class="intlBatchPill">10 Apr</span><span class="intlBatchPill">1 May</span><span class="intlBatchPill">22 May</span><span class="intlBatchPill">18 Sep</span><span class="intlBatchPill">9 Oct</span></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Trip Essentials</h3>
+    <div class="intlEssentialsGrid">
+        <div class="intlEssentialStat"><i class="ti ti-plane" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>~9 hrs, 1 stop</strong><span>Flight Duration</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-passport" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>e-Visa (apply online)</strong><span>Entry Requirement</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-users" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>2-14 travelers</strong><span>Group Size</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-shield-check" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>70%</strong><span>Travel Ease</span></div>
+        <div class="intlEaseBarWrap">
+            <div class="intlEaseBarLabel"><span>Complex</span><span>Easy — e-Visa applied online in advance</span><span>Effortless</span></div>
+            <div class="intlEaseBarTrack"><div class="intlEaseBarFill" style="width:70%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Traveler Reviews</h3>
+    <div class="intlReviewsGrid"><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">IP</div><div><div class="intlReviewName">Ishaan P.</div><div class="intlReviewStars">★★★★★</div></div></div><p>The balloon ride over Cappadocia is one of the most beautiful things I've ever seen, worth the early wake-up.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">ZK</div><div><div class="intlReviewName">Zara K.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Istanbul's mix of history is incredible — Hagia Sophia and Blue Mosque back to back is a lot to take in.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">OD</div><div><div class="intlReviewName">Omkar D.</div><div class="intlReviewStars">★★★★☆</div></div></div><p>Loved the trip overall. e-Visa process was simple but apply at least a week ahead to be safe.</p></div></div>
+
+    <h3 class="intlSubHeading">Frequently Asked Questions</h3>
+    <div class="intlFaqList"><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">How do I get the e-Visa?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Indian passport holders apply online through Turkey's official e-Visa portal; we can guide you through the process, but you'll need to apply yourself in advance.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is the hot air balloon ride weather-dependent?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, balloon flights can be cancelled or delayed due to wind; operators typically offer a rescheduled flight the next morning if this happens.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is Turkey safe for Indian travelers?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, Istanbul and Cappadocia are well-established tourist destinations with a strong safety record; we recommend standard travel precautions as with any international trip.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Can we extend the trip to include Pamukkale?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, Pamukkale's white travertine terraces can be added as a 1-2 day extension — let us know when booking.</p></div></div></div>
+
+    <h3 class="intlSubHeading">What to Carry</h3>
+    <div class="intlPackGrid"><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Passport (valid 6+ months)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Printed e-Visa copy</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Forex card / Euros or US dollars</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Universal power adapter</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking shoes</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Modest clothing for mosque visits (headscarf for women)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Warm layer for early balloon ride</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Camera</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Copy of travel insurance</span></div></div>
+
+    <div class="intlPanelCta">
+        <div><h4>Interested in Turkey — Istanbul &amp; Cappadocia?</h4><p>Call us or drop a WhatsApp message — we'll share a tailored quote and available dates.</p></div>
+        <div class="intlActionRow">
+            <a href="tel:+919784568787" class="intlPanelCtaBtn"><i class="ti ti-phone-call"></i> Call Now</a>
+            <a href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Turkey%20package" target="_blank" class="intlPanelCtaBtn" style="background:#25D366;"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 4. DUBAI ===================== -->
+<div class="intlPanel" id="intlPanel-dubai">
+    <div class="intlPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1600&auto=format&fit=crop" alt="Dubai &amp; Abu Dhabi">
+        <div class="intlPanelBannerText"><span><i class="ti ti-world"></i> City &amp; Desert Circuit · UAE</span><h2>Dubai &amp; Abu Dhabi</h2></div>
+    </div>
+    <p class="intlPanelIntro">Dubai remains one of the most convenient short international trips from India — a direct flight of around three hours into a city built around the Burj Khalifa, world-class shopping, and desert adventure just outside the urban sprawl. This circuit balances Dubai's skyline and a desert safari with camel rides and a Bedouin-style dinner, then extends to Abu Dhabi for the Sheikh Zayed Grand Mosque, one of the most architecturally striking mosques in the world, and the Louvre Abu Dhabi. It's an easy, high-comfort international trip that works well for families, couples, and first-time overseas travelers alike.</p>
+    <div class="intlStatsRow"><div class="intlStatBox"><i class="ti ti-plane"></i><strong>Direct 3.5hrs</strong><span>Flight Duration</span></div><div class="intlStatBox"><i class="ti ti-calendar-event"></i><strong>5 Days</strong><span>Duration</span></div><div class="intlStatBox"><i class="ti ti-passport"></i><strong>Visa Required</strong><span>Entry</span></div><div class="intlStatBox"><i class="ti ti-sun"></i><strong>Nov – Mar</strong><span>Best Time</span></div></div>
+    <div class="intlWhyBox"><i class="ti ti-building-skyscraper"></i><p>The view from the Burj Khalifa's observation deck at sunset, followed by a desert safari under a full sky of stars the same evening, captures Dubai's strange and appealing contrast between hyper-modern city and open desert better than almost anything else on the itinerary.</p></div>
+
+    <h3 class="intlSubHeading">Day-by-Day Itinerary</h3>
+    <div class="intlItinerary"><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">1</span><strong>Arrival in Dubai</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Arrive, check in, evening at the Dubai Fountain and Dubai Mall.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">2</span><strong>Burj Khalifa &amp; City Tour</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Morning Burj Khalifa observation deck visit, afternoon city tour covering Jumeirah and the Palm.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">3</span><strong>Desert Safari</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Afternoon dune bashing, camel ride, and a Bedouin-style dinner with entertainment under the desert sky.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">4</span><strong>Abu Dhabi Day Trip</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Full-day trip to Abu Dhabi covering the Sheikh Zayed Grand Mosque and Louvre Abu Dhabi.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">5</span><strong>Departure</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Transfer to Dubai airport for your flight home.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Places You'll Visit</h3>
+    <div class="intlPlacesGrid"><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop" alt="Burj Khalifa"><div class="intlPlaceBody"><h4>Burj Khalifa</h4><p>The world's tallest building, with an observation deck offering sweeping desert-to-sea views.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?q=80&w=800&auto=format&fit=crop" alt="Desert Safari"><div class="intlPlaceBody"><h4>Desert Safari</h4><p>Dune bashing, camel rides, and a traditional dinner under the stars.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=800&auto=format&fit=crop" alt="Sheikh Zayed Grand Mosque"><div class="intlPlaceBody"><h4>Sheikh Zayed Grand Mosque</h4><p>One of the largest and most architecturally striking mosques in the world.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="intlIncExc">
+        <div class="intlIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> 4-star hotel stays</li><li><i class="ti ti-check"></i> Daily breakfast</li><li><i class="ti ti-check"></i> Airport &amp; sightseeing transfers</li><li><i class="ti ti-check"></i> Burj Khalifa entry</li><li><i class="ti ti-check"></i> Desert safari with dinner</li><li><i class="ti ti-check"></i> Abu Dhabi day trip &amp; mosque visit</li></ul></div>
+        <div class="intlExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Visa fee</li><li><i class="ti ti-x"></i> Lunch &amp; dinner (except safari)</li><li><i class="ti ti-x"></i> Travel insurance</li><li><i class="ti ti-x"></i> Personal expenses</li></ul></div>
+    </div>
+
+    <h3 class="intlSubHeading">Ask Us for the Best Price</h3>
+    <div class="intlBookingRow">
+        <div class="intlEnquireCard">
+            <span class="intlPriceLabel">Pricing</span>
+            <div class="intlPriceHeadline">Prices vary by group size, season &amp; hotel category</div>
+            <span class="intlPriceNote">Call us or send a WhatsApp message and we'll get back with a tailored quote within a few hours.</span>
+            <div class="intlActionRow">
+                <a class="intlCallBtn" href="tel:+919784568787"><i class="ti ti-phone-call"></i> Call Now</a>
+                <a class="intlWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Dubai%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> WhatsApp Enquiry</a>
+            </div>
+        </div>
+        <div class="intlBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="intlBatchDates"><span class="intlBatchPill">8 Nov</span><span class="intlBatchPill">29 Nov</span><span class="intlBatchPill">20 Dec</span><span class="intlBatchPill">17 Jan</span><span class="intlBatchPill">14 Feb</span></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Trip Essentials</h3>
+    <div class="intlEssentialsGrid">
+        <div class="intlEssentialStat"><i class="ti ti-plane" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>~3.5 hrs direct</strong><span>Flight Duration</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-passport" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>Visa Required (arranged)</strong><span>Entry Requirement</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-users" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>2-16 travelers</strong><span>Group Size</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-shield-check" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>75%</strong><span>Travel Ease</span></div>
+        <div class="intlEaseBarWrap">
+            <div class="intlEaseBarLabel"><span>Complex</span><span>Easy — visa arranged as part of booking</span><span>Effortless</span></div>
+            <div class="intlEaseBarTrack"><div class="intlEaseBarFill" style="width:75%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Traveler Reviews</h3>
+    <div class="intlReviewsGrid"><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">YT</div><div><div class="intlReviewName">Yash T.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Desert safari was the highlight for our family — kids loved the dune bashing and camel ride.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">PL</div><div><div class="intlReviewName">Priyanka L.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Sheikh Zayed Mosque is breathtaking, one of the most beautiful buildings we've seen anywhere.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">RM</div><div><div class="intlReviewName">Rohit M.</div><div class="intlReviewStars">★★★★☆</div></div></div><p>Great trip overall, Dubai in peak winter season is busy — book Burj Khalifa slots early.</p></div></div>
+
+    <h3 class="intlSubHeading">Frequently Asked Questions</h3>
+    <div class="intlFaqList"><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is the UAE visa arranged for us?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, we assist with the tourist visa application as part of the booking process; you'll need to submit documents in advance.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is dune bashing safe for kids and elderly travelers?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Standard desert safaris are generally safe and adjusted for comfort; let us know if traveling with young children or elderly members so we can select a gentler route.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is alcohol available in Dubai?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, in licensed hotels, restaurants, and bars, though public intoxication and drinking outside licensed venues is not permitted.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">How hot is Dubai during the trip dates?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>November through March offers comfortable temperatures for sightseeing; summer months (May-September) are extremely hot and not recommended.</p></div></div></div>
+
+    <h3 class="intlSubHeading">What to Carry</h3>
+    <div class="intlPackGrid"><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Passport (valid 6+ months)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Visa documents</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Forex card / US dollars</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Universal power adapter (UAE uses UK-style plugs)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Modest clothing for mosque visits</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking shoes</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Light jacket (AC indoors is strong)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Copy of travel insurance</span></div></div>
+
+    <div class="intlPanelCta">
+        <div><h4>Interested in Dubai &amp; Abu Dhabi?</h4><p>Call us or drop a WhatsApp message — we'll share a tailored quote and available dates.</p></div>
+        <div class="intlActionRow">
+            <a href="tel:+919784568787" class="intlPanelCtaBtn"><i class="ti ti-phone-call"></i> Call Now</a>
+            <a href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Dubai%20package" target="_blank" class="intlPanelCtaBtn" style="background:#25D366;"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 5. INDONESIA (BALI) ===================== -->
+<div class="intlPanel" id="intlPanel-indonesia">
+    <div class="intlPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1600&auto=format&fit=crop" alt="Indonesia — Bali Escape">
+        <div class="intlPanelBannerText"><span><i class="ti ti-world"></i> Island Escape · Bali, Indonesia</span><h2>Indonesia — Bali Escape</h2></div>
+    </div>
+    <p class="intlPanelIntro">Bali remains one of the most consistently popular international getaways for Indian travelers, and for good reason — it packs temples, rice terraces, volcanic landscapes, and beaches into a single compact island. This circuit spends time in Ubud among the terraced rice paddies and the Sacred Monkey Forest, visits the clifftop Uluwatu Temple and the iconic sea-gate of Tanah Lot, takes a day trip out to Nusa Penida's dramatic coastline, and closes with beach time in Seminyak. With visa-on-arrival for Indian passport holders and a well-developed tourist circuit, it's an easy trip to plan despite the distance.</p>
+    <div class="intlStatsRow"><div class="intlStatBox"><i class="ti ti-plane"></i><strong>~9hrs (1 stop)</strong><span>Flight Duration</span></div><div class="intlStatBox"><i class="ti ti-calendar-event"></i><strong>6 Days</strong><span>Duration</span></div><div class="intlStatBox"><i class="ti ti-passport"></i><strong>Visa on Arrival</strong><span>Entry</span></div><div class="intlStatBox"><i class="ti ti-sun"></i><strong>Apr – Oct</strong><span>Best Time</span></div></div>
+    <div class="intlWhyBox"><i class="ti ti-palm-tree"></i><p>Bali manages something few island destinations do — genuine cultural depth (temple ceremonies, traditional dance, the Hindu-influenced Balinese calendar) alongside postcard beaches, which is why travelers often come back for a second or third trip rather than treating it as a one-time box to tick.</p></div>
+
+    <h3 class="intlSubHeading">Day-by-Day Itinerary</h3>
+    <div class="intlItinerary"><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">1</span><strong>Arrival in Denpasar</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Arrive, transfer to Ubud, evening at leisure.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">2</span><strong>Ubud — Rice Terraces &amp; Monkey Forest</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Visit Tegallalang Rice Terrace and the Sacred Monkey Forest Sanctuary, evening traditional dance performance.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">3</span><strong>Tanah Lot &amp; Uluwatu Temples</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Visit the sea-gate temple of Tanah Lot, afternoon at the clifftop Uluwatu Temple for sunset.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">4</span><strong>Nusa Penida Day Trip</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Full-day boat trip to Nusa Penida for its dramatic cliffside viewpoints and beaches.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">5</span><strong>Seminyak Beach Day</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Relaxed beach day in Seminyak, optional spa or surfing lesson.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">6</span><strong>Departure</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Transfer to Denpasar airport for your flight home.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Places You'll Visit</h3>
+    <div class="intlPlacesGrid"><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop" alt="Tegallalang Rice Terrace"><div class="intlPlaceBody"><h4>Tegallalang Rice Terrace</h4><p>Cascading emerald rice paddies just outside Ubud, one of Bali's most photographed views.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=800&auto=format&fit=crop" alt="Uluwatu Temple"><div class="intlPlaceBody"><h4>Uluwatu Temple</h4><p>A clifftop temple perched 70 metres above the Indian Ocean, famous for sunset views.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1544644181-1484b3fdfc32?q=80&w=800&auto=format&fit=crop" alt="Nusa Penida"><div class="intlPlaceBody"><h4>Nusa Penida</h4><p>Dramatic limestone cliffs and turquoise water off Bali's southeast coast.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="intlIncExc">
+        <div class="intlIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> 4-star hotel/resort stays</li><li><i class="ti ti-check"></i> Daily breakfast</li><li><i class="ti ti-check"></i> Airport &amp; sightseeing transfers</li><li><i class="ti ti-check"></i> Nusa Penida boat trip</li><li><i class="ti ti-check"></i> Traditional dance performance ticket</li></ul></div>
+        <div class="intlExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Visa on arrival fee (paid locally)</li><li><i class="ti ti-x"></i> Lunch &amp; dinner</li><li><i class="ti ti-x"></i> Travel insurance</li><li><i class="ti ti-x"></i> Personal expenses</li></ul></div>
+    </div>
+
+    <h3 class="intlSubHeading">Ask Us for the Best Price</h3>
+    <div class="intlBookingRow">
+        <div class="intlEnquireCard">
+            <span class="intlPriceLabel">Pricing</span>
+            <div class="intlPriceHeadline">Prices vary by group size, season &amp; hotel category</div>
+            <span class="intlPriceNote">Call us or send a WhatsApp message and we'll get back with a tailored quote within a few hours.</span>
+            <div class="intlActionRow">
+                <a class="intlCallBtn" href="tel:+919784568787"><i class="ti ti-phone-call"></i> Call Now</a>
+                <a class="intlWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Indonesia%20(Bali)%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> WhatsApp Enquiry</a>
+            </div>
+        </div>
+        <div class="intlBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="intlBatchDates"><span class="intlBatchPill">5 Apr</span><span class="intlBatchPill">26 Apr</span><span class="intlBatchPill">17 May</span><span class="intlBatchPill">6 Sep</span><span class="intlBatchPill">27 Sep</span></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Trip Essentials</h3>
+    <div class="intlEssentialsGrid">
+        <div class="intlEssentialStat"><i class="ti ti-plane" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>~9 hrs, 1 stop</strong><span>Flight Duration</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-passport" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>Visa on Arrival</strong><span>Entry Requirement</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-users" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>2-14 travelers</strong><span>Group Size</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-shield-check" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>78%</strong><span>Travel Ease</span></div>
+        <div class="intlEaseBarWrap">
+            <div class="intlEaseBarLabel"><span>Complex</span><span>Easy — visa on arrival for Indians</span><span>Effortless</span></div>
+            <div class="intlEaseBarTrack"><div class="intlEaseBarFill" style="width:78%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Traveler Reviews</h3>
+    <div class="intlReviewsGrid"><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">DK</div><div><div class="intlReviewName">Divya K.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Uluwatu at sunset was magical, and Nusa Penida's cliffs are even more stunning in person than in photos.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">AR</div><div><div class="intlReviewName">Aakash R.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Ubud's rice terraces and the whole cultural side of Bali exceeded our expectations — not just a beach trip.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">SB</div><div><div class="intlReviewName">Simran B.</div><div class="intlReviewStars">★★★★☆</div></div></div><p>Loved the trip. Nusa Penida boat ride can get choppy, worth carrying motion sickness tablets.</p></div></div>
+
+    <h3 class="intlSubHeading">Frequently Asked Questions</h3>
+    <div class="intlFaqList"><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Do Indian citizens need a visa in advance?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>No, Indonesia offers visa-on-arrival for Indian passport holders for short tourist stays, payable in cash or card on arrival.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is Nusa Penida trip suitable for non-swimmers?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, most of the day is spent at viewpoints and shorelines rather than swimming, though some optional snorkeling spots are included.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">What's the best time to visit Bali?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>April to October falls in the dry season and is generally recommended; November to March is the wetter season with more frequent afternoon showers.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is Bali good for a honeymoon or couples trip?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, Bali is one of the most popular honeymoon destinations from India, with a wide range of resorts and romantic dinner settings available as add-ons.</p></div></div></div>
+
+    <h3 class="intlSubHeading">What to Carry</h3>
+    <div class="intlPackGrid"><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Passport (valid 6+ months)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Forex card / US dollars for visa on arrival</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Universal power adapter</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen &amp; swimwear</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking/hiking shoes</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Modest clothing for temple visits (sarong often provided)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Motion sickness tablets (for boat trips)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Insect repellent</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Copy of travel insurance</span></div></div>
+
+    <div class="intlPanelCta">
+        <div><h4>Interested in Indonesia — Bali Escape?</h4><p>Call us or drop a WhatsApp message — we'll share a tailored quote and available dates.</p></div>
+        <div class="intlActionRow">
+            <a href="tel:+919784568787" class="intlPanelCtaBtn"><i class="ti ti-phone-call"></i> Call Now</a>
+            <a href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Indonesia%20(Bali)%20package" target="_blank" class="intlPanelCtaBtn" style="background:#25D366;"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 6. SINGAPORE ===================== -->
+<div class="intlPanel" id="intlPanel-singapore">
+    <div class="intlPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1600&auto=format&fit=crop" alt="Singapore — City &amp; Sentosa">
+        <div class="intlPanelBannerText"><span><i class="ti ti-world"></i> City &amp; Island Circuit · Singapore</span><h2>Singapore — City &amp; Sentosa</h2></div>
+    </div>
+    <p class="intlPanelIntro">Singapore packs an extraordinary amount into a small footprint — futuristic gardens, a buzzing multicultural food scene, and a full-scale entertainment island, all connected by one of the most efficient transit systems in the world. This compact four-day circuit covers Marina Bay Sands and the Gardens by the Bay's Supertree domes, a full day at Sentosa Island for Universal Studios and the beaches, and a city tour through Chinatown, Little India, and the colonial district. It's an ideal short trip for families, and works equally well as a standalone getaway or a stopover extension on a longer Southeast Asia itinerary.</p>
+    <div class="intlStatsRow"><div class="intlStatBox"><i class="ti ti-plane"></i><strong>Direct 5.5hrs</strong><span>Flight Duration</span></div><div class="intlStatBox"><i class="ti ti-calendar-event"></i><strong>4 Days</strong><span>Duration</span></div><div class="intlStatBox"><i class="ti ti-passport"></i><strong>e-Visa</strong><span>Entry</span></div><div class="intlStatBox"><i class="ti ti-sun"></i><strong>Feb – Apr, Jul – Sep</strong><span>Best Time</span></div></div>
+    <div class="intlWhyBox"><i class="ti ti-ferris-wheel"></i><p>Singapore's Gardens by the Bay light show after dark, viewed from beneath the Supertree canopy, is a genuinely unique sight that photographs never quite capture — it's one of the few must-see attractions in Asia that's just as impressive the second time you see it.</p></div>
+
+    <h3 class="intlSubHeading">Day-by-Day Itinerary</h3>
+    <div class="intlItinerary"><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">1</span><strong>Arrival &amp; Marina Bay</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Arrive, check in, evening at Marina Bay Sands and the Gardens by the Bay light show.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">2</span><strong>Sentosa Island</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Full day at Sentosa — Universal Studios Singapore or the island's beaches and cable car, your choice.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">3</span><strong>City Tour</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Morning at Gardens by the Bay's domes, afternoon city tour through Chinatown, Little India, and the Merlion waterfront.</p></div></div><div class="intlDay"><button class="intlDayHead" onclick="intlToggleDay(this)"><span class="intlDayNum">4</span><strong>Departure</strong><i class="ti ti-chevron-down intlDayIcon"></i></button><div class="intlDayBody"><p>Transfer to Changi Airport for your flight home.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Places You'll Visit</h3>
+    <div class="intlPlacesGrid"><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop" alt="Marina Bay Sands"><div class="intlPlaceBody"><h4>Marina Bay Sands</h4><p>Singapore's iconic three-tower hotel with its rooftop infinity pool and skyline views.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1508964942454-1a56651d54ac?q=80&w=800&auto=format&fit=crop" alt="Gardens by the Bay"><div class="intlPlaceBody"><h4>Gardens by the Bay</h4><p>Futuristic Supertree structures and climate-controlled biodomes by the bay.</p></div></div><div class="intlPlaceCard"><img src="./https://images.unsplash.com/photo-1565967511849-76a60a516170?q=80&w=800&auto=format&fit=crop" alt="Sentosa Island"><div class="intlPlaceBody"><h4>Sentosa Island</h4><p>A dedicated resort island with theme parks, beaches, and a cable car connecting to the mainland.</p></div></div></div>
+
+    <h3 class="intlSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="intlIncExc">
+        <div class="intlIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> 4-star hotel stays</li><li><i class="ti ti-check"></i> Daily breakfast</li><li><i class="ti ti-check"></i> Airport &amp; sightseeing transfers</li><li><i class="ti ti-check"></i> Sentosa Island entry</li><li><i class="ti ti-check"></i> Gardens by the Bay domes entry</li></ul></div>
+        <div class="intlExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> e-Visa fee (applied online in advance)</li><li><i class="ti ti-x"></i> Lunch &amp; dinner</li><li><i class="ti ti-x"></i> Universal Studios tickets (optional add-on)</li><li><i class="ti ti-x"></i> Personal expenses</li></ul></div>
+    </div>
+
+    <h3 class="intlSubHeading">Ask Us for the Best Price</h3>
+    <div class="intlBookingRow">
+        <div class="intlEnquireCard">
+            <span class="intlPriceLabel">Pricing</span>
+            <div class="intlPriceHeadline">Prices vary by group size, season &amp; hotel category</div>
+            <span class="intlPriceNote">Call us or send a WhatsApp message and we'll get back with a tailored quote within a few hours.</span>
+            <div class="intlActionRow">
+                <a class="intlCallBtn" href="tel:+919784568787"><i class="ti ti-phone-call"></i> Call Now</a>
+                <a class="intlWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Singapore%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> WhatsApp Enquiry</a>
+            </div>
+        </div>
+        <div class="intlBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="intlBatchDates"><span class="intlBatchPill">1 Feb</span><span class="intlBatchPill">22 Feb</span><span class="intlBatchPill">15 Mar</span><span class="intlBatchPill">5 Jul</span><span class="intlBatchPill">26 Jul</span></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Trip Essentials</h3>
+    <div class="intlEssentialsGrid">
+        <div class="intlEssentialStat"><i class="ti ti-plane" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>~5.5 hrs direct</strong><span>Flight Duration</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-passport" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>e-Visa (apply online)</strong><span>Entry Requirement</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-users" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>2-16 travelers</strong><span>Group Size</span></div>
+        <div class="intlEssentialStat"><i class="ti ti-shield-check" style="color:var(--intlAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>88%</strong><span>Travel Ease</span></div>
+        <div class="intlEaseBarWrap">
+            <div class="intlEaseBarLabel"><span>Complex</span><span>Very Easy — efficient transit, simple e-Visa</span><span>Effortless</span></div>
+            <div class="intlEaseBarTrack"><div class="intlEaseBarFill" style="width:88%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="intlSubHeading">Traveler Reviews</h3>
+    <div class="intlReviewsGrid"><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">MJ</div><div><div class="intlReviewName">Meera J.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Gardens by the Bay's night show was the highlight for our kids. Everything in Singapore just works — trains, signage, everything.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">AK</div><div><div class="intlReviewName">Arnav K.</div><div class="intlReviewStars">★★★★★</div></div></div><p>Sentosa was a great full day out. Universal Studios tickets are worth the add-on if traveling with kids.</p></div><div class="intlReviewCard"><div class="intlReviewTop"><div class="intlReviewAvatar">TS</div><div><div class="intlReviewName">Tanya S.</div><div class="intlReviewStars">★★★★☆</div></div></div><p>Loved the trip, Singapore is pricier than Thailand or Bali for food — budget a bit more for meals.</p></div></div>
+
+    <h3 class="intlSubHeading">Frequently Asked Questions</h3>
+    <div class="intlFaqList"><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Do Indian citizens need a visa in advance?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, Indian passport holders need an e-Visa, applied online before travel; approval is usually quick and straightforward.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is Universal Studios included?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>No, Sentosa Island entry is included but Universal Studios Singapore tickets are an optional paid add-on — let us know if you'd like this included.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is 4 days enough to see Singapore?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Yes, Singapore's compact size and efficient transit make it possible to cover the major highlights comfortably in 4 days, though 5-6 days allows a more relaxed pace.</p></div></div><div class="intlFaqItem"><button class="intlFaqHead" onclick="intlToggleFaq(this)">Is Singapore expensive compared to Thailand or Bali?<i class="ti ti-plus intlFaqIcon"></i></button><div class="intlFaqBody"><p>Generally yes, particularly for food and shopping; accommodation and major attractions are comparably priced to other premium Southeast Asian destinations.</p></div></div></div>
+
+    <h3 class="intlSubHeading">What to Carry</h3>
+    <div class="intlPackGrid"><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Passport (valid 6+ months)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Printed e-Visa copy</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Forex card / Singapore Dollars</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Universal power adapter (UK-style plugs)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking shoes</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Swimwear (for Sentosa beaches)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Light rain jacket (frequent brief showers)</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="intlPackItem"><i class="ti ti-square-rounded-check"></i><span>Copy of travel insurance</span></div></div>
+
+    <div class="intlPanelCta">
+        <div><h4>Interested in Singapore — City &amp; Sentosa?</h4><p>Call us or drop a WhatsApp message — we'll share a tailored quote and available dates.</p></div>
+        <div class="intlActionRow">
+            <a href="tel:+919784568787" class="intlPanelCtaBtn"><i class="ti ti-phone-call"></i> Call Now</a>
+            <a href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Singapore%20package" target="_blank" class="intlPanelCtaBtn" style="background:#25D366;"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+
+<form class="intlBookForm" id="intlBookForm" data-formtype="International Package Enquiry">
+    <h2>Get a Custom Quote</h2>
+    <p class="intlFormNote">No fixed pricing shown — share your details and we'll call or WhatsApp you back with the best price.</p>
+    <input type="text" name="name" placeholder="ENTER THE FULL NAME">
+    <input type="email" name="email" placeholder="ENTER THE E-MAIL">
+    <input type="text" name="phone" placeholder="ENTER THE PHONE">
+    <input type="date" name="date">
+    <input type="number" name="people" placeholder="ENTER NO. OF TRAVELERS">
+    <select name="pack">
+        <option value="none" selected disabled>Select the Destination</option>
+        <option value="Thailand — Bangkok &amp; Phuket Getaway">Thailand</option><option value="Malaysia — Kuala Lumpur &amp; Langkawi">Malaysia</option><option value="Turkey — Istanbul &amp; Cappadocia">Turkey</option><option value="Dubai &amp; Abu Dhabi">Dubai</option><option value="Indonesia — Bali Escape">Indonesia (Bali)</option><option value="Singapore — City &amp; Sentosa">Singapore</option>
+    </select>
+    <button type="submit">Request Callback</button>
+</form>
+
+
+<!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+<!-- footer form connection  -->
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+<script>
+function intlShowSidebar(){ document.getElementById('intlSidebar')?.classList.add('intlShow'); }
+function intlHideSidebar(){ document.getElementById('intlSidebar')?.classList.remove('intlShow'); }
+
+/* ---- Drifting cloud layer in the hero ---- */
+(function intlBuildClouds(){
+    const layer = document.getElementById('intlCloudLayer');
+    if (!layer) return;
+    const count = window.innerWidth < 640 ? 14 : 26;
+    for (let i = 0; i < count; i++){
+        const speck = document.createElement('span');
+        const size = (Math.random() * 0.3 + 0.14).toFixed(2);
+        speck.style.left = (Math.random() * 100) + '%';
+        speck.style.width = speck.style.height = size + 'rem';
+        speck.style.opacity = (Math.random() * 0.5 + 0.25).toFixed(2);
+        speck.style.animationDuration = (Math.random() * 10 + 8).toFixed(1) + 's';
+        speck.style.animationDelay = (Math.random() * -14).toFixed(1) + 's';
+        layer.appendChild(speck);
+    }
+})();
+
+/* ---- Scroll-reveal ---- */
+(function intlInitReveal(){
+    const targets = document.querySelectorAll(
+        '.intlStatBox, .intlPlaceCard, .intlDay, .intlIncBox, .intlExcBox, .intlWhyBox, .intlPanelBanner, .intlPanelCta, .intlReviewCard, .intlFaqItem, .intlEnquireCard, .intlBatchCard, .intlEssentialStat'
+    );
+    targets.forEach((el, i) => {
+        el.classList.add('intlReveal');
+        el.classList.add('intlDelay' + ((i % 3) + 1));
+    });
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting){
+                entry.target.classList.add('intlInView');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(el => io.observe(el));
+})();
+
+function intlRevealPanel(panelEl){
+    const targets = panelEl.querySelectorAll('.intlReveal');
+    targets.forEach((el, i) => {
+        el.classList.remove('intlInView');
+        setTimeout(() => el.classList.add('intlInView'), 60 + (i % 6) * 70);
+    });
+}
+
+function intlShowPanel(key){
+    document.querySelectorAll('.intlPanel').forEach(p => p.classList.remove('intlPanelActive'));
+    const activePanel = document.getElementById('intlPanel-' + key);
+    activePanel.classList.add('intlPanelActive');
+    document.querySelectorAll('.intlTabBtn').forEach(b => b.classList.remove('intlTabActive'));
+    event.currentTarget.classList.add('intlTabActive');
+    window.scrollTo({ top: document.querySelector('.intlTabsBar').offsetTop - 80, behavior: 'smooth' });
+    intlRevealPanel(activePanel);
+}
+
+function intlToggleDay(headBtn){
+    const day = headBtn.closest('.intlDay');
+    const wasOpen = day.classList.contains('intlDayOpen');
+    day.parentElement.querySelectorAll('.intlDay.intlDayOpen').forEach(d => d.classList.remove('intlDayOpen'));
+    if (!wasOpen) day.classList.add('intlDayOpen');
+}
+
+function intlToggleFaq(headBtn){
+    const item = headBtn.closest('.intlFaqItem');
+    item.classList.toggle('intlFaqOpen');
+}
+
+const INTL_GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+
+document.querySelectorAll("form[data-formtype]").forEach(form => {
+    const emailField = form.querySelector('[name="email"]');
+    const submitBtn = form.querySelector('[type="submit"]');
+    if (!emailField || !submitBtn) return;
+
+    const otpWrap = document.createElement("div");
+    otpWrap.innerHTML = `
+        <button type="button" class="intlSendOtpBtn">Send OTP</button>
+        <input type="text" class="intlOtpInput" placeholder="Enter OTP" style="display:none;">
+    `;
+    submitBtn.parentNode.insertBefore(otpWrap, submitBtn);
+    submitBtn.style.display = "none";
+
+    const sendOtpBtn = otpWrap.querySelector(".intlSendOtpBtn");
+    const otpInput = otpWrap.querySelector(".intlOtpInput");
+
+    sendOtpBtn.addEventListener("click", async () => {
+        if (!emailField.value) { alert("Please enter your email first."); return; }
+        sendOtpBtn.disabled = true;
+        sendOtpBtn.textContent = "Sending...";
+        try {
+            const res = await fetch(INTL_GOOGLE_SHEET_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify({ action: "sendOtp", email: emailField.value })
+            });
+            const result = await res.json();
+            if (result.result === "success") {
+                alert("OTP sent to your email.");
+                otpInput.style.display = "block";
+                submitBtn.style.display = "block";
+                sendOtpBtn.textContent = "Resend OTP";
+            } else {
+                alert(result.message || "Failed to send OTP.");
+                sendOtpBtn.textContent = "Send OTP";
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Could not send OTP. Please try again.");
+            sendOtpBtn.textContent = "Send OTP";
+        }
+        sendOtpBtn.disabled = false;
+    });
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        if (!otpInput.value) { alert("Please enter the OTP sent to your email."); return; }
+
+        const formData = new FormData(form);
+        const payload = { action: "verifySubmit", formType: form.dataset.formtype, otp: otpInput.value };
+        formData.forEach((value, key) => { payload[key] = value; });
+
+        try {
+            const res = await fetch(INTL_GOOGLE_SHEET_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify(payload)
+            });
+            const result = await res.json();
+            if (result.result === "success") {
+                alert("Thank you! Our team will call or WhatsApp you shortly.");
+                form.reset();
+                otpInput.style.display = "none";
+                submitBtn.style.display = "none";
+                sendOtpBtn.textContent = "Send OTP";
+            } else {
+                alert(result.message || "Invalid OTP. Please try again.");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Something went wrong. Please try again.");
+        }
+    });
+});
+</script>
+
+            <!-- loader -->
+             <script src="././finalanimation.js"></script>
+             <script src="././experimental_claude.js"></script>
+</body>
+</html>

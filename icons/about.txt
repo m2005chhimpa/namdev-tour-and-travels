@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Modern Antiqua
+- Font Author: http://scripts.sil.org/OFL
+- Font Source: http://fonts.gstatic.com/s/modernantiqua/v24/NGStv5TIAUg6Iq_RLNo_2dp1sI1Ea2u0c3Gi.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="png" href="./images/logo03.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./finalanimation.css">
+    <link rel="stylesheet" href="./experimental_claude.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Rishikesh Package | Namdev's Tour & Travels</title>
+
+    <style>
+      /* ============================================================
+         RISHIKESH PAGE REBUILD — scoped under .rsk-page
+      ============================================================ */
+      :root{
+        --nt-primary:#328ADF;
+        --nt-primary-light:#4EA8FF;
+        --nt-secondary:#6B4A2E;
+        --nt-gold:#F2C14E;
+        --nt-ink:#23201C;
+        --nt-muted:#8A7F70;
+        --nt-bg:#F8F7F4;
+        --nt-shadow:0 8px 24px rgba(35,32,28,0.08);
+        --nt-shadow-hover:0 20px 44px rgba(35,32,28,0.18);
+      }
+
+      .rsk-page{ background:var(--nt-bg); font-family:'Inter',sans-serif; color:var(--nt-ink); }
+      .rsk-page h1,.rsk-page h2,.rsk-page h3,.rsk-page .brand-font{ font-family:'Rajdhani',sans-serif; font-weight:700; }
+
+      /* SCROLL PROGRESS BAR */
+      .rsk-progress{
+        position:fixed; top:0; left:0; height:3px;
+        background: linear-gradient(90deg, var(--nt-primary), var(--nt-gold));
+        width:0%; z-index: 999; transition: width .1s linear;
+      }
+
+      /* ---------- HERO ---------- */
+      .rsk-hero{
+        position:relative; height: 73vh; min-height: 26rem; overflow:hidden;
+        display:flex; align-items:center; justify-content:center; text-align:center;
+      }
+      .rsk-hero-bg{
+        position:absolute; inset:0;
+        background-image:url("/images/hero/rishikesh.png");
+        background-size:cover; background-position:top center;
+        animation: rskKenBurns 16s ease-in-out infinite alternate;
+      }
+      @keyframes rskKenBurns{
+        0%{ transform: scale(1) translate(0,0); }
+        100%{ transform: scale(1.14) translate(-1.5%, -1%); }
+      }
+      .rsk-hero-overlay{
+        position:absolute; inset:0;
+        background: linear-gradient(180deg, rgba(14,30,32,0.55) 0%, rgba(14,30,32,0.35) 45%, rgba(8,18,20,0.85) 100%);
+      }
+      .rsk-hero-content{ position:relative; z-index:2; color:#fff; padding: 0 1.5rem; }
+      .rsk-hero .eyebrow{
+        font-family:'Rajdhani',sans-serif; letter-spacing:.22em; text-transform:uppercase;
+        font-size:.8rem; color: var(--nt-gold); margin-bottom:.8rem;
+        opacity:0; animation: rskFadeUp .7s ease forwards; animation-delay:.15s;
+      }
+      .rsk-hero h1{
+        font-size: clamp(2.2rem, 6vw, 4rem); margin:0 0 1rem;
+        display:flex; justify-content:center; flex-wrap:wrap; gap: .5rem;
+      }
+      .rsk-hero h1 span{ display:inline-block; opacity:0; transform: translateY(30px); animation: rskFadeUp .7s cubic-bezier(.2,.8,.25,1) forwards; }
+      .rsk-hero h1 span:nth-child(1){ animation-delay:.3s; }
+      .rsk-hero h1 span:nth-child(2){ animation-delay:.42s; color:var(--nt-gold); }
+      @keyframes rskFadeUp{ to{ opacity:1; transform:translateY(0); } }
+      .rsk-hero p{
+        max-width: 36rem; margin: 0 auto; font-size:.95rem; line-height:1.65; color: rgba(255,255,255,0.85);
+        opacity:0; animation: rskFadeUp .7s ease forwards; animation-delay:.6s;
+      }
+      .rsk-hero-stats{
+        display:flex; justify-content:center; gap:2.4rem; margin-top:1.8rem; flex-wrap:wrap;
+        opacity:0; animation: rskFadeUp .7s ease forwards; animation-delay:.74s;
+      }
+      .rsk-hero-stats .stat{ display:flex; flex-direction:column; align-items:center; }
+      .rsk-hero-stats strong{ font-family:'Rajdhani',sans-serif; font-size:1.4rem; color:var(--nt-gold); }
+      .rsk-hero-stats span{ font-size:.7rem; opacity:.85; }
+      .rsk-scroll-cue{
+        position:absolute; bottom:1.4rem; left:50%; transform:translateX(-50%); z-index:2;
+        animation: rskBounce 1.8s infinite; opacity:.85;
+      }
+      @keyframes rskBounce{ 0%,100%{ transform:translate(-50%,0); } 50%{ transform:translate(-50%,8px); } }
+
+      /* ---------- INTRO ---------- */
+      .rsk-intro{
+        max-width: 50rem; margin: 4rem auto 1rem; padding: 0 1.5rem; text-align:center;
+        opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease;
+      }
+      .rsk-intro.in-view{ opacity:1; transform:translateY(0); }
+      .rsk-intro .eyebrow{ font-family:'Rajdhani',sans-serif; font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; color: var(--nt-primary); margin-bottom:.6rem; }
+      .rsk-intro h2{ font-size:1.9rem; margin:0 0 1rem; }
+      .rsk-intro p{ color:var(--nt-muted); font-size:.92rem; line-height:1.75; }
+
+      /* ---------- FAMOUS FOR STRIP ---------- */
+      .rsk-famous{
+        max-width: 78rem; margin: 2.5rem auto; padding: 0 1.5rem;
+        display:flex; flex-wrap:wrap; justify-content:center; gap:.7rem;
+      }
+      .rsk-famous-chip{
+        display:flex; align-items:center; gap:.5rem;
+        background:#fff; border:1.5px solid rgba(35,32,28,0.1);
+        padding:.6rem 1.1rem; border-radius:999px;
+        font-size:.82rem; font-weight:600; color:var(--nt-ink);
+        box-shadow: var(--nt-shadow);
+        opacity:0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease;
+      }
+      .rsk-famous-chip.in-view{ opacity:1; transform:translateY(0); }
+      .rsk-famous-chip svg{ width:1rem; height:1rem; stroke:var(--nt-primary); flex-shrink:0; }
+
+      /* ---------- FILTERS ---------- */
+      .rsk-filters{
+        position: sticky; top:0; z-index: 20;
+        background: rgba(248,247,244,0.92); backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(35,32,28,0.08);
+        padding: 1rem 1.5rem; display:flex; justify-content:center; gap:.6rem; flex-wrap:wrap;
+        margin-top: 2rem;
+      }
+      .rsk-filter-pill{
+        position:relative; background:#fff; border:1.5px solid rgba(35,32,28,0.14);
+        color: var(--nt-ink); font-size:.83rem; font-weight:600;
+        padding:.55rem 1.15rem; border-radius:999px; cursor:pointer; overflow:hidden;
+        transition: all .2s ease;
+      }
+      .rsk-filter-pill:hover{ border-color:var(--nt-primary); color:var(--nt-primary); }
+      .rsk-filter-pill.active{ background:var(--nt-primary); border-color:var(--nt-primary); color:#fff; }
+      .rsk-ripple{
+        position:absolute; border-radius:50%; background: rgba(255,255,255,0.55);
+        transform: scale(0); animation: rskRipple .55s ease-out; pointer-events:none;
+      }
+      @keyframes rskRipple{ to{ transform:scale(3.5); opacity:0; } }
+
+      /* ---------- GRID ---------- */
+      .rsk-grid-wrap{ max-width:78rem; margin: 2.2rem auto 1rem; padding:0 1.5rem; }
+      .rsk-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(19rem,1fr)); gap: 1.6rem; }
+      .rsk-card{
+        position:relative; background:#fff; border-radius: 1rem; overflow:hidden;
+        box-shadow: var(--nt-shadow); height: 22rem;
+        opacity:0; transform: translateY(28px);
+        transition: opacity .6s ease, transform .6s ease, box-shadow .3s ease;
+      }
+      .rsk-card.in-view{ opacity:1; transform:translateY(0); }
+      .rsk-card:hover{ box-shadow: var(--nt-shadow-hover); }
+      .rsk-card-img{
+        position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+        transition: transform .6s ease; background:#cddbdb;
+      }
+      .rsk-card:hover .rsk-card-img{ transform: scale(1.1); }
+      .rsk-card-shade{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(14,30,32,0) 40%, rgba(14,30,32,0.9) 100%); }
+      .rsk-card-badge{
+        position:absolute; top:.8rem; left:.8rem; background: rgba(255,255,255,0.92); color: var(--nt-primary);
+        font-size:.66rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+        padding:.3rem .65rem; border-radius:999px; z-index:2;
+      }
+      .rsk-card-badge.must-visit{ background: var(--nt-gold); color: var(--nt-ink); animation: rskPulse 2s ease-in-out infinite; }
+      @keyframes rskPulse{ 0%,100%{ box-shadow: 0 0 0 0 rgba(242,193,78,0.55); } 50%{ box-shadow: 0 0 0 8px rgba(242,193,78,0); } }
+      .rsk-card-title{ position:absolute; left:1.1rem; right:1.1rem; bottom:1.1rem; z-index:2; color:#fff; transition: transform .4s cubic-bezier(.2,.8,.25,1); }
+      .rsk-card-title h3{ font-size:1.2rem; margin:0; }
+      .rsk-card-title .sub{ font-size:.74rem; color: var(--nt-gold); letter-spacing:.04em; text-transform:uppercase; }
+      .rsk-card-overlay{
+        position:absolute; inset:0;
+        background: linear-gradient(160deg, rgba(14,30,32,0.97), rgba(50,138,223,0.92));
+        color:#fff; padding: 1.4rem 1.3rem; display:flex; flex-direction:column; justify-content:flex-end;
+        transform: translateY(100%); transition: transform .45s cubic-bezier(.2,.8,.25,1); z-index:3;
+      }
+      .rsk-card:hover .rsk-card-overlay{ transform: translateY(0); }
+      .rsk-card:hover .rsk-card-title{ transform: translateY(10px); opacity:0; }
+      .rsk-card-overlay h3{ font-size:1.05rem; margin:0 0 .5rem; }
+      .rsk-card-overlay p{ font-size:.78rem; line-height:1.55; color: rgba(255,255,255,0.88); margin:0 0 1rem; }
+      .rsk-book-btn{
+        display:inline-flex; align-items:center; gap:.4rem; background: var(--nt-gold); color: var(--nt-ink);
+        font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.85rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.55rem 1rem; border-radius:.6rem; text-decoration:none; width:fit-content;
+        transition: gap .2s ease, transform .2s ease;
+      }
+      .rsk-book-btn:hover{ gap:.7rem; transform: translateY(-2px); }
+
+      /* ---------- SECTION HEADING (shared) ---------- */
+      .rsk-section-heading{ text-align:center; margin-bottom: 2.4rem; }
+      .rsk-section-heading .eyebrow{ font-family:'Rajdhani',sans-serif; font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; color: var(--nt-primary); margin-bottom:.5rem; }
+      .rsk-section-heading h2{ font-size:1.9rem; position:relative; display:inline-block; padding-bottom:.8rem; margin:0; }
+      .rsk-section-heading h2::after{ content:""; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:3.4rem; height:3px; background: linear-gradient(90deg, var(--nt-primary), transparent); }
+      .rsk-section-heading p{ color: var(--nt-muted); font-size:.9rem; margin-top: .8rem; max-width: 36rem; margin-left:auto; margin-right:auto; }
+
+      /* ---------- ITINERARY ---------- */
+      .rsk-itinerary{ max-width: 48rem; margin: 5rem auto; padding: 0 1.5rem; }
+      .rsk-timeline{ position:relative; }
+      .rsk-timeline::before{
+        content:""; position:absolute; left: 1.6rem; top:0; bottom:0; width:2px;
+        background: linear-gradient(180deg, var(--nt-primary), var(--nt-gold));
+      }
+      .rsk-day{
+        position:relative; padding-left: 4.2rem; margin-bottom: 2.6rem;
+        opacity:0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease;
+      }
+      .rsk-day.in-view{ opacity:1; transform:translateY(0); }
+      .rsk-day-marker{
+        position:absolute; left:0; top:0; width:3.2rem; height:3.2rem; border-radius:50%;
+        background: var(--nt-primary); color:#fff; display:flex; align-items:center; justify-content:center;
+        font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.82rem;
+        box-shadow: 0 0 0 6px var(--nt-bg); text-align:center; line-height:1.1;
+      }
+      .rsk-day-card{ background:#fff; border-radius: 1rem; box-shadow: var(--nt-shadow); padding: 1.3rem 1.4rem 1.5rem; }
+      .rsk-day-card .tag{ font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--nt-primary); font-weight:700; margin-bottom:.4rem; }
+      .rsk-day-card h3{ font-size:1.15rem; margin-bottom:.5rem; }
+      .rsk-day-card p{ font-size:.87rem; line-height:1.65; color:var(--nt-muted); margin:0; }
+
+      /* ---------- EAT / SHOP CARD ROWS ---------- */
+      .rsk-info-section{ max-width: 78rem; margin: 5rem auto; padding: 0 1.5rem; }
+      .rsk-info-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(15rem,1fr)); gap: 1.4rem; }
+      .rsk-info-card{
+        background:#fff; border-radius: 1rem; box-shadow: var(--nt-shadow); padding: 1.6rem 1.5rem;
+        opacity:0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease, box-shadow .3s ease;
+      }
+      .rsk-info-card.in-view{ opacity:1; transform:translateY(0); }
+      .rsk-info-card:hover{ box-shadow: var(--nt-shadow-hover); transform: translateY(-4px); }
+      .rsk-info-card.in-view:hover{ transform: translateY(-4px); }
+      .rsk-info-icon{
+        width: 2.8rem; height:2.8rem; border-radius:.7rem;
+        background: linear-gradient(135deg, var(--nt-primary), var(--nt-secondary));
+        display:flex; align-items:center; justify-content:center; margin-bottom: .9rem;
+      }
+      .rsk-info-icon svg{ width:1.4rem; height:1.4rem; stroke:#fff; fill:none; }
+      .rsk-info-card h3{ font-size:1.05rem; margin: 0 0 .5rem; }
+      .rsk-info-card p{ font-size:.84rem; line-height:1.6; color: var(--nt-muted); margin:0; }
+
+      /* ---------- INCLUSIONS ---------- */
+      .rsk-inclusions{ max-width: 60rem; margin: 5rem auto; padding: 0 1.5rem; }
+      .rsk-inc-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+      .rsk-inc-card{ background:#fff; border-radius: 1rem; box-shadow: var(--nt-shadow); padding: 1.6rem 1.6rem 1.8rem; }
+      .rsk-inc-card h3{ font-size:1.05rem; margin: 0 0 1rem; display:flex; align-items:center; gap:.5rem; }
+      .rsk-inc-card ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.7rem; }
+      .rsk-inc-card li{ display:flex; align-items:flex-start; gap:.6rem; font-size:.85rem; color:var(--nt-ink); line-height:1.5; }
+      .rsk-inc-card li svg{ width:1.1rem; height:1.1rem; flex-shrink:0; margin-top:.1rem; }
+      .rsk-inc-card.included svg{ stroke: var(--nt-primary); }
+      .rsk-inc-card.excluded svg{ stroke: #C1443A; }
+      .rsk-inc-card.included h3{ color: var(--nt-primary); }
+      .rsk-inc-card.excluded h3{ color: #C1443A; }
+
+      /* ---------- CTA ---------- */
+      .rsk-cta{ max-width:78rem; margin: 4.5rem auto 4rem; padding:0 1.5rem; }
+      .rsk-cta-inner{
+        position:relative; border-radius: 1.4rem; padding: 3.2rem 2rem; text-align:center; color:#fff; overflow:hidden;
+        opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease;
+        background: linear-gradient(120deg, var(--nt-ink), var(--nt-secondary), var(--nt-primary), var(--nt-secondary), var(--nt-ink));
+        background-size: 300% 300%; animation: rskGradientShift 10s ease infinite;
+      }
+      .rsk-cta-inner.in-view{ opacity:1; transform:translateY(0); }
+      @keyframes rskGradientShift{ 0%{ background-position:0% 50%; } 50%{ background-position:100% 50%; } 100%{ background-position:0% 50%; } }
+      .rsk-cta-inner h2{ font-size:1.8rem; margin:0 0 .7rem; position:relative; z-index:2; }
+      .rsk-cta-inner p{ color:rgba(255,255,255,0.85); font-size:.92rem; max-width:32rem; margin:0 auto 1.6rem; position:relative; z-index:2; }
+      .rsk-cta-btn{
+        position:relative; z-index:2; display:inline-flex; align-items:center; gap:.5rem;
+        background: linear-gradient(90deg, var(--nt-primary-light), var(--nt-gold)); color: var(--nt-ink);
+        font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.95rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.85rem 1.8rem; border-radius:.8rem; text-decoration:none;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .rsk-cta-btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(242,193,78,0.4); }
+
+      /* ---------- FLOATING BOOK BUTTON ---------- */
+      .rsk-float-btn{
+        position:fixed; bottom: 1.6rem; right: 1.6rem; z-index: 60;
+        display:flex; align-items:center; gap:.5rem;
+        background: linear-gradient(90deg, var(--nt-primary), var(--nt-primary-light)); color:#fff;
+        font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.88rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.85rem 1.3rem; border-radius: 999px; text-decoration:none;
+        box-shadow: 0 10px 28px rgba(50,138,223,0.4);
+        opacity:0; transform: translateY(20px) scale(.9); pointer-events:none;
+        transition: opacity .35s ease, transform .35s ease;
+      }
+      .rsk-float-btn.show{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+      .rsk-float-btn:hover{ transform: translateY(-3px) scale(1.03); }
+
+      @media (max-width:700px){
+        .rsk-hero h1{ font-size: 2.1rem; }
+        .rsk-float-btn span{ display:none; }
+        .rsk-inc-grid{ grid-template-columns: 1fr; }
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        .rsk-hero-bg{ animation:none; }
+        .rsk-card, .rsk-intro, .rsk-cta-inner, .rsk-day, .rsk-info-card, .rsk-famous-chip{ transition:none; opacity:1; transform:none; }
+        .rsk-card-badge.must-visit{ animation:none; }
+        .rsk-cta-inner{ animation:none; }
+      }
+    </style>
+
+</head>
+
+<body class="rsk-page">
+
+    <!-- loader -->
+    <div id="loader">
+        <div class="logo-wrap">
+            <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+        </div>
+        <div class="road-wrap">
+            <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+                <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+                <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+                <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+                <g id="car">
+                    <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                    <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                    <circle cx="-16" cy="10" r="7"></circle>
+                    <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                    <circle cx="16" cy="10" r="7"></circle>
+                    <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+                </g>
+            </svg>
+        </div>
+        <p class="loader-text" id="loaderText">Starting the journey…</p>
+    </div>
+
+    <div class="rsk-progress" id="rskProgress"></div>
+
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+            <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a href="./index.html">Home</a></li>
+            <li class="hideonmobile navHasDropdown">
+                <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+                <div class="navDropdown">
+                    <div class="navDropdownCol">
+                        <h4>Luxury Buses</h4>
+                        <a href="">Volvo Bus</a>
+                        <a href="">Winger</a>
+                    </div>
+                    <div class="navDropdownCol">
+                        <h4>Luxury Cars</h4>
+                        <a href="">Innova Crysta</a>
+                        <a href="">Kia Carnival</a>
+                        <a href="">Honda City</a>
+                        <a href="">Etios</a>
+                    </div>
+                    <div class="navDropdownCol">
+                        <h4>Economical Cars</h4>
+                        <a href="">Swift Dzire</a>
+                        <a href="">Ertiga</a>
+                        <a href="">Innova</a>
+                    </div>
+                </div>
+            </li>
+            <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="./icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">Book a Tour</div>
+        </a>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <div class="rsk-hero">
+        <div class="rsk-hero-bg"></div>
+        <div class="rsk-hero-overlay"></div>
+        <div class="rsk-hero-content">
+            <div class="eyebrow">Uttarakhand · Yoga Capital of the World</div>
+            <h1><span>What's</span> <span>in Rishikesh</span></h1>
+            <p>Swaying suspension bridges over the Ganges, sacred ashrams, whitewater rapids, and the sound of evening aarti bells — here's what's waiting for you.</p>
+            <div class="rsk-hero-stats">
+                <div class="stat"><strong id="statRishikesh">0</strong><span>Places to Explore</span></div>
+                <div class="stat"><strong>1,360+</strong><span>Ft. Above Sea Level</span></div>
+                <div class="stat"><strong>4.9★</strong><span>Traveler Rating</span></div>
+            </div>
+        </div>
+        <div class="rsk-scroll-cue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M6 13l6 6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+    </div>
+
+    <!-- ============ INTRO ============ -->
+    <div class="rsk-intro" id="rskIntro">
+        <div class="eyebrow">Tour Package</div>
+        <h2>Everything you need, bundled into one journey</h2>
+        <p>Namdev's Tour &amp; Travels packages bundle together transport, accommodation, guided tours, meals, and other amenities — designed to fit different interests, preferences, and budgets of every traveler.</p>
+    </div>
+
+    <!-- ============ FAMOUS FOR ============ -->
+    <div class="rsk-famous" id="rskFamous">
+        <div class="rsk-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/></svg>Yoga Capital of the World</div>
+        <div class="rsk-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M2 12h20M4 8c2 2 4 2 6 0s4-2 6 0 4 2 6 0M4 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>White Water Rafting</div>
+        <div class="rsk-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 2v6M8 6l4 2 4-2M5 12c0 4 3 8 7 10 4-2 7-6 7-10"/></svg>Ganga Aarti at Triveni Ghat</div>
+        <div class="rsk-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 9l3 3-3 3M15 9l-3 3 3 3" opacity="0"/></svg>The Beatles' 1968 Retreat</div>
+        <div class="rsk-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 10h16"/></svg>Vegetarian &amp; Alcohol-Free City</div>
+    </div>
+
+    <!-- ============ FILTERS ============ -->
+    <div class="rsk-filters" id="rskFilters">
+        <button class="rsk-filter-pill active" data-filter="all">All Places</button>
+        <button class="rsk-filter-pill" data-filter="Bridges & Ghats">Bridges &amp; Ghats</button>
+        <button class="rsk-filter-pill" data-filter="Waterfalls & Nature">Waterfalls &amp; Nature</button>
+        <button class="rsk-filter-pill" data-filter="Temples & Ashrams">Temples &amp; Ashrams</button>
+    </div>
+
+    <!-- ============ GRID ============ -->
+    <div class="rsk-grid-wrap">
+        <div class="rsk-grid" id="rskGrid"></div>
+    </div>
+
+    <!-- ============ SUGGESTED ITINERARY ============ -->
+    <div class="rsk-itinerary">
+        <div class="rsk-section-heading">
+            <div class="eyebrow">Plan Your Trip</div>
+            <h2>A Suggested 3-Day Itinerary</h2>
+            <p>A simple way to see the best of Rishikesh without rushing — swap days around to fit your pace.</p>
+        </div>
+
+        <div class="rsk-timeline">
+            <div class="rsk-day">
+                <div class="rsk-day-marker">DAY<br>1</div>
+                <div class="rsk-day-card">
+                    <div class="tag">Arrival — Evening</div>
+                    <h3>Bridges, Ghats &amp; the Ganga Aarti</h3>
+                    <p>Check in, then walk across Laxman Jhula and Ram Jhula. Explore Swarg Ashram's lanes, and end the day at Triveni Ghat for the evening Ganga Aarti — one of Rishikesh's most moving experiences.</p>
+                </div>
+            </div>
+            <div class="rsk-day">
+                <div class="rsk-day-marker">DAY<br>2</div>
+                <div class="rsk-day-card">
+                    <div class="tag">Full Day — Adventure</div>
+                    <h3>Waterfalls &amp; Whitewater</h3>
+                    <p>Morning white water rafting on the Ganges, followed by a visit to Neergarh or Patna Waterfall to cool off. Evening free to explore cafes along the riverside.</p>
+                </div>
+            </div>
+            <div class="rsk-day">
+                <div class="rsk-day-marker">DAY<br>3</div>
+                <div class="rsk-day-card">
+                    <div class="tag">Morning — Departure</div>
+                    <h3>Temples, Ashrams &amp; Beatles Ashram</h3>
+                    <p>Visit Neelkanth Mahadev Temple or Swami Dayananda Ashram, then wander the graffiti-covered halls of the Beatles Ashram before checkout and departure.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ WHERE TO EAT ============ -->
+    <div class="rsk-info-section">
+        <div class="rsk-section-heading">
+            <div class="eyebrow">Local Flavor</div>
+            <h2>Where to Eat</h2>
+            <p>Rishikesh is entirely vegetarian and alcohol-free — expect fresh, wholesome food with a strong café culture along the river.</p>
+        </div>
+        <div class="rsk-info-grid" id="rskEatGrid"></div>
+    </div>
+
+    <!-- ============ WHERE TO SHOP ============ -->
+    <div class="rsk-info-section">
+        <div class="rsk-section-heading">
+            <div class="eyebrow">Take It Home</div>
+            <h2>Where to Shop</h2>
+            <p>From spiritual keepsakes to yoga essentials, Rishikesh's lanes are full of small finds worth bringing home.</p>
+        </div>
+        <div class="rsk-info-grid" id="rskShopGrid"></div>
+    </div>
+
+    <!-- ============ PACKAGE INCLUSIONS ============ -->
+    <div class="rsk-inclusions">
+        <div class="rsk-section-heading">
+            <div class="eyebrow">The Fine Print</div>
+            <h2>What's Covered in This Package</h2>
+            <p>A clear picture of what's included, so there are no surprises on your trip.</p>
+        </div>
+        <div class="rsk-inc-grid">
+            <div class="rsk-inc-card included">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Included
+                </h3>
+                <ul>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Private AC vehicle for the entire trip</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Hotel accommodation as per package</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Daily breakfast and dinner</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Guided sightseeing as per itinerary</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Driver allowance, toll, and parking</li>
+                </ul>
+            </div>
+            <div class="rsk-inc-card excluded">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    Not Included
+                </h3>
+                <ul>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Adventure activities (rafting, bungee, zipline)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Entry tickets to monuments &amp; ashrams</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Lunch (unless specified)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Personal expenses &amp; shopping</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Travel insurance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ CTA ============ -->
+    <div class="rsk-cta">
+        <div class="rsk-cta-inner" id="rskCta">
+            <h2>Ready to hear the river call?</h2>
+            <p>Let us handle the transport, stays, and guides — you just show up and breathe it in.</p>
+            <a class="rsk-cta-btn" href="./booktour.html" target="_blank">
+                Book This Tour
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- floating sticky book button -->
+    <!-- <a class="rsk-float-btn" id="rskFloatBtn" href="./booktour.html" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Book a Tour</span>
+    </a> -->
+
+            <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+
+<!-- footer form connection  -->\
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+    <script>
+        function showsidebar(){ document.querySelector('.sidebar').classList.add('show'); }
+        function hidesidebar(){ document.querySelector('.sidebar').classList.remove('show'); }
+    </script>
+
+    <!-- Footer enquiry form -> same webhook pattern used on your homepage -->
+    <script>
+        const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+        document.querySelectorAll("form[data-formtype]").forEach(form => {
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const payload = { formType: form.dataset.formtype };
+                formData.forEach((value, key) => { payload[key] = value; });
+                try {
+                    await fetch(GOOGLE_SHEET_URL, {
+                        method: "POST", mode: "no-cors",
+                        headers: { "Content-Type": "text/plain" },
+                        body: JSON.stringify(payload)
+                    });
+                    alert("Thank you! Your request has been submitted. We'll get back to you soon.");
+                    form.reset();
+                } catch (err) {
+                    console.error(err);
+                    alert("Something went wrong. Please try again or call us directly at +91 9784568787.");
+                }
+            });
+        });
+    </script>
+
+    <script src="././finalanimation.js"></script>
+    <script src="././experimental_claude.js"></script>
+
+    <!-- ============================================================
+         RISHIKESH DATA + ALL INTERACTION JS
+    ============================================================ -->
+    <script>
+    (function(){
+      const PLACES = [
+        {
+          name: "Laxman Jhula",
+          category: "Bridges & Ghats",
+          badge: "Must Visit",
+          img: "./pack img/rishikesh/laxman_jhula.jpg",
+          text: "An iconic suspension bridge spanning the Ganges, carrying deep religious and cultural significance for the town."
+        },
+        {
+          name: "Neergarh Waterfall",
+          category: "Waterfalls & Nature",
+          img: "./pack img/rishikesh/Neergarh waterfall.jfif",
+          text: "A refreshing multi-tiered waterfall a short trek from the main town, popular for a cool dip after the climb up."
+        },
+        {
+          name: "Patna Waterfall",
+          category: "Waterfalls & Nature",
+          img: "./pack img/rishikesh/Patna Waterfall.webp",
+          text: "One of the most scenic waterfalls near Rishikesh, with limestone caves nearby that visitors often explore on foot."
+        },
+        {
+          name: "Ram Jhula",
+          category: "Bridges & Ghats",
+          badge: "Must Visit",
+          img: "./pack img/rishikesh/Ram jhula.webp",
+          text: "A 450ft suspension bridge over the Ganges connecting Shivananda Nagar to Swargashram — one of Rishikesh's most photographed landmarks."
+        },
+        {
+          name: "Neelkanth Mahadev Temple",
+          category: "Temples & Ashrams",
+          img: "./pack img/rishikesh/Shree Neelkanth Mahadev Temple.webp",
+          text: "A Hindu temple dedicated to Lord Shiva, about 32km from Rishikesh, with architecture influenced by the Dravidian style."
+        },
+        {
+          name: "Swami Dayananda Ashram",
+          category: "Temples & Ashrams",
+          img: "./pack img/rishikesh/swami-dayananda-ashram.jpg",
+          text: "A center for Vedanta teaching and study, reflecting a tradition of scriptural commentary in both Sanskrit and Hindi."
+        },
+        {
+          name: "Swarg Ashram",
+          category: "Temples & Ashrams",
+          img: "./pack img/rishikesh/Swarg Ashram.jpg",
+          text: "A riverside locality lined with ashrams, temples, and cafes — the heart of Rishikesh's identity as the Yoga Capital of the World."
+        },
+        {
+          name: "Beatles Ashram",
+          category: "Temples & Ashrams",
+          badge: "Must Visit",
+          img: "./pack img/rishikesh/The Beatles Ashram.jpg",
+          text: "Formally Chaurasi Kutia, where The Beatles stayed in 1968 and wrote much of the White Album — now famous for its vivid graffiti art."
+        },
+        {
+          name: "Triveni Ghat",
+          category: "Bridges & Ghats",
+          badge: "Must Visit",
+          img: "./pack img/rishikesh/Triveni Ghat Rishikesh.jfif",
+          text: "The main sacred bathing ghat on the Ganges, best known for its moving evening Maha Aarti to Goddess Ganga."
+        }
+      ];
+
+      const EAT = [
+        { title: "Riverside Cafés", text: "Rishikesh's café culture runs along the Ganges near Laxman Jhula and Swarg Ashram — think wood-fired pizza, fresh juices, and Israeli-inspired menus, all vegetarian." },
+        { title: "Legacy Thali Restaurants", text: "Try a classic North Indian thali at one of the town's long-running local eateries — unlimited rotis, dal, and sabzi served the traditional way." },
+        { title: "Ayurvedic & Organic Kitchens", text: "Several ashram-run kitchens and health cafés serve Ayurveda-inspired, organic meals — a nod to Rishikesh's wellness-first identity." },
+        { title: "Street Food by the Ghats", text: "Evening chaat stalls near the ghats are a local favorite — always vegetarian, in keeping with the town's sacred status." }
+      ];
+
+      const SHOP = [
+        { title: "Ram Jhula & Laxman Jhula Markets", text: "Rudraksha malas, prayer flags, singing bowls, and spiritual souvenirs line the lanes near both bridges." },
+        { title: "Yoga & Ayurveda Shops", text: "Yoga mats, herbal oils, incense, and Ayurvedic remedies — fitting keepsakes from the Yoga Capital of the World." },
+        { title: "Tibetan Market", text: "Warm clothing, handicrafts, and Tibetan jewelry, reflecting Rishikesh's close ties with the nearby Tibetan community." }
+      ];
+
+      const ICONS = {
+        eat: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v6a2 2 0 0 0 2 2v12M7 2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2M17 2c-2 0-3 2-3 5v4a2 2 0 0 0 2 2v9"/></svg>',
+        shop: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2l1 5h10l1-5M4 7h16l-1 13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 7z"/><path d="M9 11v3M15 11v3"/></svg>'
+      };
+
+      // Places grid
+      const grid = document.getElementById('rskGrid');
+      PLACES.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'rsk-card';
+        card.dataset.category = p.category;
+        card.style.transitionDelay = (i % 6) * 0.07 + 's';
+        card.innerHTML = `
+          ${p.badge ? `<span class="rsk-card-badge must-visit">${p.badge}</span>` : ''}
+          <img class="rsk-card-img" src="./${p.img}" alt="${p.name}" loading="lazy">
+          <div class="rsk-card-shade"></div>
+          <div class="rsk-card-title">
+            <div class="sub">${p.category}</div>
+            <h3>${p.name}</h3>
+          </div>
+          <div class="rsk-card-overlay">
+            <h3>${p.name}</h3>
+            <p>${p.text}</p>
+            <a class="rsk-book-btn" href="./booktour.html">
+              Book Now
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      // Eat / Shop grids
+      function renderInfoGrid(targetId, items, iconKey){
+        const el = document.getElementById(targetId);
+        items.forEach((item, i) => {
+          const card = document.createElement('div');
+          card.className = 'rsk-info-card';
+          card.style.transitionDelay = (i % 4) * 0.08 + 's';
+          card.innerHTML = `
+            <div class="rsk-info-icon">${ICONS[iconKey]}</div>
+            <h3>${item.title}</h3>
+            <p>${item.text}</p>
+          `;
+          el.appendChild(card);
+        });
+      }
+      renderInfoGrid('rskEatGrid', EAT, 'eat');
+      renderInfoGrid('rskShopGrid', SHOP, 'shop');
+
+      // Filters with ripple effect
+      document.querySelectorAll('.rsk-filter-pill').forEach(pill => {
+        pill.addEventListener('click', (e) => {
+          document.querySelectorAll('.rsk-filter-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          const ripple = document.createElement('span');
+          ripple.className = 'rsk-ripple';
+          const rect = pill.getBoundingClientRect();
+          ripple.style.left = (e.clientX - rect.left) + 'px';
+          ripple.style.top = (e.clientY - rect.top) + 'px';
+          ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+          pill.appendChild(ripple);
+          setTimeout(() => ripple.remove(), 600);
+
+          const f = pill.dataset.filter;
+          document.querySelectorAll('.rsk-card').forEach(card => {
+            card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
+          });
+        });
+      });
+
+      // Scroll-reveal for everything
+      const revealTargets = document.querySelectorAll('.rsk-card, .rsk-intro, .rsk-cta-inner, .rsk-day, .rsk-info-card, .rsk-famous-chip');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealTargets.forEach(t => observer.observe(t));
+
+      // Stat count-up
+      const statEl = document.getElementById('statRishikesh');
+      let counted = false;
+      const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !counted) {
+            counted = true;
+            let val = 0;
+            const target = PLACES.length;
+            const step = () => {
+              val++;
+              statEl.textContent = val + '+';
+              if (val < target) requestAnimationFrame(() => setTimeout(step, 90));
+            };
+            step();
+          }
+        });
+      }, { threshold: 0.5 });
+      statObserver.observe(document.querySelector('.rsk-hero-stats'));
+
+      // Scroll progress bar + floating book button visibility
+      const progress = document.getElementById('rskProgress');
+      const floatBtn = document.getElementById('rskFloatBtn');
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+        progress.style.width = scrolled + '%';
+        floatBtn.classList.toggle('show', h.scrollTop > 500);
+      });
+    })();
+    </script>
+
+</body>
+
+</html>

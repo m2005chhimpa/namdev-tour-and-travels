@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="./images/logo03.png">
+<title>What's in Salasar | Namdev's Tour & Travels</title>
+
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./finalanimation.css">
+<link rel="stylesheet" href="./experimental_claude.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --vr-blue:#8B2E2E;
+    --vr-blue-deep:#4E1717;
+    --vr-pink:#C65A2E;
+    --vr-pink-light:#F3C08A;
+    --vr-gold:#C88A2B;
+    --vr-gold-light:#F6D89A;
+    --vr-peacock:#6B4A2F;
+    --vr-ink:#2B2118;
+    --vr-paper:#FFF9F0;
+    --vr-mist:#F7EFE5;
+    --vr-line:rgba(33,28,36,0.12);
+    --font:'Nunito Sans',sans-serif;
+}
+*{box-sizing:border-box;}
+.salasar-page{
+    font-family:var(--font);
+    color:var(--vr-ink);
+    background:var(--vr-paper);
+}
+.salasar-page h1,
+.salasar-page h2,
+.salasar-page h3{
+    font-family:var(--font);
+    font-weight:800;
+}
+@media(prefers-reduced-motion:reduce){
+    .salasar-page *{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+        scroll-behavior:auto!important;
+    }
+    .vr-hero-bg{transform:none!important;}
+}
+
+/* ---------- SALASAR HERO ---------- */
+.vr-hero{
+    position:relative;
+    height:68vh;
+    min-height:28rem;
+    overflow:hidden;
+}
+.vr-hero-bg{
+    position:absolute;
+    inset:-10% -5%;
+    background-size:cover;
+    background-position:center;
+    background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Salasar_balaji_01.jpg');
+    will-change:transform;
+}
+.vr-hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 38%,rgba(217,164,65,.12),transparent 34%),
+        linear-gradient(180deg,rgba(16,42,78,.30),rgba(35,19,38,.86));
+}
+.vr-hero-glow{
+    position:absolute;
+    width:20rem;
+    height:20rem;
+    border-radius:50%;
+    right:8%;
+    top:15%;
+    background:radial-gradient(circle,rgba(244,217,154,.25),transparent 68%);
+    filter:blur(4px);
+    animation:vrGlow 5s ease-in-out infinite;
+}
+@keyframes vrGlow{
+    0%,100%{transform:scale(.9);opacity:.55;}
+    50%{transform:scale(1.1);opacity:.9;}
+}
+.vr-hero-content{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 1.5rem;
+    color:#fff;
+}
+.vr-hero-symbol{
+    width:4rem;
+    height:4rem;
+    border:1px solid rgba(244,217,154,.65);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:1rem;
+    color:var(--vr-gold-light);
+    font-size:1.7rem;
+    opacity:0;
+    animation:vrFloatIn .8s ease forwards,vrSymbolPulse 2.8s ease-in-out 1s infinite;
+}
+@keyframes vrSymbolPulse{
+    0%,100%{box-shadow:0 0 0 rgba(244,217,154,0);}
+    50%{box-shadow:0 0 28px rgba(244,217,154,.24);}
+}
+.vr-hero-eyebrow{
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--vr-pink-light);
+    margin-bottom:.7rem;
+    opacity:0;
+    animation:vrRise .7s ease .08s forwards;
+}
+.vr-hero-content h1{
+    font-size:clamp(2.2rem,5vw,3.8rem);
+    margin:0 0 .8rem;
+    opacity:0;
+    animation:vrRise .8s ease .18s forwards;
+}
+.vr-hero-content p{
+    max-width:42rem;
+    color:rgba(255,255,255,.88);
+    font-size:1rem;
+    line-height:1.75;
+    opacity:0;
+    animation:vrRise .8s ease .30s forwards;
+}
+@keyframes vrRise{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+@keyframes vrFloatIn{
+    from{opacity:0;transform:translateY(18px) scale(.85);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+.vr-hero-stats{
+    display:flex;
+    gap:2.5rem;
+    margin-top:1.6rem;
+    flex-wrap:wrap;
+    justify-content:center;
+    opacity:0;
+    animation:vrRise .8s ease .42s forwards;
+}
+.vr-hero-stats .stat strong{
+    display:block;
+    font-size:1.3rem;
+    color:var(--vr-gold-light);
+}
+.vr-hero-stats .stat span{
+    font-size:.74rem;
+    opacity:.86;
+}
+.vr-scroll-cue{
+    position:absolute;
+    bottom:1.2rem;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    animation:vrBounce 1.8s infinite;
+}
+@keyframes vrBounce{
+    0%,100%{transform:translate(-50%,0);}
+    50%{transform:translate(-50%,8px);}
+}
+
+/* ---------- FLOATING PETAL LAYER ---------- */
+.vr-petal{
+    position:absolute;
+    z-index:1;
+    width:8px;
+    height:13px;
+    border-radius:100% 0 100% 0;
+    background:rgba(244,180,201,.72);
+    transform:rotate(35deg);
+    pointer-events:none;
+    animation:vrPetalFall linear infinite;
+}
+.vr-petal:nth-child(1){left:8%;top:-5%;animation-duration:9s;animation-delay:0s;}
+.vr-petal:nth-child(2){left:22%;top:-8%;animation-duration:12s;animation-delay:2s;}
+.vr-petal:nth-child(3){left:42%;top:-5%;animation-duration:10s;animation-delay:4s;}
+.vr-petal:nth-child(4){left:63%;top:-7%;animation-duration:13s;animation-delay:1s;}
+.vr-petal:nth-child(5){left:78%;top:-4%;animation-duration:11s;animation-delay:3s;}
+.vr-petal:nth-child(6){left:92%;top:-9%;animation-duration:14s;animation-delay:5s;}
+@keyframes vrPetalFall{
+    0%{transform:translate3d(0,-30px,0) rotate(25deg);opacity:0;}
+    12%{opacity:.9;}
+    50%{transform:translate3d(60px,45vh,0) rotate(180deg);}
+    100%{transform:translate3d(-40px,95vh,0) rotate(360deg);opacity:0;}
+}
+
+/* ---------- INTRO ---------- */
+.vr-intro{
+    max-width:54rem;
+    margin:4rem auto 3rem;
+    padding:0 1.5rem;
+    text-align:center;
+}
+.vr-intro .eyebrow,
+.vr-section .heading .eyebrow,
+.vr-reviews .heading .eyebrow{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--vr-blue);
+}
+.vr-intro h2{
+    font-size:1.9rem;
+    margin:0 0 1rem;
+}
+.vr-intro p{
+    color:#625E63;
+    font-size:.96rem;
+    line-height:1.78;
+}
+
+/* ---------- EXPERIENCE BAND ---------- */
+.vr-experience{
+    max-width:74rem;
+    margin:0 auto 4rem;
+    padding:0 1.5rem;
+}
+.vr-experience-inner{
+    position:relative;
+    overflow:hidden;
+    border-radius:1.4rem;
+    background:linear-gradient(135deg,var(--vr-blue-deep),#39203D);
+    color:#fff;
+    padding:2rem;
+    box-shadow:0 18px 45px rgba(23,57,111,.16);
+}
+.vr-experience-inner:before{
+    content:"";
+    position:absolute;
+    width:15rem;
+    height:15rem;
+    border-radius:50%;
+    right:-4rem;
+    top:-7rem;
+    background:rgba(244,217,154,.10);
+}
+.vr-experience-content{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:2rem;
+    align-items:center;
+}
+.vr-experience h3{
+    margin:0 0 .45rem;
+    font-size:1.45rem;
+}
+.vr-experience p{
+    margin:0;
+    color:rgba(255,255,255,.78);
+    font-size:.9rem;
+    line-height:1.7;
+}
+.vr-experience-pills{
+    display:flex;
+    gap:.6rem;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+.vr-experience-pill{
+    border:1px solid rgba(255,255,255,.20);
+    background:rgba(255,255,255,.07);
+    border-radius:999px;
+    padding:.55rem .8rem;
+    font-size:.75rem;
+}
+@media(max-width:800px){
+    .vr-experience-content{grid-template-columns:1fr;}
+    .vr-experience-pills{justify-content:flex-start;}
+}
+
+/* ---------- ROUTE RAIL + ATTRACTIONS ---------- */
+.vr-tour-wrap{
+    max-width:74rem;
+    margin:0 auto 4rem;
+    padding:0 1.5rem;
+    display:grid;
+    grid-template-columns:3.5rem 1fr;
+    gap:2rem;
+}
+.vr-rail{
+    position:sticky;
+    top:2rem;
+    height:100%;
+    display:flex;
+    justify-content:center;
+}
+.vr-rail-line{
+    position:relative;
+    width:3px;
+    background:var(--vr-line);
+    border-radius:999px;
+}
+.vr-rail-fill{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    background:linear-gradient(180deg,var(--vr-blue),var(--vr-pink),var(--vr-gold));
+    border-radius:999px;
+    height:0%;
+    transition:height .2s linear;
+}
+.vr-cards{
+    display:flex;
+    flex-direction:column;
+    gap:2.2rem;
+}
+.vr-card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:#fff;
+    border-radius:1.2rem;
+    overflow:hidden;
+    box-shadow:0 12px 32px rgba(33,28,36,.07);
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .6s ease,transform .6s ease;
+}
+.vr-card.in-view{
+    opacity:1;
+    transform:translateY(0);
+}
+.vr-card.reverse{direction:rtl;}
+.vr-card.reverse > *{direction:ltr;}
+.vr-card-media{
+    position:relative;
+    overflow:hidden;
+    min-height:16rem;
+    cursor:zoom-in;
+    background:var(--vr-mist);
+}
+.vr-card-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .55s ease;
+}
+.vr-card-media:hover img{transform:scale(1.08);}
+.vr-card-tag{
+    position:absolute;
+    top:1rem;
+    left:1rem;
+    background:rgba(255,255,255,.93);
+    color:var(--vr-ink);
+    font-size:.68rem;
+    font-weight:700;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    padding:.35rem .75rem;
+    border-radius:999px;
+}
+.vr-zoom-hint{
+    position:absolute;
+    bottom:.8rem;
+    right:.8rem;
+    background:rgba(33,28,36,.58);
+    color:#fff;
+    font-size:.7rem;
+    padding:.3rem .6rem;
+    border-radius:.4rem;
+    opacity:0;
+    transition:opacity .25s ease;
+}
+.vr-card-media:hover .vr-zoom-hint{opacity:1;}
+.vr-card-body{
+    padding:1.8rem 2rem;
+    display:flex;
+    flex-direction:column;
+}
+.vr-card-body h3{
+    font-size:1.4rem;
+    margin:0 0 .3rem;
+    color:var(--vr-blue-deep);
+}
+.vr-card-facts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin-bottom:1rem;
+}
+.vr-fact{
+    font-size:.74rem;
+    font-weight:600;
+    color:var(--vr-ink);
+    background:var(--vr-mist);
+    border:1px solid var(--vr-line);
+    padding:.32rem .7rem;
+    border-radius:999px;
+}
+.vr-card-body p{
+    color:#625E63;
+    font-size:.9rem;
+    line-height:1.7;
+    margin:0 0 1.2rem;
+    flex:1;
+}
+.vr-card-actions{
+    display:flex;
+    align-items:center;
+    gap:.8rem;
+    flex-wrap:wrap;
+}
+.vr-add-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    cursor:pointer;
+    user-select:none;
+    border:1.5px solid var(--vr-line);
+    background:#fff;
+    padding:.6rem 1.1rem;
+    border-radius:999px;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--vr-ink);
+    transition:all .2s ease;
+}
+.vr-add-btn:hover{border-color:var(--vr-pink);}
+.vr-add-btn.added{
+    background:var(--vr-pink);
+    border-color:var(--vr-pink);
+    color:#fff;
+}
+.vr-add-btn .check{width:16px;height:16px;}
+.vr-book-link{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    text-decoration:none;
+    font-weight:700;
+    font-size:.85rem;
+    color:#fff;
+    background:linear-gradient(90deg,var(--vr-blue-deep),var(--vr-blue));
+    padding:.6rem 1.1rem;
+    border-radius:999px;
+    box-shadow:0 8px 18px rgba(40,89,168,.25);
+    transition:transform .2s ease;
+}
+.vr-book-link:hover{transform:translateY(-2px);}
+@media(max-width:900px){
+    .vr-tour-wrap{grid-template-columns:1fr;}
+    .vr-rail{display:none;}
+    .vr-card,.vr-card.reverse{
+        grid-template-columns:1fr;
+        direction:ltr;
+    }
+    .vr-card-media{min-height:13rem;}
+}
+
+/* ---------- SECTION HEADING ---------- */
+.vr-section{
+    max-width:74rem;
+    margin:5rem auto;
+    padding:0 1.5rem;
+}
+.vr-section .heading{
+    text-align:center;
+    margin-bottom:2.2rem;
+}
+.vr-section .heading h2,
+.vr-reviews .heading h2{
+    font-size:1.9rem;
+    margin:.4rem 0 0;
+}
+.vr-section .heading p{
+    color:#625E63;
+    font-size:.92rem;
+    max-width:38rem;
+    margin:.7rem auto 0;
+}
+
+/* ---------- ITINERARY ---------- */
+.vr-itin-tabs{
+    display:flex;
+    justify-content:center;
+    gap:.6rem;
+    margin-bottom:2rem;
+    flex-wrap:wrap;
+}
+.vr-itin-tab{
+    background:#fff;
+    border:1.5px solid var(--vr-line);
+    color:var(--vr-ink);
+    font-weight:700;
+    font-size:.85rem;
+    padding:.6rem 1.3rem;
+    border-radius:999px;
+    cursor:pointer;
+    transition:all .2s ease;
+}
+.vr-itin-tab:hover{border-color:var(--vr-blue);}
+.vr-itin-tab.active{
+    background:var(--vr-blue);
+    border-color:var(--vr-blue);
+    color:#fff;
+}
+.vr-itin-panel{display:none;}
+.vr-itin-panel.active{
+    display:block;
+    animation:vrRise .4s ease;
+}
+.vr-itin-days{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+    max-width:46rem;
+    margin:0 auto;
+}
+.vr-itin-day{
+    background:#fff;
+    border:1px solid var(--vr-line);
+    border-radius:1rem;
+    padding:1.3rem 1.5rem;
+    display:flex;
+    gap:1.2rem;
+}
+.vr-itin-daynum{
+    flex-shrink:0;
+    width:2.6rem;
+    height:2.6rem;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--vr-blue),var(--vr-pink));
+    color:#fff;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.vr-itin-day h4{
+    margin:0 0 .3rem;
+    font-size:1rem;
+}
+.vr-itin-day p{
+    margin:0;
+    font-size:.85rem;
+    color:#625E63;
+    line-height:1.6;
+}
+
+/* ---------- PRACTICAL ---------- */
+.vr-practical-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.6rem;
+}
+.vr-practical-card{
+    background:var(--vr-mist);
+    border-radius:1.1rem;
+    padding:1.6rem 1.7rem;
+}
+.vr-practical-card h3{
+    font-size:1.1rem;
+    margin:0 0 .8rem;
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+}
+.vr-practical-card h3 svg{
+    width:20px;
+    height:20px;
+    color:var(--vr-blue);
+}
+.vr-practical-card ul{
+    margin:0;
+    padding-left:1.1rem;
+}
+.vr-practical-card li,
+.vr-practical-card p{
+    font-size:.87rem;
+    color:#625E63;
+    line-height:1.75;
+}
+.vr-practical-card p{margin:0;}
+@media(max-width:800px){
+    .vr-practical-grid{grid-template-columns:1fr;}
+}
+
+/* ---------- FOOD + EXPERIENCES ---------- */
+.vr-strip-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+    gap:1.1rem;
+}
+.vr-strip-card{
+    position:relative;
+    background:#fff;
+    border:1px solid var(--vr-line);
+    border-radius:1rem;
+    padding:1.3rem;
+    text-align:center;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+    overflow:hidden;
+}
+.vr-strip-card:after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-2.4rem;
+    width:6rem;
+    height:6rem;
+    border-radius:50%;
+    background:rgba(217,164,65,.08);
+    transform:translateX(-50%);
+    transition:transform .3s ease;
+}
+.vr-strip-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 26px rgba(33,28,36,.08);
+    border-color:rgba(217,164,65,.35);
+}
+.vr-strip-card:hover:after{transform:translateX(-50%) scale(1.3);}
+.vr-strip-icon{
+    font-size:1.8rem;
+    margin-bottom:.6rem;
+    position:relative;
+    z-index:1;
+}
+.vr-strip-card h4{
+    margin:0 0 .3rem;
+    font-size:.95rem;
+    position:relative;
+    z-index:1;
+}
+.vr-strip-card p{
+    margin:0;
+    font-size:.8rem;
+    color:#8A858B;
+    line-height:1.5;
+    position:relative;
+    z-index:1;
+}
+
+/* ---------- SPECIAL EXPERIENCE ---------- */
+.vr-experience-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.1rem;
+}
+.vr-experience-card{
+    position:relative;
+    min-height:14rem;
+    border-radius:1.1rem;
+    overflow:hidden;
+    color:#fff;
+    background:#333;
+    box-shadow:0 12px 28px rgba(33,28,36,.10);
+}
+.vr-experience-card img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+}
+.vr-experience-card:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,transparent 30%,rgba(25,18,30,.88));
+}
+.vr-experience-card:hover img{transform:scale(1.07);}
+.vr-experience-card-content{
+    position:absolute;
+    z-index:2;
+    left:1.2rem;
+    right:1.2rem;
+    bottom:1.1rem;
+}
+.vr-experience-card-content h3{
+    font-size:1.05rem;
+    margin:0 0 .25rem;
+}
+.vr-experience-card-content p{
+    font-size:.76rem;
+    line-height:1.5;
+    margin:0;
+    color:rgba(255,255,255,.82);
+}
+@media(max-width:850px){
+    .vr-experience-grid{grid-template-columns:1fr;}
+}
+
+/* ---------- MAP ---------- */
+.vr-map-wrap{
+    border-radius:1.1rem;
+    overflow:hidden;
+    box-shadow:0 12px 32px rgba(33,28,36,.08);
+    border:1px solid var(--vr-line);
+}
+.vr-map-wrap iframe{
+    width:100%;
+    height:24rem;
+    border:0;
+    display:block;
+}
+
+/* ---------- FAQ ---------- */
+.vr-faq-list{
+    max-width:46rem;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:.8rem;
+}
+.vr-faq-item{
+    background:#fff;
+    border:1px solid var(--vr-line);
+    border-radius:.8rem;
+    overflow:hidden;
+}
+.vr-faq-q{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:none;
+    border:none;
+    padding:1.1rem 1.3rem;
+    font-size:.92rem;
+    font-weight:700;
+    color:var(--vr-ink);
+    text-align:left;
+    cursor:pointer;
+}
+.vr-faq-icon{
+    flex-shrink:0;
+    color:var(--vr-blue);
+    transition:transform .3s ease;
+}
+.vr-faq-item.open .vr-faq-icon{transform:rotate(45deg);}
+.vr-faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease,padding .35s ease;
+    padding:0 1.3rem;
+}
+.vr-faq-item.open .vr-faq-a{
+    max-height:14rem;
+    padding:0 1.3rem 1.2rem;
+}
+.vr-faq-a p{
+    margin:0;
+    font-size:.87rem;
+    color:#625E63;
+    line-height:1.65;
+}
+
+/* ---------- REVIEWS ---------- */
+.vr-reviews{
+    max-width:74rem;
+    margin:5rem auto;
+    padding:0 1.5rem;
+}
+.vr-reviews .heading{
+    text-align:center;
+    margin-bottom:2.4rem;
+}
+.vr-review-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));
+    gap:1.4rem;
+}
+.vr-review-card{
+    background:#fff;
+    border:1px solid var(--vr-line);
+    border-radius:1rem;
+    padding:1.5rem;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .5s ease,transform .5s ease;
+}
+.vr-review-card.in-view{
+    opacity:1;
+    transform:translateY(0);
+}
+.vr-review-card .stars{
+    color:var(--vr-gold);
+    font-size:.9rem;
+    margin-bottom:.6rem;
+}
+.vr-review-card p{
+    font-size:.88rem;
+    color:#625E63;
+    line-height:1.65;
+    margin:0 0 1rem;
+}
+.vr-review-card .who{
+    font-weight:700;
+    font-size:.85rem;
+}
+
+/* ---------- FLOATING PLAN ---------- */
+.vr-plan-fab{
+    position:fixed;
+    right:1.5rem;
+    bottom:1.5rem;
+    z-index:900;
+    background:linear-gradient(135deg,var(--vr-blue-deep),#3C203F 140%);
+    color:#fff;
+    border-radius:1.1rem;
+    padding:1rem 1.2rem;
+    width:15.5rem;
+    box-shadow:0 16px 36px rgba(33,28,36,.28);
+    transform:translateY(140%);
+    transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.vr-plan-fab.show{transform:translateY(0);}
+.vr-plan-fab h4{
+    margin:0 0 .2rem;
+    font-size:.95rem;
+}
+.vr-plan-fab .sub{
+    font-size:.74rem;
+    opacity:.75;
+    margin-bottom:.8rem;
+}
+.vr-plan-fab .count{
+    font-weight:800;
+    color:var(--vr-gold-light);
+}
+.vr-plan-fab a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:.4rem;
+    text-decoration:none;
+    background:var(--vr-pink);
+    color:#fff;
+    font-weight:700;
+    font-size:.85rem;
+    padding:.65rem;
+    border-radius:.7rem;
+    transition:transform .2s ease;
+}
+.vr-plan-fab a:hover{transform:translateY(-2px);}
+
+/* ---------- STICKY BAR ---------- */
+.vr-sticky-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:850;
+    background:#fff;
+    border-bottom:1px solid var(--vr-line);
+    box-shadow:0 6px 18px rgba(33,28,36,.06);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:.7rem 1.5rem;
+    transform:translateY(-110%);
+    transition:transform .35s ease;
+}
+.vr-sticky-bar.show{transform:translateY(0);}
+.vr-sticky-bar span{
+    font-weight:700;
+    font-size:.9rem;
+}
+.vr-sticky-bar a{
+    text-decoration:none;
+    background:var(--vr-blue);
+    color:#fff;
+    font-weight:700;
+    font-size:.82rem;
+    padding:.55rem 1.1rem;
+    border-radius:999px;
+    transition:transform .2s ease;
+}
+.vr-sticky-bar a:hover{transform:translateY(-2px);}
+
+/* ---------- LIGHTBOX ---------- */
+.vr-lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(27,19,29,.92);
+    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:2rem;
+}
+.vr-lightbox.show{display:flex;}
+.vr-lightbox img{
+    max-width:90vw;
+    max-height:85vh;
+    border-radius:.6rem;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.vr-lightbox-close{
+    position:absolute;
+    top:1.5rem;
+    right:1.8rem;
+    color:#fff;
+    font-size:2rem;
+    cursor:pointer;
+    line-height:1;
+    background:none;
+    border:none;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:650px){
+    .vr-hero{height:72vh;}
+    .vr-hero-stats{gap:1.25rem;}
+    .vr-card-body{padding:1.4rem;}
+    .vr-sticky-bar{padding:.65rem 1rem;}
+    .vr-sticky-bar span{font-size:.78rem;}
+    .vr-plan-fab{
+        left:1rem;
+        right:1rem;
+        bottom:1rem;
+        width:auto;
+    }
+}
+
+/* ============ SALASAR DESTINATION ENHANCEMENTS ============ */
+.salasar-page{
+    --ganga:#1696A7;
+    --ganga-deep:#075E68;
+    --saffron:#E87922;
+    --gold:#D5A43A;
+    --night:#101B26;
+}
+.salasar-page .jd-hero-overlay{
+    background:
+        radial-gradient(circle at 50% 25%, rgba(232,121,34,.18), transparent 34%),
+        linear-gradient(180deg, rgba(5,35,45,.18), rgba(10,19,28,.88));
+}
+.salasar-page .jd-hero-eyebrow,
+.salasar-page .jd-hero-stats .stat strong{color:#FFD28A;}
+.salasar-page .jd-intro .eyebrow,
+.salasar-page .jd-reviews .heading .eyebrow{color:var(--ganga);}
+.salasar-page .jd-card{border:1px solid rgba(22,150,167,.10);}
+.salasar-page .jd-card:hover{box-shadow:0 18px 45px rgba(7,94,104,.12);}
+.salasar-page .jd-rail-fill{background:linear-gradient(180deg,var(--ganga),var(--saffron),var(--gold));}
+.salasar-page .jd-add-btn.added{background:var(--ganga-deep);}
+.salasar-page .jd-plan-fab{background:linear-gradient(135deg,var(--ganga-deep),var(--night) 140%);}
+.salasar-page .jd-plan-fab a{background:var(--saffron);}
+.salasar-page .jd-sticky-bar a{background:var(--ganga-deep);}
+
+.jd-ganga-particles{
+    position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;
+}
+.jd-diya{
+    position:absolute;width:8px;height:8px;border-radius:50% 50% 45% 45%;
+    background:#FFD166;box-shadow:0 0 12px 4px rgba(255,209,102,.55);
+    animation:jdDiyas 5s ease-in-out infinite;opacity:.75;
+}
+.jd-diya:nth-child(1){left:16%;bottom:13%;animation-delay:-1s}
+.jd-diya:nth-child(2){left:29%;bottom:22%;animation-delay:-3s}
+.jd-diya:nth-child(3){left:46%;bottom:9%;animation-delay:-2s}
+.jd-diya:nth-child(4){left:64%;bottom:17%;animation-delay:-4s}
+.jd-diya:nth-child(5){left:79%;bottom:11%;animation-delay:-1.7s}
+@keyframes jdDiyas{
+    0%,100%{transform:translateY(0) scale(.8);opacity:.35}
+    50%{transform:translateY(-45px) scale(1.2);opacity:.95}
+}
+.jd-ganga-strip{max-width:74rem;margin:0 auto 4rem;padding:0 1.5rem;}
+.jd-ganga-strip-inner{
+    position:relative;overflow:hidden;border-radius:1.2rem;padding:1.35rem 1.5rem;
+    color:#fff;background:linear-gradient(105deg,#075E68,#1696A7 55%,#D5A43A);
+    box-shadow:0 16px 40px rgba(7,94,104,.16);
+}
+.jd-ganga-strip-inner:after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.20) 50%,transparent 75%);
+    transform:translateX(-100%);animation:jdBalajiShimmer 4s infinite;
+}
+@keyframes jdBalajiShimmer{to{transform:translateX(100%)}}
+.jd-ganga-strip-inner h3{margin:0 0 .3rem;font-size:1.05rem}
+.jd-ganga-strip-inner p{margin:0;opacity:.9;font-size:.84rem;line-height:1.6}
+@media(max-width:760px){
+    .salasar-page .jd-hero{height:72vh}
+    .jd-ganga-strip{margin-bottom:2.5rem}
+    .jd-ganga-strip-inner{padding:1.15rem}
+}
+
+
+/* ============================================================
+   SALASAR BALAJI DESTINATION — VISUAL ENHANCEMENTS
+   Same page architecture; destination-specific presentation.
+   ============================================================ */
+.salasar-page{
+    --balaji:#A92720;
+    --balaji-deep:#701814;
+    --saffron:#E87922;
+    --temple-gold:#D5A43A;
+    --cream:#FFF8EC;
+    --night:#251513;
+}
+.salasar-page .jd-hero-overlay{
+    background:
+        radial-gradient(circle at 50% 25%,rgba(255,181,71,.22),transparent 35%),
+        linear-gradient(180deg,rgba(45,13,10,.12),rgba(35,13,10,.91));
+}
+.salasar-page .jd-hero-eyebrow,
+.salasar-page .jd-hero-stats .stat strong{color:#FFD28A;}
+.salasar-page .jd-intro .eyebrow,
+.salasar-page .jd-reviews .heading .eyebrow{color:var(--balaji);}
+.salasar-page .jd-card{border:1px solid rgba(169,39,32,.11);}
+.salasar-page .jd-card:hover{box-shadow:0 18px 45px rgba(112,24,20,.14);}
+.salasar-page .jd-card .jd-card-tag{
+    background:rgba(169,39,32,.09);
+    color:var(--balaji-deep);
+}
+.salasar-page .jd-rail-fill{
+    background:linear-gradient(180deg,var(--balaji),var(--saffron),var(--temple-gold));
+}
+.salasar-page .jd-add-btn.added{background:var(--balaji-deep);}
+.salasar-page .jd-plan-fab{
+    background:linear-gradient(135deg,var(--balaji-deep),var(--night) 140%);
+}
+.salasar-page .jd-plan-fab a,
+.salasar-page .jd-sticky-bar a{background:var(--balaji);}
+
+/* 1 — Floating temple diyas */
+.sl-diyas{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.sl-diya{
+    position:absolute;width:10px;height:7px;border-radius:50% 50% 45% 45%;
+    background:#FFD166;box-shadow:0 0 14px 5px rgba(255,183,71,.58);
+    animation:slDiyas 6s ease-in-out infinite;
+}
+.sl-diya:after{
+    content:"";position:absolute;width:3px;height:7px;border-radius:50%;
+    left:50%;top:-7px;transform:translateX(-50%);
+    background:#fff2a6;box-shadow:0 0 8px 3px #ffd166;
+}
+.sl-diya:nth-child(1){left:9%;bottom:16%;animation-delay:-1s}
+.sl-diya:nth-child(2){left:23%;bottom:27%;animation-delay:-3.2s}
+.sl-diya:nth-child(3){left:44%;bottom:12%;animation-delay:-2s}
+.sl-diya:nth-child(4){left:67%;bottom:22%;animation-delay:-4.2s}
+.sl-diya:nth-child(5){left:88%;bottom:14%;animation-delay:-.7s}
+@keyframes slDiyas{
+    0%,100%{transform:translateY(0) scale(.75);opacity:.25}
+    50%{transform:translateY(-55px) scale(1.2);opacity:1}
+}
+
+/* 2 — Om pulse */
+.sl-om{
+    position:absolute;top:18%;left:50%;transform:translateX(-50%);
+    z-index:2;color:#ffd166;font-size:clamp(2rem,5vw,4rem);
+    text-shadow:0 0 20px rgba(255,209,102,.6);
+    animation:slOm 3s ease-in-out infinite;
+    pointer-events:none;
+}
+@keyframes slOm{
+    0%,100%{opacity:.3;transform:translateX(-50%) scale(.88)}
+    50%{opacity:1;transform:translateX(-50%) scale(1.08)}
+}
+
+/* 3 — Rotating temple halo */
+.sl-halo{
+    position:absolute;left:50%;top:50%;width:260px;height:260px;
+    transform:translate(-50%,-50%);border:1px solid rgba(255,209,102,.25);
+    border-radius:50%;z-index:1;pointer-events:none;
+    animation:slHalo 18s linear infinite;
+}
+.sl-halo:before,.sl-halo:after{
+    content:"";position:absolute;inset:18px;border:1px dashed rgba(255,209,102,.22);
+    border-radius:50%;
+}
+.sl-halo:after{inset:44px;border-style:solid;opacity:.6}
+@keyframes slHalo{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+/* 4 — Saffron light sweep */
+.sl-light-sweep{
+    position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;
+}
+.sl-light-sweep:after{
+    content:"";position:absolute;top:-30%;left:-30%;width:25%;height:160%;
+    transform:rotate(20deg);
+    background:linear-gradient(90deg,transparent,rgba(255,215,125,.18),transparent);
+    animation:slSweep 7s ease-in-out infinite;
+}
+@keyframes slSweep{
+    0%{left:-35%}
+    55%,100%{left:120%}
+}
+
+/* 5 — Bell swing */
+.sl-bell{
+    position:absolute;right:8%;top:17%;z-index:4;font-size:2rem;
+    filter:drop-shadow(0 0 10px rgba(255,209,102,.55));
+    animation:slBell 3.5s ease-in-out infinite;
+    transform-origin:50% 0;
+    pointer-events:none;
+}
+@keyframes slBell{
+    0%,100%{transform:rotate(0)}
+    20%{transform:rotate(8deg)}
+    40%{transform:rotate(-8deg)}
+    60%{transform:rotate(5deg)}
+    80%{transform:rotate(-3deg)}
+}
+
+/* 6 — Mandala rotation */
+.sl-mandala{
+    position:absolute;left:7%;top:16%;z-index:3;width:70px;height:70px;
+    border:1px solid rgba(255,209,102,.35);border-radius:50%;
+    pointer-events:none;animation:slMandala 12s linear infinite;
+}
+.sl-mandala:before,.sl-mandala:after{
+    content:"";position:absolute;inset:12px;border:1px solid rgba(255,209,102,.35);
+    transform:rotate(45deg);border-radius:50%;
+}
+.sl-mandala:after{inset:22px;transform:rotate(-45deg)}
+@keyframes slMandala{to{transform:rotate(360deg)}}
+
+/* 7 — Incense smoke */
+.sl-smoke{
+    position:absolute;left:50%;bottom:18%;width:12px;height:75px;z-index:3;
+    pointer-events:none;opacity:.35;filter:blur(5px);
+}
+.sl-smoke:before,.sl-smoke:after{
+    content:"";position:absolute;width:22px;height:50px;border-radius:50%;
+    border-left:2px solid rgba(255,245,220,.7);
+    animation:slSmoke 4s ease-in-out infinite;
+}
+.sl-smoke:after{left:15px;animation-delay:-2s}
+@keyframes slSmoke{
+    0%{transform:translate(0,20px) scale(.7);opacity:0}
+    35%{opacity:.7}
+    100%{transform:translate(35px,-55px) scale(1.3);opacity:0}
+}
+
+/* 8 — Gold particle drift */
+.sl-particles{position:absolute;inset:0;z-index:2;pointer-events:none}
+.sl-particle{
+    position:absolute;width:4px;height:4px;border-radius:50%;
+    background:#FFD166;box-shadow:0 0 7px #ffd166;
+    animation:slParticle 9s linear infinite;
+}
+.sl-particle:nth-child(1){left:14%;top:70%;animation-delay:-1s}
+.sl-particle:nth-child(2){left:31%;top:82%;animation-delay:-4s}
+.sl-particle:nth-child(3){left:53%;top:74%;animation-delay:-6s}
+.sl-particle:nth-child(4){left:72%;top:86%;animation-delay:-2s}
+.sl-particle:nth-child(5){left:91%;top:69%;animation-delay:-7s}
+@keyframes slParticle{
+    0%{transform:translateY(20px) scale(.5);opacity:0}
+    20%{opacity:.8}
+    80%{opacity:.5}
+    100%{transform:translateY(-180px) translateX(35px) scale(1.15);opacity:0}
+}
+
+/* Salasar devotional banner */
+.sl-bhakti-strip{
+    max-width:74rem;margin:0 auto 4rem;padding:0 1.5rem;
+}
+.sl-bhakti-inner{
+    position:relative;overflow:hidden;border-radius:1.2rem;
+    padding:1.35rem 1.5rem;color:#fff;
+    background:linear-gradient(105deg,#701814,#A92720 55%,#D5A43A);
+    box-shadow:0 16px 40px rgba(112,24,20,.18);
+}
+.sl-bhakti-inner:after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.20) 50%,transparent 75%);
+    transform:translateX(-100%);animation:slShimmer 4s infinite;
+}
+@keyframes slShimmer{to{transform:translateX(100%)}}
+.sl-bhakti-inner h3{margin:0 0 .3rem;font-size:1.05rem}
+.sl-bhakti-inner p{margin:0;opacity:.92;font-size:.84rem;line-height:1.6}
+
+@media(max-width:760px){
+    .sl-halo{width:190px;height:190px}
+    .sl-bell{right:5%;top:14%;font-size:1.5rem}
+    .sl-mandala{left:4%;top:18%;width:48px;height:48px}
+    .sl-bhakti-strip{margin-bottom:2.5rem}
+    .sl-bhakti-inner{padding:1.15rem}
+}
+
+</style>
+</head>
+
+<body class="salasar-page">
+
+<!-- ============ NAV (matches the rest of the site) ============ -->
+<nav>
+    <ul class="sidebar">
+        <li onclick="hidesidebar()" style="font-size:32px;"><a href="javascript:void(0)">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+                <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <div class="submenu1">
+                <ul>
+                    <li class="hoberme"><a href="">Luxury Buses</a>
+                        <div class="submenu2">
+                            <ul>
+                                <li><a href="">Volvo Bus</a></li>
+                                <li><a href="">Winger</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="hoberme"><a href="">Luxury Cars</a>
+                        <div class="submenu2">
+                            <ul>
+                                <li><a href="">Innova Crysita</a></li>
+                                <li><a href="">Kia Carnevals</a></li>
+                                <li><a href="">Honda City</a></li>
+                                <li><a href="">Etios</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="hoberme"><a href="">Economical Car</a>
+                        <div class="submenu2">
+                            <ul>
+                                <li><a href="">Swift Dzire</a></li>
+                                <li><a href="">Ertiga</a></li>
+                                <li><a href="">Innova</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./contact.html">Contact us</a></li>
+    </ul>
+
+    <ul id="firstnav">
+        <img style="height:4.7rem; position:absolute; margin-left:-74%; padding-top:.2%;" src="././images/logo03.png" alt="">
+        <li class="hideonmobile"><a href="./index.html">Home</a></li>
+        <li class="hideonmobile navHasDropdown">
+            <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+            <div class="navDropdown">
+                <div class="navDropdownCol">
+                    <h4>Luxury Buses</h4>
+                    <a href="">Volvo Bus</a>
+                    <a href="">Winger</a>
+                </div>
+                <div class="navDropdownCol">
+                    <h4>Luxury Cars</h4>
+                    <a href="">Innova Crysta</a>
+                    <a href="">Kia Carnival</a>
+                    <a href="">Honda City</a>
+                    <a href="">Etios</a>
+                </div>
+                <div class="navDropdownCol">
+                    <h4>Economical Cars</h4>
+                    <a href="">Swift Dzire</a>
+                    <a href="">Ertiga</a>
+                    <a href="">Innova</a>
+                </div>
+            </div>
+        </li>
+        <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+        <li class="hideonmobile"><a href="./about.html">About</a></li>
+        <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+        <li id="menuicon" onclick="showsidebar()"><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+    </ul>
+
+    <a class="booka" href="./booktour.html" target="_blank">
+        <div class="book">Book a Tour</div>
+    </a>
+</nav>
+
+<!-- ============ LOADER / ANIMATION ============ -->
+<div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Entering Shekhawati…</p>
+</div>
+
+<!-- ============ STICKY MINI BOOK BAR ============ -->
+<!-- <div class="vr-sticky-bar" id="vrStickyBar">
+    <span>Exploring Salasar?</span>
+    <a href="./booktour.html" target="_blank">Book a Tour</a>
+</div> -->
+
+<!-- ============ HERO ============ -->
+<section class="vr-hero" id="vrHero">
+    <div class="vr-hero-bg" id="vrHeroBg"></div>
+    <div class="vr-hero-overlay"></div>
+    <div class="vr-hero-glow"></div>
+
+    <span class="vr-petal"></span>
+    <span class="vr-petal"></span>
+    <span class="vr-petal"></span>
+    <span class="vr-petal"></span>
+    <span class="vr-petal"></span>
+    <span class="vr-petal"></span>
+
+    <div class="vr-hero-content">
+        <div class="vr-hero-symbol">◉</div>
+        <div class="vr-hero-eyebrow">The Sacred Land of Shekhawati</div>
+        <h1>What's in Salasar</h1>
+        <p>Ancient temples, flower-filled lanes, the Balaji, evening aartis and the living traditions of Balaji Bhakti — Salasar is a destination you experience slowly, one sacred place at a time.</p>
+
+        <div class="vr-hero-stats">
+            <div class="stat"><strong>10</strong><span>Must-see experiences</span></div>
+            <div class="stat"><strong>1-2</strong><span>Days recommended</span></div>
+            <div class="stat"><strong>4.9★</strong><span>Traveler rating</span></div>
+        </div>
+    </div>
+
+    <div class="vr-scroll-cue">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M6 13l6 6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="vr-intro">
+    <div class="eyebrow">Tour Packages</div>
+    <h2>Plan your Salasar itinerary</h2>
+    <p>From an early darshan at Salasar Balaji Temple to the colourful bazaar and nearby Shekhawati heritage, Salasar is best explored with a thoughtful route. Tap "Add to my plan" on any place below and build your own Shekhawati journey.</p>
+</section>
+
+<section class="sl-bhakti-strip">
+    <div class="sl-bhakti-inner">
+        <h3>🚩 Salasar Balaji — a journey of faith</h3>
+        <p>Begin with an early darshan, feel the energy of Balaji Aarti, explore the temple bazaar, and continue through nearby Shekhawati and devotional destinations.</p>
+    </div>
+</section>
+
+
+<!-- ============ SPECIAL SALASAR EXPERIENCE ============ -->
+<section class="vr-experience">
+    <div class="vr-experience-inner">
+        <div class="vr-experience-content">
+            <div>
+                <h3>Experience Salasar beyond sightseeing</h3>
+                <p>Wake up to temple bells, explore the old lanes on foot, watch the Balaji change with the evening light and leave time for the devotional atmosphere that makes Shekhawati different from a regular city tour.</p>
+            </div>
+            <div class="vr-experience-pills">
+                <span class="vr-experience-pill">🪷 Temple Trails</span>
+                <span class="vr-experience-pill">🪔 Balaji Aarti</span>
+                <span class="vr-experience-pill">🌾 Shekhawati Heritage</span>
+                <span class="vr-experience-pill">🏛️ Churu Havelis</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ ATTRACTIONS ============ -->
+<div class="vr-tour-wrap">
+    <div class="vr-rail">
+        <div class="vr-rail-line" id="vrRailLine">
+            <div class="vr-rail-fill" id="vrRailFill"></div>
+        </div>
+    </div>
+
+    <div class="vr-cards" id="vrCards"></div>
+</div>
+
+<!-- ============ SUGGESTED ITINERARIES ============ -->
+<section class="vr-section">
+    <div class="heading">
+        <div class="eyebrow">Plan It Out</div>
+        <h2>Suggested Salasar itineraries</h2>
+        <p>Choose a pace that works for you — a focused temple day, a relaxed two-day Shekhawati experience or a wider Salasar-Churu Heritage circuit.</p>
+    </div>
+
+    <div class="vr-itin-tabs" id="vrItinTabs">
+        <button class="vr-itin-tab active" data-day="1">1 Day</button>
+        <button class="vr-itin-tab" data-day="2">2 Days</button>
+        <button class="vr-itin-tab" data-day="3">3 Days</button>
+    </div>
+
+    <div class="vr-itin-panel active" data-day="1">
+        <div class="vr-itin-days">
+            <div class="vr-itin-day">
+                <div class="vr-itin-daynum">1</div>
+                <div>
+                    <h4>Morning — Salasar Balaji &amp; Temple Bazaar</h4>
+                    <p>Start early with darshan at Salasar Balaji Temple, then explore the temple bazaar and nearby lanes before the busiest part of the day.</p>
+                </div>
+            </div>
+            <div class="vr-itin-day">
+                <div class="vr-itin-daynum">2</div>
+                <div>
+                    <h4>Afternoon — Churu Heritage &amp; Shekhawati</h4>
+                    <p>For a wider Shekhawati experience, continue to Churu for its painted havelis and historic streets, then return to Salasar for the evening.</p>
+                </div>
+            </div>
+            <div class="vr-itin-day">
+                <div class="vr-itin-daynum">3</div>
+                <div>
+                    <h4>Evening — Balaji &amp; Salasar Bazaar</h4>
+                    <p>Finish around the temple around Salasar Bazaar and experience the evening devotional atmosphere before returning to your hotel.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="vr-itin-panel" data-day="2">
+        <div class="vr-itin-days">
+            <div class="vr-itin-day">
+                <div class="vr-itin-daynum">1</div>
+                <div>
+                    <h4>Day 1 — Temple heart of Salasar</h4>
+                    <p>Salasar Balaji Temple, temple bazaar and an evening darshan at Salasar Balaji.</p>
+                </div>
+            </div>
+            <div class="vr-itin-day">
+                <div class="vr-itin-daynum">2</div>
+                <div>
+                    <h4>Day 2 — Balaji, Churu Heritage &amp; Shekhawati culture</h4>
+                    <p>Salasar in the morning, then Churu's painted havelis and Sethani Ka Johara before returning to Salasar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="vr-itin-panel" data-day="3">
+        <div class="vr-itin-days">
+            <div class="vr-itin-day">
+                <div class="vr-itin-daynum">1</div>
+                <div>
+                    <h4>Day 1 — Sacred Salasar</h4>
+                    <p>Salasar Balaji Temple, Khatu Shyam Ji Temple and the old lanes and bazaar of Salasar.</p>
+                </div>
+            </div>
+            <div class="vr-itin-day">
+                <div class="vr-itin-daynum">2</div>
+                <div>
+                    <h4>Day 2 — Salasar Balaji Temple &amp; Balaji</h4>
+                    <p>Salasar Balaji Temple, local markets, Salasar Bazaar and a relaxed evening around the Balaji.</p>
+                </div>
+            </div>
+            <div class="vr-itin-day">
+                <div class="vr-itin-daynum">3</div>
+                <div>
+                    <h4>Day 3 — Churu Heritage &amp; wider Shekhawati</h4>
+                    <p>Churu's heritage havelis, Sethani Ka Johara and selected Shekhawati sites depending on your interests and available time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PRACTICAL INFO ============ -->
+<section class="vr-section">
+    <div class="heading">
+        <div class="eyebrow">Before You Go</div>
+        <h2>Good to know</h2>
+    </div>
+
+    <div class="vr-practical-grid">
+        <div class="vr-practical-card">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
+                </svg>
+                Best time to visit
+            </h3>
+            <p>October to March is generally comfortable for exploring Shekhawati. Festival periods such as Holi can transform Salasar with huge crowds and special celebrations, so plan transport and accommodation well in advance.</p>
+        </div>
+
+        <div class="vr-practical-card">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+                How to reach Salasar
+            </h3>
+            <ul>
+                <li><strong>By air:</strong> Delhi is the most practical major-airport gateway for many visitors.</li>
+                <li><strong>By train:</strong> Churu Heritage Junction is the main rail gateway, with Salasar a short road journey away.</li>
+                <li><strong>By road:</strong> Salasar is easily combined with Churu Heritage, Agra and Delhi routes — we can arrange the car for the complete circuit.</li>
+            </ul>
+        </div>
+
+        <div class="vr-practical-card">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M4 7h16M4 12h16M4 17h10"/>
+                </svg>
+                Temple visit etiquette
+            </h3>
+            <p>Dress respectfully, follow photography restrictions where applicable and keep extra time around major temples. During peak festival periods, walking can be easier than trying to take a car directly through crowded lanes.</p>
+        </div>
+
+        <div class="vr-practical-card">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M12 7v5l3 2"/>
+                </svg>
+                Plan your timing
+            </h3>
+            <p>Temple schedules and crowd conditions can vary by day and festival. We recommend confirming the current darshan schedule before finalising your route, especially for special occasions.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOOD & SHOPPING ============ -->
+<section class="vr-section">
+    <div class="heading">
+        <div class="eyebrow">Taste of Shekhawati</div>
+        <h2>What to eat &amp; what to take home</h2>
+    </div>
+
+    <div class="vr-strip-grid">
+        <div class="vr-strip-card">
+            <div class="vr-strip-icon">🍬</div>
+            <h4>Churu Heritage Peda</h4>
+            <p>The classic milk-based sweet associated with the Churu Heritage-Shekhawati region and a popular takeaway.</p>
+        </div>
+        <div class="vr-strip-card">
+            <div class="vr-strip-icon">🥛</div>
+            <h4>Lassi &amp; Milk Drinks</h4>
+            <p>Cool, creamy drinks are a natural companion to a day spent walking through the temple town.</p>
+        </div>
+        <div class="vr-strip-card">
+            <div class="vr-strip-icon">🥘</div>
+            <h4>Shekhawati Vegetarian Food</h4>
+            <p>Explore simple North Indian vegetarian dishes and local satvik-style food around the temple areas.</p>
+        </div>
+        <div class="vr-strip-card">
+            <div class="vr-strip-icon">🪷</div>
+            <h4>Balaji Bhakti Mementos</h4>
+            <p>Small devotional art, idols, malas and traditional items make memorable souvenirs from Shekhawati.</p>
+        </div>
+        <div class="vr-strip-card">
+            <div class="vr-strip-icon">🧿</div>
+            <h4>Shekhawati Handicrafts</h4>
+            <p>Look for locally inspired decorative pieces and traditional craft items in the town markets.</p>
+        </div>
+        <div class="vr-strip-card">
+            <div class="vr-strip-icon">🌸</div>
+            <h4>Phoolon Ki Tradition</h4>
+            <p>Flowers are deeply woven into Shekhawati's devotional culture and festivals, especially around temple celebrations.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SPECIAL EXPERIENCES ============ -->
+<section class="vr-section">
+    <div class="heading">
+        <div class="eyebrow">Don't Just Visit — Experience</div>
+        <h2>Salasar moments worth making time for</h2>
+        <p>These are not simply sightseeing stops — they are the moments that give a Shekhawati trip its character.</p>
+    </div>
+
+    <div class="vr-experience-grid">
+        <div class="vr-experience-card">
+            <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Salasar%20balaji%2001.jpg" alt="Salasar Balaji Temple" loading="lazy">
+            <div class="vr-experience-card-content">
+                <h3>Balaji at Salasar Bazaar</h3>
+                <p>Slow down around Salasar's temple bazaar and soak in the devotional atmosphere after darshan.</p>
+            </div>
+        </div>
+
+        <div class="vr-experience-card">
+            <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Salasar%20Balaji.jpg" alt="Salasar Balaji" loading="lazy">
+            <div class="vr-experience-card-content">
+                <h3>Evening Balaji Aarti</h3>
+                <p>Plan your evening around darshan and aarti timings announced by the temple, then explore the bazaar at a relaxed pace.</p>
+            </div>
+        </div>
+
+        <div class="vr-experience-card">
+            <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/1100%20Khidkiyon%20Ki%20Haveli.jpg" alt="Shekhawati heritage haveli in Churu" loading="lazy">
+            <div class="vr-experience-card-content">
+                <h3>Walk the Old Lanes</h3>
+                <p>Leave the car behind for a while and experience the sounds, colours and everyday rhythm of old Salasar.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ MAP ============ -->
+<section class="vr-section">
+    <div class="heading">
+        <div class="eyebrow">Get Your Bearings</div>
+        <h2>Where everything is</h2>
+        <p>A quick look at Salasar before you decide how to combine temple visits with nearby Churu and Shekhawati heritage.</p>
+    </div>
+
+    <div class="vr-map-wrap">
+        <iframe
+            src="./https://www.google.com/maps?q=Salasar%2C+Rajasthan&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map of Salasar, Rajasthan">
+        </iframe>
+    </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="vr-section">
+    <div class="heading">
+        <div class="eyebrow">Quick Answers</div>
+        <h2>Frequently asked questions</h2>
+    </div>
+
+    <div class="vr-faq-list" id="vrFaqList">
+        <div class="vr-faq-item">
+            <button class="vr-faq-q">
+                <span>How many days do I need in Salasar?</span>
+                <svg class="vr-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            <div class="vr-faq-a">
+                <p>One full day can cover the major highlights, but two days gives you more breathing room for temple visits, the Balaji, Salasar Balaji Temple and the old lanes. Three days works well if you want to include Churu Heritage and a wider Shekhawati circuit.</p>
+            </div>
+        </div>
+
+        <div class="vr-faq-item">
+            <button class="vr-faq-q">
+                <span>What is the best time to visit the temples?</span>
+                <svg class="vr-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            <div class="vr-faq-a">
+                <p>Temple schedules vary, and popular temples can become very busy. Early mornings and evening periods are often the most atmospheric, but always check the current darshan timings before travelling.</p>
+            </div>
+        </div>
+
+        <div class="vr-faq-item">
+            <button class="vr-faq-q">
+                <span>Can I combine Salasar with Churu Heritage?</span>
+                <svg class="vr-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            <div class="vr-faq-a">
+                <p>Yes. Salasar and Churu Heritage are close enough to combine into the same trip, making a dedicated Shekhawati itinerary practical for visitors arriving by road or through Churu Heritage Junction.</p>
+            </div>
+        </div>
+
+        <div class="vr-faq-item">
+            <button class="vr-faq-q">
+                <span>Can Namdev's Tour &amp; Travels arrange the complete Salasar route?</span>
+                <svg class="vr-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+            </button>
+            <div class="vr-faq-a">
+                <p>Yes — select your preferred places using "Add to my plan" and continue to booking. We can arrange the vehicle and route around your chosen Salasar and Churu Heritage experiences.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="vr-reviews">
+    <div class="heading">
+        <div class="eyebrow">Traveler Stories</div>
+        <h2>What visitors say about Salasar trips</h2>
+    </div>
+
+    <div class="vr-review-grid">
+        <div class="vr-review-card">
+            <div class="stars">★★★★★</div>
+            <p>"The early darshan at Salasar Balaji and the relaxed time around the temple bazaar made the trip feel much more peaceful than a rushed sightseeing day."</p>
+            <div class="who">— Riya S.</div>
+        </div>
+
+        <div class="vr-review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Salasar Balaji Temple in the evening was beautiful. Combining Salasar with Churu's heritage havelis made the route much more interesting."</p>
+            <div class="who">— Aman K.</div>
+        </div>
+
+        <div class="vr-review-card">
+            <div class="stars">★★★★☆</div>
+            <p>"The best part was slowing down near Salasar Bazaar instead of rushing from temple to temple. The itinerary gave us enough free time to actually enjoy Salasar."</p>
+            <div class="who">— Neha P.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FLOATING ITINERARY PANEL ============ -->
+<div class="vr-plan-fab" id="vrPlanFab">
+    <h4>Your Salasar plan</h4>
+    <div class="sub"><span class="count" id="vrPlanCount">0</span> places selected</div>
+    <a href="#" id="vrPlanLink" target="_blank">Continue to booking →</a>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="vr-lightbox" id="vrLightbox">
+    <button class="vr-lightbox-close" id="vrLightboxClose">&times;</button>
+    <img id="vrLightboxImg" src="" alt="">
+</div>
+
+<!-- ============ FOOTER ============ -->
+        <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/1100%20Khidkiyon%20Ki%20Haveli.jpg" alt="Churu Heritage">
+                <span>Churu Heritage</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Sethani%20Ka%20Johara.jpg" alt="Sethani Ka Johara">
+                <span>Churu Heritage</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Salasar%20balaji%2001.jpg" alt="Salasar Balaji">
+                <span>Salasar Balaji</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Blackbuck%20at%20Taal%20Chapar.jpg" alt="Tal Chhapar">
+                <span>Tal Chhapar</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Salasar%2C%20rajisthan.jpg" alt="Shekhawati">
+                <span>Shekhawati</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+
+<!-- footer form connection -->
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+<script>
+function showsidebar(){
+    document.querySelector('.sidebar').classList.add('show');
+}
+function hidesidebar(){
+    document.querySelector('.sidebar').classList.remove('show');
+}
+
+/* ---------- attraction data ---------- */
+const ATTRACTIONS = [
+    {
+        name:"Salasar Balaji Temple",
+        type:"Temple",
+        built:null,
+        duration:"~1 hr",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Salasar%20balaji%2001.jpg",
+        text:"Salasar's best-known pilgrimage site, located in Churu district, Rajasthan. Allow time for darshan, the temple complex and the surrounding bazaar."
+    },
+    {
+        name:"Salasar Balaji Dham",
+        type:"Temple",
+        built:null,
+        duration:"~45 min",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Salasar%20Balaji.jpg",
+        text:"A devotional stop centred on Balaji/Hanuman worship. Temple timings and access arrangements can change, so check current darshan guidance before travelling."
+    },
+    {
+        name:"Khatu Shyam Ji Temple",
+        type:"Temple",
+        built:null,
+        duration:"~2\u20133 hrs",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Khatu%20shyam%20temple.jpg",
+        text:"A major pilgrimage destination in the wider Shekhawati circuit. It works best as a planned excursion from Salasar rather than as a town-centre stop."
+    },
+    {
+        name:"Rani Sati Temple, Jhunjhunu",
+        type:"Temple",
+        built:null,
+        duration:"~2\u20133 hrs",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Rani%20Sati%20Temple%2C%20Jhunjhunu%20%281%29.jpg",
+        text:"A prominent temple in Jhunjhunu and a strong addition to a wider Shekhawati devotional circuit."
+    },
+    {
+        name:"1100 Khidkiyon Ki Haveli, Churu",
+        type:"Shekhawati Heritage",
+        built:null,
+        duration:"~1 hr",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/1100%20Khidkiyon%20Ki%20Haveli.jpg",
+        text:"A richly decorated Churu haveli showcasing the painted architecture for which the Shekhawati region is known."
+    },
+    {
+        name:"Sethani Ka Johara, Churu",
+        type:"Heritage Site",
+        built:null,
+        duration:"~45 min",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Sethani%20Ka%20Johara.jpg",
+        text:"A historic reservoir in Churu and a useful addition to a Salasar\u2013Churu heritage route."
+    },
+    {
+        name:"Tal Chhapar Wildlife Sanctuary",
+        type:"Wildlife",
+        built:null,
+        duration:"~2\u20133 hrs",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Blackbuck%20at%20Taal%20Chapar.jpg",
+        text:"A Churu-district wildlife destination known for blackbuck and birdlife. Best treated as a separate excursion and checked for current visitor timings."
+    },
+    {
+        name:"Salasar & Shekhawati Lanes",
+        type:"Local Experience",
+        built:null,
+        duration:"~45 min",
+        img:"https://commons.wikimedia.org/wiki/Special:FilePath/Salasar%2C%20rajisthan.jpg",
+        text:"Take a slow walk around the local lanes and market areas near the temple to experience the everyday devotional atmosphere of Salasar."
+    }
+];
+
+const FALLBACK_SALASAR_IMAGE = "https://commons.wikimedia.org/wiki/Special:FilePath/Salasar%20balaji%2001.jpg";
+
+function attachImageFallback(img) {
+    if (!img) return;
+    img.addEventListener('error', function() {
+        if (this.dataset.fallbackApplied) return;
+        this.dataset.fallbackApplied = '1';
+        this.src = FALLBACK_SALASAR_IMAGE;
+    }, { once:false });
+}
+
+const cardsWrap = document.getElementById('vrCards');
+const selected = new Set();
+
+ATTRACTIONS.forEach((a,i)=>{
+    const card = document.createElement('div');
+    card.className = 'vr-card' + (i % 2 === 1 ? ' reverse' : '');
+
+    card.innerHTML = `
+        <div class="vr-card-media" data-img="${a.img}" data-name="${a.name}">
+            <img src="./${a.img}" alt="${a.name}" loading="lazy">
+            <span class="vr-card-tag">${a.type}</span>
+            <span class="vr-zoom-hint">Click to enlarge</span>
+        </div>
+
+        <div class="vr-card-body">
+            <h3>${a.name}</h3>
+
+            <div class="vr-card-facts">
+                ${a.built ? `<span class="vr-fact">Built ${a.built}</span>` : ''}
+                <span class="vr-fact">${a.type}</span>
+                <span class="vr-fact">Suggested: ${a.duration}</span>
+            </div>
+
+            <p>${a.text}</p>
+
+            <div class="vr-card-actions">
+                <div class="vr-add-btn" data-name="${a.name}">
+                    <svg class="check" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="label">Add to my plan</span>
+                </div>
+
+                <a class="vr-book-link" href="./booktour.html" target="_blank">Book this spot →</a>
+            </div>
+        </div>
+    `;
+
+    cardsWrap.appendChild(card);
+    attachImageFallback(card.querySelector('img'));
+});
+
+/* ---------- itinerary picker ---------- */
+const planFab = document.getElementById('vrPlanFab');
+const planCount = document.getElementById('vrPlanCount');
+const planLink = document.getElementById('vrPlanLink');
+
+function updatePlan(){
+    planCount.textContent = selected.size;
+    planFab.classList.toggle('show',selected.size > 0);
+
+    const list = [...selected].join(', ');
+    planLink.href = '/booktour.html?destination=' + encodeURIComponent('Salasar — ' + list);
+}
+
+document.querySelectorAll('.vr-add-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        const name = btn.dataset.name;
+
+        if(selected.has(name)){
+            selected.delete(name);
+            btn.classList.remove('added');
+            btn.querySelector('.label').textContent = 'Add to my plan';
+        }else{
+            selected.add(name);
+            btn.classList.add('added');
+            btn.querySelector('.label').textContent = 'Added ✓';
+        }
+
+        updatePlan();
+    });
+});
+
+/* ---------- lightbox ---------- */
+const lightbox = document.getElementById('vrLightbox');
+const lightboxImg = document.getElementById('vrLightboxImg');
+
+document.querySelectorAll('.vr-card-media').forEach(media=>{
+    media.addEventListener('click',()=>{
+        lightboxImg.src = media.dataset.img;
+        lightboxImg.alt = media.dataset.name;
+        lightbox.classList.add('show');
+    });
+});
+
+document.getElementById('vrLightboxClose').addEventListener('click',()=>{
+    lightbox.classList.remove('show');
+});
+
+lightbox.addEventListener('click',e=>{
+    if(e.target === lightbox){
+        lightbox.classList.remove('show');
+    }
+});
+
+/* ---------- itinerary tabs ---------- */
+document.querySelectorAll('#vrItinTabs .vr-itin-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+        const day = tab.dataset.day;
+
+        document.querySelectorAll('#vrItinTabs .vr-itin-tab').forEach(t=>{
+            t.classList.remove('active');
+        });
+
+        tab.classList.add('active');
+
+        document.querySelectorAll('.vr-itin-panel').forEach(panel=>{
+            panel.classList.toggle('active',panel.dataset.day === day);
+        });
+    });
+});
+
+/* ---------- FAQ accordion ---------- */
+document.querySelectorAll('.vr-faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        const item = btn.closest('.vr-faq-item');
+        const wasOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.vr-faq-item.open').forEach(i=>{
+            i.classList.remove('open');
+        });
+
+        if(!wasOpen){
+            item.classList.add('open');
+        }
+    });
+});
+
+/* ---------- scroll reveal ---------- */
+const revealTargets = document.querySelectorAll('.vr-card,.vr-review-card');
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+        }
+    });
+},{threshold:.15});
+
+revealTargets.forEach(target=>observer.observe(target));
+
+/* ---------- hero parallax + rail progress + sticky bar ---------- */
+const heroBg = document.getElementById('vrHeroBg');
+const hero = document.getElementById('vrHero');
+const stickyBar = document.getElementById('vrStickyBar');
+const railFill = document.getElementById('vrRailFill');
+const tourWrap = document.querySelector('.vr-tour-wrap');
+
+function onScroll(){
+    const y = window.scrollY;
+    const heroH = hero.offsetHeight;
+
+    if(y < heroH + 200){
+        heroBg.style.transform = `translateY(${y * .35}px)`;
+    }
+
+    stickyBar.classList.toggle('show',y > heroH - 80);
+
+    if(tourWrap){
+        const rect = tourWrap.getBoundingClientRect();
+        const total = rect.height - window.innerHeight * .5;
+        const passed = Math.min(Math.max(-rect.top,0),total);
+        const pct = total > 0 ? (passed / total) * 100 : 0;
+        railFill.style.height = pct + '%';
+    }
+}
+
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+
+/* ---------- escape key ---------- */
+document.addEventListener('keydown',e=>{
+    if(e.key === 'Escape'){
+        lightbox.classList.remove('show');
+    }
+});
+</script>
+
+<script src="././finalanimation.js"></script>
+<script src="././experimental_claude.js"></script>
+</body>
+</html>

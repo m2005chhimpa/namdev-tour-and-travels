@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/logo03.png">
+    <title>Rajasthan Tour Package | Namdev Tour & Travels</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./finalanimation.css">
+    <link rel="stylesheet" href="./experimental_claude.css">
+
+    <style>
+        :root{
+            --dt-primary:#328ADF;
+            --dt-primary-light:#4EA8FF;
+            --dt-secondary:#6B4A2E;
+            --dt-sand:#D8A84E;
+            --dt-gold:#F2C14E;
+            --dt-ink:#23201C;
+            --dt-muted:#8A7F70;
+            --dt-bg:#F8F7F4;
+            --paper:#FFFFFF;
+            --line:rgba(35,32,28,.12);
+            --line-strong:rgba(35,32,28,.22);
+            --shadow:0 8px 24px rgba(35,32,28,.08);
+            --shadow-hover:0 20px 44px rgba(35,32,28,.16);
+        }
+
+        *{box-sizing:border-box;margin:0;padding:0;}
+        html{scroll-behavior:smooth;}
+        body{
+            overflow-x:hidden;
+            background:var(--dt-bg);
+            color:var(--dt-ink);
+            font-family:'Inter',sans-serif;
+            -webkit-font-smoothing:antialiased;
+        }
+        a{text-decoration:none;color:inherit;}
+        img{max-width:100%;display:block;}
+        .wrap{max-width:1180px;margin:auto;padding:0 32px;}
+        @media(max-width:640px){.wrap{padding:0 20px;}}
+
+        /* ===== SCROLL PROGRESS ===== */
+        .dt-progress{
+            position:fixed;top:0;left:0;height:3px;width:0;
+            background:linear-gradient(90deg,var(--dt-primary),var(--dt-gold));
+            z-index:9999;
+        }
+
+        /* ===== HERO ===== */
+        .hero{
+            position:relative;
+            min-height:680px;
+            overflow:hidden;
+            padding:64px 0 0;
+            color:#fff;
+        }
+        .hero-bg{
+            position:absolute;inset:0;
+            background:
+                linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.48) 45%,rgba(0,0,0,.78)),
+                url('/images/paid/jaisalmer-desert.jpg') center/cover no-repeat;
+            animation:dtKenBurns 16s ease-in-out infinite alternate;
+        }
+        @keyframes dtKenBurns{
+            from{transform:scale(1);}
+            to{transform:scale(1.1) translate(-1%,-1%);}
+        }
+        .hero::after{
+            content:"";
+            position:absolute;left:0;right:0;bottom:0;height:120px;
+            background:linear-gradient(transparent,var(--dt-bg));
+            z-index:1;
+        }
+        .hero-content{position:relative;z-index:2;}
+        .eyebrow{
+            display:flex;align-items:center;gap:14px;
+            color:var(--dt-gold);
+            font-family:'Rajdhani',sans-serif;
+            font-weight:700;font-size:13px;
+            letter-spacing:.18em;text-transform:uppercase;
+            margin-bottom:22px;
+            animation:dtUp .7s ease both;
+        }
+        .eyebrow .rule{width:38px;height:1px;background:var(--dt-gold);}
+        .hero-grid{
+            display:grid;grid-template-columns:1.35fr 1fr;
+            gap:48px;align-items:end;padding-bottom:70px;
+        }
+        @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:35px;}}
+        .hero h1{
+            max-width:680px;
+            font-family:'Rajdhani',sans-serif;
+            font-size:clamp(2.4rem,5vw,4rem);
+            line-height:1.02;color:#fff;
+            animation:dtUp .8s .15s ease both;
+        }
+        .hero h1 em{font-style:normal;color:var(--dt-gold);}
+        .hero-sub{
+            max-width:570px;margin-top:20px;
+            color:rgba(255,255,255,.84);
+            line-height:1.75;font-size:16px;
+            animation:dtUp .8s .28s ease both;
+        }
+        @keyframes dtUp{
+            from{opacity:0;transform:translateY(22px);}
+            to{opacity:1;transform:translateY(0);}
+        }
+
+        .stat-strip{
+            display:flex;flex-wrap:wrap;margin-top:34px;padding-top:22px;
+            border-top:1px solid rgba(242,193,78,.3);
+            animation:dtUp .8s .4s ease both;
+        }
+        .stat{
+            padding-right:28px;margin-right:28px;
+            border-right:1px solid rgba(255,255,255,.16);
+        }
+        .stat:last-child{border-right:0;}
+        .stat .num{
+            font-family:'Rajdhani',sans-serif;
+            font-size:1.6rem;font-weight:700;color:var(--dt-gold);
+        }
+        .stat .lbl{font-size:12px;color:rgba(255,255,255,.65);margin-top:2px;}
+
+        /* ===== BOOKING CARD ===== */
+        .ticket{
+            background:#fff;color:var(--dt-ink);
+            border-radius:1rem;padding:30px;
+            box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+            animation:dtTicket .8s .45s cubic-bezier(.2,.8,.25,1) both;
+        }
+        @keyframes dtTicket{
+            from{opacity:0;transform:translateY(28px) scale(.98);}
+            to{opacity:1;transform:none;}
+        }
+        .ticket-row{display:flex;justify-content:space-between;gap:10px;}
+        .ticket-label{
+            font-size:11px;letter-spacing:.12em;
+            text-transform:uppercase;color:var(--dt-muted);
+        }
+        .ticket-price{
+            margin-top:8px;
+            color:var(--dt-primary);
+            font-family:'Rajdhani',sans-serif;
+            font-size:2.45rem;font-weight:700;
+        }
+        .ticket-price small{font:400 .95rem 'Inter',sans-serif;color:var(--dt-muted);}
+        .ticket-dash{border-top:1.5px dashed var(--line-strong);margin:18px 0;}
+        .ticket-facts{
+            display:grid;grid-template-columns:1fr 1fr;
+            gap:14px 10px;font-size:13px;
+        }
+        .ticket-facts span{
+            display:block;color:var(--dt-muted);
+            font-size:11px;letter-spacing:.05em;
+            text-transform:uppercase;margin-bottom:3px;
+        }
+
+        .cta-btn{
+            display:inline-flex;align-items:center;justify-content:center;
+            width:100%;margin-top:22px;padding:15px 20px;
+            border-radius:.7rem;border:0;
+            background:linear-gradient(90deg,var(--dt-primary),var(--dt-primary-light));
+            color:#fff;font-family:'Rajdhani',sans-serif;
+            font-weight:700;text-transform:uppercase;
+            letter-spacing:.03em;cursor:pointer;
+            transition:.25s;
+            box-shadow:0 8px 20px rgba(50,138,223,.3);
+        }
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(50,138,223,.4);}
+        .cta-ghost{
+            background:transparent;color:var(--dt-ink);
+            border:1.5px solid var(--line-strong);
+            box-shadow:none;
+        }
+        .cta-ghost:hover{background:rgba(35,32,28,.05);box-shadow:none;}
+
+        /* ===== OVERVIEW ===== */
+        section{padding:76px 0;}
+        .overview{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+        .overview-grid{
+            display:grid;grid-template-columns:1.1fr .9fr;gap:60px;
+        }
+        @media(max-width:860px){.overview-grid{grid-template-columns:1fr;gap:36px;}}
+        .overview-grid p{
+            color:var(--dt-muted);font-size:16px;line-height:1.85;
+            margin-bottom:16px;
+        }
+        .overview-grid p:first-child{
+            color:var(--dt-ink);font-size:19px;font-weight:500;
+        }
+        .highlight-list{list-style:none;display:grid;gap:16px;}
+        .highlight-list li{
+            display:flex;gap:14px;align-items:flex-start;
+            font-size:14.5px;line-height:1.5;
+        }
+        .mark{
+            flex:none;width:27px;height:27px;border-radius:50%;
+            border:1.5px solid var(--dt-primary);
+            color:var(--dt-primary);
+            display:flex;align-items:center;justify-content:center;
+            font-family:'Rajdhani',sans-serif;font-weight:700;font-size:12px;
+        }
+
+        /* ===== SECTION HEAD ===== */
+        .section-head{
+            display:flex;align-items:flex-end;justify-content:space-between;
+            gap:24px;margin-bottom:44px;flex-wrap:wrap;
+        }
+        .kicker{
+            display:block;margin-bottom:10px;
+            color:var(--dt-primary);
+            font-family:'Rajdhani',sans-serif;
+            font-weight:700;font-size:13px;
+            letter-spacing:.18em;text-transform:uppercase;
+        }
+        h2,h3{
+            font-family:'Rajdhani',sans-serif;
+            font-weight:700;color:var(--dt-ink);
+        }
+        .section-head h2{font-size:clamp(1.7rem,3vw,2.4rem);}
+        .section-head p{max-width:450px;color:var(--dt-muted);font-size:15px;line-height:1.6;}
+
+        /* ===== ITINERARY ===== */
+        .itinerary{background:var(--dt-bg);}
+        .day-pass{
+            background:#fff;border:1px solid var(--line);
+            border-radius:1rem;overflow:hidden;box-shadow:var(--shadow);
+        }
+        .day-pass-head{
+            background:linear-gradient(120deg,var(--dt-ink),var(--dt-secondary));
+            color:#fff;padding:22px 32px;
+            display:flex;justify-content:space-between;
+            align-items:center;gap:12px;flex-wrap:wrap;
+        }
+        .day-pass-head .title{
+            font-family:'Rajdhani',sans-serif;font-size:1.15rem;font-weight:700;
+        }
+        .day-pass-head .code{
+            color:var(--dt-gold);font-family:'Rajdhani',sans-serif;
+            font-size:12px;letter-spacing:.1em;
+        }
+        .stop{
+            display:grid;grid-template-columns:105px 40px 1fr;
+            padding:27px 32px;border-bottom:1px dashed var(--line);
+            gap:0;opacity:0;transform:translateY(15px);
+            transition:.55s ease;
+        }
+        .stop.in-view{opacity:1;transform:none;}
+        .stop:last-child{border-bottom:0;}
+        .stop-time{
+            color:var(--dt-primary);
+            font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;
+        }
+        .stop-rail{position:relative;display:flex;justify-content:center;}
+        .stop-rail::before{
+            content:"";position:absolute;top:25px;bottom:-27px;
+            left:50%;width:1px;background:var(--line-strong);
+        }
+        .stop:last-child .stop-rail::before{display:none;}
+        .stop-dot{
+            width:15px;height:15px;border-radius:50% 50% 50% 0;
+            transform:rotate(45deg);background:var(--dt-gold);
+            border:2px solid #fff;box-shadow:0 0 0 1px var(--line-strong);
+            z-index:1;
+        }
+        .stop-body h3{font-size:1.15rem;margin-bottom:6px;}
+        .stop-body p{
+            max-width:600px;color:var(--dt-muted);
+            font-size:14.5px;line-height:1.65;
+        }
+        .stop-tag{
+            display:inline-block;margin-top:10px;
+            color:var(--dt-primary);
+            background:rgba(50,138,223,.08);
+            border:1px solid rgba(50,138,223,.2);
+            border-radius:20px;padding:3px 9px;
+            font:600 11px 'Rajdhani',sans-serif;
+            letter-spacing:.08em;text-transform:uppercase;
+        }
+        @media(max-width:600px){
+            .stop{grid-template-columns:32px 1fr;}
+            .stop-time{display:none;}
+        }
+
+        /* ===== INCLUSIONS ===== */
+        .incl{
+            position:relative;overflow:hidden;color:#fff;
+            background:linear-gradient(120deg,#23201C,#6B4A2E,#328ADF,#6B4A2E,#23201C);
+            background-size:300% 300%;
+            animation:dtGradient 12s ease infinite;
+        }
+        @keyframes dtGradient{
+            0%,100%{background-position:0 50%;}
+            50%{background-position:100% 50%;}
+        }
+        .incl::before{
+            content:"";position:absolute;inset:0;
+            background-image:radial-gradient(circle at 1px 1px,rgba(242,193,78,.18) 1px,transparent 1.6px);
+            background-size:22px 22px;opacity:.5;
+        }
+        .incl .wrap{position:relative;z-index:1;}
+        .incl .section-head h2{color:#fff;}
+        .incl .section-head p{color:rgba(255,255,255,.68);}
+        .incl-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+        @media(max-width:700px){.incl-grid{grid-template-columns:1fr;}}
+        .incl-card h3{
+            color:var(--dt-gold);font-size:13px;
+            letter-spacing:.16em;text-transform:uppercase;
+            margin-bottom:18px;
+        }
+        .incl-card ul{list-style:none;display:grid;gap:12px;}
+        .incl-card li{
+            position:relative;padding-left:22px;
+            color:rgba(255,255,255,.88);font-size:14.5px;
+        }
+        .incl-card.yes li::before{
+            content:"✓";position:absolute;left:0;color:var(--dt-gold);font-weight:700;
+        }
+        .incl-card.no li{color:rgba(255,255,255,.55);}
+        .incl-card.no li::before{
+            content:"–";position:absolute;left:0;color:rgba(255,255,255,.4);
+        }
+
+        /* ===== EXPERIENCE CARDS ===== */
+        .experiences{background:#fff;border-top:1px solid var(--line);}
+        .experience-grid{
+            display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+        }
+        @media(max-width:760px){.experience-grid{grid-template-columns:1fr 1fr;}}
+        @media(max-width:500px){.experience-grid{grid-template-columns:1fr;}}
+        .experience-card{
+            background:var(--dt-bg);border:1px solid var(--line);
+            border-radius:1rem;overflow:hidden;
+            box-shadow:var(--shadow);
+            transition:.25s;
+            opacity:0;transform:translateY(20px);
+        }
+        .experience-card.in-view{opacity:1;transform:none;}
+        .experience-card:hover{
+            transform:translateY(-6px);
+            border-color:var(--dt-primary);
+            box-shadow:var(--shadow-hover);
+        }
+        .experience-card img{
+            width:100%;height:155px;object-fit:cover;
+            background:#d8c39b;
+        }
+        .experience-body{padding:22px;}
+        .experience-body h3{font-size:1.15rem;margin-bottom:7px;}
+        .experience-body p{color:var(--dt-muted);font-size:13.5px;line-height:1.6;}
+        .experience-tag{
+            display:inline-block;margin-top:14px;
+            padding:4px 9px;border-radius:20px;
+            background:rgba(216,168,78,.13);
+            color:#8A6424;font:700 11px 'Rajdhani',sans-serif;
+            letter-spacing:.08em;text-transform:uppercase;
+        }
+
+        /* ===== TRAVEL OPTIONS ===== */
+        .rides{background:var(--dt-bg);}
+        .ride-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+        @media(max-width:760px){.ride-grid{grid-template-columns:1fr 1fr;}}
+        @media(max-width:500px){.ride-grid{grid-template-columns:1fr;}}
+        .ride-card{
+            border:1px solid var(--line);border-radius:1rem;
+            padding:26px 22px;background:#fff;box-shadow:var(--shadow);
+            transition:.25s;
+        }
+        .ride-card:hover{transform:translateY(-5px);border-color:var(--dt-primary);box-shadow:var(--shadow-hover);}
+        .ride-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:18px;}
+        .ride-card h3{font-size:1.15rem;}
+        .seats{
+            white-space:nowrap;border:1px solid var(--line-strong);
+            border-radius:20px;padding:3px 8px;
+            color:var(--dt-muted);font:600 11px 'Rajdhani',sans-serif;
+        }
+        .price{
+            color:var(--dt-primary);
+            font:700 1.6rem 'Rajdhani',sans-serif;
+        }
+        .price small{font:400 13px 'Inter',sans-serif;color:var(--dt-muted);}
+        .best{
+            display:inline-block;margin-top:10px;
+            padding:3px 9px;border-radius:20px;
+            background:var(--dt-gold);color:var(--dt-ink);
+            font:700 11px 'Rajdhani',sans-serif;
+            text-transform:uppercase;letter-spacing:.08em;
+        }
+
+        /* ===== CTA ===== */
+        .cta-strip{
+            background:linear-gradient(120deg,var(--dt-primary),var(--dt-primary-light));
+            color:#fff;
+        }
+        .cta-strip .wrap{
+            display:flex;align-items:center;justify-content:space-between;
+            gap:24px;flex-wrap:wrap;padding-top:50px;padding-bottom:50px;
+        }
+        .cta-strip h2{color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);max-width:520px;}
+        .cta-strip p{margin-top:8px;color:rgba(255,255,255,.9);font-size:14.5px;}
+        .cta-actions{display:flex;gap:14px;flex-wrap:wrap;}
+        .cta-actions .cta-btn{
+            width:auto;margin:0;background:var(--dt-ink);
+            box-shadow:none;padding:14px 26px;
+        }
+        .cta-outline{
+            display:inline-flex;align-items:center;
+            border:1.5px solid rgba(255,255,255,.6);
+            color:#fff;padding:13px 24px;border-radius:.7rem;
+            font:700 15px 'Rajdhani',sans-serif;
+            text-transform:uppercase;
+        }
+        .cta-outline:hover{background:rgba(255,255,255,.12);}
+
+        /* ===== FLOATING BUTTON ===== */
+        .float-btn{
+            position:fixed;right:1.6rem;bottom:1.6rem;z-index:60;
+            display:flex;align-items:center;gap:.5rem;
+            padding:.85rem 1.3rem;border-radius:999px;
+            color:#fff;background:linear-gradient(90deg,var(--dt-primary),var(--dt-primary-light));
+            font:700 .88rem 'Rajdhani',sans-serif;
+            text-transform:uppercase;letter-spacing:.03em;
+            box-shadow:0 10px 28px rgba(50,138,223,.4);
+        }
+        .float-btn:hover{transform:translateY(-3px);}
+
+        /* ===== LOADER ===== */
+        #loader{
+            position:fixed;inset:0;background:#fff;z-index:99999;
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            transition:opacity .5s ease;
+        }
+        #loader.hide{opacity:0;pointer-events:none;}
+        .logo-wrap img{width:130px;animation:dtBlink 1.4s ease-in-out infinite;}
+        @keyframes dtBlink{50%{opacity:.45;transform:scale(.96);}}
+        .loader-text{margin-top:20px;color:#6B4A2E;font:600 14px 'Rajdhani',sans-serif;letter-spacing:.12em;text-transform:uppercase;}
+        .loader-line{width:230px;height:3px;background:#eee;border-radius:10px;margin-top:16px;overflow:hidden;}
+        .loader-line span{display:block;height:100%;width:40%;background:linear-gradient(90deg,var(--dt-primary),var(--dt-gold));animation:dtLoad 1.2s ease-in-out infinite;}
+        @keyframes dtLoad{0%{transform:translateX(-120%)}100%{transform:translateX(600%)}}
+
+        @media(prefers-reduced-motion:reduce){
+            .hero-bg,.incl,.logo-wrap img,.loader-line span{animation:none;}
+            .stop,.experience-card{opacity:1;transform:none;transition:none;}
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dt-progress" id="dtProgress"></div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav>
+    <ul class="sidebar">
+        <li onclick="hidesidebar()" style="font-size:32px;">
+            <a href="javascript:void(0)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" opacity=".4"/>
+                    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </a>
+        </li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+        <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./contact.html">Contact us</a></li>
+    </ul>
+
+    <ul id="firstnav">
+        <img style="height:4.7rem;position:absolute;margin-left:-74%;padding-top:.2%;" src="././images/logo03.png" alt="Namdev Tour & Travels">
+        <li class="hideonmobile"><a href="./index.html">Home</a></li>
+        <li class="hideonmobile"><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+        <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+        <li class="hideonmobile"><a href="./about.html">About</a></li>
+        <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+        <li id="menuicon" onclick="showsidebar()">
+            <a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt="Menu"></a>
+        </li>
+    </ul>
+
+    <a class="booka" href="./booktour.html" target="_blank">
+        <div class="book">Book a Tour</div>
+    </a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="wrap hero-content">
+        <div class="eyebrow">
+            <span class="rule"></span>
+            Rajasthan — The Royal Journey
+        </div>
+
+        <div class="hero-grid">
+            <div>
+                <h1>Jaipur · Jodhpur · Jaisalmer · Udaipur <em>#RajasthanTour</em></h1>
+
+                <p class="hero-sub">
+                    Discover Rajasthan's desert heart through three unforgettable cities —
+                    the blue lanes of Jodhpur, the golden fort and dunes of Jaisalmer,
+                    and the royal heritage of Bikaner. A balanced road journey combining
+                    forts, havelis, desert experiences, local culture and comfortable stays.
+                </p>
+
+                <div class="stat-strip">
+                    <div class="stat">
+                        <div class="num">3</div>
+                        <div class="lbl">Desert Cities</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">5D / 4N</div>
+                        <div class="lbl">Recommended Route</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">1,000+</div>
+                        <div class="lbl">Approx. Road KM</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">4.8★</div>
+                        <div class="lbl">Traveler Experience</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticket">
+                <div class="ticket-row">
+                    <span class="ticket-label">Starting from</span>
+                    <span class="ticket-label">Per person*</span>
+                </div>
+
+                <div class="ticket-price">₹24,999<small> / 7D / 6N</small></div>
+
+                <div class="ticket-dash"></div>
+
+                <div class="ticket-facts">
+                    <div><span>Route</span>Jaipur → Jodhpur → Jaisalmer → Udaipur</div>
+                    <div><span>Vehicle</span>Private AC Sedan / SUV</div>
+                    <div><span>Stay</span>6 nights premium accommodation</div>
+                    <div><span>Best season</span>October – March</div>
+                </div>
+
+                <a href="#enquire" class="cta-btn">Send Enquiry →</a>
+                <a href="#itinerary" class="cta-btn cta-ghost" style="margin-top:10px;">View full itinerary</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===== LOADER ===== -->
+<div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+    <div class="loader-line"><span></span></div>
+    <p class="loader-text">Preparing your desert journey…</p>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<section class="overview">
+    <div class="wrap overview-grid">
+        <div>
+            <p>
+                Rajasthan is a complete travel experience — royal architecture, colourful
+                bazaars, desert landscapes, heritage towns, traditional cuisine and warm
+                local hospitality all come together in one state.
+            </p>
+            <p>
+                This classic Rajasthan tour connects four of the state's most memorable
+                destinations: Jaipur, Jodhpur, Jaisalmer and Udaipur. The route balances
+                sightseeing with comfortable road travel so you can experience both the
+                famous landmarks and the character of each city.
+            </p>
+            <p>
+                The package can be customized with hotel category, vehicle type, desert
+                safari, cultural evening, heritage experiences, shopping stops and extra
+                nights according to your travel style.
+            </p>
+        </div>
+
+        <ul class="highlight-list">
+            <li><span class="mark">01</span> Jaipur's royal palaces, Amber Fort and colourful old city</li>
+            <li><span class="mark">02</span> Mehrangarh Fort and the famous Blue City of Jodhpur</li>
+            <li><span class="mark">03</span> Jaisalmer Fort, ornate havelis and Thar Desert sunset</li>
+            <li><span class="mark">04</span> Udaipur's City Palace, Lake Pichola and romantic heritage</li>
+            <li><span class="mark">05</span> Private road journey with flexible sightseeing and hotel options</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ===== ITINERARY ===== -->
+<section class="itinerary" id="itinerary">
+    <div class="wrap">
+        <div class="section-head">
+            <div>
+                <span class="kicker">The Route</span>
+                <h2>Seven days across Rajasthan's most iconic destinations</h2>
+            </div>
+            <p>
+                A balanced classic route with royal heritage, desert landscapes, local
+                markets and enough time to enjoy each city without rushing.
+            </p>
+        </div>
+
+        <div class="day-pass">
+            <div class="day-pass-head">
+                <span class="title">Rajasthan Classic — 7 Days / 6 Nights</span>
+                <span class="code">PKG-RAJ-01</span>
+            </div>
+
+            <div class="stop">
+                <div class="stop-time">Day 1</div>
+                <div class="stop-rail"><div class="stop-dot"></div></div>
+                <div class="stop-body">
+                    <h3>Arrival in Jaipur — The Pink City</h3>
+                    <p>
+                        Pickup from Jaipur airport, railway station or hotel. Check in and
+                        begin with an easy introduction to the Pink City through Hawa Mahal,
+                        the old city and local markets. Evening at leisure.
+                    </p>
+                    <span class="stop-tag">Jaipur · Overnight</span>
+                </div>
+            </div>
+
+            <div class="stop">
+                <div class="stop-time">Day 2</div>
+                <div class="stop-rail"><div class="stop-dot"></div></div>
+                <div class="stop-body">
+                    <h3>Amber Fort → City Palace → Jaipur Heritage</h3>
+                    <p>
+                        Explore Amber Fort, Jal Mahal viewpoint, City Palace and selected
+                        heritage areas of Jaipur. Finish the day with shopping for textiles,
+                        handicrafts and traditional Rajasthani souvenirs.
+                    </p>
+                    <span class="stop-tag">Royal Jaipur · Overnight</span>
+                </div>
+            </div>
+
+            <div class="stop">
+                <div class="stop-time">Day 3</div>
+                <div class="stop-rail"><div class="stop-dot"></div></div>
+                <div class="stop-body">
+                    <h3>Jaipur → Jodhpur — The Blue City</h3>
+                    <p>
+                        Drive to Jodhpur through Rajasthan's changing landscapes. After
+                        check-in, explore the Clock Tower market and old city lanes.
+                        Evening free for local food and shopping.
+                    </p>
+                    <span class="stop-tag">Jaipur → Jodhpur · Overnight</span>
+                </div>
+            </div>
+
+            <div class="stop">
+                <div class="stop-time">Day 4</div>
+                <div class="stop-rail"><div class="stop-dot"></div></div>
+                <div class="stop-body">
+                    <h3>Mehrangarh Fort → Jaswant Thada → Jaisalmer</h3>
+                    <p>
+                        Visit magnificent Mehrangarh Fort and Jaswant Thada in the morning.
+                        Later drive toward Jaisalmer through the desert landscape and
+                        check in at your hotel.
+                    </p>
+                    <span class="stop-tag">Jodhpur → Jaisalmer · Overnight</span>
+                </div>
+            </div>
+
+            <div class="stop">
+                <div class="stop-time">Day 5</div>
+                <div class="stop-rail"><div class="stop-dot"></div></div>
+                <div class="stop-body">
+                    <h3>Golden City → Jaisalmer Fort → Sam Sand Dunes</h3>
+                    <p>
+                        Explore Jaisalmer Fort, Patwon Ki Haveli, local lanes and Gadisar
+                        Lake. Later head to Sam Sand Dunes for an optional camel ride or
+                        jeep safari, followed by sunset and a cultural evening.
+                    </p>
+                    <span class="stop-tag">Thar Desert · Overnight</span>
+                </div>
+            </div>
+
+            <div class="stop">
+                <div class="stop-time">Day 6</div>
+                <div class="stop-rail"><div class="stop-dot"></div></div>
+                <div class="stop-body">
+                    <h3>Jaisalmer → Udaipur — City of Lakes</h3>
+                    <p>
+                        Travel toward Udaipur and enjoy the changing landscape of Rajasthan.
+                        After check-in, spend the evening around Lake Pichola or explore
+                        the old city at a relaxed pace.
+                    </p>
+                    <span class="stop-tag">Jaisalmer → Udaipur · Overnight</span>
+                </div>
+            </div>
+
+            <div class="stop">
+                <div class="stop-time">Day 7</div>
+                <div class="stop-rail"><div class="stop-dot"></div></div>
+                <div class="stop-body">
+                    <h3>Udaipur Heritage → Departure</h3>
+                    <p>
+                        Visit City Palace and enjoy a final view of Lake Pichola. Optional
+                        boat ride or local shopping before drop at Udaipur airport, railway
+                        station or your next destination.
+                    </p>
+                    <span class="stop-tag">Tour Ends</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== INCLUSIONS ===== -->
+<section class="incl">
+    <div class="wrap">
+        <div class="section-head">
+            <div>
+                <span class="kicker" style="color:var(--dt-gold);">The Fine Print</span>
+                <h2>What's covered</h2>
+            </div>
+            <p>
+                The standard package gives you the essential road-trip experience.
+                Activities can be added according to your travel style.
+            </p>
+        </div>
+
+        <div class="incl-grid">
+            <div class="incl-card yes">
+                <h3>Included</h3>
+                <ul>
+                    <li>Private AC vehicle for the complete tour</li>
+                    <li>Driver allowance, fuel, tolls and parking</li>
+                    <li>6 nights premium accommodation as selected</li>
+                    <li>Daily breakfast at the hotel</li>
+                    <li>Jaipur, Jodhpur, Jaisalmer and Udaipur sightseeing as per itinerary</li>
+                    <li>Pickup and drop according to the selected route</li>
+                    <li>Local assistance during the journey</li>
+                </ul>
+            </div>
+
+            <div class="incl-card no">
+                <h3>Not included</h3>
+                <ul>
+                    <li>Monument entry tickets and camera fees</li>
+                    <li>Camel ride / desert jeep safari charges</li>
+                    <li>Desert camp cultural programs, if selected separately</li>
+                    <li>Lunch, dinner and personal meals</li>
+                    <li>Personal expenses, shopping and laundry</li>
+                    <li>Travel insurance</li>
+                    <li>Anything not specifically mentioned under inclusions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EXPERIENCES ===== -->
+<section class="experiences">
+    <div class="wrap">
+        <div class="section-head">
+            <div>
+                <span class="kicker">Signature Experiences</span>
+                <h2>Make your Rajasthan journey truly exclusive</h2>
+            </div>
+            <p>
+                Add one or more experiences to turn the road trip into a more immersive
+                Rajasthan holiday.
+            </p>
+        </div>
+
+        <div class="experience-grid">
+            <div class="experience-card">
+                <img src="././images/paid/amber-fort.jpg" alt="Amber Fort Jaipur">
+                <div class="experience-body">
+                    <h3>Amber Fort</h3>
+                    <p>Explore Jaipur's grand hilltop fort, royal courtyards, gateways and panoramic views.</p>
+                    <span class="experience-tag">Jaipur</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="././images/paid/city-palace-jaipur.jpg" alt="City Palace Jaipur">
+                <div class="experience-body">
+                    <h3>Pink City Heritage</h3>
+                    <p>Discover City Palace, Hawa Mahal and the colourful markets that define Jaipur.</p>
+                    <span class="experience-tag">Royal Heritage</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="././images/paid/mehrangarh-fort.jpg" alt="Mehrangarh Fort Jodhpur">
+                <div class="experience-body">
+                    <h3>Mehrangarh Fort</h3>
+                    <p>See one of Rajasthan's most spectacular forts and panoramic views of the Blue City.</p>
+                    <span class="experience-tag">Jodhpur</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="././images/paid/jaisalmer-fort.jpg" alt="Jaisalmer Fort">
+                <div class="experience-body">
+                    <h3>Golden City</h3>
+                    <p>Explore Jaisalmer Fort, carved havelis and the golden sandstone streets of the old city.</p>
+                    <span class="experience-tag">Jaisalmer</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="././images/paid/sam-sand-dunes.jpg" alt="Sam Sand Dunes Jaisalmer">
+                <div class="experience-body">
+                    <h3>Thar Desert Sunset</h3>
+                    <p>Add a camel ride, jeep safari, sunset experience and traditional cultural evening.</p>
+                    <span class="experience-tag">Desert</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="././images/paid/udaipur-lake-pichola.jpg" alt="Lake Pichola Udaipur">
+                <div class="experience-body">
+                    <h3>Udaipur Lakes</h3>
+                    <p>Finish beside Lake Pichola with palace views, old-city walks and an optional boat ride.</p>
+                    <span class="experience-tag">Udaipur</span>
+                </div>
+            </div></div>
+    </div>
+</section>
+
+<!-- ===== TRAVEL OPTIONS ===== -->
+<section class="rides">
+    <div class="wrap">
+        <div class="section-head">
+            <div>
+                <span class="kicker">Choose Your Vehicle</span>
+                <h2>Travel comfortably across Rajasthan</h2>
+            </div>
+            <p>
+                Vehicle choice depends on group size, luggage and the level of comfort
+                you want during the long road sections.
+            </p>
+        </div>
+
+        <div class="ride-grid">
+            <div class="ride-card">
+                <div class="ride-top">
+                    <h3>Sedan</h3>
+                    <span class="seats">1–4 Guests</span>
+                </div>
+                <div class="price">₹14,999<small> / person*</small></div>
+                <span class="best">Couples & small groups</span>
+            </div>
+
+            <div class="ride-card">
+                <div class="ride-top">
+                    <h3>Innova Crysta</h3>
+                    <span class="seats">1–6 Guests</span>
+                </div>
+                <div class="price">₹29,999<small> / person*</small></div>
+                <span class="best">Most comfortable</span>
+            </div>
+
+            <div class="ride-card">
+                <div class="ride-top">
+                    <h3>Tempo Traveller</h3>
+                    <span class="seats">7–12 Guests</span>
+                </div>
+                <div class="price">₹21,999<small> / person*</small></div>
+                <span class="best">Family & groups</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-strip" id="enquire">
+    <div class="wrap">
+        <div>
+            <h2>Ready for your exclusive Rajasthan journey?</h2>
+            <p>
+                Share your travel dates, number of guests and preferred hotel category.
+                We'll customize the route and send you the best available plan.
+            </p>
+        </div>
+
+        <div class="cta-actions">
+            <a href="tel:+919784568787" class="cta-btn">Call +91 97845 68787 →</a>
+            <a href="https://wa.me/919784568787" class="cta-outline">WhatsApp Us</a>
+        </div>
+    </div>
+</section>
+
+<a class="float-btn" href="./booktour.html" target="_blank">
+    <span>Book a Tour</span>
+    <span>→</span>
+</a>
+
+<script>
+    /* ===== PAGE LOADER ===== */
+    window.addEventListener("load", function(){
+        setTimeout(function(){
+            const loader = document.getElementById("loader");
+            if(loader) loader.classList.add("hide");
+        }, 900);
+    });
+
+    /* ===== SCROLL PROGRESS ===== */
+    window.addEventListener("scroll", function(){
+        const progress = document.getElementById("dtProgress");
+        const scrollTop = window.scrollY;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (height > 0 ? (scrollTop / height) * 100 : 0) + "%";
+    });
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    const revealObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+            if(entry.isIntersecting){
+                entry.target.classList.add("in-view");
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {threshold:.12});
+
+    document.querySelectorAll(".stop, .experience-card").forEach(function(el){
+        revealObserver.observe(el);
+    });
+
+    /* ===== OPTIONAL EXISTING MOBILE NAV ===== */
+    function showsidebar(){
+        const sidebar = document.querySelector(".sidebar");
+        if(sidebar) sidebar.style.display = "flex";
+    }
+
+    function hidesidebar(){
+        const sidebar = document.querySelector(".sidebar");
+        if(sidebar) sidebar.style.display = "none";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="png" href="./images/logo03.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./finalanimation.css">
+    <link rel="stylesheet" href="./experimental_claude.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Manali Package | Namdev's Tour & Travels</title>
+
+    <style>
+      /* ============================================================
+         MANALI PAGE REBUILD — scoped under .mnl-page
+      ============================================================ */
+      :root{
+        --nt-primary:#328ADF;
+        --nt-primary-light:#4EA8FF;
+        --nt-secondary:#6B4A2E;
+        --nt-gold:#F2C14E;
+        --nt-ink:#23201C;
+        --nt-muted:#8A7F70;
+        --nt-bg:#F8F7F4;
+        --nt-shadow:0 8px 24px rgba(35,32,28,0.08);
+        --nt-shadow-hover:0 20px 44px rgba(35,32,28,0.18);
+      }
+
+      .mnl-page{ background:var(--nt-bg); font-family:'Inter',sans-serif; color:var(--nt-ink); }
+      .mnl-page h1,.mnl-page h2,.mnl-page h3,.mnl-page .brand-font{ font-family:'Rajdhani',sans-serif; font-weight:700; }
+
+      /* 1. SCROLL PROGRESS BAR */
+      .mnl-progress{
+        position:fixed; top:0; left:0; height:3px;
+        background: linear-gradient(90deg, var(--nt-primary), var(--nt-gold));
+        width:0%;
+        z-index: 999;
+        transition: width .1s linear;
+      }
+
+      /* ---------- HERO ---------- */
+      .mnl-hero{
+        position:relative;
+        height: 73vh;
+        min-height: 26rem;
+        overflow:hidden;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+      }
+      .mnl-hero-bg{
+        position:absolute; inset:0;
+        background-image:url("./pack img/manali/Rohtang.webp");
+        background-size:cover;
+        background-position:center;
+        animation: mnlKenBurns 16s ease-in-out infinite alternate; /* 2. Ken Burns background zoom */
+      }
+      @keyframes mnlKenBurns{
+        0%{ transform: scale(1) translate(0,0); }
+        100%{ transform: scale(1.14) translate(-1.5%, -1%); }
+      }
+      .mnl-hero-overlay{
+        position:absolute; inset:0;
+        background: linear-gradient(180deg, rgba(20,32,26,0.55) 0%, rgba(20,32,26,0.35) 45%, rgba(12,20,16,0.85) 100%);
+      }
+      .mnl-hero-content{ position:relative; z-index:2; color:#fff; padding: 0 1.5rem; }
+
+      .mnl-hero .eyebrow{
+        font-family:'Rajdhani',sans-serif;
+        letter-spacing:.22em;
+        text-transform:uppercase;
+        font-size:.8rem;
+        color: var(--nt-gold);
+        margin-bottom:.8rem;
+        opacity:0;
+        animation: mnlFadeUp .7s ease forwards;
+        animation-delay:.15s;
+      }
+      .mnl-hero h1{
+        font-size: clamp(2.2rem, 6vw, 4rem);
+        margin:0 0 1rem;
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap: .5rem;
+      }
+      /* 3. Staggered word reveal for hero title */
+      .mnl-hero h1 span{
+        display:inline-block;
+        opacity:0;
+        transform: translateY(30px);
+        animation: mnlFadeUp .7s cubic-bezier(.2,.8,.25,1) forwards;
+      }
+      .mnl-hero h1 span:nth-child(1){ animation-delay:.3s; }
+      .mnl-hero h1 span:nth-child(2){ animation-delay:.42s; color:var(--nt-gold); }
+      @keyframes mnlFadeUp{ to{ opacity:1; transform:translateY(0); } }
+
+      .mnl-hero p{
+        max-width: 36rem;
+        margin: 0 auto;
+        font-size:.95rem;
+        line-height:1.65;
+        color: rgba(255,255,255,0.85);
+        opacity:0;
+        animation: mnlFadeUp .7s ease forwards;
+        animation-delay:.6s;
+      }
+
+      .mnl-hero-stats{
+        display:flex; justify-content:center; gap:2.4rem;
+        margin-top:1.8rem; flex-wrap:wrap;
+        opacity:0;
+        animation: mnlFadeUp .7s ease forwards;
+        animation-delay:.74s;
+      }
+      .mnl-hero-stats .stat{ display:flex; flex-direction:column; align-items:center; }
+      .mnl-hero-stats strong{ font-family:'Rajdhani',sans-serif; font-size:1.4rem; color:var(--nt-gold); }
+      .mnl-hero-stats span{ font-size:.7rem; opacity:.85; }
+
+      /* 4. Scroll cue bounce */
+      .mnl-scroll-cue{
+        position:absolute;
+        bottom:1.4rem; left:50%;
+        transform:translateX(-50%);
+        z-index:2;
+        animation: mnlBounce 1.8s infinite;
+        opacity:.85;
+      }
+      @keyframes mnlBounce{
+        0%,100%{ transform:translate(-50%,0); }
+        50%{ transform:translate(-50%,8px); }
+      }
+
+      /* ---------- INTRO ---------- */
+      .mnl-intro{
+        max-width: 50rem;
+        margin: 4rem auto 1rem;
+        padding: 0 1.5rem;
+        text-align:center;
+        opacity:0;
+        transform: translateY(24px);
+        transition: opacity .6s ease, transform .6s ease;
+      }
+      .mnl-intro.in-view{ opacity:1; transform:translateY(0); }
+      .mnl-intro .eyebrow{
+        font-family:'Rajdhani',sans-serif;
+        font-size:.8rem; letter-spacing:.18em; text-transform:uppercase;
+        color: var(--nt-primary); margin-bottom:.6rem;
+      }
+      .mnl-intro h2{ font-size:1.9rem; margin:0 0 1rem; }
+      .mnl-intro p{ color:var(--nt-muted); font-size:.92rem; line-height:1.75; }
+
+      /* ---------- FILTERS ---------- */
+      .mnl-filters{
+        position: sticky; top:0; z-index: 20;
+        background: rgba(248,247,244,0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(35,32,28,0.08);
+        padding: 1rem 1.5rem;
+        display:flex; justify-content:center; gap:.6rem; flex-wrap:wrap;
+        margin-top: 2.5rem;
+      }
+      .mnl-filter-pill{
+        position:relative;
+        background:#fff;
+        border:1.5px solid rgba(35,32,28,0.14);
+        color: var(--nt-ink);
+        font-size:.83rem; font-weight:600;
+        padding:.55rem 1.15rem;
+        border-radius:999px;
+        cursor:pointer;
+        overflow:hidden;
+        transition: all .2s ease;
+      }
+      .mnl-filter-pill:hover{ border-color:var(--nt-primary); color:var(--nt-primary); }
+      .mnl-filter-pill.active{ background:var(--nt-primary); border-color:var(--nt-primary); color:#fff; }
+      /* 5. Ripple effect on filter click */
+      .mnl-ripple{
+        position:absolute;
+        border-radius:50%;
+        background: rgba(255,255,255,0.55);
+        transform: scale(0);
+        animation: mnlRipple .55s ease-out;
+        pointer-events:none;
+      }
+      @keyframes mnlRipple{ to{ transform:scale(3.5); opacity:0; } }
+
+      /* ---------- GRID ---------- */
+      .mnl-grid-wrap{ max-width:78rem; margin: 2.2rem auto 1rem; padding:0 1.5rem; }
+      .mnl-grid{
+        display:grid;
+        grid-template-columns: repeat(auto-fill, minmax(19rem,1fr));
+        gap: 1.6rem;
+      }
+
+      .mnl-card{
+        position:relative;
+        background:#fff;
+        border-radius: 1rem;
+        overflow:hidden;
+        box-shadow: var(--nt-shadow);
+        height: 22rem;
+        opacity:0;
+        transform: translateY(28px);
+        transition: opacity .6s ease, transform .6s ease, box-shadow .3s ease;
+      }
+      /* 6. Card scroll-reveal */
+      .mnl-card.in-view{ opacity:1; transform:translateY(0); }
+      .mnl-card:hover{ box-shadow: var(--nt-shadow-hover); }
+
+      .mnl-card-img{
+        position:absolute; inset:0;
+        width:100%; height:100%;
+        object-fit:cover;
+        transition: transform .6s ease;
+        background: #cfd6c9;
+      }
+      /* 7. Image zoom on hover */
+      .mnl-card:hover .mnl-card-img{ transform: scale(1.1); }
+
+      .mnl-card-shade{
+        position:absolute; inset:0;
+        background: linear-gradient(180deg, rgba(20,32,26,0) 40%, rgba(20,32,26,0.9) 100%);
+      }
+
+      .mnl-card-badge{
+        position:absolute; top:.8rem; left:.8rem;
+        background: rgba(255,255,255,0.92);
+        color: var(--nt-primary);
+        font-size:.66rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+        padding:.3rem .65rem; border-radius:999px;
+        z-index:2;
+      }
+      .mnl-card-badge.must-visit{
+        background: var(--nt-gold);
+        color: var(--nt-ink);
+        animation: mnlPulse 2s ease-in-out infinite; /* 8. Badge pulse */
+      }
+      @keyframes mnlPulse{
+        0%,100%{ box-shadow: 0 0 0 0 rgba(242,193,78,0.55); }
+        50%{ box-shadow: 0 0 0 8px rgba(242,193,78,0); }
+      }
+
+      .mnl-card-title{
+        position:absolute;
+        left:1.1rem; right:1.1rem; bottom:1.1rem;
+        z-index:2;
+        color:#fff;
+        transition: transform .4s cubic-bezier(.2,.8,.25,1);
+      }
+      .mnl-card-title h3{ font-size:1.2rem; margin:0; }
+      .mnl-card-title .sub{ font-size:.74rem; color: var(--nt-gold); letter-spacing:.04em; text-transform:uppercase; }
+
+      /* 9. Overlay slide-up reveal on hover */
+      .mnl-card-overlay{
+        position:absolute; inset:0;
+        background: linear-gradient(160deg, rgba(20,32,26,0.97), rgba(50,138,223,0.92));
+        color:#fff;
+        padding: 1.4rem 1.3rem;
+        display:flex; flex-direction:column; justify-content:flex-end;
+        transform: translateY(100%);
+        transition: transform .45s cubic-bezier(.2,.8,.25,1);
+        z-index:3;
+      }
+      .mnl-card:hover .mnl-card-overlay{ transform: translateY(0); }
+      .mnl-card:hover .mnl-card-title{ transform: translateY(10px); opacity:0; }
+      .mnl-card-overlay h3{ font-size:1.05rem; margin:0 0 .5rem; }
+      .mnl-card-overlay p{ font-size:.78rem; line-height:1.55; color: rgba(255,255,255,0.88); margin:0 0 1rem; }
+
+      .mnl-book-btn{
+        display:inline-flex; align-items:center; gap:.4rem;
+        background: var(--nt-gold);
+        color: var(--nt-ink);
+        font-family:'Rajdhani',sans-serif; font-weight:700;
+        font-size:.85rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.55rem 1rem; border-radius:.6rem;
+        text-decoration:none;
+        width:fit-content;
+        transition: gap .2s ease, transform .2s ease;
+      }
+      /* 10. Button arrow slide on hover */
+      .mnl-book-btn:hover{ gap:.7rem; transform: translateY(-2px); }
+
+      /* ---------- CTA ---------- */
+      .mnl-cta{ max-width:78rem; margin: 4.5rem auto 4rem; padding:0 1.5rem; }
+      .mnl-cta-inner{
+        position:relative;
+        border-radius: 1.4rem;
+        padding: 3.2rem 2rem;
+        text-align:center;
+        color:#fff;
+        overflow:hidden;
+        opacity:0;
+        transform: translateY(24px);
+        transition: opacity .6s ease, transform .6s ease;
+        background: linear-gradient(120deg, var(--nt-ink), var(--nt-secondary), var(--nt-primary), var(--nt-secondary), var(--nt-ink));
+        background-size: 300% 300%;
+        animation: mnlGradientShift 10s ease infinite; /* 11. Animated gradient shift */
+      }
+      .mnl-cta-inner.in-view{ opacity:1; transform:translateY(0); }
+      @keyframes mnlGradientShift{
+        0%{ background-position:0% 50%; }
+        50%{ background-position:100% 50%; }
+        100%{ background-position:0% 50%; }
+      }
+      .mnl-cta-inner h2{ font-size:1.8rem; margin:0 0 .7rem; position:relative; z-index:2; }
+      .mnl-cta-inner p{ color:rgba(255,255,255,0.85); font-size:.92rem; max-width:32rem; margin:0 auto 1.6rem; position:relative; z-index:2; }
+      .mnl-cta-btn{
+        position:relative; z-index:2;
+        display:inline-flex; align-items:center; gap:.5rem;
+        background: linear-gradient(90deg, var(--nt-primary-light), var(--nt-gold));
+        color: var(--nt-ink);
+        font-family:'Rajdhani',sans-serif; font-weight:700;
+        font-size:.95rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.85rem 1.8rem; border-radius:.8rem;
+        text-decoration:none;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .mnl-cta-btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(242,193,78,0.4); }
+
+      /* 12. Floating sticky "Book a Tour" button */
+      .mnl-float-btn{
+        position:fixed;
+        bottom: 1.6rem; right: 1.6rem;
+        z-index: 60;
+        display:flex; align-items:center; gap:.5rem;
+        background: linear-gradient(90deg, var(--nt-primary), var(--nt-primary-light));
+        color:#fff;
+        font-family:'Rajdhani',sans-serif; font-weight:700;
+        font-size:.88rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.85rem 1.3rem; border-radius: 999px;
+        text-decoration:none;
+        box-shadow: 0 10px 28px rgba(50,138,223,0.4);
+        opacity:0;
+        transform: translateY(20px) scale(.9);
+        pointer-events:none;
+        transition: opacity .35s ease, transform .35s ease;
+      }
+      .mnl-float-btn.show{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+      .mnl-float-btn:hover{ transform: translateY(-3px) scale(1.03); }
+
+      @media (max-width:700px){
+        .mnl-hero h1{ font-size: 2.1rem; }
+        .mnl-float-btn span{ display:none; }
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        .mnl-hero-bg{ animation:none; }
+        .mnl-card, .mnl-intro, .mnl-cta-inner{ transition:none; opacity:1; transform:none; }
+        .mnl-card-badge.must-visit{ animation:none; }
+        .mnl-cta-inner{ animation:none; }
+      }
+    </style>
+
+</head>
+
+<body class="mnl-page">
+
+    <div class="mnl-progress" id="mnlProgress"></div>
+
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+            <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a href="./index.html">Home</a></li>
+            <li class="hideonmobile"><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+            <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">Book a Tour</div>
+        </a>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <div class="mnl-hero">
+        <div class="mnl-hero-bg"></div>
+        <div class="mnl-hero-overlay"></div>
+        <div class="mnl-hero-content">
+            <div class="eyebrow">Himachal Pradesh · The Hills</div>
+            <h1><span>What's</span> <span>in Manali</span></h1>
+            <p>Snow-capped passes, sacred alpine lakes, and valleys where every turn in the road opens onto another postcard — here's what's waiting for you.</p>
+            <div class="mnl-hero-stats">
+                <div class="stat"><strong id="statManali">0</strong><span>Places to Explore</span></div>
+                <div class="stat"><strong>6,700+</strong><span>Ft. Above Sea Level</span></div>
+                <div class="stat"><strong>4.9★</strong><span>Traveler Rating</span></div>
+            </div>
+        </div>
+        <div class="mnl-scroll-cue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M6 13l6 6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+    </div>
+
+    <!-- ============ INTRO ============ -->
+    <div class="mnl-intro" id="mnlIntro">
+        <div class="eyebrow">Tour Package</div>
+        <h2>Everything you need, bundled into one journey</h2>
+        <p>Namdev's Tour &amp; Travels packages bundle together transport, accommodation, guided tours, meals, and other amenities — designed to fit different interests, preferences, and budgets of every traveler.</p>
+    </div>
+
+    <!-- ============ FILTERS ============ -->
+    <div class="mnl-filters" id="mnlFilters">
+        <button class="mnl-filter-pill active" data-filter="all">All Places</button>
+        <button class="mnl-filter-pill" data-filter="Nature & Lakes">Nature &amp; Lakes</button>
+        <button class="mnl-filter-pill" data-filter="Culture & Heritage">Culture &amp; Heritage</button>
+        <button class="mnl-filter-pill" data-filter="Wildlife & Parks">Wildlife &amp; Parks</button>
+        <button class="mnl-filter-pill" data-filter="Passes & Falls">Passes &amp; Falls</button>
+    </div>
+
+    <!-- ============ GRID (rendered by JS from one data source) ============ -->
+    <div class="mnl-grid-wrap">
+        <div class="mnl-grid" id="mnlGrid"></div>
+    </div>
+
+    <!-- ============ CTA ============ -->
+    <div class="mnl-cta">
+        <div class="mnl-cta-inner" id="mnlCta">
+            <h2>Ready to breathe the mountain air?</h2>
+            <p>Let us handle the transport, stays, and guides — you just show up and take it all in.</p>
+            <a class="mnl-cta-btn" href="./booktour.html" target="_blank">
+                Book This Tour
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- floating sticky book button -->
+    <!-- <a class="mnl-float-btn" id="mnlFloatBtn" href="./booktour.html" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Book a Tour</span>
+    </a> -->
+
+    <!-- ============ FOOTER (site-wide footer, as provided) ============ -->
+        <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+
+<!-- footer form connection  -->\
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+ 
+    <script>
+        function showsidebar(){ document.querySelector('.sidebar').classList.add('show'); }
+        function hidesidebar(){ document.querySelector('.sidebar').classList.remove('show'); }
+    </script>
+
+    <!-- Footer enquiry form -> same webhook pattern used on your homepage -->
+    <script>
+        const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+        document.querySelectorAll("form[data-formtype]").forEach(form => {
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const payload = { formType: form.dataset.formtype };
+                formData.forEach((value, key) => { payload[key] = value; });
+                try {
+                    await fetch(GOOGLE_SHEET_URL, {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: { "Content-Type": "text/plain" },
+                        body: JSON.stringify(payload)
+                    });
+                    alert("Thank you! Your request has been submitted. We'll get back to you soon.");
+                    form.reset();
+                } catch (err) {
+                    console.error(err);
+                    alert("Something went wrong. Please try again or call us directly at +91 9784568787.");
+                }
+            });
+        });
+    </script>
+
+    <!-- ============================================================
+         MANALI GRID — single data source + all interaction JS
+    ============================================================ -->
+    <script>
+    (function(){
+      const PLACES = [
+        {
+          name: "Bhrigu Lake",
+          category: "Nature & Lakes",
+          badge: "Must Visit",
+          img: "./pack img/manali/Bhrigu lake.jfif",
+          text: "A sacred alpine lake said to never freeze completely, held holy to sage Rishi Bhrigu and reached via several popular trek routes."
+        },
+        {
+          name: "Buddhist Monastery",
+          category: "Culture & Heritage",
+          img: "./pack img/manali/Buddhist monastery.jpg",
+          text: "Himalayan Nyingmapa Gompa — one of the most significant Buddhist monasteries in north India, revered by devotees."
+        },
+        {
+          name: "Great Himalayan National Park",
+          category: "Wildlife & Parks",
+          badge: "Must Visit",
+          img: "./pack img/manali/Great National Park.cms",
+          text: "Home to 31 mammal species, 209 birds, and several globally threatened species — a protected conservation area rich with medicinal plants."
+        },
+        {
+          name: "Jogini Falls",
+          category: "Passes & Falls",
+          img: "./pack img/manali/Jogini_falls.jpg",
+          text: "A sacred waterfall named after Goddess Jogini, considered a holy Shakti Peeth and a place of feminine power."
+        },
+        {
+          name: "Museum of Himachal Arts",
+          category: "Culture & Heritage",
+          img: "./pack img/manali/Museum of Himachal Arts.jfif",
+          text: "Displays traditional dresses, utensils, musical instruments, and wood carvings preserving Himachal Pradesh's near-forgotten craft heritage."
+        },
+        {
+          name: "Naggar Castle",
+          category: "Culture & Heritage",
+          img: "./pack img/manali/Naggar castle.jfif",
+          text: "A striking stone-and-wood fortress built by Raja Sidhi Singh in 1460 AD, blending European and Himalayan architectural styles."
+        },
+        {
+          name: "Nehru Kund",
+          category: "Nature & Lakes",
+          img: "./pack img/manali/Nehru Kund.jpg",
+          text: "A cold, pristine spring surrounded by breathtaking mountain and valley views — a favorite spot among photographers."
+        },
+        {
+          name: "Rohtang Pass",
+          category: "Passes & Falls",
+          badge: "Must Visit",
+          img: "./pack img/manali/Rohtang.webp",
+          text: "A strategically important mountain pass offering sweeping views of glaciers, peaks, the Lahaul Valley, and the Chandra River."
+        },
+        {
+          name: "Van Vihar",
+          category: "Wildlife & Parks",
+          img: "./pack img/manali/Van Vihar.jfif",
+          text: "A peaceful park home to diverse flora and fauna, with a small zoo featuring the Himalayan black bear, leopard, and deer."
+        }
+      ];
+
+      const grid = document.getElementById('mnlGrid');
+      PLACES.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'mnl-card';
+        card.dataset.category = p.category;
+        card.style.transitionDelay = (i % 6) * 0.07 + 's';
+        card.innerHTML = `
+          ${p.badge ? `<span class="mnl-card-badge must-visit">${p.badge}</span>` : ''}
+          <img class="mnl-card-img" src="./${p.img}" alt="${p.name}" loading="lazy">
+          <div class="mnl-card-shade"></div>
+          <div class="mnl-card-title">
+            <div class="sub">${p.category}</div>
+            <h3>${p.name}</h3>
+          </div>
+          <div class="mnl-card-overlay">
+            <h3>${p.name}</h3>
+            <p>${p.text}</p>
+            <a class="mnl-book-btn" href="./booktour.html">
+              Book Now
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      // Filters with ripple effect
+      document.querySelectorAll('.mnl-filter-pill').forEach(pill => {
+        pill.addEventListener('click', (e) => {
+          document.querySelectorAll('.mnl-filter-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+
+          const ripple = document.createElement('span');
+          ripple.className = 'mnl-ripple';
+          const rect = pill.getBoundingClientRect();
+          ripple.style.left = (e.clientX - rect.left) + 'px';
+          ripple.style.top = (e.clientY - rect.top) + 'px';
+          ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+          pill.appendChild(ripple);
+          setTimeout(() => ripple.remove(), 600);
+
+          const f = pill.dataset.filter;
+          document.querySelectorAll('.mnl-card').forEach(card => {
+            card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
+          });
+        });
+      });
+
+      // Scroll-reveal
+      const revealTargets = document.querySelectorAll('.mnl-card, .mnl-intro, .mnl-cta-inner');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealTargets.forEach(t => observer.observe(t));
+
+      // Stat count-up (Places to Explore)
+      const statEl = document.getElementById('statManali');
+      let counted = false;
+      const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !counted) {
+            counted = true;
+            let val = 0;
+            const target = PLACES.length;
+            const step = () => {
+              val++;
+              statEl.textContent = val + '+';
+              if (val < target) requestAnimationFrame(() => setTimeout(step, 90));
+            };
+            step();
+          }
+        });
+      }, { threshold: 0.5 });
+      statObserver.observe(document.querySelector('.mnl-hero-stats'));
+
+      // Scroll progress bar + floating book button visibility
+      const progress = document.getElementById('mnlProgress');
+      const floatBtn = document.getElementById('mnlFloatBtn');
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+        progress.style.width = scrolled + '%';
+        floatBtn.classList.toggle('show', h.scrollTop > 500);
+      });
+    })();
+    </script>
+
+</body>
+
+</html>

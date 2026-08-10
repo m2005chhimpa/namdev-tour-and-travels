@@ -1,0 +1,108 @@
+  :root{
+    --navy:#1C5D8C;
+    --sky:#3E86BE;
+    --olive:#B5BE6A;
+    --coral:#EE8B54;
+    --road:#3C3F45;
+    --road-edge:#54585F;
+    --lane:#F2C14E;
+    --bg:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:'Segoe UI',system-ui,sans-serif;
+    background:var(--bg);
+  }
+
+  /* ============ LOADER OVERLAY ============ */
+  #loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:radial-gradient(circle at 50% 30%, #eaf3fa 0%, #ffffff 70%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:5vh 5vw;
+    transition:opacity .7s ease, visibility .7s ease;
+  }
+  #loader.loader-hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+
+  .logo-wrap{
+    width:min(34vw, 190px);
+    margin-bottom:clamp(8px, 2vw, 18px);
+    animation:blink-glow 1.7s ease-in-out infinite;
+  }
+  .logo-wrap img{
+    width:100%;
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 6px 18px rgba(28,93,140,0.25));
+  }
+  @keyframes blink-glow{
+    0%, 100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:.55; transform:scale(.97); }
+  }
+
+  .road-wrap{
+    width:min(90vw, 620px);
+  }
+  .road-svg{ width:100%; height:auto; display:block; overflow:visible; }
+  .road-base{
+    fill:none;
+    stroke:var(--road);
+    stroke-width:26;
+    stroke-linecap:round;
+  }
+  .road-edge{
+    fill:none;
+    stroke:var(--road-edge);
+    stroke-width:20;
+    stroke-linecap:round;
+  }
+  .road-lane{
+    fill:none;
+    stroke:var(--lane);
+    stroke-width:2.5;
+    stroke-dasharray:12 12;
+    stroke-linecap:round;
+    animation:lane-move 1s linear infinite;
+  }
+  @keyframes lane-move{ to{ stroke-dashoffset:-24; } }
+
+  #car{ transform-box:fill-box; }
+  #car path.body{ fill:var(--coral); }
+  #car path.window{ fill:#2B3440; opacity:.85; }
+  #car circle{ fill:#2B3440; }
+  #car circle.hub{ fill:#E9EDF1; }
+
+  .loader-text{
+    margin-top:18px;
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--navy);
+    font-weight:600;
+    opacity:.8;
+  }
+
+  /* ============ PAGE BEHIND LOADER (placeholder site content) ============ */
+  .site{
+    max-width:760px;
+    margin:0 auto;
+    padding:64px 24px;
+    text-align:center;
+  }
+  .site img{ width:120px; margin-bottom:16px; }
+  .site h1{ color:var(--navy); font-size:28px; margin-bottom:8px; }
+  .site p{ color:#5c6a76; font-size:14px; max-width:480px; margin:0 auto; }
+
+  @media (prefers-reduced-motion: reduce){
+    .logo-wrap, .road-lane{ animation:none !important; }
+  }

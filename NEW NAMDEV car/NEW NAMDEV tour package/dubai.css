@@ -1,0 +1,145 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: mainfont;
+
+}
+
+@media screen and (max-width:600px) {
+    #carform{
+        width: 31.25rem;
+        height: 56.8rem;
+        margin-left: 1rem;
+    }
+   
+}
+
+
+.container{
+    width: 100vw;
+    height: 45vh;
+    background-image: url(https://www.rsacademics.com/wp-content/uploads/Dubai-landscape-scaled.jpg);
+    /* background-image: url(https://e1.pxfuel.com/desktop-wallpaper/368/868/desktop-wallpaper-aesthetic-dubai-landscape-dubai.jpg); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.overview{
+    width:74vw;
+    margin-left: 13vw;
+    /* text-align: center; */
+    margin-top: 8vh;
+}
+.luxuryr{
+    width: 64vw;
+    margin-left: 18vw;
+    margin-top: 5vh;
+    padding: 1rem;
+    border: 1px solid #323232;
+    border-radius: 8px;
+    display: flex;
+
+    
+}
+.luxuryr img{
+    border-radius: 8px;
+    height: 28vh;
+}
+.data{
+padding-left: 1rem;
+}
+.data span{
+    text-transform: uppercase;
+    font-size: 1.7rem;
+}
+.data .imgs{
+    margin-top: 1rem;
+    height: 2.5rem;
+    gap: 1rem;
+    display: flex;
+    /* background-color: #323232; */
+
+}
+.data .imgs img{
+    height: 2.2rem;
+}
+.data .imgs #book{
+    height: 100%;
+    margin-left: 3.8rem;
+    width: 25%;
+    text-decoration: none;
+    padding: .56rem 2.5rem;
+    border-radius: 25px;
+    color: #323232;
+    background-color: #328ADF;
+}
+.data .imgs #book:hover{
+    background-color: #252F36;
+    color: #fff
+}
+
+.data .imgs #view{
+    height: 100%;
+    width: 25%;
+    text-decoration: none;
+    padding: .56rem 2.5rem;
+    border-radius: 25px;
+    color: #fff;
+    background-color: #323232;;
+}
+.data .imgs #view:hover{
+    background-color:  #328ADF;
+    color:  #252F36;
+}
+
+.carform{
+    width: 65.25rem;
+    margin-left: 15.8rem;
+    margin-top: 3rem;
+    height: 32.8rem;
+    border-radius: 8px;
+    /* background-color: #121212; */
+    /* border: 2px solid #585858; */
+    display: flex;
+    flex-direction: column;
+}
+
+.carform input{
+    margin-top: 3%;
+    height: 5.2%;
+    padding: 1%;
+    width: 74%;
+    border: none;
+    border-bottom: 2px solid #328ADF;
+    /* color: #FFF; */
+    margin-left: 5%;
+    /* background-color: #328ADF; */
+    border-radius: 8px;
+    /* background-color: #585858; */
+}
+.carform select{
+    margin-top: 3%;
+    
+    border: none;
+    border-bottom: 2px solid #328ADF;
+    height: 5.2%;
+    border-radius: 8px;
+    /* padding: 1%; */
+    width: 74%;
+    color:#000;
+    margin-left: 5%;
+}
+.question{
+    width: 74vw;
+    margin-left: 18vw;
+    
+}
+.question h2{
+    color: #328ADF;
+    text-decoration: underline;
+}
+.question span{
+    font-weight: bold;
+    font-size: 1.1rem;
+}

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="./images/logo03.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Religious Tour Packages — Namdev's Tour & Travels</title>
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./finalanimation.css">
+<link rel="stylesheet" href="./experimental_claude.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+
+:root{ --relInk:#23201C; --relMuted:#8A7F70; --relAccent:#328ADF; --relGold:#C9973A; }
+*{ margin:0; padding:0; box-sizing:border-box; text-decoration:none; list-style:none; }
+body{ overflow-x:hidden; font-family:'Nunito Sans', sans-serif; color:var(--relInk); background:#FBFAF8; }
+
+/* ===== NAV ===== */
+/* .relNav{
+    position: sticky; top:0; z-index:500; height:4.625rem;
+    background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(35,32,28,0.08), 0 4px 20px rgba(35,32,28,0.04);
+    border-bottom: 1px solid var(--relAccent);
+    display:flex; align-items:center; justify-content:space-between; padding: 0 2rem;
+}
+.relNav.relScrolled{ background: rgba(255,255,255,0.98); }
+.relNavLeft{ display:flex; align-items:center; gap:2rem; }
+.relLogo{ height:3rem; }
+.relNavLinks{ display:flex; align-items:center; gap:1.8rem; list-style:none; }
+.relNavLinks li a{ position:relative; font-weight:500; color:var(--relInk); }
+.relNavLinks li a:hover{ color:var(--relAccent); }
+.relNavLinks li .relActive{ color:var(--relAccent); }
+.relBookBtn{
+    background: linear-gradient(90deg, #6B4A2E, var(--relAccent)); color:#fff; padding:.7rem 1.4rem;
+    border-radius:.5rem; font-weight:600; font-size:.9rem;
+}
+.relMenuIcon{ display:none; cursor:pointer; }
+.relMenuIcon img{ height:1.6rem; }
+.relSidebar{
+    position:fixed; top:0; right:0; height:100vh; width:20rem; max-width:80vw; color:#FBFBFB;
+    z-index:999; background:#121212; transform:translateX(100%); transition:transform .3s ease-in-out;
+    display:flex; flex-direction:column; align-items:flex-start; padding:2rem 1.5rem; overflow-y:auto; gap:1rem;
+}
+.relSidebar li a{ color:#D3C9C9; }
+.relSidebar.relShow{ transform:translateX(0); }
+@media screen and (max-width:1024px){
+    .relNavLinks li:not(.relMenuLi){ display:none; }
+    .relBookBtn{ display:none; }
+    .relMenuIcon{ display:flex; }
+} */
+
+/* ===== HERO ===== */
+.relHero{
+    position:relative; height:22rem; width:100%; background-size:cover; background-position:center;
+    background-image:url(https://media.istockphoto.com/id/1383421475/photo/enlightenment-sun-rising-over-silhouette-of-om-symbol-in-desert.jpg?s=612x612&w=0&k=20&c=-CGf45bzHdePDLpvo8DHmUIgYGU9RxXWwe37Hk4K1do=);
+}
+.relHeroOverlay{
+    position:absolute; inset:0; background:linear-gradient(180deg, rgba(35,32,28,0.35), rgba(35,32,28,0.8));
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:0 1.5rem;
+}
+.relHeroOverlay h1{ font-size:2.4rem; font-weight:400; margin:.6rem 0 .4rem; }
+.relHeroOverlay p{ font-size:.95rem; opacity:.9; max-width:36rem; }
+.relTag{ font-size:.7rem; font-weight:700; text-transform:uppercase; background:rgba(255,255,255,0.15); padding:.3rem .8rem; border-radius:999px; }
+
+/* ===== OVERVIEW ===== */
+.relOverview{ width:74%; max-width:60rem; margin:3rem auto; text-align:center; }
+.relOverview p{ color:#585858; line-height:1.7; font-size:.95rem; }
+
+/* ===== PACKAGE TABS ===== */
+.relTabsBar{
+    /* position:sticky; */
+     top:4.625rem; z-index:200; background:#FBFAF8;
+    max-width:74rem; margin:0 auto; padding:1.5rem 1.5rem .5rem;
+    display:flex; justify-content:center; gap:.7rem; flex-wrap:wrap;
+    border-bottom:1px solid rgba(35,32,28,0.08);
+}
+.relTabBtn{
+    background:#fff; border:1px solid rgba(35,32,28,0.15); color:var(--relInk);
+    padding:.6rem 1.2rem; border-radius:999px; font-size:.82rem; font-weight:600; cursor:pointer; transition:all .25s ease;
+}
+.relTabBtn:hover{ border-color:var(--relAccent); color:var(--relAccent); }
+.relTabBtn.relTabActive{ background:var(--relAccent); border-color:var(--relAccent); color:#fff; }
+
+/* ===== PACKAGE PANEL ===== */
+.relPanel{ display:none; max-width:70rem; margin:0 auto; padding:2.5rem 1.5rem 4rem; }
+.relPanel.relPanelActive{ display:block; }
+
+.relPanelBanner{ position:relative; height:18rem; border-radius:1.2rem; overflow:hidden; margin-bottom:2rem; }
+.relPanelBanner img{ width:100%; height:100%; object-fit:cover; }
+.relPanelBannerText{
+    position:absolute; inset:0; background:linear-gradient(0deg, rgba(35,32,28,0.85), transparent 60%);
+    display:flex; flex-direction:column; justify-content:flex-end; padding:1.8rem; color:#fff;
+}
+.relPanelBannerText span{ font-size:.75rem; color:var(--relGold); text-transform:uppercase; letter-spacing:.06em; font-weight:700; }
+.relPanelBannerText h2{ font-size:1.9rem; font-weight:400; margin-top:.3rem; }
+
+.relPanelIntro{ color:#585858; font-size:.95rem; line-height:1.75; margin-bottom:2rem; }
+
+.relStatsRow{ display:grid; grid-template-columns:repeat(4, 1fr); gap:1rem; margin-bottom:2.5rem; }
+.relStatBox{
+    background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; padding:1.1rem; text-align:center;
+    box-shadow:0 4px 14px rgba(35,32,28,0.04);
+}
+.relStatBox i{ font-size:1.3rem; color:var(--relAccent); margin-bottom:.4rem; }
+.relStatBox strong{ display:block; font-size:1.05rem; color:var(--relInk); }
+.relStatBox span{ font-size:.75rem; color:var(--relMuted); }
+
+.relPanel h3.relSubHeading{
+    font-size:1.3rem; font-weight:600; margin:2.5rem 0 1.2rem; position:relative; padding-left:1rem;
+}
+.relPanel h3.relSubHeading::before{
+    content:""; position:absolute; left:0; top:.15rem; bottom:.15rem; width:4px; background:var(--relAccent); border-radius:2px;
+}
+
+.relItinerary{ display:flex; flex-direction:column; gap:.7rem; }
+.relDay{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; overflow:hidden; }
+.relDayHead{
+    width:100%; display:flex; align-items:center; gap:1rem; background:none; border:none; padding:1rem 1.3rem;
+    cursor:pointer; text-align:left;
+}
+.relDayNum{
+    flex-shrink:0; width:2.4rem; height:2.4rem; border-radius:50%; background:rgba(50,138,223,0.1);
+    color:var(--relAccent); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem;
+}
+.relDayHead strong{ flex:1; font-size:.92rem; }
+.relDayIcon{ color:var(--relMuted); transition:transform .3s ease; }
+.relDay.relDayOpen .relDayIcon{ transform:rotate(180deg); }
+.relDayBody{ max-height:0; overflow:hidden; transition:max-height .35s ease, padding .35s ease; padding:0 1.3rem; }
+.relDay.relDayOpen .relDayBody{ max-height:14rem; padding:0 1.3rem 1.2rem 4.1rem; }
+.relDayBody p{ font-size:.85rem; color:#585858; line-height:1.65; }
+
+.relPlacesGrid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1.3rem; }
+.relPlaceCard{ background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 6px 18px rgba(35,32,28,0.06); }
+.relPlaceCard img{ width:100%; height:9rem; object-fit:cover; }
+.relPlaceCard .relPlaceBody{ padding:1rem 1.1rem 1.2rem; }
+.relPlaceCard h4{ font-size:.98rem; margin-bottom:.4rem; }
+.relPlaceCard p{ font-size:.8rem; color:var(--relMuted); line-height:1.55; }
+
+.relIncExc{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.relIncBox, .relExcBox{ background:#fff; border-radius:.8rem; padding:1.3rem 1.4rem; border:1px solid rgba(35,32,28,0.08); }
+.relIncBox h4{ color:#2E7D46; font-size:.95rem; margin-bottom:.8rem; display:flex; align-items:center; gap:.4rem; }
+.relExcBox h4{ color:#B33A3A; font-size:.95rem; margin-bottom:.8rem; display:flex; align-items:center; gap:.4rem; }
+.relIncBox ul, .relExcBox ul{ display:flex; flex-direction:column; gap:.55rem; }
+.relIncBox li, .relExcBox li{ font-size:.83rem; color:#585858; display:flex; align-items:flex-start; gap:.5rem; }
+.relIncBox li i{ color:#2E7D46; margin-top:.15rem; }
+.relExcBox li i{ color:#B33A3A; margin-top:.15rem; }
+
+.relWhyBox{
+    background:linear-gradient(135deg, rgba(201,151,58,0.1), rgba(50,138,223,0.06));
+    border-radius:1rem; padding:1.6rem 1.8rem; margin:2.5rem 0; display:flex; gap:1.2rem; align-items:flex-start;
+}
+.relWhyBox i{ font-size:1.6rem; color:var(--relGold); flex-shrink:0; margin-top:.2rem; }
+.relWhyBox p{ font-size:.9rem; color:#585858; line-height:1.7; }
+
+.relPanelCta{
+    margin-top:2.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+    background:var(--relInk); border-radius:1rem; padding:1.6rem 1.8rem; color:#fff;
+}
+.relPanelCta div h4{ font-size:1.1rem; margin-bottom:.2rem; }
+.relPanelCta div p{ font-size:.82rem; color:#C9D3DC; }
+.relPanelCtaBtn{ background:var(--relAccent); color:#fff; padding:.8rem 1.6rem; border-radius:.6rem; font-weight:600; font-size:.9rem; white-space:nowrap; }
+.relPanelCtaBtn:hover{ background:#4EA8FF; }
+
+@media screen and (max-width:900px){
+    .relStatsRow{ grid-template-columns:1fr 1fr; }
+    .relPlacesGrid{ grid-template-columns:1fr 1fr; }
+    .relIncExc{ grid-template-columns:1fr; }
+}
+@media screen and (max-width:600px){
+    .relPlacesGrid{ grid-template-columns:1fr; }
+    .relPanelBanner{ height:12rem; }
+    .relPanelBannerText h2{ font-size:1.4rem; }
+}
+
+/* ===== BOOKING FORM ===== */
+.relBookForm{
+    max-width:32rem; margin:4rem auto; background:#fff; border-radius:1rem; padding:2rem;
+    box-shadow:0 8px 24px rgba(35,32,28,0.08); display:flex; flex-direction:column; gap:1rem;
+}
+.relBookForm h2{ font-size:1.3rem; text-align:center; }
+.relBookForm input, .relBookForm select{
+    width:100%; background:#F7F5F1; border:1px solid rgba(35,32,28,0.1); border-radius:.6rem;
+    padding:.75rem .9rem; font-size:.9rem; outline:none; font-family:inherit; color:var(--relInk);
+}
+.relBookForm input:focus, .relBookForm select:focus{ border-color:var(--relAccent); }
+.relBookForm button{ background:var(--relAccent); color:#fff; border:none; border-radius:.6rem; padding:.9rem; font-weight:600; cursor:pointer; }
+.relBookForm button:hover{ background:var(--relInk); }
+.relSendOtpBtn{ background:var(--relInk); color:#fff; border:none; border-radius:.5rem; padding:.7rem 1rem; cursor:pointer; }
+.relOtpInput{ width:100%; padding:.7rem; border-radius:.5rem; border:1px solid #ccc; }
+
+/* ===== FOOTER ===== */
+.relFooter{ position:relative; background:linear-gradient(180deg, #23201C 0%, #1A1815 100%); overflow:hidden; padding-top:3rem; }
+.relFooterGlow{ position:absolute; top:-10rem; left:50%; transform:translateX(-50%); width:60rem; height:20rem; background:radial-gradient(circle, rgba(50,138,223,0.18) 0%, transparent 70%); pointer-events:none; }
+.relFooterInner{ position:relative; z-index:1; max-width:84rem; margin:0 auto; padding:0 3rem 3rem; display:grid; grid-template-columns:1.4fr 1fr 1.4fr; gap:3rem; }
+.relFooterCol{ color:#C9D3DC; }
+.relFooterLogo{ height:3.2rem; margin-bottom:1.2rem; }
+.relFooterTagline{ font-size:.92rem; line-height:1.7; color:#93A2AF; max-width:22rem; }
+.relFooterSocials{ display:flex; gap:.8rem; margin-top:1.6rem; }
+.relFooterSocials a{ width:2.4rem; height:2.4rem; border-radius:50%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; }
+.relFooterSocials a img{ width:1rem; height:1rem; filter:brightness(0) invert(1); opacity:.8; }
+.relFooterHeading{ color:#fff; font-size:1.05rem; font-weight:600; margin-bottom:1.4rem; position:relative; padding-bottom:.7rem; }
+.relFooterHeading::after{ content:""; position:absolute; left:0; bottom:0; width:2.4rem; height:2px; background:linear-gradient(90deg, var(--relAccent), transparent); }
+.relFooterLinks{ display:flex; flex-direction:column; gap:.9rem; }
+.relFooterLinks a{ color:#93A2AF; font-size:.92rem; }
+.relFooterLinks a:hover{ color:var(--relAccent); }
+.relFooterContactInfo{ display:flex; flex-direction:column; gap:.9rem; margin-bottom:1.6rem; }
+.relContactRow{ display:flex; align-items:flex-start; gap:.7rem; font-size:.85rem; color:#93A2AF; }
+.relContactRow img{ width:1.1rem; height:1.1rem; margin-top:.15rem; filter:brightness(0) invert(1); opacity:.7; }
+.relContactRow a{ color:#93A2AF; }
+.relFooterForm{ background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 1rem; padding: 1.3rem; display:flex; flex-direction:column; gap:.7rem; }
+.relFooterForm input{ width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:.5rem; padding:.65rem .9rem; color:#fff; font-size:.85rem; outline:none; }
+.relFooterForm input::placeholder{ color:#6B7A87; }
+.relFooterSubmitBtn{ margin-top:.3rem; background:linear-gradient(90deg, var(--relAccent), #4EA8FF); color:#fff; border:none; border-radius:.5rem; padding:.75rem 1rem; font-size:.9rem; font-weight:600; cursor:pointer; }
+.relFooterBottom{ position:relative; z-index:1; border-top:1px solid rgba(255,255,255,0.08); padding:1.4rem 3rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:.82rem; color:#6B7A87; }
+.relFooterBottomLinks{ display:flex; gap:1.6rem; }
+.relFooterBottomLinks a{ color:#93A2AF; }
+@media screen and (max-width:1024px){ .relFooterInner{ grid-template-columns:1fr 1fr; } }
+@media screen and (max-width:640px){ .relFooterInner{ grid-template-columns:1fr; padding:0 1.4rem 2.5rem; } }
+
+.relWhatsapp{
+    position:fixed; bottom:1.8rem; right:1.8rem; width:3.5rem; height:3.5rem; background:#25D366; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 6px 20px rgba(37,211,102,0.4); z-index:9998;
+}
+</style>
+</head>
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)"> 
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+            <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+            <!-- <li onclick="showsidebar()" style="font-size: 32px;"><a href=""><img src="./icons/menu.png" alt=""></a></li> -->
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a  href="./index.html">Home</a></li>
+                <li class="hideonmobile navHasDropdown">
+    <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+    <div class="navDropdown">
+        <div class="navDropdownCol">
+            <h4>Luxury Buses</h4>
+            <a href="">Volvo Bus</a>
+            <a href="">Winger</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Luxury Cars</h4>
+            <a href="">Innova Crysta</a>
+            <a href="">Kia Carnival</a>
+            <a href="">Honda City</a>
+            <a href="">Etios</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Economical Cars</h4>
+            <a href="">Swift Dzire</a>
+            <a href="">Ertiga</a>
+            <a href="">Innova</a>
+        </div>
+    </div>
+</li>
+            <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="./icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+    <!-- loader / animation -->
+    <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+
+<div class="relHero">
+    <div class="relHeroOverlay">
+        <span class="relTag">Pilgrimage &amp; Spiritual Journeys</span>
+        <h1>Religious Tour Packages</h1>
+        <p>Ten of India's most sacred journeys — every detail planned, so you can focus on the journey itself.</p>
+    </div>
+</div>
+
+<div class="relOverview">
+    <p>Choose a pilgrimage below to see the full journey — day-by-day itinerary, every place you'll visit, what's included, and why this trip matters to those who take it.</p>
+</div>
+
+<div class="relTabsBar">
+    <button class="relTabBtn relTabActive" onclick="relShowPanel('chardham')">Char Dham Yatra</button>
+    <button class="relTabBtn" onclick="relShowPanel('golden')">Golden Temple</button>
+    <button class="relTabBtn" onclick="relShowPanel('vaishno')">Vaishno Devi</button>
+    <button class="relTabBtn" onclick="relShowPanel('tirupati')">Tirupati Balaji</button>
+    <button class="relTabBtn" onclick="relShowPanel('varanasi')">Kashi Vishwanath</button>
+    <button class="relTabBtn" onclick="relShowPanel('shirdi')">Shirdi Sai Baba</button>
+    <button class="relTabBtn" onclick="relShowPanel('gujarat')">Somnath &amp; Dwarka</button>
+    <button class="relTabBtn" onclick="relShowPanel('rameswaram')">Rameswaram</button>
+    <button class="relTabBtn" onclick="relShowPanel('amarnath')">Amarnath Yatra</button>
+    <button class="relTabBtn" onclick="relShowPanel('ajmer')">Ajmer Sharif</button>
+</div>
+
+<!-- ===================== 1. CHAR DHAM ===================== -->
+<div class="relPanel relPanelActive" id="relPanel-chardham">
+    <div class="relPanelBanner">
+        <img src="./https://media.istockphoto.com/id/1209865522/photo/view-of-the-kedarnath-temple-at-night-in-kedarnath-uttarakhand-india.jpg?s=612x612&w=0&k=20&c=ZHSoP7Moc5lyeCU6zNHQP2YlB8UbOosSsTohH6OtKn8=" alt="Kedarnath Temple">
+        <div class="relPanelBannerText"><span>Hindu Pilgrimage · Uttarakhand Himalayas</span><h2>Char Dham Yatra</h2></div>
+    </div>
+    <p class="relPanelIntro">The Char Dham Yatra — "four abodes" — takes devotees through four sacred shrines in the Garhwal Himalayas: Yamunotri, Gangotri, Kedarnath, and Badrinath. We start by picking you up from Haridwar or Dehradun and move through each shrine in the traditional order, with acclimatization built in for the high-altitude stretches.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>10 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>4 Shrines</strong><span>Places covered</span></div>
+        <div class="relStatBox"><i class="ti ti-mountain"></i><strong>Moderate</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>May – Jun</strong><span>Best time</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>For most pilgrims this is a once-in-a-lifetime act of devotion. We keep the pace unhurried at each shrine and handle every permit and high-altitude logistic, so the journey stays focused on faith, not paperwork.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1-2</span><strong>Haridwar arrival &amp; Yamunotri</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Pick-up from Haridwar/Dehradun, drive to Hanuman Chatti, then trek or pony ride to Yamunotri Temple.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">3-4</span><strong>Onward to Gangotri</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Scenic drive through the Bhagirathi valley to Gangotri, origin of the sacred Ganga river.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">5-7</span><strong>Journey to Kedarnath</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Drive to Gaurikund, then trek (or helicopter option) to Kedarnath Temple, one of the twelve Jyotirlingas.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">8-9</span><strong>Final leg to Badrinath</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Drive via Joshimath to Badrinath, dedicated to Lord Vishnu, including the Tapt Kund hot springs.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">10</span><strong>Return journey</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Drive back to Haridwar/Dehradun with drop-off, completing the full circuit.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1626016570251-ed37e8a15b17?q=80&w=800&auto=format&fit=crop" alt="Yamunotri"><div class="relPlaceBody"><h4>Yamunotri</h4><p>Source of the Yamuna, known for hot springs and remote setting.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop" alt="Gangotri"><div class="relPlaceBody"><h4>Gangotri</h4><p>Spiritual source of the Ganga, framed by glacial peaks.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://media.istockphoto.com/id/1209865522/photo/view-of-the-kedarnath-temple-at-night-in-kedarnath-uttarakhand-india.jpg?s=612x612&w=0&k=20&c=ZHSoP7Moc5lyeCU6zNHQP2YlB8UbOosSsTohH6OtKn8=" alt="Kedarnath"><div class="relPlaceBody"><h4>Kedarnath</h4><p>One of the twelve Jyotirlingas, perched among snowy peaks.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> AC vehicle for the full circuit</li><li><i class="ti ti-check"></i> Hotel/guesthouse stays</li><li><i class="ti ti-check"></i> Daily breakfast &amp; dinner</li><li><i class="ti ti-check"></i> Guide &amp; permits</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Pony/palki/helicopter charges</li><li><i class="ti ti-x"></i> Personal expenses</li><li><i class="ti ti-x"></i> Travel insurance</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready to begin your Char Dham Yatra?</h4><p>Talk to our team to lock in your preferred dates.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<!-- ===================== 2. GOLDEN TEMPLE ===================== -->
+<div class="relPanel" id="relPanel-golden">
+    <div class="relPanelBanner">
+        <img src="./https://media.istockphoto.com/id/603910462/photo/blue-hour-harmandir-sahib.jpg?s=612x612&w=0&k=20&c=rePzXlIfzhpSfbjfMVdkRdiv5qKQjla_nXxhGX4HRCU=" alt="Golden Temple">
+        <div class="relPanelBannerText"><span>Sikh Pilgrimage · Punjab</span><h2>Golden Temple Tour</h2></div>
+    </div>
+    <p class="relPanelIntro">Centered on the Harmandir Sahib in Amritsar — the holiest shrine in Sikhism. We take you through the temple complex with time for darshan and the langar, and round out the trip with the Wagah Border ceremony and Jallianwala Bagh.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>3 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>4 Sites</strong><span>Places covered</span></div>
+        <div class="relStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>Year-round</strong><span>Best time</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>The langar alone serves free meals to over 100,000 people a day. Combined with Jallianwala Bagh and the Wagah Border ceremony, this short trip carries real depth for its length.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1</span><strong>Arrival &amp; Golden Temple darshan</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Arrive, check in, visit the Harmandir Sahib in the evening for the illuminated temple and langar.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">2</span><strong>Wagah Border &amp; Jallianwala Bagh</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Morning visit to Jallianwala Bagh, evening flag-lowering ceremony at Wagah Border.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">3</span><strong>Palki Sahib &amp; departure</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Optional early visit to the Palki Sahib ceremony, breakfast, then drop-off.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://media.istockphoto.com/id/603910462/photo/blue-hour-harmandir-sahib.jpg?s=612x612&w=0&k=20&c=rePzXlIfzhpSfbjfMVdkRdiv5qKQjla_nXxhGX4HRCU=" alt="Harmandir Sahib"><div class="relPlaceBody"><h4>Harmandir Sahib</h4><p>The holiest Sikh shrine, famous for its gold sanctum and Sarovar.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1609950547346-a4f431435b2b?q=80&w=800&auto=format&fit=crop" alt="Wagah Border"><div class="relPlaceBody"><h4>Wagah Border</h4><p>The daily flag-lowering ceremony, full of energy and pride.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=800&auto=format&fit=crop" alt="Jallianwala Bagh"><div class="relPlaceBody"><h4>Jallianwala Bagh</h4><p>A memorial marking a pivotal moment in India's freedom struggle.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> AC vehicle for sightseeing</li><li><i class="ti ti-check"></i> 2 nights hotel</li><li><i class="ti ti-check"></i> Daily breakfast</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Lunch &amp; dinner (except langar)</li><li><i class="ti ti-x"></i> Personal expenses</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready for the Golden Temple Tour?</h4><p>A short, meaningful trip — easy to fit into any schedule.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<!-- ===================== 3. VAISHNO DEVI ===================== -->
+<div class="relPanel" id="relPanel-vaishno">
+    <div class="relPanelBanner">
+        <img src="./https://media.istockphoto.com/id/1206608305/photo/mata-vaishno-devi-temple.jpg?s=612x612&w=0&k=20&c=Kg4jpPXm3qImfQjvoFOb682H_ns89zAlQ8SozbwMNRw=" alt="Vaishno Devi">
+        <div class="relPanelBannerText"><span>Hindu Pilgrimage · Jammu &amp; Kashmir</span><h2>Vaishno Devi Yatra</h2></div>
+    </div>
+    <p class="relPanelIntro">A journey to the sacred cave shrine of Goddess Vaishno Devi in the Trikuta Mountains above Katra. We transfer you from Jammu to Katra and arrange the trek up to the Bhawan for darshan.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>2-3 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>3 Sites</strong><span>Places covered</span></div>
+        <div class="relStatBox"><i class="ti ti-mountain"></i><strong>Moderate</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>Mar – Oct</strong><span>Best time</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>The 13 km trek from Katra to the Bhawan is part of the experience — well-paved, with free langars along the way. We handle your registration slip and pony bookings in advance.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1</span><strong>Jammu arrival, transfer to Katra</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Pick-up from Jammu, drive to Katra, collect yatra registration slip.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">2</span><strong>Trek to Bhawan &amp; darshan</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Early trek (or pony/palki) to the Bhawan, darshan, optional Bhairon Temple visit.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">3</span><strong>Return &amp; departure</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Descend to Katra, transfer back to Jammu for onward travel.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://media.istockphoto.com/id/1206608305/photo/mata-vaishno-devi-temple.jpg?s=612x612&w=0&k=20&c=Kg4jpPXm3qImfQjvoFOb682H_ns89zAlQ8SozbwMNRw=" alt="Bhawan"><div class="relPlaceBody"><h4>The Bhawan</h4><p>The main cave shrine — the heart of the pilgrimage.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1601574173145-9de973a34544?q=80&w=800&auto=format&fit=crop" alt="Katra"><div class="relPlaceBody"><h4>Katra</h4><p>The base town, full of markets and pilgrim guesthouses.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1601999209815-e8c8c31ce9fb?q=80&w=800&auto=format&fit=crop" alt="Bhairon Temple"><div class="relPlaceBody"><h4>Bhairon Temple</h4><p>Traditionally visited after the Bhawan for a complete yatra.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> Jammu–Katra–Jammu transfers</li><li><i class="ti ti-check"></i> Hotel in Katra</li><li><i class="ti ti-check"></i> Registration assistance</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Pony/palki/battery car</li><li><i class="ti ti-x"></i> Helicopter tickets</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready for the Vaishno Devi Yatra?</h4><p>We'll handle the registration slip and transport bookings.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<!-- ===================== 4. TIRUPATI BALAJI ===================== -->
+<div class="relPanel" id="relPanel-tirupati">
+    <div class="relPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1621677555119-e51db3f1e3a2?q=80&w=1200&auto=format&fit=crop" alt="Tirumala Venkateswara Temple">
+        <div class="relPanelBannerText"><span>Hindu Pilgrimage · Andhra Pradesh</span><h2>Tirupati Balaji Darshan</h2></div>
+    </div>
+    <p class="relPanelIntro">A visit to the Sri Venkateswara Temple atop the Tirumala hills — one of the world's most-visited pilgrimage sites. We arrange your Seva/darshan slot in advance, transfer you up the hill from Tirupati town, and include time at nearby temples.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>2 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>3 Sites</strong><span>Places covered</span></div>
+        <div class="relStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>Year-round</strong><span>Best time</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>Tirumala sees tens of millions of pilgrims a year, and the queue system can be overwhelming to navigate alone. Pre-arranging your Seva slot is the single biggest thing that makes this trip smooth rather than stressful.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1</span><strong>Arrival in Tirupati, transfer to Tirumala</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Arrive in Tirupati, drive up to Tirumala hills, check in, evening visit to the temple complex.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">2</span><strong>Main darshan &amp; return</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Early morning darshan at Sri Venkateswara Temple, visit Padmavathi Temple in Tiruchanur, descend to Tirupati for departure.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1621677555119-e51db3f1e3a2?q=80&w=800&auto=format&fit=crop" alt="Tirumala Temple"><div class="relPlaceBody"><h4>Sri Venkateswara Temple</h4><p>The main shrine atop Tirumala hills, one of the richest temples in the world.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1600100397608-f803a2f0eaf5?q=80&w=800&auto=format&fit=crop" alt="Tiruchanur"><div class="relPlaceBody"><h4>Padmavathi Temple, Tiruchanur</h4><p>Dedicated to Goddess Padmavathi, traditionally visited alongside Tirumala.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1590766940554-153d478f0da5?q=80&w=800&auto=format&fit=crop" alt="Tirupati town"><div class="relPlaceBody"><h4>Tirupati Town</h4><p>The base town at the foot of the hills, with markets and additional temples.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> Seva/darshan slot booking assistance</li><li><i class="ti ti-check"></i> Tirupati–Tirumala transfers</li><li><i class="ti ti-check"></i> 1 night hotel</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Meals</li><li><i class="ti ti-x"></i> Special entry donation tickets</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready for Tirupati Balaji Darshan?</h4><p>We'll pre-arrange your Seva slot to avoid long queues.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<!-- ===================== 5. KASHI VISHWANATH ===================== -->
+<div class="relPanel" id="relPanel-varanasi">
+    <div class="relPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1561361058-c24cecae35ca?q=80&w=1200&auto=format&fit=crop" alt="Varanasi ghats">
+        <div class="relPanelBannerText"><span>Hindu Pilgrimage · Uttar Pradesh</span><h2>Kashi Vishwanath Yatra</h2></div>
+    </div>
+    <p class="relPanelIntro">Varanasi, one of the world's oldest continuously inhabited cities, centers this pilgrimage around the Kashi Vishwanath Temple — one of the twelve Jyotirlingas — alongside the Ganga Aarti at the ghats and a sunrise boat ride.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>3 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>4 Sites</strong><span>Places covered</span></div>
+        <div class="relStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>Oct – Mar</strong><span>Best time</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>Watching the Ganga Aarti at Dashashwamedh Ghat at dusk, then returning at dawn for a boat ride as the city wakes along the river, is an experience many travelers describe as unlike anywhere else in India.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1</span><strong>Arrival &amp; evening Ganga Aarti</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Arrive, check in, evening visit to Dashashwamedh Ghat for the Ganga Aarti ceremony.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">2</span><strong>Kashi Vishwanath darshan &amp; sunrise boat ride</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Early morning boat ride along the ghats, followed by darshan at the Kashi Vishwanath Temple.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">3</span><strong>Sarnath &amp; departure</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Half-day trip to Sarnath, where Buddha delivered his first sermon, before departure.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1561361058-c24cecae35ca?q=80&w=800&auto=format&fit=crop" alt="Ghats of Varanasi"><div class="relPlaceBody"><h4>The Ghats</h4><p>Iconic riverfront steps along the Ganga, the heart of daily ritual in Varanasi.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1596627116790-af6f96d60f2c?q=80&w=800&auto=format&fit=crop" alt="Kashi Vishwanath Temple"><div class="relPlaceBody"><h4>Kashi Vishwanath Temple</h4><p>One of the twelve Jyotirlingas, dedicated to Lord Shiva.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1620766165457-a3b9ff20602e?q=80&w=800&auto=format&fit=crop" alt="Sarnath"><div class="relPlaceBody"><h4>Sarnath</h4><p>Where Buddha gave his first teaching after enlightenment.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> 2 nights hotel</li><li><i class="ti ti-check"></i> Boat ride</li><li><i class="ti ti-check"></i> Local sightseeing vehicle</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Meals</li><li><i class="ti ti-x"></i> Special darshan tickets</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready for Kashi Vishwanath Yatra?</h4><p>Experience the ghats, the Aarti, and the temple, all in one trip.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<!-- ===================== 6. SHIRDI SAI BABA ===================== -->
+<div class="relPanel" id="relPanel-shirdi">
+    <div class="relPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1600431521003-ad46bd3f9d3d?q=80&w=1200&auto=format&fit=crop" alt="Shirdi Sai Baba temple">
+        <div class="relPanelBannerText"><span>Pilgrimage · Maharashtra</span><h2>Shirdi Sai Baba Darshan</h2></div>
+    </div>
+    <p class="relPanelIntro">A visit to the Sai Baba Samadhi Mandir in Shirdi, revered by devotees across faiths. We arrange your darshan, and include a short excursion to the nearby Shani Shingnapur temple, known for its unique tradition of doorless homes.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>2 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>2 Sites</strong><span>Places covered</span></div>
+        <div class="relStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>Year-round</strong><span>Best time</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>Shirdi draws devotees of every background — Hindu, Muslim, and beyond — reflecting Sai Baba's own message of unity. It's one of the more universally welcoming pilgrimage experiences in India.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1</span><strong>Arrival &amp; Samadhi Mandir darshan</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Arrive in Shirdi, check in, visit the Samadhi Mandir for darshan and the evening Aarti.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">2</span><strong>Shani Shingnapur &amp; departure</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Morning excursion to Shani Shingnapur, then return to Shirdi for departure.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1600431521003-ad46bd3f9d3d?q=80&w=800&auto=format&fit=crop" alt="Samadhi Mandir"><div class="relPlaceBody"><h4>Samadhi Mandir</h4><p>The main shrine where Sai Baba's samadhi is enshrined.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=800&auto=format&fit=crop" alt="Shani Shingnapur"><div class="relPlaceBody"><h4>Shani Shingnapur</h4><p>Famous for its tradition of homes without doors, reflecting deep local faith.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> 1 night hotel</li><li><i class="ti ti-check"></i> Local vehicle for both sites</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Meals</li><li><i class="ti ti-x"></i> Special darshan passes</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready for Shirdi Sai Baba Darshan?</h4><p>A short, welcoming pilgrimage suited to any traveler.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<!-- ===================== 7. SOMNATH & DWARKA ===================== -->
+<div class="relPanel" id="relPanel-gujarat">
+    <div class="relPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1621975184220-cd3c4c1d3d3f?q=80&w=1200&auto=format&fit=crop" alt="Somnath Temple">
+        <div class="relPanelBannerText"><span>Hindu Pilgrimage · Gujarat</span><h2>Somnath &amp; Dwarka Yatra</h2></div>
+    </div>
+    <p class="relPanelIntro">This coastal Gujarat circuit covers two of Hinduism's most significant sites: Somnath, first among the twelve Jyotirlingas, and Dwarka, the legendary kingdom of Lord Krishna. We connect both by road along the Arabian Sea coastline.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>4 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>3 Sites</strong><span>Places covered</span></div>
+        <div class="relStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>Oct – Mar</strong><span>Best time</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>Somnath's evening sound-and-light show, telling the temple's story of destruction and rebuilding through the centuries, adds a layer of history to the spiritual visit that few other Jyotirlingas offer.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1</span><strong>Arrival &amp; Somnath darshan</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Arrive, check in, evening darshan at Somnath Temple followed by the sound-and-light show.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">2</span><strong>Drive to Dwarka</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Scenic coastal drive to Dwarka, check in, evening Aarti at Dwarkadhish Temple.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">3</span><strong>Bet Dwarka &amp; local sites</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Boat trip to Bet Dwarka island, visit to Rukmini Devi Temple.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">4</span><strong>Departure</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Morning at leisure, transfer for onward travel.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1621975184220-cd3c4c1d3d3f?q=80&w=800&auto=format&fit=crop" alt="Somnath Temple"><div class="relPlaceBody"><h4>Somnath Temple</h4><p>First among the twelve Jyotirlingas, on the Arabian Sea coast.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1600100397608-f803a2f0eaf5?q=80&w=800&auto=format&fit=crop" alt="Dwarkadhish Temple"><div class="relPlaceBody"><h4>Dwarkadhish Temple</h4><p>Dedicated to Lord Krishna, at the legendary site of his kingdom.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=800&auto=format&fit=crop" alt="Bet Dwarka"><div class="relPlaceBody"><h4>Bet Dwarka</h4><p>An island shrine reachable by boat, believed to be Krishna's residence.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> AC vehicle, Somnath–Dwarka circuit</li><li><i class="ti ti-check"></i> 3 nights hotel</li><li><i class="ti ti-check"></i> Boat ride to Bet Dwarka</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Meals</li><li><i class="ti ti-x"></i> Personal expenses</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready for Somnath &amp; Dwarka?</h4><p>Two of Gujarat's most significant temples, one seamless trip.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<!-- ===================== 8. RAMESWARAM ===================== -->
+<div class="relPanel" id="relPanel-rameswaram">
+    <div class="relPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1600100397608-f803a2f0eaf5?q=80&w=1200&auto=format&fit=crop" alt="Ramanathaswamy Temple">
+        <div class="relPanelBannerText"><span>Hindu Pilgrimage · Tamil Nadu</span><h2>Rameswaram Yatra</h2></div>
+    </div>
+    <p class="relPanelIntro">Rameswaram, home to the Ramanathaswamy Temple and its famous corridor of pillars, is one of the twelve Jyotirlingas and part of the Char Dham (all-India) pilgrimage circuit. The island town also holds deep significance in the Ramayana.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>2 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>3 Sites</strong><span>Places covered</span></div>
+        <div class="relStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>Oct – Apr</strong><span>Best time</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>The temple's corridor is the longest of any Hindu temple in India, and the ritual bath at 22 sacred wells (Theerthams) inside the complex is a tradition unique to Rameswaram among India's pilgrimage sites.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1</span><strong>Arrival &amp; temple darshan</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Arrive, check in, darshan and the sacred well ritual at Ramanathaswamy Temple.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">2</span><strong>Dhanushkodi &amp; departure</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Morning excursion to Dhanushkodi, the ghost town at the tip of the island, then depart.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1600100397608-f803a2f0eaf5?q=80&w=800&auto=format&fit=crop" alt="Ramanathaswamy Temple"><div class="relPlaceBody"><h4>Ramanathaswamy Temple</h4><p>One of the twelve Jyotirlingas, famed for its 1000-pillar corridor.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1590766940554-153d478f0da5?q=80&w=800&auto=format&fit=crop" alt="Dhanushkodi"><div class="relPlaceBody"><h4>Dhanushkodi</h4><p>A dramatic, deserted stretch where the Bay of Bengal meets the Indian Ocean.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=800&auto=format&fit=crop" alt="Pamban Bridge"><div class="relPlaceBody"><h4>Pamban Bridge</h4><p>The engineering marvel connecting Rameswaram island to the mainland.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> 1 night hotel</li><li><i class="ti ti-check"></i> Local vehicle</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Meals</li><li><i class="ti ti-x"></i> Sacred well ritual fee (paid on-site)</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready for the Rameswaram Yatra?</h4><p>One of India's most unique coastal pilgrimages.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<!-- ===================== 9. AMARNATH ===================== -->
+<div class="relPanel" id="relPanel-amarnath">
+    <div class="relPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1626016570251-ed37e8a15b17?q=80&w=1200&auto=format&fit=crop" alt="Amarnath Himalayas">
+        <div class="relPanelBannerText"><span>Hindu Pilgrimage · Jammu &amp; Kashmir</span><h2>Amarnath Yatra</h2></div>
+    </div>
+    <p class="relPanelIntro">A high-altitude pilgrimage to the Amarnath cave, home to a naturally formed ice lingam dedicated to Lord Shiva. Undertaken only during the short summer yatra window, this is the most physically demanding journey we offer — and among the most revered.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>5 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>2 Routes</strong><span>Trek options</span></div>
+        <div class="relStatBox"><i class="ti ti-mountain"></i><strong>Challenging</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>Jul – Aug</strong><span>Yatra window</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>The yatra requires a compulsory health certificate and registration well in advance, since the government limits daily pilgrim numbers. We handle both, and recommend arriving a day early in Jammu to acclimatize before the trek begins.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1</span><strong>Arrival in Jammu, registration</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Arrive in Jammu, complete health check-in and yatra registration formalities.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">2</span><strong>Transfer to base camp</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Drive to Pahalgam or Baltal (your chosen route base), rest and prepare for the trek.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">3-4</span><strong>Trek to the cave &amp; darshan</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Multi-day trek (or pony/helicopter option) to the Amarnath cave for darshan of the ice lingam.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">5</span><strong>Return &amp; departure</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Descend, transfer back to Jammu for onward travel.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1626016570251-ed37e8a15b17?q=80&w=800&auto=format&fit=crop" alt="Amarnath Cave"><div class="relPlaceBody"><h4>Amarnath Cave</h4><p>Home to the naturally forming ice lingam, the focus of the pilgrimage.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1601999209815-e8c8c31ce9fb?q=80&w=800&auto=format&fit=crop" alt="Pahalgam"><div class="relPlaceBody"><h4>Pahalgam</h4><p>A scenic base town and one of two traditional trek starting points.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1583417319070-4a69db38a482?q=80&w=800&auto=format&fit=crop" alt="Baltal"><div class="relPlaceBody"><h4>Baltal</h4><p>The shorter, steeper alternate route to the cave shrine.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> Registration &amp; health certificate assistance</li><li><i class="ti ti-check"></i> Base camp accommodation</li><li><i class="ti ti-check"></i> Jammu transfers</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Pony/palki/helicopter charges</li><li><i class="ti ti-x"></i> Meals during trek</li><li><i class="ti ti-x"></i> Travel &amp; medical insurance (strongly recommended)</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready for the Amarnath Yatra?</h4><p>We'll guide you through registration and route selection.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<!-- ===================== 10. AJMER SHARIF ===================== -->
+<div class="relPanel" id="relPanel-ajmer">
+    <div class="relPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=1200&auto=format&fit=crop" alt="Ajmer Sharif Dargah">
+        <div class="relPanelBannerText"><span>Sufi Pilgrimage · Rajasthan</span><h2>Ajmer Sharif Dargah</h2></div>
+    </div>
+    <p class="relPanelIntro">The Dargah of Khwaja Moinuddin Chishti in Ajmer is one of the most visited Sufi shrines in the world, drawing pilgrims of all faiths. We combine your visit with nearby Pushkar, home to one of India's few Brahma temples.</p>
+    <div class="relStatsRow">
+        <div class="relStatBox"><i class="ti ti-calendar-time"></i><strong>2 Days</strong><span>Duration</span></div>
+        <div class="relStatBox"><i class="ti ti-map-pin"></i><strong>2 Sites</strong><span>Places covered</span></div>
+        <div class="relStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="relStatBox"><i class="ti ti-sun"></i><strong>Year-round</strong><span>Best time</span></div>
+    </div>
+    <div class="relWhyBox"><i class="ti ti-flame"></i><p>The Dargah's message of communal harmony draws Hindus, Muslims, and people of other faiths alike, especially during the annual Urs festival — a rare example of a shrine embraced across religious lines.</p></div>
+    <h3 class="relSubHeading">Day-by-Day Itinerary</h3>
+    <div class="relItinerary">
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">1</span><strong>Arrival &amp; Dargah visit</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Arrive in Ajmer, check in, visit the Dargah of Khwaja Moinuddin Chishti for prayers.</p></div></div>
+        <div class="relDay"><button class="relDayHead" onclick="relToggleDay(this)"><span class="relDayNum">2</span><strong>Pushkar &amp; departure</strong><i class="ti ti-chevron-down relDayIcon"></i></button><div class="relDayBody"><p>Short drive to Pushkar, visit the Brahma Temple and Pushkar Lake, then depart.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Places You'll Visit</h3>
+    <div class="relPlacesGrid">
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=800&auto=format&fit=crop" alt="Ajmer Sharif Dargah"><div class="relPlaceBody"><h4>Ajmer Sharif Dargah</h4><p>The shrine of Khwaja Moinuddin Chishti, revered across faiths.</p></div></div>
+        <div class="relPlaceCard"><img src="./https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=800&auto=format&fit=crop" alt="Pushkar Lake"><div class="relPlaceBody"><h4>Pushkar Lake</h4><p>A sacred lake ringed by ghats, central to Pushkar's spiritual life.</p></div></div>
+    </div>
+    <h3 class="relSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="relIncExc">
+        <div class="relIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> 1 night hotel</li><li><i class="ti ti-check"></i> Ajmer–Pushkar transfers</li></ul></div>
+        <div class="relExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Meals</li><li><i class="ti ti-x"></i> Offerings at the Dargah</li></ul></div>
+    </div>
+    <div class="relPanelCta"><div><h4>Ready for Ajmer Sharif?</h4><p>A short, meaningful trip combining two of Rajasthan's spiritual sites.</p></div><a href="#relBookForm" class="relPanelCtaBtn">Book This Package</a></div>
+</div>
+
+<form class="relBookForm" id="relBookForm" data-formtype="Religious Package Booking">
+    <h2>Book Pack Now</h2>
+    <input type="text" name="name" placeholder="ENTER THE FULL NAME">
+    <input type="email" name="email" placeholder="ENTER THE E-MAIL">
+    <input type="text" name="phone" placeholder="ENTER THE PHONE">
+    <input type="date" name="date">
+    <input type="number" name="people" placeholder="ENTER NO. OF TRAVELERS">
+    <select name="pack">
+        <option value="none" selected disabled>Select the Pack</option>
+        <option value="Char Dham Yatra">Char Dham Yatra</option>
+        <option value="Golden Temple Tour">Golden Temple Tour</option>
+        <option value="Vaishno Devi Yatra">Vaishno Devi Yatra</option>
+        <option value="Tirupati Balaji Darshan">Tirupati Balaji Darshan</option>
+        <option value="Kashi Vishwanath Yatra">Kashi Vishwanath Yatra</option>
+        <option value="Shirdi Sai Baba Darshan">Shirdi Sai Baba Darshan</option>
+        <option value="Somnath & Dwarka Yatra">Somnath &amp; Dwarka Yatra</option>
+        <option value="Rameswaram Yatra">Rameswaram Yatra</option>
+        <option value="Amarnath Yatra">Amarnath Yatra</option>
+        <option value="Ajmer Sharif Dargah">Ajmer Sharif Dargah</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+    <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+
+<!-- footer form connection  -->\
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+<script>
+function relShowSidebar(){ document.getElementById('relSidebar').classList.add('relShow'); }
+function relHideSidebar(){ document.getElementById('relSidebar').classList.remove('relShow'); }
+
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('relMainNav');
+    if (window.scrollY > 40) nav.classList.add('relScrolled');
+    else nav.classList.remove('relScrolled');
+});
+
+function relShowPanel(key){
+    document.querySelectorAll('.relPanel').forEach(p => p.classList.remove('relPanelActive'));
+    document.getElementById('relPanel-' + key).classList.add('relPanelActive');
+    document.querySelectorAll('.relTabBtn').forEach(b => b.classList.remove('relTabActive'));
+    event.currentTarget.classList.add('relTabActive');
+    window.scrollTo({ top: document.querySelector('.relTabsBar').offsetTop - 80, behavior: 'smooth' });
+}
+
+function relToggleDay(headBtn){
+    const day = headBtn.closest('.relDay');
+    const wasOpen = day.classList.contains('relDayOpen');
+    day.parentElement.querySelectorAll('.relDay.relDayOpen').forEach(d => d.classList.remove('relDayOpen'));
+    if (!wasOpen) day.classList.add('relDayOpen');
+}
+
+const REL_GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+
+document.querySelectorAll("form[data-formtype]").forEach(form => {
+    const emailField = form.querySelector('[name="email"]');
+    const submitBtn = form.querySelector('[type="submit"]');
+    if (!emailField || !submitBtn) return;
+
+    const otpWrap = document.createElement("div");
+    otpWrap.innerHTML = `
+        <button type="button" class="relSendOtpBtn">Send OTP</button>
+        <input type="text" class="relOtpInput" placeholder="Enter OTP" style="display:none;">
+    `;
+    submitBtn.parentNode.insertBefore(otpWrap, submitBtn);
+    submitBtn.style.display = "none";
+
+    const sendOtpBtn = otpWrap.querySelector(".relSendOtpBtn");
+    const otpInput = otpWrap.querySelector(".relOtpInput");
+
+    sendOtpBtn.addEventListener("click", async () => {
+        if (!emailField.value) { alert("Please enter your email first."); return; }
+        sendOtpBtn.disabled = true;
+        sendOtpBtn.textContent = "Sending...";
+        try {
+            const res = await fetch(REL_GOOGLE_SHEET_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify({ action: "sendOtp", email: emailField.value })
+            });
+            const result = await res.json();
+            if (result.result === "success") {
+                alert("OTP sent to your email.");
+                otpInput.style.display = "block";
+                submitBtn.style.display = "block";
+                sendOtpBtn.textContent = "Resend OTP";
+            } else {
+                alert(result.message || "Failed to send OTP.");
+                sendOtpBtn.textContent = "Send OTP";
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Could not send OTP. Please try again.");
+            sendOtpBtn.textContent = "Send OTP";
+        }
+        sendOtpBtn.disabled = false;
+    });
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        if (!otpInput.value) { alert("Please enter the OTP sent to your email."); return; }
+
+        const formData = new FormData(form);
+        const payload = { action: "verifySubmit", formType: form.dataset.formtype, otp: otpInput.value };
+        formData.forEach((value, key) => { payload[key] = value; });
+
+        try {
+            const res = await fetch(REL_GOOGLE_SHEET_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify(payload)
+            });
+            const result = await res.json();
+            if (result.result === "success") {
+                alert("Thank you! Your request has been submitted.");
+                form.reset();
+                otpInput.style.display = "none";
+                submitBtn.style.display = "none";
+                sendOtpBtn.textContent = "Send OTP";
+            } else {
+                alert(result.message || "Invalid OTP. Please try again.");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Something went wrong. Please try again.");
+        }
+    });
+});
+</script>
+
+            <!-- loader -->
+             <script src="././finalanimation.js"></script>
+             <script src="././experimental_claude.js"></script>
+</body>
+</html>

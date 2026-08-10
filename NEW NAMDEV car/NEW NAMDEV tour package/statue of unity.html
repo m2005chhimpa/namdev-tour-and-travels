@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="png" href="./images/logo03.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./finalanimation.css">
+    <link rel="stylesheet" href="./experimental_claude.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Statue of Unity Package | Namdev's Tour & Travels</title>
+
+    <style>
+      :root{
+        --nt-primary:#328ADF;
+        --nt-primary-light:#4EA8FF;
+        --nt-secondary:#6B4A2E;
+        --nt-gold:#F2C14E;
+        --nt-ink:#23201C;
+        --nt-muted:#8A7F70;
+        --nt-bg:#F8F7F4;
+        --nt-shadow:0 8px 24px rgba(35,32,28,0.08);
+        --nt-shadow-hover:0 20px 44px rgba(35,32,28,0.18);
+      }
+
+      .sou-page{ background:var(--nt-bg); font-family:'Inter',sans-serif; color:var(--nt-ink); }
+      .sou-page h1,.sou-page h2,.sou-page h3,.sou-page .brand-font{ font-family:'Rajdhani',sans-serif; font-weight:700; }
+
+      .sou-progress{
+        position:fixed; top:0; left:0; height:3px;
+        background: linear-gradient(90deg, var(--nt-primary), var(--nt-gold));
+        width:0%; z-index: 999; transition: width .1s linear;
+      }
+
+      .sou-hero{
+        position:relative; height: 73vh; min-height: 26rem; overflow:hidden;
+        display:flex; align-items:center; justify-content:center; text-align:center;
+      }
+      .sou-hero-bg{
+        position:absolute; 
+        inset:-2%;
+        width:104%;
+        height:104%;
+        background-image:url("/images/hero/UNITY.png");
+        background-size:cover;
+        background-position:top center;
+        background-repeat:no-repeat;
+        animation: jslKenBurns 14s ease-in-out infinite alternate;
+      }
+      @keyframes jslKenBurns{
+        0%{ transform: scale(1) translate(0,0); }
+        100%{ transform: scale(1.12) translate(-1.2%, -0.8%); }
+      }
+      .sou-hero-overlay{
+        position:absolute; inset:0;
+        background: linear-gradient(180deg, rgba(20,26,20,0.55) 0%, rgba(20,26,20,0.35) 45%, rgba(12,16,12,0.85) 100%);
+      }
+      .sou-hero-content{ position:relative; z-index:2; color:#fff; padding: 0 1.5rem; }
+      .sou-hero .eyebrow{
+        font-family:'Rajdhani',sans-serif; letter-spacing:.22em; text-transform:uppercase;
+        font-size:.8rem; color: var(--nt-gold); margin-bottom:.8rem;
+        opacity:0; animation: souFadeUp .7s ease forwards; animation-delay:.15s;
+      }
+      .sou-hero h1{
+        font-size: clamp(2rem, 5.6vw, 3.8rem); margin:0 0 1rem;
+        display:flex; justify-content:center; flex-wrap:wrap; gap: .5rem;
+      }
+      .sou-hero h1 span{ display:inline-block; opacity:0; transform: translateY(30px); animation: souFadeUp .7s cubic-bezier(.2,.8,.25,1) forwards; }
+      .sou-hero h1 span:nth-child(1){ animation-delay:.3s; }
+      .sou-hero h1 span:nth-child(2){ animation-delay:.42s; }
+      .sou-hero h1 span:nth-child(3){ animation-delay:.54s; color:var(--nt-gold); }
+      @keyframes souFadeUp{ to{ opacity:1; transform:translateY(0); } }
+      .sou-hero p{
+        max-width: 36rem; margin: 0 auto; font-size:.95rem; line-height:1.65; color: rgba(255,255,255,0.85);
+        opacity:0; animation: souFadeUp .7s ease forwards; animation-delay:.66s;
+      }
+      .sou-hero-stats{
+        display:flex; justify-content:center; gap:2.4rem; margin-top:1.8rem; flex-wrap:wrap;
+        opacity:0; animation: souFadeUp .7s ease forwards; animation-delay:.8s;
+      }
+      .sou-hero-stats .stat{ display:flex; flex-direction:column; align-items:center; }
+      .sou-hero-stats strong{ font-family:'Rajdhani',sans-serif; font-size:1.4rem; color:var(--nt-gold); }
+      .sou-hero-stats span{ font-size:.7rem; opacity:.85; }
+      .sou-scroll-cue{
+        position:absolute; bottom:1.4rem; left:50%; transform:translateX(-50%); z-index:2;
+        animation: souBounce 1.8s infinite; opacity:.85;
+      }
+      @keyframes souBounce{ 0%,100%{ transform:translate(-50%,0); } 50%{ transform:translate(-50%,8px); } }
+
+      .sou-intro{
+        max-width: 50rem; margin: 4rem auto 1rem; padding: 0 1.5rem; text-align:center;
+        opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease;
+      }
+      .sou-intro.in-view{ opacity:1; transform:translateY(0); }
+      .sou-intro .eyebrow{ font-family:'Rajdhani',sans-serif; font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; color: var(--nt-primary); margin-bottom:.6rem; }
+      .sou-intro h2{ font-size:1.9rem; margin:0 0 1rem; }
+      .sou-intro p{ color:var(--nt-muted); font-size:.92rem; line-height:1.75; }
+
+      .sou-famous{ max-width: 78rem; margin: 2.5rem auto; padding: 0 1.5rem; display:flex; flex-wrap:wrap; justify-content:center; gap:.7rem; }
+      .sou-famous-chip{
+        display:flex; align-items:center; gap:.5rem; background:#fff; border:1.5px solid rgba(35,32,28,0.1);
+        padding:.6rem 1.1rem; border-radius:999px; font-size:.82rem; font-weight:600; color:var(--nt-ink);
+        box-shadow: var(--nt-shadow);
+        opacity:0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease;
+      }
+      .sou-famous-chip.in-view{ opacity:1; transform:translateY(0); }
+      .sou-famous-chip svg{ width:1rem; height:1rem; stroke:var(--nt-primary); flex-shrink:0; }
+
+      .sou-filters{
+        position: sticky; top:0; z-index: 20;
+        background: rgba(248,247,244,0.92); backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(35,32,28,0.08);
+        padding: 1rem 1.5rem; display:flex; justify-content:center; gap:.6rem; flex-wrap:wrap;
+        margin-top: 2rem;
+      }
+      .sou-filter-pill{
+        position:relative; background:#fff; border:1.5px solid rgba(35,32,28,0.14);
+        color: var(--nt-ink); font-size:.83rem; font-weight:600;
+        padding:.55rem 1.15rem; border-radius:999px; cursor:pointer; overflow:hidden;
+        transition: all .2s ease;
+      }
+      .sou-filter-pill:hover{ border-color:var(--nt-primary); color:var(--nt-primary); }
+      .sou-filter-pill.active{ background:var(--nt-primary); border-color:var(--nt-primary); color:#fff; }
+      .sou-ripple{
+        position:absolute; border-radius:50%; background: rgba(255,255,255,0.55);
+        transform: scale(0); animation: souRipple .55s ease-out; pointer-events:none;
+      }
+      @keyframes souRipple{ to{ transform:scale(3.5); opacity:0; } }
+
+      .sou-grid-wrap{ max-width:78rem; margin: 2.2rem auto 1rem; padding:0 1.5rem; }
+      .sou-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(19rem,1fr)); gap: 1.6rem; }
+      .sou-card{
+        position:relative; background:#fff; border-radius: 1rem; overflow:hidden;
+        box-shadow: var(--nt-shadow); height: 22rem;
+        opacity:0; transform: translateY(28px);
+        transition: opacity .6s ease, transform .6s ease, box-shadow .3s ease;
+      }
+      .sou-card.in-view{ opacity:1; transform:translateY(0); }
+      .sou-card:hover{ box-shadow: var(--nt-shadow-hover); }
+      .sou-card-img{
+        position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+        transition: transform .6s ease, opacity .5s ease, filter .5s ease;
+        background: linear-gradient(100deg, #e4e1d8 30%, #f2f0e8 50%, #e4e1d8 70%);
+        background-size: 200% 100%;
+        animation: souShimmer 1.4s ease-in-out infinite;
+        opacity: 0; filter: blur(6px) saturate(1.05);
+      }
+      .sou-card-img.loaded{
+        opacity: 1; filter: blur(0) saturate(1.05); animation: none; background: none;
+      }
+      @keyframes souShimmer{ 0%{ background-position: 200% 0; } 100%{ background-position: -200% 0; } }
+      .sou-card:hover .sou-card-img{ transform: scale(1.1); }
+      .sou-card-shade{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(20,26,20,0) 40%, rgba(20,26,20,0.9) 100%); }
+      .sou-card-badge{
+        position:absolute; top:.8rem; left:.8rem; background: rgba(255,255,255,0.92); color: var(--nt-primary);
+        font-size:.66rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+        padding:.3rem .65rem; border-radius:999px; z-index:2;
+      }
+      .sou-card-badge.must-visit{ background: var(--nt-gold); color: var(--nt-ink); animation: souPulse 2s ease-in-out infinite; }
+      .sou-card-badge.flag{ background:#C1443A; color:#fff; left:auto; right:.8rem; }
+      @keyframes souPulse{ 0%,100%{ box-shadow: 0 0 0 0 rgba(242,193,78,0.55); } 50%{ box-shadow: 0 0 0 8px rgba(242,193,78,0); } }
+      .sou-card-title{ position:absolute; left:1.1rem; right:1.1rem; bottom:1.1rem; z-index:2; color:#fff; transition: transform .4s cubic-bezier(.2,.8,.25,1); }
+      .sou-card-title h3{ font-size:1.2rem; margin:0; }
+      .sou-card-title .sub{ font-size:.74rem; color: var(--nt-gold); letter-spacing:.04em; text-transform:uppercase; }
+      .sou-card-overlay{
+        position:absolute; inset:0;
+        background: linear-gradient(160deg, rgba(20,26,20,0.97), rgba(50,138,223,0.92));
+        color:#fff; padding: 1.4rem 1.3rem; display:flex; flex-direction:column; justify-content:flex-end;
+        transform: translateY(100%); transition: transform .45s cubic-bezier(.2,.8,.25,1); z-index:3;
+      }
+      .sou-card:hover .sou-card-overlay{ transform: translateY(0); }
+      .sou-card:hover .sou-card-title{ transform: translateY(10px); opacity:0; }
+      .sou-card-overlay h3{ font-size:1.05rem; margin:0 0 .5rem; }
+      .sou-card-overlay p{ font-size:.78rem; line-height:1.55; color: rgba(255,255,255,0.88); margin:0 0 1rem; }
+      .sou-book-btn{
+        display:inline-flex; align-items:center; gap:.4rem; background: var(--nt-gold); color: var(--nt-ink);
+        font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.85rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.55rem 1rem; border-radius:.6rem; text-decoration:none; width:fit-content;
+        transition: gap .2s ease, transform .2s ease;
+      }
+      .sou-book-btn:hover{ gap:.7rem; transform: translateY(-2px); }
+
+      .sou-section-heading{ text-align:center; margin-bottom: 2.4rem; }
+      .sou-section-heading .eyebrow{ font-family:'Rajdhani',sans-serif; font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; color: var(--nt-primary); margin-bottom:.5rem; }
+      .sou-section-heading h2{ font-size:1.9rem; position:relative; display:inline-block; padding-bottom:.8rem; margin:0; }
+      .sou-section-heading h2::after{ content:""; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:3.4rem; height:3px; background: linear-gradient(90deg, var(--nt-primary), transparent); }
+      .sou-section-heading p{ color: var(--nt-muted); font-size:.9rem; margin-top: .8rem; max-width: 36rem; margin-left:auto; margin-right:auto; }
+
+      .sou-itinerary{ max-width: 48rem; margin: 5rem auto; padding: 0 1.5rem; }
+      .sou-timeline{ position:relative; }
+      .sou-timeline::before{
+        content:""; position:absolute; left: 1.6rem; top:0; bottom:0; width:2px;
+        background: linear-gradient(180deg, var(--nt-primary), var(--nt-gold));
+      }
+      .sou-day{
+        position:relative; padding-left: 4.2rem; margin-bottom: 2.6rem;
+        opacity:0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease;
+      }
+      .sou-day.in-view{ opacity:1; transform:translateY(0); }
+      .sou-day-marker{
+        position:absolute; left:0; top:0; width:3.2rem; height:3.2rem; border-radius:50%;
+        background: var(--nt-primary); color:#fff; display:flex; align-items:center; justify-content:center;
+        font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.82rem;
+        box-shadow: 0 0 0 6px var(--nt-bg); text-align:center; line-height:1.1;
+      }
+      .sou-day-card{ background:#fff; border-radius: 1rem; box-shadow: var(--nt-shadow); padding: 1.3rem 1.4rem 1.5rem; }
+      .sou-day-card .tag{ font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--nt-primary); font-weight:700; margin-bottom:.4rem; }
+      .sou-day-card h3{ font-size:1.15rem; margin-bottom:.5rem; }
+      .sou-day-card p{ font-size:.87rem; line-height:1.65; color:var(--nt-muted); margin:0; }
+
+      .sou-info-section{ max-width: 78rem; margin: 5rem auto; padding: 0 1.5rem; }
+      .sou-info-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(15rem,1fr)); gap: 1.4rem; }
+      .sou-info-card{
+        background:#fff; border-radius: 1rem; box-shadow: var(--nt-shadow); padding: 1.6rem 1.5rem;
+        opacity:0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease, box-shadow .3s ease;
+      }
+      .sou-info-card.in-view{ opacity:1; transform:translateY(0); }
+      .sou-info-card:hover{ box-shadow: var(--nt-shadow-hover); transform: translateY(-4px); }
+      .sou-info-card.in-view:hover{ transform: translateY(-4px); }
+      .sou-info-icon{
+        width: 2.8rem; height:2.8rem; border-radius:.7rem;
+        background: linear-gradient(135deg, var(--nt-primary), var(--nt-secondary));
+        display:flex; align-items:center; justify-content:center; margin-bottom: .9rem;
+      }
+      .sou-info-icon svg{ width:1.4rem; height:1.4rem; stroke:#fff; fill:none; }
+      .sou-info-card h3{ font-size:1.05rem; margin: 0 0 .5rem; }
+      .sou-info-card p{ font-size:.84rem; line-height:1.6; color: var(--nt-muted); margin:0; }
+
+      .sou-inclusions{ max-width: 60rem; margin: 5rem auto; padding: 0 1.5rem; }
+      .sou-inc-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+      .sou-inc-card{ background:#fff; border-radius: 1rem; box-shadow: var(--nt-shadow); padding: 1.6rem 1.6rem 1.8rem; }
+      .sou-inc-card h3{ font-size:1.05rem; margin: 0 0 1rem; display:flex; align-items:center; gap:.5rem; }
+      .sou-inc-card ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.7rem; }
+      .sou-inc-card li{ display:flex; align-items:flex-start; gap:.6rem; font-size:.85rem; color:var(--nt-ink); line-height:1.5; }
+      .sou-inc-card li svg{ width:1.1rem; height:1.1rem; flex-shrink:0; margin-top:.1rem; }
+      .sou-inc-card.included svg{ stroke: var(--nt-primary); }
+      .sou-inc-card.excluded svg{ stroke: #C1443A; }
+      .sou-inc-card.included h3{ color: var(--nt-primary); }
+      .sou-inc-card.excluded h3{ color: #C1443A; }
+
+      .sou-cta{ max-width:78rem; margin: 4.5rem auto 4rem; padding:0 1.5rem; }
+      .sou-cta-inner{
+        position:relative; border-radius: 1.4rem; padding: 3.2rem 2rem; text-align:center; color:#fff; overflow:hidden;
+        opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease;
+        background: linear-gradient(120deg, var(--nt-ink), var(--nt-secondary), var(--nt-primary), var(--nt-secondary), var(--nt-ink));
+        background-size: 300% 300%; animation: souGradientShift 10s ease infinite;
+      }
+      .sou-cta-inner.in-view{ opacity:1; transform:translateY(0); }
+      @keyframes souGradientShift{ 0%{ background-position:0% 50%; } 50%{ background-position:100% 50%; } 100%{ background-position:0% 50%; } }
+      .sou-cta-inner h2{ font-size:1.8rem; margin:0 0 .7rem; position:relative; z-index:2; }
+      .sou-cta-inner p{ color:rgba(255,255,255,0.85); font-size:.92rem; max-width:32rem; margin:0 auto 1.6rem; position:relative; z-index:2; }
+      .sou-cta-btn{
+        position:relative; z-index:2; display:inline-flex; align-items:center; gap:.5rem;
+        background: linear-gradient(90deg, var(--nt-primary-light), var(--nt-gold)); color: var(--nt-ink);
+        font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.95rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.85rem 1.8rem; border-radius:.8rem; text-decoration:none;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .sou-cta-btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(242,193,78,0.4); }
+
+      .sou-float-btn{
+        position:fixed; bottom: 6.4rem; right: 1.6rem; z-index: 60;
+        display:flex; align-items:center; gap:.5rem;
+        background: linear-gradient(90deg, var(--nt-primary), var(--nt-primary-light)); color:#fff;
+        font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.88rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.85rem 1.3rem; border-radius: 999px; text-decoration:none;
+        box-shadow: 0 10px 28px rgba(50,138,223,0.4);
+        opacity:0; transform: translateY(20px) scale(.9); pointer-events:none;
+        transition: opacity .35s ease, transform .35s ease;
+      }
+      .sou-float-btn.show{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+      .sou-float-btn:hover{ transform: translateY(-3px) scale(1.03); }
+
+      @media (max-width:700px){
+        .sou-hero h1{ font-size: 2.1rem; }
+        .sou-float-btn span{ display:none; }
+        .sou-inc-grid{ grid-template-columns: 1fr; }
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        .sou-hero-bg{ animation:none; }
+        .sou-card, .sou-intro, .sou-cta-inner, .sou-day, .sou-info-card, .sou-famous-chip{ transition:none; opacity:1; transform:none; }
+        .sou-card-badge.must-visit{ animation:none; }
+        .sou-cta-inner{ animation:none; }
+      }
+    </style>
+
+</head>
+
+<body class="sou-page">
+
+    <div id="loader">
+        <div class="logo-wrap">
+            <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+        </div>
+        <div class="road-wrap">
+            <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+                <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+                <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+                <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+                <g id="car">
+                    <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                    <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                    <circle cx="-16" cy="10" r="7"></circle>
+                    <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                    <circle cx="16" cy="10" r="7"></circle>
+                    <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+                </g>
+            </svg>
+        </div>
+        <p class="loader-text" id="loaderText">Starting the journey…</p>
+    </div>
+
+    <div class="sou-progress" id="souProgress"></div>
+
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+            <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a href="./index.html">Home</a></li>
+            <li class="hideonmobile navHasDropdown">
+                <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+                <div class="navDropdown">
+                    <div class="navDropdownCol">
+                        <h4>Luxury Buses</h4>
+                        <a href="">Volvo Bus</a>
+                        <a href="">Winger</a>
+                    </div>
+                    <div class="navDropdownCol">
+                        <h4>Luxury Cars</h4>
+                        <a href="">Innova Crysta</a>
+                        <a href="">Kia Carnival</a>
+                        <a href="">Honda City</a>
+                        <a href="">Etios</a>
+                    </div>
+                    <div class="navDropdownCol">
+                        <h4>Economical Cars</h4>
+                        <a href="">Swift Dzire</a>
+                        <a href="">Ertiga</a>
+                        <a href="">Innova</a>
+                    </div>
+                </div>
+            </li>
+            <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="./icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">Book a Tour</div>
+        </a>
+    </nav>
+
+    <div class="sou-hero">
+        <div class="sou-hero-bg"></div>
+        <div class="sou-hero-overlay"></div>
+        <div class="sou-hero-content">
+            <div class="eyebrow">Gujarat · Kevadia, Narmada</div>
+            <h1><span>What's</span> <span>at the</span> <span>Statue of Unity</span></h1>
+            <p>The world's tallest statue, river adventures on the Narmada, and gardens spread across Kevadia — here's what's waiting for you.</p>
+            <div class="sou-hero-stats">
+                <div class="stat"><strong id="statUnity">0</strong><span>Places to Explore</span></div>
+                <div class="stat"><strong>182m</strong><span>World's Tallest Statue</span></div>
+                <div class="stat"><strong>4.9★</strong><span>Traveler Rating</span></div>
+            </div>
+        </div>
+        <div class="sou-scroll-cue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M6 13l6 6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+    </div>
+
+    <div class="sou-intro" id="souIntro">
+        <div class="eyebrow">Tour Package</div>
+        <h2>Everything you need, bundled into one journey</h2>
+        <p>Namdev's Tour &amp; Travels packages bundle together transport, accommodation, guided tours, meals, and other amenities — designed to fit different interests, preferences, and budgets of every traveler.</p>
+    </div>
+
+    <div class="sou-famous" id="souFamous">
+        <div class="sou-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 2v20M6 12h12"/></svg>World's Tallest Statue (182m)</div>
+        <div class="sou-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M3 12h18M3 6h18M3 18h18"/></svg>Sardar Sarovar Dam Views</div>
+        <div class="sou-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M2 12h20M4 8c2 2 4 2 6 0s4-2 6 0 4 2 6 0M4 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>River Rafting &amp; Trekking</div>
+        <div class="sou-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4.5L18 20l-6-4-6 4 1.5-6.5L2 9h7z"/></svg>Selfie Point on Burma Bridge</div>
+        <div class="sou-famous-chip"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M2 12h20M12 2c-3 3-3 17 0 20M12 2c3 3 3 17 0 20"/></svg>EKTA Cruise on the Narmada</div>
+    </div>
+
+    <div class="sou-filters" id="souFilters">
+        <button class="sou-filter-pill active" data-filter="all">All Places</button>
+        <button class="sou-filter-pill" data-filter="Statue & Experiences">Statue &amp; Experiences</button>
+        <button class="sou-filter-pill" data-filter="Gardens & Nature">Gardens &amp; Nature</button>
+        <button class="sou-filter-pill" data-filter="Adventure & Wildlife">Adventure &amp; Wildlife</button>
+    </div>
+
+    <div class="sou-grid-wrap">
+        <div class="sou-grid" id="souGrid"></div>
+    </div>
+
+    <div class="sou-itinerary">
+        <div class="sou-section-heading">
+            <div class="eyebrow">Plan Your Trip</div>
+            <h2>A Suggested 3-Day Itinerary</h2>
+            <p>A simple way to see the best of Kevadia without rushing — swap days around to fit your pace.</p>
+        </div>
+
+        <div class="sou-timeline">
+            <div class="sou-day">
+                <div class="sou-day-marker">DAY<br>1</div>
+                <div class="sou-day-card">
+                    <div class="tag">Arrival — Evening</div>
+                    <h3>The Statue of Unity &amp; EKTA Cruise</h3>
+                    <p>Check in, then head to the viewing gallery at 400ft up the statue, followed by the museum and exhibition inside. In the evening, take the EKTA Dinner Cruise on the Narmada for a lit-up view of the statue.</p>
+                </div>
+            </div>
+            <div class="sou-day">
+                <div class="sou-day-marker">DAY<br>2</div>
+                <div class="sou-day-card">
+                    <div class="tag">Full Day — Adventure</div>
+                    <h3>Rafting, Waterfalls &amp; the Zoo</h3>
+                    <p>Morning river rafting and a Burma Bridge selfie stop at Khalwani, an afternoon trek to Zarwani Waterfall, then an evening jungle safari at Sardar Patel Zoological Park.</p>
+                </div>
+            </div>
+            <div class="sou-day">
+                <div class="sou-day-marker">DAY<br>3</div>
+                <div class="sou-day-card">
+                    <div class="tag">Morning — Departure</div>
+                    <h3>Gardens &amp; Panchmuli Lake</h3>
+                    <p>Wander Arogya Van and Vishwa Van's themed gardens, then a peaceful boat ride at Panchmuli Lake before checkout and departure.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sou-info-section">
+        <div class="sou-section-heading">
+            <div class="eyebrow">Local Flavor</div>
+            <h2>Where to Eat</h2>
+            <p>Kevadia's dining options are centered around the Statue of Unity complex, with a mix of Gujarati thalis and food courts.</p>
+        </div>
+        <div class="sou-info-grid" id="souEatGrid"></div>
+    </div>
+
+    <div class="sou-info-section">
+        <div class="sou-section-heading">
+            <div class="eyebrow">Take It Home</div>
+            <h2>Where to Shop</h2>
+            <p>Souvenirs and local handicrafts are available around the statue complex and shopping center.</p>
+        </div>
+        <div class="sou-info-grid" id="souShopGrid"></div>
+    </div>
+
+    <div class="sou-inclusions">
+        <div class="sou-section-heading">
+            <div class="eyebrow">The Fine Print</div>
+            <h2>What's Covered in This Package</h2>
+            <p>A clear picture of what's included, so there are no surprises on your trip.</p>
+        </div>
+        <div class="sou-inc-grid">
+            <div class="sou-inc-card included">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Included
+                </h3>
+                <ul>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Private AC vehicle for the entire trip</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Hotel accommodation as per package</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Daily breakfast and dinner</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Guided sightseeing as per itinerary</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Driver allowance, toll, and parking</li>
+                </ul>
+            </div>
+            <div class="sou-inc-card excluded">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    Not Included
+                </h3>
+                <ul>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Statue viewing gallery ticket &amp; river rafting charges</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>EKTA Cruise ticket</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Lunch (unless specified)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Personal expenses &amp; shopping</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Travel insurance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="sou-cta">
+        <div class="sou-cta-inner" id="souCta">
+            <h2>Ready to stand before a giant?</h2>
+            <p>Let us handle the transport, stays, and guides — you just show up and look up.</p>
+            <a class="sou-cta-btn" href="./booktour.html" target="_blank">
+                Book This Tour
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+
+    
+
+            <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+<!-- Floating "Book Now" button (CSS/JS already existed; markup was missing) -->
+<!-- <a href="./booktour.html" target="_blank" id="souFloatBtn" class="sou-float-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 2v4M16 2v4M3 10h18M5 6h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Book This Tour</span>
+</a> -->
+
+
+<!-- footer form connection  -->\
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+    <script>
+        function showsidebar(){ document.querySelector('.sidebar').classList.add('show'); }
+        function hidesidebar(){ document.querySelector('.sidebar').classList.remove('show'); }
+    </script>
+
+    <script>
+        const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+        document.querySelectorAll("form[data-formtype]").forEach(form => {
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const payload = { formType: form.dataset.formtype };
+                formData.forEach((value, key) => { payload[key] = value; });
+                try {
+                    await fetch(GOOGLE_SHEET_URL, {
+                        method: "POST", mode: "no-cors",
+                        headers: { "Content-Type": "text/plain" },
+                        body: JSON.stringify(payload)
+                    });
+                    alert("Thank you! Your request has been submitted. We'll get back to you soon.");
+                    form.reset();
+                } catch (err) {
+                    console.error(err);
+                    alert("Something went wrong. Please try again or call us directly at +91 9784568787.");
+                }
+            });
+        });
+    </script>
+
+    <script src="././finalanimation.js"></script>
+    <script src="././experimental_claude.js"></script>
+
+    <script>
+    (function(){
+      const PLACES = [
+        {
+          // TODO: this local file is a low-res .jfif thumbnail (likely saved from a search engine).
+          // Replace with a proper high-resolution JPG/WebP of Arogya Van — recommend at least 1200x900px.
+          name: "Arogya Van",
+          category: "Gardens & Nature",
+          img: "/images/arogya.png",
+          text: "A garden exhibiting a wide range of medicinal plants, aiming to raise awareness of the role plants play in human wellness."
+        },
+        {
+            
+          // TODO: filename "download.jfif" strongly suggests a saved web thumbnail — same fix needed as above.
+          name: "Vishwa Van",
+          category: "Gardens & Nature",
+          img: "/images/vishwa.png",
+          text: "A themed garden featuring plants from all seven continents — an educational, easy 30-minute stroll while visiting the statue complex."
+        },
+        {
+          // TODO: verify this .jpg is a proper resolution photo, not a compressed thumbnail.
+          name: "Panchmuli Lake",
+          category: "Adventure & Wildlife",
+          img: "/images/panchmuli lake.png",
+          text: "A scenic lake near Kevadia offering peaceful boating with views of the surrounding Satpura hills."
+        },
+        {
+          // TODO: same .jfif low-res issue — replace with a proper photo.
+          name: "Sardar Patel Zoological Park",
+          category: "Adventure & Wildlife",
+          badge: "Must Visit",
+          img: "/images/sardar patel zoological park.png",
+          text: "Spread over 375 acres, home to roughly 90 species of animals, birds, and reptiles, with jungle safaris drawing thousands of daily visitors."
+        },
+        {
+          name: "Zarwani Waterfall",
+          category: "Adventure & Wildlife",
+          img: "https://lh3.googleusercontent.com/p/AF1QipOnF1kw8U-nSYXVtUmO7NBnju1RbXQlW5kmv7SE=s1600",
+          text: "A waterfall in the Satpura hills near Kevadia, popular for its scenic trek and river crossing on the way in."
+        },
+        {
+          name: "Khalwani River Rafting",
+          category: "Adventure & Wildlife",
+          img: "https://lh3.googleusercontent.com/p/AF1QipPFpjvenxtExTTmCf9DlAZs1erPuAaN2mu4Mi7i=s1600",
+          text: "An adrenaline stop for river rafting, trekking, rock climbing, and a selfie on the Burma Bridge."
+        },
+        {
+          name: "Statue of Unity",
+          category: "Statue & Experiences",
+          badge: "Must Visit",
+          img: "https://lh3.googleusercontent.com/p/AF1QipMxijm3QKfaYQhXKV-UQJeb9GvnNLACl7Z-VNJU=s1600",
+          text: "The 182-metre statue of Sardar Vallabhbhai Patel, with a viewing gallery reaching 400ft, alongside hotels, shopping, and a research center."
+        },
+        {
+          name: "Valley of Flowers",
+          category: "Gardens & Nature",
+          img: "https://lh5.googleusercontent.com/p/AF1QipM5oGj1zTbFvDnhAKTgkGCePELItZ286XTc50N2=s1600",
+          text: "Also known as Bharat Van, a 24-acre landscaped garden along the Narmada with over 100 flower varieties and views of the statue and dam — not to be confused with the Uttarakhand national park of the same name."
+        },
+        {
+          name: "EKTA Dinner Cruise",
+          category: "Statue & Experiences",
+          img: "https://lh5.googleusercontent.com/p/AF1QipMDGwlpq7UyuD2mSgT4ovJEAVoKjZcdjBQhq-mu=s1600",
+          text: "A river cruise on the Narmada offering a magnificent lit-up view of the world's tallest statue, with music on deck."
+        }
+      ];
+
+      const EAT = [
+        { title: "Statue Complex Food Court", text: "A government-run food court near the statue complex serves a mix of regional and familiar options for day visitors." },
+        { title: "Gujarati Thali", text: "Look for a traditional Gujarati thali nearby — a full spread of dal, sabzi, rotli, and sweets served together." },
+        { title: "Riverside Cafés", text: "A few cafés near the viewpoint areas serve light snacks and beverages with a view of the Narmada." }
+      ];
+
+      const SHOP = [
+        { title: "Souvenir Stalls", text: "Statue of Unity keychains, models, and memorabilia are widely available near the entrance and shopping center." },
+        { title: "Gujarati Handicrafts", text: "Local textile and handicraft stalls showcase traditional Gujarati embroidery and craftsmanship." }
+      ];
+
+      const ICONS = {
+        eat: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v6a2 2 0 0 0 2 2v12M7 2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2M17 2c-2 0-3 2-3 5v4a2 2 0 0 0 2 2v9"/></svg>',
+        shop: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2l1 5h10l1-5M4 7h16l-1 13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 7z"/><path d="M9 11v3M15 11v3"/></svg>'
+      };
+
+      const grid = document.getElementById('souGrid');
+      PLACES.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'sou-card';
+        card.dataset.category = p.category;
+        card.style.transitionDelay = (i % 6) * 0.07 + 's';
+        card.innerHTML = `
+          ${p.badge ? `<span class="sou-card-badge ${p.badge === 'Must Visit' ? 'must-visit' : 'flag'}">${p.badge}</span>` : ''}
+          <img class="sou-card-img" src="./${p.img}" alt="${p.name}" loading="lazy">
+          <div class="sou-card-shade"></div>
+          <div class="sou-card-title">
+            <div class="sub">${p.category}</div>
+            <h3>${p.name}</h3>
+          </div>
+          <div class="sou-card-overlay">
+            <h3>${p.name}</h3>
+            <p>${p.text}</p>
+            <a class="sou-book-btn" href="./booktour.html">
+              Book Now
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+        const imgEl = card.querySelector('.sou-card-img');
+        const markLoaded = () => imgEl.classList.add('loaded');
+        if (imgEl.complete && imgEl.naturalWidth > 0) markLoaded();
+        else { imgEl.addEventListener('load', markLoaded); imgEl.addEventListener('error', markLoaded); }
+      });
+
+      function renderInfoGrid(targetId, items, iconKey){
+        const el = document.getElementById(targetId);
+        items.forEach((item, i) => {
+          const card = document.createElement('div');
+          card.className = 'sou-info-card';
+          card.style.transitionDelay = (i % 4) * 0.08 + 's';
+          card.innerHTML = `
+            <div class="sou-info-icon">${ICONS[iconKey]}</div>
+            <h3>${item.title}</h3>
+            <p>${item.text}</p>
+          `;
+          el.appendChild(card);
+        });
+      }
+      renderInfoGrid('souEatGrid', EAT, 'eat');
+      renderInfoGrid('souShopGrid', SHOP, 'shop');
+
+      document.querySelectorAll('.sou-filter-pill').forEach(pill => {
+        pill.addEventListener('click', (e) => {
+          document.querySelectorAll('.sou-filter-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          const ripple = document.createElement('span');
+          ripple.className = 'sou-ripple';
+          const rect = pill.getBoundingClientRect();
+          ripple.style.left = (e.clientX - rect.left) + 'px';
+          ripple.style.top = (e.clientY - rect.top) + 'px';
+          ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+          pill.appendChild(ripple);
+          setTimeout(() => ripple.remove(), 600);
+
+          const f = pill.dataset.filter;
+          document.querySelectorAll('.sou-card').forEach(card => {
+            card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
+          });
+        });
+      });
+
+      const revealTargets = document.querySelectorAll('.sou-card, .sou-intro, .sou-cta-inner, .sou-day, .sou-info-card, .sou-famous-chip');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealTargets.forEach(t => observer.observe(t));
+
+      const statEl = document.getElementById('statUnity');
+      let counted = false;
+      const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !counted) {
+            counted = true;
+            let val = 0;
+            const target = PLACES.length;
+            const step = () => {
+              val++;
+              statEl.textContent = val + '+';
+              if (val < target) requestAnimationFrame(() => setTimeout(step, 90));
+            };
+            step();
+          }
+        });
+      }, { threshold: 0.5 });
+      statObserver.observe(document.querySelector('.sou-hero-stats'));
+
+      const progress = document.getElementById('souProgress');
+      const floatBtn = document.getElementById('souFloatBtn');
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+        progress.style.width = scrolled + '%';
+        floatBtn.classList.toggle('show', h.scrollTop > 500);
+      });
+    })();
+    </script>
+            <!-- loader -->
+             <script src="././finalanimation.js"></script>
+             <script src="././experimental_claude.js"></script>
+
+</body>
+
+</html>

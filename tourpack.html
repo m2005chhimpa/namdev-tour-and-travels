@@ -1,0 +1,2424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tour Packages | Namdev's Tour & Travels</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="finalanimation.css">
+<link rel="stylesheet" href="experimental_claude.css">
+
+<style>
+/* ============ TOKENS — premium refined palette ============ */
+:root{
+    --blue:        #328ADF;
+    --blue-deep:   #0A5A96;
+    --blue-ink:    #0B2E4A;
+    --gold:        #C9973A;
+    --gold-light:  #F0D9A8;
+    --khaki:       #9AA04A;
+    --khaki-light: #D9DBB0;
+    --coral:       #E8623A;
+    --coral-light: #FAAB78;
+    --ink:         #16181D;
+    --paper:       #FFFFFF;
+    --mist:        #F5F7FA;
+    --mist-deep:   #EDF1F6;
+    --line:        rgba(16,24,32,0.10);
+    --font: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --shadow-sm: 0 4px 14px rgba(11,46,74,0.06);
+    --shadow-md: 0 14px 34px rgba(11,46,74,0.09);
+    --shadow-lg: 0 26px 60px rgba(11,46,74,0.16);
+    --shadow-gold: 0 14px 30px rgba(201,151,58,0.28);
+}
+*{ box-sizing:border-box; }
+body{ background: var(--paper); color: var(--ink); margin:0; overflow-x:hidden; font-family: var(--font); letter-spacing:-.005em; }
+input, select, textarea, button{ font-family: inherit; }
+h1,h2,h3,h4{ font-family: var(--font); letter-spacing:-.02em; }
+
+@media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior:auto !important; }
+}
+
+/* ============ HERO — premium animated route scene ============ */
+.pkgHero{
+    position:relative; padding: 7rem 1.5rem 4.5rem; text-align:center; overflow:hidden;
+    min-height: 30rem; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:
+        radial-gradient(ellipse at 12% -15%, rgba(50,138,223,0.16), transparent 52%),
+        radial-gradient(ellipse at 90% 0%, rgba(201,151,58,0.14), transparent 48%),
+        radial-gradient(ellipse at 50% 120%, rgba(11,46,74,0.06), transparent 60%),
+        var(--paper);
+    --mx: 0px; --my: 0px;
+}
+.pkgHero::before{
+    content:""; position:absolute; inset:0; z-index:0; opacity:.5; pointer-events:none;
+    background-image: radial-gradient(rgba(11,46,74,0.06) 1px, transparent 1px);
+    background-size: 22px 22px; mask-image: radial-gradient(ellipse at 50% 30%, black 0%, transparent 72%);
+}
+
+/* drifting gradient blobs — soft depth, kept deliberately quiet */
+.pkgHeroBg{ position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.heroBlob{ position:absolute; border-radius:50%; filter: blur(60px); opacity:.22; }
+.heroBlob.b1{ width:20rem; height:20rem; background: var(--blue); top:-7rem; left:-6rem; animation: blobDrift1 18s ease-in-out infinite; }
+.heroBlob.b2{ width:16rem; height:16rem; background: var(--khaki); bottom:-8rem; right:-5rem; animation: blobDrift2 22s ease-in-out infinite; }
+@keyframes blobDrift1{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(30px,20px) scale(1.1);} }
+@keyframes blobDrift2{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(-25px,-15px) scale(1.08);} }
+
+/* single quiet flight-path accent along the bottom of the hero — a horizon, not a centerpiece */
+.pkgHeroScene{ position:absolute; left:0; right:0; bottom:-1rem; height:9rem; z-index:0; pointer-events:none; opacity:.4; }
+.pkgHeroScene svg.tpSceneSvg{ position:relative; width:100%; height:100%; overflow:visible; }
+#tpHeroPath{ fill:none; stroke: var(--line); stroke-width:2; stroke-dasharray:6 8; }
+#tpHeroTrail{
+    fill:none; stroke: var(--khaki); stroke-width:2.5; stroke-linecap:round;
+    stroke-dasharray:1500; stroke-dashoffset:1500; animation: tpDrawTrail 11s linear infinite;
+}
+@keyframes tpDrawTrail{ 0%{ stroke-dashoffset:1500; opacity:1;} 65%{ stroke-dashoffset:0; opacity:1;} 80%{ opacity:1;} 100%{ stroke-dashoffset:0; opacity:0;} }
+.tpHeroPlane{
+    position:absolute; top:0; left:0; width:20px; height:20px;
+    offset-path: path('M20,80 C220,10 460,140 700,50 S1030,90 1180,70');
+    offset-rotate:auto; animation: tpFlyPath 11s linear infinite;
+    filter: drop-shadow(0 2px 4px rgba(242,101,63,.4));
+}
+@keyframes tpFlyPath{ from{ offset-distance:0%; } to{ offset-distance:100%; } }
+
+.pkgHero .eyebrow{
+    position:relative; z-index:2;
+    display:inline-flex; align-items:center; gap:.55rem;
+    font-size:.75rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+    color: var(--blue-ink); background:rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+    border:1px solid rgba(11,46,74,0.1);
+    padding:.55rem 1.15rem .55rem .85rem; border-radius:999px;
+    box-shadow: var(--shadow-sm);
+    opacity:0; animation: riseIn .7s ease forwards;
+}
+.eyebrowDot{ width:7px; height:7px; border-radius:50%; background: var(--gold); animation: dotPulse 1.6s ease-in-out infinite; }
+@keyframes dotPulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(201,151,58,.5);} 50%{ box-shadow:0 0 0 6px rgba(201,151,58,0);} }
+.pkgHero h1{
+    position:relative; z-index:2;
+    font-weight:800; font-size: clamp(2.3rem, 5.2vw, 3.6rem); line-height:1.1;
+    margin: 1.1rem auto .7rem; max-width: 46rem; color: var(--blue-ink);
+    opacity:0; animation: riseIn .8s ease .12s forwards;
+}
+.pkgHero h1 .grad{
+    background: linear-gradient(100deg, var(--blue-deep), var(--blue) 45%, var(--gold));
+    background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation: gradShift 6s ease-in-out infinite;
+}
+@keyframes gradShift{ 0%,100%{ background-position:0% center;} 50%{ background-position:100% center;} }
+.pkgHero p{
+    position:relative; z-index:2;
+    color:#585858; max-width: 34rem; margin: 0 auto; font-size:1rem; line-height:1.65; font-weight:500;
+    opacity:0; animation: riseIn .8s ease .22s forwards;
+}
+
+/* quick category links — functional, in-flow, redesigned as a premium chip strip */
+.heroQuickCats{
+    position:relative; z-index:2; display:inline-flex; flex-wrap:wrap; justify-content:center; gap:.4rem;
+    margin-top:1.8rem; padding:.5rem; background:#fff; border-radius:999px; border:1px solid var(--line);
+    box-shadow:0 10px 26px rgba(26,24,21,.07);
+    opacity:0; animation: riseIn .8s ease .3s forwards;
+}
+.heroQuickCats .qc{
+    position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:.45rem;
+    background:transparent; border:none; padding:.55rem 1.05rem; border-radius:999px;
+    font-size:.8rem; font-weight:700; color: var(--ink); cursor:pointer; transition: color .3s ease;
+    z-index:1;
+}
+.heroQuickCats .qc::before{
+    content:""; position:absolute; inset:0; border-radius:999px;
+    background: linear-gradient(120deg, var(--blue-deep), var(--blue));
+    transform: scale(0); opacity:0; transition: transform .3s ease, opacity .3s ease; z-index:-1;
+}
+.heroQuickCats .qc:hover{ color:#fff; }
+.heroQuickCats .qc:hover::before{ transform: scale(1); opacity:1; }
+.heroQuickCats .qc .icCircle{ font-size:.95rem; }
+
+.heroStats{
+    position:relative; z-index:2; display:flex; flex-wrap:wrap; justify-content:center; gap:2.2rem;
+    margin-top:1.9rem; opacity:0; animation: riseIn .8s ease .38s forwards;
+}
+.heroStats .stat{ text-align:center; }
+.heroStats .stat b{ display:block; font-size:1.35rem; font-weight:800; color: var(--blue-deep); }
+.heroStats .stat span{ font-size:.72rem; font-weight:700; color:#8A8A8A; text-transform:uppercase; letter-spacing:.05em; }
+
+.scrollCue{
+    position:relative; z-index:2; margin-top: 2.4rem; width:2.1rem; height:2.1rem; border-radius:50%;
+    border:1.5px solid var(--line); background:#fff; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; opacity:0; animation: riseIn .8s ease .46s forwards, bounceCue 1.8s ease-in-out 1.2s infinite;
+    box-shadow:0 6px 16px rgba(26,24,21,0.07); transition: border-color .2s ease;
+}
+.scrollCue:hover{ border-color: var(--blue); }
+@keyframes bounceCue{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(6px); } }
+
+@keyframes riseIn{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+
+/* ============ CATEGORY FILTER — passport-stamp pills ============ */
+.categoryBar{
+    max-width: 78rem; margin: 0 auto; padding: 0 1.5rem 2.4rem;
+    display:flex; flex-wrap:wrap; gap:.65rem; justify-content:center;
+}
+.catPill{
+    position:relative; overflow:hidden; cursor:pointer; user-select:none;
+    display:inline-flex; align-items:center; gap:.45rem;
+    border:1.5px solid var(--line); background:#fff; color: var(--ink);
+    padding:.6rem 1.15rem; border-radius:999px; font-size:.85rem; font-weight:700;
+    transition: all .2s ease;
+}
+.catPill:hover{ border-color: var(--blue); transform: translateY(-2px); }
+.catPill.active{
+    background: var(--blue); border-color: var(--blue); color:#fff;
+    box-shadow:0 8px 20px rgba(50,138,223,0.3);
+    animation: stampIn .45s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes stampIn{
+    0%{ transform:scale(1.4) rotate(-8deg); opacity:.5; }
+    60%{ transform:scale(0.95) rotate(3deg); }
+    100%{ transform:scale(1) rotate(0deg); }
+}
+.catPill .count{
+    font-size:.72rem; font-weight:800; opacity:.65; background: rgba(0,0,0,0.06);
+    padding:.1rem .4rem; border-radius:999px;
+}
+.catPill.active .count{ background: rgba(255,255,255,0.25); opacity:1; }
+
+/* ============ PACKAGE GRID — cinematic poster cards ============ */
+.pkgWrap{ max-width: 78rem; margin: 0 auto 5rem; padding: 0 1.5rem; }
+.pkgGrid{
+    display:grid; grid-template-columns: repeat(auto-fill, minmax(19.5rem, 1fr));
+    gap: 1.6rem;
+}
+.pkgCard{
+    position:relative; aspect-ratio: 3 / 4; border-radius: 1.4rem; overflow:hidden;
+    box-shadow: var(--shadow-md); background: var(--ink);
+    opacity:0; transform: translateY(14px); animation: cardIn .5s ease forwards;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+}
+.pkgCard:hover{ transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.pkgCard.hide{ display:none; }
+@keyframes cardIn{ to{ opacity:1; transform:translateY(0); } }
+
+.pkgImgWrap{ position:absolute; inset:0; overflow:hidden; }
+.pkgImgWrap img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition: transform .7s cubic-bezier(.2,.8,.2,1), filter .35s ease;
+    filter: saturate(1.02);
+}
+.pkgCard:hover .pkgImgWrap img{ transform: scale(1.09); }
+
+/* scrim — always partially on for readability, deepens on hover */
+.pkgCard::before{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background: linear-gradient(180deg, rgba(11,20,30,0.05) 0%, rgba(11,20,30,0.15) 38%, rgba(9,15,22,0.96) 100%);
+    transition: background .35s ease;
+}
+.pkgCard:hover::before{
+    background: linear-gradient(180deg, rgba(11,20,30,0.15) 0%, rgba(11,20,30,0.35) 38%, rgba(6,10,15,0.98) 100%);
+}
+
+/* thin gold rim that glows in on hover */
+.pkgCard::after{
+    content:""; position:absolute; inset:0; z-index:3; border-radius:1.4rem; pointer-events:none;
+    box-shadow: inset 0 0 0 1.5px rgba(201,151,58,0); transition: box-shadow .35s ease;
+}
+.pkgCard:hover::after{ box-shadow: inset 0 0 0 1.5px rgba(201,151,58,.55); }
+
+.pkgTopRow{ position:absolute; top:.85rem; left:.85rem; right:.85rem; z-index:2; display:flex; justify-content:space-between; align-items:flex-start; gap:.5rem; }
+.pkgTag{
+    background: rgba(255,255,255,0.14); color:#fff; border:1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    font-size:.68rem; font-weight:700; letter-spacing:.03em; padding:.35rem .75rem; border-radius:999px;
+}
+.pkgDuration{
+    background: rgba(201,151,58,0.92); color:#241A08; font-size:.68rem; font-weight:800;
+    padding:.35rem .75rem; border-radius:999px; flex-shrink:0;
+}
+.pkgBadge{
+    position:absolute; top:.85rem; left:50%; transform:translateX(-50%); z-index:2;
+    background: linear-gradient(90deg, var(--coral), var(--coral-light)); color:#fff; font-size:.64rem; font-weight:800;
+    padding:.3rem .8rem; border-radius:999px; letter-spacing:.03em; text-transform:uppercase;
+    box-shadow:0 6px 16px rgba(232,98,58,.45);
+}
+
+.pkgBody{ position:absolute; left:0; right:0; bottom:0; z-index:2; padding: 1.2rem 1.2rem 1.15rem; color:#fff; }
+.pkgBody h3{ font-size:1.12rem; font-weight:800; margin:0 0 .4rem; line-height:1.28; text-shadow: 0 2px 10px rgba(0,0,0,.3); }
+.pkgBody p{
+    font-size:.8rem; color:rgba(255,255,255,0.78); line-height:1.5; margin:0 0 .9rem;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+
+.pkgStub{
+    display:flex; align-items:center; justify-content:space-between; gap:.6rem;
+    padding-top: .9rem; border-top: 1px solid rgba(255,255,255,0.16);
+}
+.pkgVerify{ display:flex; flex-direction:column; }
+.pkgVerify .from{ font-size:.63rem; color:rgba(255,255,255,0.55); font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+.pkgVerify .verifyLabel{ font-size:.85rem; font-weight:800; color: var(--gold-light); }
+
+.pkgActions{ display:flex; align-items:center; gap:.5rem; }
+.pkgContactBtn{
+    position:relative; overflow:hidden;
+    width:2.1rem; height:2.1rem; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; text-decoration:none;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.pkgContactBtn.call{ background: linear-gradient(135deg, var(--blue-deep), var(--blue)); box-shadow:0 6px 14px rgba(50,138,223,.4); }
+.pkgContactBtn.whatsapp{ background:#25D366; box-shadow:0 6px 14px rgba(37,211,102,.4); }
+.pkgContactBtn:hover{ transform: translateY(-2px) scale(1.08); }
+.ripple{ position:absolute; border-radius:50%; background: rgba(255,255,255,0.55); transform:scale(0); animation: rippleOut .55s ease-out forwards; pointer-events:none; }
+@keyframes rippleOut{ to{ transform:scale(3); opacity:0; } }
+
+/* empty state */
+.emptyState{
+    display:none; text-align:center; padding: 4rem 1.5rem; color:#8A8A8A;
+}
+.emptyState.show{ display:block; }
+.emptyState .tag{ font-size:2.4rem; margin-bottom:.6rem; }
+.emptyState h3{ color: var(--ink); font-size:1.15rem; margin:0 0 .3rem; }
+.emptyState p{ font-size:.88rem; margin:0; }
+
+.pkgDetailsBtn{
+    background: rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    font-family: var(--font); font-weight:700; font-size:.79rem; padding:.55rem .8rem;
+    border-radius:.6rem; cursor:pointer; white-space:nowrap; transition: all .2s ease;
+}
+.pkgDetailsBtn:hover{ background: rgba(255,255,255,0.22); border-color: var(--gold-light); }
+
+/* ============ DETAILS MODAL ============ */
+.pkgModalOverlay{
+    position:fixed; inset:0; background: rgba(26,24,21,0.55); backdrop-filter: blur(2px);
+    display:none; align-items:flex-start; justify-content:center; z-index:1000;
+    padding: 2.4rem 1.2rem; overflow-y:auto;
+}
+.pkgModalOverlay.show{ display:flex; animation: overlayIn .25s ease; }
+@keyframes overlayIn{ from{ opacity:0; } to{ opacity:1; } }
+
+.pkgModal{
+    background:#fff; border-radius:1.4rem; max-width:44rem; width:100%; overflow:hidden;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+    opacity:0; transform: translateY(24px) scale(.97);
+    animation: modalIn .35s cubic-bezier(.2,.8,.2,1) forwards;
+}
+@keyframes modalIn{ to{ opacity:1; transform:translateY(0) scale(1); } }
+
+.pkgModalImg{ position:relative; height:15rem; }
+.pkgModalImg img{ width:100%; height:100%; object-fit:cover; display:block; }
+.pkgModalClose{
+    position:absolute; top:.9rem; right:.9rem; width:2.2rem; height:2.2rem; border-radius:50%;
+    background: rgba(26,24,21,0.6); border:none; color:#fff; font-size:1.2rem; line-height:1;
+    cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter: blur(3px);
+}
+.pkgModalImg .pkgTag, .pkgModalImg .pkgDuration{ position:absolute; top:.9rem; }
+.pkgModalImg .pkgTag{ left:.9rem; }
+.pkgModalImg .pkgDuration{ left:auto; right:3.6rem; }
+
+.pkgModalBody{ padding: 1.6rem 1.8rem 1.9rem; }
+.pkgModalBody h2{ font-size:1.4rem; font-weight:800; margin:0 0 .4rem; }
+.pkgModalBody > .blurb{ color:#585858; font-size:.92rem; line-height:1.6; margin:0 0 1.4rem; }
+
+.pkgModalBody h4{ font-size:.78rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color: var(--blue-deep); margin: 1.3rem 0 .7rem; }
+.pkgModalBody h4:first-of-type{ margin-top:0; }
+
+.itineraryList{ display:flex; flex-direction:column; gap:0; }
+.itineraryItem{ display:flex; gap:.9rem; padding: .1rem 0 1rem; position:relative; }
+.itineraryItem:not(:last-child)::before{
+    content:""; position:absolute; left:.95rem; top:1.9rem; bottom:-.2rem; width:1.5px; background: var(--line);
+}
+.itineraryDay{
+    flex-shrink:0; width:2rem; height:2rem; border-radius:50%; background: var(--mist); border:1.5px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:800; color: var(--blue-deep);
+    z-index:1;
+}
+.itineraryText strong{ display:block; font-size:.88rem; margin-bottom:.15rem; }
+.itineraryText span{ font-size:.82rem; color:#666; line-height:1.5; }
+
+.inclExclGrid{ display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+.inclExclGrid ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
+.inclExclGrid li{ font-size:.83rem; color:#444; display:flex; align-items:flex-start; gap:.45rem; line-height:1.4; }
+.inclExclGrid .yes li::before{ content:"✓"; color: var(--khaki); font-weight:800; flex-shrink:0; }
+.inclExclGrid .no li::before{ content:"✕"; color:#C25450; font-weight:800; flex-shrink:0; }
+
+.pkgModalFooter{
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    margin-top:1.6rem; padding-top:1.4rem; border-top:1px dashed var(--line);
+}
+.pkgModalContactBtn{
+    display:inline-flex; align-items:center; gap:.4rem; text-decoration:none; color:#fff;
+    font-family: var(--font); font-weight:700; font-size:.83rem; padding:.65rem 1rem; border-radius:.65rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.pkgModalContactBtn.call{ background: linear-gradient(90deg, var(--blue-deep), var(--blue)); box-shadow:0 8px 18px rgba(50,138,223,.28); }
+.pkgModalContactBtn.whatsapp{ background:#25D366; box-shadow:0 8px 18px rgba(37,211,102,.3); }
+.pkgModalContactBtn:hover{ transform: translateY(-2px); }
+
+@media screen and (max-width: 600px){
+    .inclExclGrid{ grid-template-columns:1fr; }
+    .pkgModalBody{ padding: 1.3rem 1.2rem 1.6rem; }
+    .pkgModalFooter{ flex-direction:column; align-items:stretch; }
+}
+
+/* ============ full-bleed section band — breaks up flat white runs ============ */
+.sectionBand{
+    background:
+        radial-gradient(ellipse at 8% 0%, rgba(50,138,223,0.06), transparent 55%),
+        radial-gradient(ellipse at 95% 100%, rgba(154,160,74,0.07), transparent 50%),
+        var(--mist);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+
+/* ============ TRUST BAR ============ */
+/* ============ TRUST BAR — premium badge ribbon, not a flat gray strip ============ */
+.trustBar{
+    position:relative; overflow:hidden;
+    background: linear-gradient(120deg, var(--blue-ink), var(--blue-deep) 55%, var(--blue-ink) 140%);
+    padding: 1.8rem 1.5rem;
+}
+.trustBar::before{
+    content:""; position:absolute; inset:0; z-index:0; opacity:.6;
+    background: radial-gradient(circle at 12% 20%, rgba(201,151,58,.22), transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(50,138,223,.35), transparent 45%);
+}
+.trustBarInner{
+    position:relative; z-index:1; max-width:78rem; margin:0 auto;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem;
+}
+.trustItem{
+    display:flex; align-items:center; gap:.6rem; font-size:.83rem; font-weight:700; color:#fff;
+    background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+    padding:.6rem 1.05rem; border-radius:999px; backdrop-filter: blur(4px);
+    transition: transform .25s ease, background .25s ease;
+}
+.trustItem:hover{ transform:translateY(-2px); background: rgba(255,255,255,0.16); }
+.trustItem .icCircle{
+    width:1.7rem; height:1.7rem; border-radius:50%; flex-shrink:0;
+    background: rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; font-size:.9rem;
+}
+
+/* ============ shared section head ============ */
+.sectionHead{ text-align:center; max-width:36rem; margin:0 auto 2.2rem; }
+.sectionHead .eyebrow2{
+    display:inline-flex; align-items:center; gap:.5rem; font-size:.7rem; font-weight:800;
+    letter-spacing:.08em; text-transform:uppercase; color: var(--blue-deep);
+    background: var(--mist); padding:.4rem .9rem; border-radius:999px; margin-bottom:.9rem;
+}
+.sectionHead h2{ font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight:800; margin:0 0 .6rem; }
+.sectionHead p{ color:#666; font-size:.9rem; line-height:1.6; margin:0; }
+
+/* scroll-reveal used across new sections */
+.reveal{ opacity:0; transform:translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
+
+/* ============ TRENDING CAROUSEL — reuses .pkgCard styling for visual consistency ============ */
+.trendingSection{ max-width:78rem; margin:0 auto; padding:3.6rem 1.5rem 1rem; }
+.trendingCarousel{ display:flex; align-items:center; gap:1.1rem; padding:.4rem 0 1.6rem; }
+.trendingViewport{ overflow:hidden; flex:1; min-width:0; }
+.trendingTrack{ display:flex; gap:1.3rem; padding:.4rem .1rem; transition: transform .5s cubic-bezier(.2,.8,.2,1); will-change:transform; }
+.trendingTrack .pkgCard{ flex:0 0 19rem; opacity:1; transform:none; animation:none; }
+.trendNav{
+    flex-shrink:0; width:2.7rem; height:2.7rem; border-radius:50%; border:1.5px solid var(--line);
+    background:#fff; cursor:pointer; font-size:1.3rem; line-height:1; color: var(--ink);
+    display:flex; align-items:center; justify-content:center; transition: all .2s ease;
+    box-shadow:0 6px 16px rgba(26,24,21,.06);
+}
+.trendNav:hover{ border-color: var(--blue); color:#fff; background: var(--blue); transform:translateY(-2px) scale(1.05); box-shadow:0 10px 22px rgba(50,138,223,.3); }
+
+/* ============ HOW IT WORKS ============ */
+.howItWorks{ max-width:78rem; margin:0 auto; padding:3.6rem 1.5rem; position:relative; overflow:hidden; }
+/* slow-moving ambient gradient wash across the whole section, always on */
+.howItWorks::before{
+    content:""; position:absolute; inset:-20% -10%; z-index:0; pointer-events:none;
+    background: radial-gradient(circle at 20% 30%, rgba(50,138,223,.07), transparent 45%),
+                radial-gradient(circle at 80% 70%, rgba(154,160,74,.08), transparent 45%);
+    animation: ambientDrift 14s ease-in-out infinite;
+}
+@keyframes ambientDrift{ 0%,100%{ transform:translate(0,0);} 50%{ transform:translate(-3%,3%);} }
+.stepsRow{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; position:relative; z-index:1; }
+/* dashed connector between steps — draws in once revealed, then flows infinitely (marching ants) */
+.stepsRow::before{
+    content:""; position:absolute; top:2.95rem; left:16.5%; right:16.5%; height:2px;
+    background-image: repeating-linear-gradient(90deg, var(--khaki) 0 8px, transparent 8px 16px);
+    background-size: 32px 2px; opacity:0; z-index:0;
+}
+.howItWorks.in .stepsRow::before{
+    animation: connectorDraw .8s ease .5s forwards, flowDash 1.3s linear 1.3s infinite;
+}
+@keyframes connectorDraw{ from{ opacity:0; transform:scaleX(0);} to{ opacity:1; transform:scaleX(1);} }
+@keyframes flowDash{ from{ background-position:0 0;} to{ background-position:32px 0;} }
+/* a small plane drifts along the connector forever, once revealed */
+.stepsRow::after{
+    content:"✈️"; position:absolute; top:2.55rem; left:16.5%; font-size:.85rem; z-index:1;
+    opacity:0; pointer-events:none;
+}
+.howItWorks.in .stepsRow::after{ animation: planeAlongSteps 6s linear 1.3s infinite; }
+@keyframes planeAlongSteps{
+    0%{ left:16.5%; opacity:0; transform: translateY(0) rotate(0deg); }
+    8%{ opacity:1; }
+    50%{ transform: translateY(-4px) rotate(3deg); }
+    92%{ opacity:1; }
+    100%{ left:81%; opacity:0; transform: translateY(0) rotate(0deg); }
+}
+.stepCard{
+    position:relative; z-index:1; text-align:center; padding:1.7rem 1.3rem; background:#fff;
+    border:1px solid var(--line); border-radius:1.1rem; overflow:hidden;
+    opacity:0; transform:translateY(24px);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease;
+}
+.howItWorks.in .stepCard{ animation: stepIn .6s cubic-bezier(.2,.8,.2,1) both; }
+.howItWorks.in .stepCard:nth-child(1){ animation-delay:.1s; }
+.howItWorks.in .stepCard:nth-child(2){ animation-delay:.3s; }
+.howItWorks.in .stepCard:nth-child(3){ animation-delay:.5s; }
+@keyframes stepIn{ from{ opacity:0; transform:translateY(24px) scale(.96); } to{ opacity:1; transform:translateY(0) scale(1); } }
+/* top accent bar sweeps in on hover */
+.stepCard::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--blue-deep), var(--khaki));
+    transform: scaleX(0); transform-origin:left; transition: transform .35s ease;
+}
+.stepCard:hover::before{ transform: scaleX(1); }
+.stepCard:hover{ transform:translateY(-8px) scale(1.015); box-shadow:0 22px 44px rgba(26,24,21,.12); border-color: var(--blue); }
+.stepCard .stepNum{
+    width:2.6rem; height:2.6rem; border-radius:50%; margin:0 auto .9rem;
+    background: linear-gradient(135deg, var(--blue-deep), var(--blue)); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.05rem;
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1); position:relative;
+}
+/* rotating gradient ring orbiting each step number, continuous */
+.stepCard .stepNum::after{
+    content:""; position:absolute; inset:-5px; border-radius:50%; z-index:-1;
+    background: conic-gradient(from 0deg, transparent 0deg, var(--khaki) 40deg, transparent 90deg);
+    opacity:0;
+}
+.howItWorks.in .stepCard .stepNum::after{ animation: ringOrbit 3s linear 1.3s infinite; opacity:.8; }
+@keyframes ringOrbit{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
+/* continuous, infinite pulse ring on each step number */
+.howItWorks.in .stepCard .stepNum{ animation: numPulse 2.6s ease-in-out 1.3s infinite; }
+.howItWorks.in .stepCard:nth-child(2) .stepNum{ animation-delay:1.6s; }
+.howItWorks.in .stepCard:nth-child(3) .stepNum{ animation-delay:1.9s; }
+@keyframes numPulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(50,138,223,.35);} 50%{ box-shadow:0 0 0 8px rgba(50,138,223,0);} }
+.stepCard:hover .stepNum{ transform:scale(1.15) rotate(-6deg); }
+.stepCard h3{ font-size:1rem; font-weight:800; margin:0 0 .4rem; }
+.stepCard p{ font-size:.83rem; color:#666; margin:0; line-height:1.55; }
+
+/* ============ SEARCH + SORT — plain layout, no outer wrapper card ============ */
+.searchSortWrap{ max-width:78rem; margin:0 auto 1.8rem; padding:0 1.5rem; }
+.searchSortRow{
+    display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between;
+}
+.searchBox{ flex:1; min-width:14rem; max-width:24rem; position:relative; }
+.searchBox input{
+    width:100%; padding:.75rem 1rem .75rem 2.5rem; border-radius:.7rem; border:1.5px solid var(--line);
+    background: var(--mist); font-family:var(--font); font-size:.87rem; outline:none; transition: all .2s ease;
+}
+.searchBox input:hover{ border-color: var(--khaki); }
+.searchBox input:focus{ border-color: var(--blue); background:#fff; box-shadow:0 0 0 4px rgba(50,138,223,.15); transform: scale(1.01); }
+.searchBox .searchIcon{ position:absolute; left:.85rem; top:50%; transform:translateY(-50%); opacity:.5; pointer-events:none; }
+.sortSelect{
+    position:relative; z-index:1;
+    padding:.75rem 1rem; border-radius:.7rem; border:1.5px solid var(--line); background:#fff;
+    font-family:var(--font); font-size:.83rem; font-weight:700; color: var(--ink); cursor:pointer; transition: all .2s ease;
+}
+.sortSelect:hover{ border-color: var(--khaki); }
+.sortSelect:focus{ border-color: var(--blue); box-shadow:0 0 0 4px rgba(50,138,223,.15); outline:none; }
+
+/* ============ CUSTOM TRIP REQUEST ============ */
+.customFormSection{
+    background: linear-gradient(160deg, var(--blue-deep), var(--ink) 140%);
+    padding: 3.6rem 1.5rem; margin-top: 3.5rem; position:relative; overflow:hidden;
+}
+.customFormSection::before{ content:""; position:absolute; right:-4rem; top:-4rem; width:15rem; height:15rem; border-radius:50%; background: rgba(154,160,74,0.2); }
+.customFormInner{ max-width:64rem; margin:0 auto; position:relative; z-index:1; display:grid; grid-template-columns:1fr 1.25fr; gap:2.6rem; align-items:center; }
+.customFormText{ color:#fff; }
+.customFormText .eyebrow2{ background: rgba(255,255,255,0.14); color:#fff; }
+.customFormText h2{ font-size:1.6rem; font-weight:800; margin:.3rem 0 .7rem; }
+.customFormText p{ font-size:.92rem; line-height:1.6; opacity:.85; margin:0; }
+.customFormCard{ background:#fff; border-radius:1.2rem; padding:1.6rem 1.6rem 1.7rem; box-shadow:0 26px 55px rgba(0,0,0,.32); }
+.cfRow{ display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-bottom:.75rem; }
+.cfRow.full{ grid-template-columns:1fr; }
+.cfRow input, .cfRow select, .cfRow textarea{
+    width:100%; font-family:var(--font); font-size:.88rem; padding:.7rem .85rem; border-radius:.6rem;
+    border:1.5px solid var(--line); background: var(--mist); color: var(--ink); outline:none; transition: all .2s ease;
+}
+.cfRow input:focus, .cfRow select:focus, .cfRow textarea:focus{ border-color: var(--blue); background:#fff; box-shadow:0 0 0 4px rgba(50,138,223,.12); }
+.cfRow input.valid, .cfRow select.valid{ border-color: var(--khaki); }
+.cfRow input.invalid, .cfRow select.invalid{ border-color:#D9534F; box-shadow:0 0 0 4px rgba(217,83,79,.1); }
+.cfRow.shake{ animation: cfShake .4s ease; }
+@keyframes cfShake{ 0%,100%{ transform:translateX(0);} 20%{ transform:translateX(-6px);} 40%{ transform:translateX(5px);} 60%{ transform:translateX(-4px);} 80%{ transform:translateX(3px);} }
+.cfRow textarea{ resize:vertical; min-height:4.5rem; font-family:var(--font); }
+.cfSubmitBtn{
+    width:100%; font-family:var(--font); font-weight:800; font-size:.92rem; padding:.85rem; border:none;
+    border-radius:.7rem; cursor:pointer; color:#fff; margin-top:.3rem;
+    background: linear-gradient(90deg, var(--blue-deep), var(--blue));
+    box-shadow:0 10px 24px rgba(50,138,223,.32); transition: transform .2s ease, box-shadow .2s ease;
+}
+.cfSubmitBtn:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(50,138,223,.42); }
+.cfSubmitBtn:disabled{ opacity:.6; cursor:default; transform:none; }
+.cfStatus{ font-size:.8rem; margin-top:.7rem; min-height:1.1rem; font-weight:700; }
+.cfStatus.ok{ color: var(--khaki); }
+.cfStatus.bad{ color:#D9534F; }
+
+/* ============ BEST TIME TO VISIT ============ */
+.planningSection{ max-width:78rem; margin:0 auto; padding:3.6rem 1.5rem; }
+.planningGrid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(16.5rem,1fr)); gap:1.3rem; }
+.planCard{
+    position:relative; overflow:hidden; background:#fff; border-radius:1.2rem; padding:1.5rem 1.4rem;
+    border:1px solid var(--line); box-shadow:0 10px 24px rgba(26,24,21,.05);
+    opacity:0; transform:translateY(20px);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease;
+}
+.planningSection.in .planCard{ animation: planCardIn .55s ease both; }
+.planningSection.in .planCard:nth-child(1){ animation-delay:.05s; }
+.planningSection.in .planCard:nth-child(2){ animation-delay:.12s; }
+.planningSection.in .planCard:nth-child(3){ animation-delay:.19s; }
+.planningSection.in .planCard:nth-child(4){ animation-delay:.26s; }
+.planningSection.in .planCard:nth-child(5){ animation-delay:.33s; }
+.planningSection.in .planCard:nth-child(6){ animation-delay:.4s; }
+@keyframes planCardIn{ from{ opacity:0; transform:translateY(20px);} to{ opacity:1; transform:translateY(0);} }
+.planCard::before{
+    content:""; position:absolute; top:-3rem; right:-3rem; width:7rem; height:7rem; border-radius:50%;
+    background: radial-gradient(circle, rgba(50,138,223,.1), transparent 70%);
+    transition: transform .4s ease;
+}
+.planCard:hover{ transform:translateY(-6px); box-shadow:0 20px 40px rgba(26,24,21,.11); border-color: var(--blue); }
+.planCard:hover::before{ transform: scale(1.4); }
+.planCard .icBadge{
+    position:relative; width:3rem; height:3rem; border-radius:.9rem; margin-bottom:.9rem;
+    background: linear-gradient(135deg, var(--blue-deep), var(--blue));
+    display:flex; align-items:center; justify-content:center; font-size:1.4rem;
+    box-shadow:0 8px 18px rgba(50,138,223,.28); transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.planCard:hover .icBadge{ transform: rotate(-8deg) scale(1.08); }
+.planCard h4{ position:relative; margin:0 0 .5rem; font-size:1rem; font-weight:800; }
+.planCard .season{
+    position:relative; display:inline-block; font-size:.72rem; font-weight:800; color: var(--blue-deep);
+    background: rgba(50,138,223,.1); padding:.28rem .7rem; border-radius:999px; margin-bottom:.6rem;
+}
+.planCard p{ position:relative; font-size:.82rem; color:#666; margin:0; line-height:1.55; }
+
+/* ============ PHOTO GALLERY ============ */
+.gallerySection{ max-width:78rem; margin:0 auto; padding:3.6rem 1.5rem; }
+.galleryGrid{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:8.5rem; gap:.7rem; }
+.galleryItem{ position:relative; border-radius:.8rem; overflow:hidden; cursor:pointer; }
+.galleryItem.tall{ grid-row: span 2; }
+.galleryItem img{ width:100%; height:100%; object-fit:cover; display:block; transition: transform .4s ease; }
+.galleryItem:hover img{ transform:scale(1.08) rotate(-1deg); }
+/* always-visible subtle gradient so the brand mark stays legible even without hover */
+.galleryItem::before{
+    content:""; position:absolute; inset:0; background: linear-gradient(0deg, rgba(0,0,0,.45), transparent 45%); pointer-events:none;
+}
+.galBrandMark{
+    position:absolute; bottom:.6rem; left:.65rem; display:flex; align-items:center; gap:.4rem; z-index:1;
+}
+.galBrandMark img{ width:1.3rem; height:1.3rem; border-radius:50%; background:#fff; padding:1px; object-fit:contain; }
+.galBrandMark span{ color:#fff; font-size:.68rem; font-weight:800; text-shadow:0 1px 4px rgba(0,0,0,.6); }
+.galOverlay{
+    position:absolute; inset:0; background: linear-gradient(0deg, rgba(0,0,0,.65), transparent 60%);
+    opacity:0; transition: opacity .25s ease; display:flex; align-items:flex-end; padding:.7rem;
+    color:#fff; font-size:.78rem; font-weight:700; z-index:1;
+}
+.galleryItem:hover .galOverlay{ opacity:1; }
+.galleryItem:hover .galBrandMark{ opacity:0; }
+
+/* ============ VIDEO REEL GALLERY — local video files, autoplay on scroll ============ */
+.videoSection{ max-width:78rem; margin:0 auto; padding:3.6rem 1.5rem; }
+.videoGrid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(10.5rem,1fr)); gap:1rem; }
+.videoCard{ position:relative; aspect-ratio:9/16; border-radius:1rem; overflow:hidden; cursor:pointer; background: var(--ink); }
+.videoCard video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.videoExpandHint{
+    position:absolute; top:.6rem; right:.6rem; width:2rem; height:2rem; border-radius:50%; z-index:1;
+    background: rgba(0,0,0,0.45); backdrop-filter: blur(3px); display:flex; align-items:center; justify-content:center;
+}
+.videoCard .videoLabel{ position:absolute; bottom:.65rem; left:.65rem; right:.65rem; color:#fff; font-size:.76rem; font-weight:800; text-shadow:0 2px 6px rgba(0,0,0,.5); z-index:1; }
+
+/* video lightbox */
+.videoLightbox{ position:fixed; inset:0; background: rgba(0,0,0,0.85); display:none; align-items:center; justify-content:center; z-index:1000; padding:2rem; }
+.videoLightbox.show{ display:flex; animation: overlayIn .25s ease; }
+.videoLightboxInner{ width:100%; max-width:24rem; aspect-ratio:9/16; position:relative; }
+.videoLightboxInner video{ width:100%; height:100%; border:none; border-radius:.8rem; background:#000; object-fit:cover; }
+.videoLightboxClose{
+    position:absolute; top:-2.6rem; right:0; width:2.2rem; height:2.2rem; border-radius:50%;
+    background: rgba(255,255,255,0.15); border:none; color:#fff; font-size:1.2rem; cursor:pointer;
+}
+
+/* ============ TESTIMONIALS ============ */
+.testimonialSection{ background: var(--mist); padding:3.6rem 1.5rem; }
+.testimonialGrid{ max-width:78rem; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill, minmax(17rem,1fr)); gap:1.5rem; }
+.testimonialCard{
+    position:relative; z-index:1; background:#fff; border-radius:1.1rem; padding:1.4rem 1.3rem;
+    border:1px solid var(--line); box-shadow:0 10px 26px rgba(26,24,21,.07);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+/* soft colored glow peeking from behind the card, deepens on hover */
+.testimonialCard::after{
+    content:""; position:absolute; inset:-8px; z-index:-1; border-radius:1.4rem; opacity:0;
+    background: linear-gradient(135deg, rgba(50,138,223,.28), rgba(154,160,74,.22));
+    filter: blur(18px); transition: opacity .35s ease;
+}
+.testimonialCard:nth-child(3n+2)::after{ background: linear-gradient(135deg, rgba(154,160,74,.28), rgba(242,101,63,.18)); }
+.testimonialCard:nth-child(3n+3)::after{ background: linear-gradient(135deg, rgba(242,101,63,.24), rgba(50,138,223,.2)); }
+.testimonialCard:hover{ transform:translateY(-6px); box-shadow:0 20px 40px rgba(26,24,21,.14); }
+.testimonialCard:hover::after{ opacity:1; }
+.testimonialCard::before{
+    content:"\201C"; position:absolute; top:.6rem; right:1.1rem; font-size:3rem; font-weight:800;
+    color: var(--blue); opacity:.1; line-height:1; font-family: Georgia, serif;
+}
+.testimonialCard .stars{ color: var(--khaki); font-size:.85rem; margin-bottom:.6rem; letter-spacing:.1em; }
+.testimonialCard .quote{ font-size:.86rem; color:#444; line-height:1.6; margin:0 0 1.1rem; font-style:italic; }
+.testimonialPerson{ display:flex; align-items:center; gap:.7rem; }
+.testimonialPerson .avatar{
+    width:2.4rem; height:2.4rem; border-radius:50%; flex-shrink:0;
+    background: linear-gradient(135deg, var(--blue), var(--khaki)); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.82rem;
+}
+.testimonialPerson b{ display:block; font-size:.85rem; }
+.testimonialPerson span{ font-size:.73rem; color:#8A8A8A; }
+
+/* ============ FAQ ============ */
+.faqSection{ max-width:50rem; margin:0 auto; padding:3.6rem 1.5rem; }
+.faqItem{ border-bottom:1px solid var(--line); }
+.faqQ{
+    width:100%; text-align:left; background:none; border:none; padding:1.1rem 0; font-family:var(--font);
+    font-size:.94rem; font-weight:700; color: var(--ink); cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center; gap:1rem;
+}
+.faqQ .plus{ transition: transform .25s ease; flex-shrink:0; color: var(--blue); font-size:1.2rem; font-weight:800; }
+.faqItem.open .faqQ .plus{ transform:rotate(45deg); }
+.faqA{ max-height:0; overflow:hidden; transition: max-height .35s ease, padding .35s ease; font-size:.85rem; color:#666; line-height:1.65; }
+.faqItem.open .faqA{ max-height:14rem; padding-bottom:1.1rem; }
+
+/* ============ NEWSLETTER ============ */
+.newsletterSection{ background: linear-gradient(90deg, var(--blue-deep), var(--blue)); padding:2.8rem 1.5rem; text-align:center; }
+.newsletterSection h3{ color:#fff; font-size:1.3rem; font-weight:800; margin:0 0 .4rem; }
+.newsletterSection p{ color: rgba(255,255,255,.85); font-size:.87rem; margin:0 0 1.3rem; }
+.newsletterForm{ display:flex; gap:.6rem; max-width:26rem; margin:0 auto; flex-wrap:wrap; justify-content:center; }
+.newsletterForm input{ flex:1; min-width:12rem; padding:.8rem 1rem; border-radius:.7rem; border:none; font-family:var(--font); font-size:.88rem; outline:none; }
+.newsletterForm button{
+    padding:.8rem 1.4rem; border-radius:.7rem; border:none; background: var(--ink); color:#fff;
+    font-weight:800; cursor:pointer; font-family:var(--font); font-size:.85rem; transition: transform .2s ease;
+}
+.newsletterForm button:hover{ transform:translateY(-2px); }
+.newsletterForm button:disabled{ opacity:.6; }
+.newsletterStatus{ color:#fff; font-size:.8rem; margin-top:.7rem; font-weight:700; min-height:1.1rem; }
+
+/* ============ RESPONSIVE — new sections ============ */
+@media screen and (max-width: 900px){
+    .stepsRow{ grid-template-columns:1fr; }
+    .customFormInner{ grid-template-columns:1fr; }
+    .galleryGrid{ grid-template-columns:repeat(2,1fr); }
+}
+@media screen and (max-width: 600px){
+    .trustBarInner{ gap:1.2rem 1.6rem; }
+    .cfRow{ grid-template-columns:1fr; }
+    .videoGrid{ grid-template-columns:repeat(2,1fr); }
+    .searchSortRow{ flex-direction:column; align-items:stretch; }
+    .searchBox{ max-width:none; }
+}
+
+/* ============ RESPONSIVE ============ */
+@media screen and (max-width: 900px){
+    .pkgHeroScene{ opacity:.25; }
+}
+@media screen and (max-width: 600px){
+    .pkgHero{ padding: 3.2rem 1.2rem 2.4rem; min-height:auto; }
+    .heroQuickCats .qc{ font-size:.75rem; padding:.45rem .85rem; }
+    .heroStats{ gap:1.3rem; }
+    .pkgGrid{ grid-template-columns: 1fr; }
+    .categoryBar{ justify-content:flex-start; overflow-x:auto; flex-wrap:nowrap; padding-bottom:1.6rem; }
+    .catPill{ flex:0 0 auto; }
+}
+
+/* ============ TRIP COST CALCULATOR ============ */
+.calcSection{ max-width:78rem; margin:0 auto; padding:3.6rem 1.5rem; }
+.calcCard{
+    max-width:52rem; margin:0 auto; background:#fff; border-radius:1.4rem; border:1px solid var(--line);
+    box-shadow: var(--shadow-md); padding:2rem 2.2rem; position:relative; overflow:hidden;
+}
+.calcCard::before{
+    content:""; position:absolute; top:-5rem; left:-5rem; width:14rem; height:14rem; border-radius:50%;
+    background: radial-gradient(circle, rgba(201,151,58,.1), transparent 70%);
+}
+.calcRow{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; position:relative; z-index:1; }
+.calcField label{ display:block; font-size:.76rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:#8A8A8A; margin-bottom:.4rem; }
+.calcField select, .calcField input{
+    width:100%; padding:.75rem .9rem; border-radius:.7rem; border:1.5px solid var(--line);
+    background: var(--mist); font-family:var(--font); font-size:.9rem; outline:none; transition: all .2s ease;
+}
+.calcField select:focus, .calcField input:focus{ border-color: var(--blue); background:#fff; box-shadow:0 0 0 4px rgba(50,138,223,.13); }
+.calcResult{
+    margin-top:1.4rem; padding:1.4rem 1.5rem; border-radius:1rem; position:relative; z-index:1;
+    background: linear-gradient(120deg, var(--blue-ink), var(--blue-deep)); color:#fff;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+}
+.calcResult .label{ font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; opacity:.75; font-weight:700; margin-bottom:.3rem; }
+.calcResult .amount{ font-size:1.7rem; font-weight:800; color: var(--gold-light); }
+.calcResult .amount span{ font-size:.85rem; font-weight:600; opacity:.8; }
+.calcResult .note{ font-size:.76rem; opacity:.7; margin-top:.3rem; max-width:20rem; }
+.calcCtaBtn{
+    display:inline-flex; align-items:center; gap:.4rem; text-decoration:none; color: var(--blue-ink);
+    background: var(--gold-light); font-weight:800; font-size:.85rem; padding:.75rem 1.2rem; border-radius:.7rem;
+    transition: transform .2s ease;
+}
+.calcCtaBtn:hover{ transform: translateY(-2px); }
+@media screen and (max-width:640px){ .calcRow{ grid-template-columns:1fr; } .calcCard{ padding:1.5rem 1.3rem; } }
+
+/* ============ BLOG / TRAVEL GUIDES TEASER ============ */
+.blogSection{ max-width:78rem; margin:0 auto; padding:3.6rem 1.5rem; }
+.blogGrid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(17rem,1fr)); gap:1.5rem; }
+.blogCard{
+    background:#fff; border-radius:1.2rem; overflow:hidden; border:1px solid var(--line);
+    box-shadow: var(--shadow-sm); text-decoration:none; color:inherit; display:block;
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;
+}
+.blogCard:hover{ transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.blogCardImg{ height:9.5rem; overflow:hidden; }
+.blogCardImg img{ width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+.blogCard:hover .blogCardImg img{ transform: scale(1.08); }
+.blogCardBody{ padding:1.1rem 1.2rem 1.3rem; }
+.blogCardTag{ font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color: var(--gold); margin-bottom:.5rem; display:block; }
+.blogCardBody h3{ font-size:1rem; font-weight:800; margin:0 0 .5rem; line-height:1.35; color: var(--ink); }
+.blogCardBody p{ font-size:.82rem; color:#666; line-height:1.55; margin:0 0 .8rem; }
+.blogReadMore{ font-size:.78rem; font-weight:800; color: var(--blue-deep); display:inline-flex; align-items:center; gap:.3rem; }
+.blogCard:hover .blogReadMore{ gap:.5rem; }
+
+/* ============ REFERRAL BANNER ============ */
+.referralSection{ max-width:78rem; margin:3.6rem auto; padding:0 1.5rem; }
+.referralInner{
+    position:relative; overflow:hidden; border-radius:1.4rem; padding:2.4rem 2rem;
+    background: linear-gradient(120deg, #B9812E, var(--gold) 55%, #DDAE55);
+    display:flex; align-items:center; justify-content:space-between; gap:1.6rem; flex-wrap:wrap;
+    color:#241A08;
+}
+.referralInner::before{
+    content:"🎁"; position:absolute; font-size:9rem; opacity:.12; right:-1rem; top:-2rem; transform:rotate(-10deg);
+}
+.referralText{ position:relative; z-index:1; max-width:34rem; }
+.referralText .eyebrow2{ background: rgba(255,255,255,0.35); color:#241A08; }
+.referralText h2{ font-size:1.5rem; font-weight:800; margin:.4rem 0 .5rem; }
+.referralText p{ font-size:.9rem; line-height:1.6; margin:0; opacity:.85; }
+.referralCtaBtn{
+    position:relative; z-index:1; flex-shrink:0; display:inline-flex; align-items:center; gap:.5rem;
+    background: var(--blue-ink); color:#fff; font-weight:800; font-size:.9rem; padding:.85rem 1.5rem;
+    border-radius:.8rem; text-decoration:none; box-shadow:0 14px 30px rgba(11,46,74,.35);
+    transition: transform .2s ease;
+}
+.referralCtaBtn:hover{ transform: translateY(-2px); }
+@media screen and (max-width:700px){ .referralInner{ flex-direction:column; text-align:center; } }
+
+/* ============ BACK TO TOP ============ */
+.backToTop{
+    position:fixed; right:1.6rem; bottom:5.6rem; width:2.8rem; height:2.8rem; border-radius:50%;
+    background: linear-gradient(135deg, var(--blue-deep), var(--blue)); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; z-index:999;
+    box-shadow:0 10px 24px rgba(50,138,223,.35);
+    opacity:0; transform:translateY(12px) scale(.9); pointer-events:none;
+    transition: opacity .3s ease, transform .3s ease;
+}
+.backToTop.show{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+.backToTop:hover{ transform:translateY(-3px) scale(1.06); }
+</style>
+</head>
+<body>
+
+<!-- ============ animation ============ -->
+<div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Finding your next trip…</p>
+</div>
+
+<!-- ============ nav ============ -->
+<nav>
+    <ul class="sidebar">
+        <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+<path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+        </a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <div class="submenu1">
+                <ul>
+                    <li class="hoberme"> <a href="">Luxury Buses</a>
+                        <div class="submenu2">
+                            <ul>
+                                <li><a href=""> Volvo Bus </a></li>
+                                <li><a href=""> Winger </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="hoberme"> <a href=""> Luxury Cars</a>
+                        <div class="submenu2">
+                            <ul>
+                                <li><a href=""> Innova Crysita </a></li>
+                                <li><a href=""> Kia Carnevals </a></li>
+                                <li><a href=""> Honda CIty </a></li>
+                                <li><a href=""> Etios </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="hoberme"> <a href=""> Economical Car</a>
+                        <div class="submenu2">
+                            <ul>
+                                <li><a href=""> Swift Dzire </a></li>
+                                <li><a href=""> Ertiga </a></li>
+                                <li><a href=""> Innova </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./contact.html">Contact us</a></li>
+    </ul>
+
+    <ul id="firstnav">
+        <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+            src="././images/logo03.png" alt="">
+        <li class="hideonmobile"><a href="./index.html">Home</a></li>
+        <li class="hideonmobile"><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+        <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+        <li class="hideonmobile"><a href="./about.html">About</a></li>
+        <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+        <li id="menuicon" onclick="showsidebar()"><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+    </ul>
+    <a class="booka" href="./booktour.html" target="_blank">
+        <div class="book">Book a Tour</div>
+    </a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="pkgHero" id="pkgHeroSection">
+    <div class="pkgHeroBg" aria-hidden="true">
+        <div class="heroBlob b1"></div>
+        <div class="heroBlob b2"></div>
+    </div>
+
+    <div class="pkgHeroScene" aria-hidden="true">
+        <svg class="tpSceneSvg" viewBox="0 0 1200 160" preserveAspectRatio="xMidYMid meet">
+            <path id="tpHeroPath" d="M20,80 C220,10 460,140 700,50 S1030,90 1180,70"></path>
+            <path id="tpHeroTrail" d="M20,80 C220,10 460,140 700,50 S1030,90 1180,70"></path>
+        </svg>
+        <svg class="tpHeroPlane" viewBox="0 0 24 24" fill="none">
+            <path d="M2 16l20-7-7 20-3-8-8-3-2-2z" fill="#F2653F" stroke="#fff" stroke-width=".6"></path>
+        </svg>
+    </div>
+
+    <span class="eyebrow"><span class="eyebrowDot"></span>Handpicked itineraries</span>
+    <h1>Every kind of <span class="grad">journey</span>, mapped out</h1>
+    <p>From desert forts to Himalayan passes — browse by the trip you're craving, then reach out for pricing and availability in one tap.</p>
+
+    <div class="heroQuickCats" id="heroQuickCats">
+        <span class="qc" data-cat="mountains">🏔️ Mountains</span>
+        <span class="qc" data-cat="beaches">🏖️ Beaches</span>
+        <span class="qc" data-cat="heritage">🏰 Heritage</span>
+        <span class="qc" data-cat="kashmir">❄️ Kashmir</span>
+        <span class="qc" data-cat="honeymoon">💑 Honeymoon</span>
+    </div>
+
+    <div class="heroStats">
+        <div class="stat"><b id="statPkgCount">0</b><span>Packages</span></div>
+        <div class="stat"><b id="statCatCount">0</b><span>Categories</span></div>
+        <div class="stat"><b>10k+</b><span>Happy Travelers</span></div>
+    </div>
+
+    <div class="scrollCue" id="scrollCue" title="See all packages">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#1A1815" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<div class="trustBar">
+    <div class="trustBarInner">
+        <div class="trustItem"><span class="icCircle">✅</span>OTP-Verified Booking</div>
+        <div class="trustItem"><span class="icCircle">🛡️</span>Govt. Approved</div>
+        <div class="trustItem"><span class="icCircle">👥</span>10,000+ Happy Travelers</div>
+        <div class="trustItem"><span class="icCircle">📞</span>24/7 Support</div>
+        <div class="trustItem"><span class="icCircle">💳</span>No Payment to Enquire</div>
+    </div>
+</div>
+
+<!-- ============ TRENDING / MOST BOOKED ============ -->
+<section class="trendingSection reveal">
+    <div class="sectionHead" style="text-align:left; margin-bottom:1.2rem; max-width:none;">
+        <span class="eyebrow2">🔥 Popular this month</span>
+        <h2 style="font-size:1.3rem;">Most-booked packages</h2>
+    </div>
+    <div class="trendingCarousel" id="trendingCarousel">
+        <button type="button" class="trendNav" id="trendPrev" aria-label="Previous">‹</button>
+        <div class="trendingViewport">
+            <div class="trendingTrack" id="trendingTrack"></div>
+        </div>
+        <button type="button" class="trendNav" id="trendNext" aria-label="Next">›</button>
+    </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<div class="sectionBand">
+<section class="howItWorks reveal">
+    <div class="sectionHead">
+        <span class="eyebrow2">Simple process</span>
+        <h2>How booking works</h2>
+        <p>From browsing to a confirmed trip — three steps, no paperwork chase.</p>
+    </div>
+    <div class="stepsRow">
+        <div class="stepCard">
+            <div class="stepNum">1</div>
+            <h3>Pick a package</h3>
+            <p>Browse by category or search, then open any package for the full itinerary and pricing.</p>
+        </div>
+        <div class="stepCard">
+            <div class="stepNum">2</div>
+            <h3>Confirm with OTP</h3>
+            <p>Fill your details and verify your email with a one-time code — no account or password needed.</p>
+        </div>
+        <div class="stepCard">
+            <div class="stepNum">3</div>
+            <h3>We handle the rest</h3>
+            <p>Our team calls to confirm dates and payment, then you're set — vehicle, guide, and stays sorted.</p>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- ============ SEARCH + SORT ============ -->
+<div class="searchSortWrap">
+    <div class="searchSortRow">
+        <div class="searchBox">
+            <svg class="searchIcon" width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#1A1815" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="#1A1815" stroke-width="2" stroke-linecap="round"/></svg>
+            <input type="text" id="pkgSearchInput" placeholder="Search destinations, e.g. Kashmir, Goa, Ladakh...">
+        </div>
+        <select class="sortSelect" id="pkgSortSelect">
+            <option value="recommended">Sort: Recommended</option>
+            <option value="duration-asc">Duration: Short to Long</option>
+            <option value="duration-desc">Duration: Long to Short</option>
+            <option value="name">Name: A to Z</option>
+        </select>
+    </div>
+</div>
+
+<!-- ============ CATEGORY FILTER ============ -->
+<div class="categoryBar" id="categoryBar"></div>
+
+<!-- ============ PACKAGE GRID ============ -->
+<div class="pkgWrap">
+    <div class="pkgGrid" id="pkgGrid"></div>
+    <div class="emptyState" id="emptyState">
+        <div class="tag">🧭</div>
+        <h3>No packages here yet</h3>
+        <p>Try a different category, or contact us — we can build a custom itinerary.</p>
+    </div>
+</div>
+
+<!-- ============ PACKAGE DETAILS MODAL ============ -->
+<div class="pkgModalOverlay" id="pkgModalOverlay">
+    <div class="pkgModal" id="pkgModal"></div>
+</div>
+
+<!-- ============ CUSTOM TRIP REQUEST ============ -->
+<section class="customFormSection reveal">
+    <div class="customFormInner">
+        <div class="customFormText">
+            <span class="eyebrow2">🧳 Don't see your trip?</span>
+            <h2>Tell us what you have in mind — we'll build it</h2>
+            <p>Pick your destination, dates, budget and group size, and our team will put together a custom itinerary and get back to you with pricing. No commitment, no payment needed to ask.</p>
+        </div>
+        <div class="customFormCard">
+            <form id="customTripForm" novalidate>
+                <div class="cfRow">
+                    <input type="text" id="cf-name" placeholder="Your Name" required>
+                    <input type="tel" id="cf-phone" placeholder="Mobile Number" required>
+                </div>
+                <div class="cfRow">
+                    <input type="email" id="cf-email" placeholder="Email Address" required>
+                    <input type="text" id="cf-destination" placeholder="Preferred Destination" required>
+                </div>
+                <div class="cfRow">
+                    <select id="cf-category" required>
+                        <option value="" disabled selected>Trip Type</option>
+                    </select>
+                    <input type="number" id="cf-travelers" placeholder="No. of Travelers" min="1">
+                </div>
+                <div class="cfRow">
+                    <input type="date" id="cf-startdate" placeholder="Preferred Start Date">
+                    <select id="cf-budget">
+                        <option value="" disabled selected>Approx. Budget (per person)</option>
+                        <option value="Under ₹15,000">Under ₹15,000</option>
+                        <option value="₹15,000 – ₹30,000">₹15,000 – ₹30,000</option>
+                        <option value="₹30,000 – ₹50,000">₹30,000 – ₹50,000</option>
+                        <option value="₹50,000+">₹50,000+</option>
+                    </select>
+                </div>
+                <div class="cfRow full">
+                    <textarea id="cf-message" placeholder="Anything specific — number of days, must-see places, hotel preference..."></textarea>
+                </div>
+                <button type="submit" class="cfSubmitBtn" id="cfSubmitBtn">Request My Custom Trip</button>
+                <div class="cfStatus" id="cfStatus"></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TRIP COST CALCULATOR ============ -->
+<section class="calcSection reveal">
+    <div class="sectionHead">
+        <span class="eyebrow2">🧮 Rough budgeting</span>
+        <h2>Estimate your trip cost</h2>
+        <p>A quick ballpark based on trip type, group size and duration — call or WhatsApp us for an exact quote.</p>
+    </div>
+    <div class="calcCard">
+        <div class="calcRow">
+            <div class="calcField">
+                <label>Trip Type</label>
+                <select id="calc-type"></select>
+            </div>
+            <div class="calcField">
+                <label>Number of Travelers</label>
+                <input type="number" id="calc-travelers" min="1" value="2">
+            </div>
+        </div>
+        <div class="calcRow">
+            <div class="calcField">
+                <label>Duration (days)</label>
+                <input type="number" id="calc-days" min="1" value="5">
+            </div>
+            <div class="calcField">
+                <label>Hotel Category</label>
+                <select id="calc-hotel">
+                    <option value="1">Standard</option>
+                    <option value="1.4">Deluxe</option>
+                    <option value="1.9">Premium / Resort</option>
+                </select>
+            </div>
+        </div>
+        <div class="calcResult">
+            <div>
+                <div class="label">Estimated total</div>
+                <div class="amount" id="calcAmount">₹0 <span>for the group</span></div>
+                <div class="note">Approximate only — actual pricing depends on season, exact hotels, and availability.</div>
+            </div>
+            <a class="calcCtaBtn" href="https://wa.me/919784568787?text=Hi%2C%20I%27d%20like%20an%20exact%20quote%20based%20on%20my%20trip%20estimate." target="_blank" rel="noopener">Get Exact Quote →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ BEST TIME TO VISIT ============ -->
+<section class="planningSection reveal">
+    <div class="sectionHead">
+        <span class="eyebrow2">Plan smarter</span>
+        <h2>Best time to visit</h2>
+        <p>Quick reference so you plan your trip around the right season, not against it.</p>
+    </div>
+    <div class="planningGrid" id="planningGrid"></div>
+</section>
+
+<!-- ============ BLOG / TRAVEL GUIDES TEASER ============ -->
+<section class="blogSection reveal">
+    <div class="sectionHead">
+        <span class="eyebrow2">📖 Travel guides</span>
+        <h2>From the blog</h2>
+        <p>Deeper reads on the destinations you're considering — packing lists, best routes, and local tips.</p>
+    </div>
+    <div class="blogGrid" id="blogGrid"></div>
+</section>
+
+<!-- ============ PHOTO GALLERY ============ -->
+<div class="sectionBand">
+<section class="gallerySection reveal">
+    <div class="sectionHead">
+        <span class="eyebrow2">From our travelers</span>
+        <h2>Photo gallery</h2>
+        <p>Real moments from real trips — click any photo for a closer look.</p>
+    </div>
+    <div class="galleryGrid" id="galleryGrid"></div>
+</section>
+</div>
+
+<!-- ============ VIDEO REEL GALLERY ============ -->
+<section class="videoSection reveal">
+    <div class="sectionHead">
+        <span class="eyebrow2">Watch & explore</span>
+        <h2>Trip reels</h2>
+        <p>Short clips from recent tours — see the vibe before you book.</p>
+    </div>
+    <div class="videoGrid" id="videoGrid"></div>
+</section>
+<div class="videoLightbox" id="videoLightbox">
+    <div class="videoLightboxInner">
+        <button type="button" class="videoLightboxClose" id="videoLightboxClose">✕</button>
+        <video id="videoLightboxPlayer" controls playsinline></video>
+    </div>
+</div>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonialSection reveal">
+    <div class="sectionHead">
+        <span class="eyebrow2">⭐ Traveler stories</span>
+        <h2>What our travelers say</h2>
+    </div>
+    <div class="testimonialGrid" id="testimonialGrid"></div>
+</section>
+
+<!-- ============ REFERRAL BANNER ============ -->
+<section class="referralSection reveal">
+    <div class="referralInner">
+        <div class="referralText">
+            <span class="eyebrow2">Refer & Earn</span>
+            <h2>Refer a friend, both of you save ₹500</h2>
+            <p>Share your trip with someone who'd love it too — they get ₹500 off their first booking, and you get ₹500 credit toward your next trip once theirs is confirmed.</p>
+        </div>
+        <a class="referralCtaBtn" href="https://wa.me/919784568787?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20referral%20offer." target="_blank" rel="noopener">Refer Now →</a>
+    </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faqSection reveal">
+    <div class="sectionHead">
+        <span class="eyebrow2">Good to know</span>
+        <h2>Frequently asked questions</h2>
+    </div>
+    <div id="faqList"></div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletterSection reveal">
+    <h3>Get trip ideas in your inbox</h3>
+    <p>Seasonal packages, offers, and new itineraries — no spam, unsubscribe anytime.</p>
+    <form class="newsletterForm" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="you@example.com" required>
+        <button type="submit" id="newsletterBtn">Subscribe</button>
+    </form>
+    <div class="newsletterStatus" id="newsletterStatus"></div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <div class="footer-linkgrid">
+        <div class="linkgrid-col">
+            <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+            <ul class="arrow-links">
+                <li><a href="./tourpack.html">Jaipur Sightseeing Package 1</a></li>
+                <li><a href="./tourpack.html">Jaipur Sightseeing Package 2</a></li>
+                <li><a href="./tourpack.html">Jaipur Khatushyamji Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Abhaneri Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Agra Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Pushkar Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Ranthambore Tour</a></li>
+                <li><a href="./tourpack.html">Jaipur Ajmer Pushkar Tour</a></li>
+            </ul>
+        </div>
+        <div class="linkgrid-col">
+            <h3 class="footer-heading">Rajasthan Tours</h3>
+            <ul class="arrow-links">
+                <li><a href="./tourpack.html">Rajasthan Wildlife Tour</a></li>
+                <li><a href="./tourpack.html">Desert Triangle Tour</a></li>
+                <li><a href="./tourpack.html">Exclusive Rajasthan Tour</a></li>
+                <li><a href="./tourpack.html">Religious Rajasthan Tour</a></li>
+                <li><a href="./tourpack.html">Rajasthan Tour Package</a></li>
+                <li><a href="./tourpack.html">Cultural Rajasthan Tour</a></li>
+            </ul>
+        </div>
+        <div class="linkgrid-col">
+            <h3 class="footer-heading">Special India Tours</h3>
+            <ul class="arrow-links">
+                <li><a href="./tourpack.html">Taj &amp; Tiger Safari Tour</a></li>
+                <li><a href="./tourpack.html">Golden Triangle Tour (5N/6D)</a></li>
+                <li><a href="./tourpack.html">Spiritual India Tour</a></li>
+                <li><a href="./tourpack.html">Classical India Tour</a></li>
+                <li><a href="./tourpack.html">Best of India Tour</a></li>
+                <li><a href="./tourpack.html">India Wildlife Tour</a></li>
+            </ul>
+        </div>
+        <div class="linkgrid-col">
+            <h3 class="footer-heading">Taxi Services</h3>
+            <ul class="arrow-links two-col-list">
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-inner">
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+            <div class="footer-socials">
+                <a href="" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+            <a href="./terms.html">Terms &amp; Conditions</a>
+            <a href="./privacy-policy.html">Privacy Policy</a>
+            <a href="./cancellation-policy.html">Cancellation &amp; Refund Policy</a>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+<button type="button" class="backToTop" id="backToTop" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+/* ============ CATEGORIES & PACKAGES ============
+   Placeholder data — edit this array to add, remove, or update packages.
+   `categories` on each package must match a `key` from CATEGORIES below
+   (a package can belong to more than one category). */
+
+const CATEGORIES = [
+    { key: 'all',           label: 'All',                icon: '🌐' },
+    { key: 'mountains',     label: 'Mountains',           icon: '🏔️' },
+    { key: 'heritage',      label: 'Fort & Heritage',     icon: '🏰' },
+    { key: 'religious',     label: 'Religious',           icon: '🛕' },
+    { key: 'beaches',       label: 'Beaches',             icon: '🏖️' },
+    { key: 'northeast',     label: 'North East',          icon: '🌿' },
+    { key: 'kashmir',       label: 'Kashmir',              icon: '❄️' },
+    { key: 'kerala',        label: 'Kerala',               icon: '🌴' },
+    { key: 'himachal',      label: 'Himachal',             icon: '⛰️' },
+    { key: 'honeymoon',     label: 'Honeymoon',            icon: '💑' },
+    { key: 'wildlife',      label: 'Wildlife',             icon: '🐅' },
+    { key: 'desert',        label: 'Desert Safari',        icon: '🐫' },
+    { key: 'international', label: 'International',        icon: '✈️' },
+    { key: 'adventure',     label: 'Adventure',            icon: '🚣' }
+];
+
+const PACKAGES = [
+    {
+        title: 'Ladakh Bike Expedition',
+        categories: ['mountains'],
+        duration: '7D / 6N',
+        price: 28999,
+        blurb: 'Ride through Khardung La and Pangong Tso on a guided motorbike convoy across the high passes.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Khardung%20La%20(mountain%20pass)%2C%20Ladakh%2C%20North%20India.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Leh', desc: 'Acclimatization day — short walk to Leh Market and Shanti Stupa.' },
+            { title: 'Local sightseeing', desc: 'Magnetic Hill, Sangam, Gurudwara Pathar Sahib, and bike checks.' },
+            { title: 'Leh to Nubra Valley', desc: 'Cross Khardung La, camel safari at Hunder sand dunes.' },
+            { title: 'Nubra to Pangong Tso', desc: 'Ride along the Shyok river to the famous blue lake.' },
+            { title: 'Pangong to Leh', desc: 'Return via Chang La pass, evening at leisure.' },
+            { title: 'Buffer / Khardung La top', desc: 'Optional ride to the world\'s highest motorable pass.' },
+            { title: 'Departure', desc: 'Transfer to Leh airport.' }
+        ],
+        inclusions: ['Royal Enfield rental & fuel', 'Riding gear & backup vehicle', 'Hotel/camp stays', 'Breakfast & dinner daily', 'Inner line permits'],
+        exclusions: ['Airfare to/from Leh', 'Lunch', 'Personal expenses', 'Travel insurance']
+    },
+    {
+        title: 'Manali–Kasol Himalayan Trail',
+        categories: ['mountains', 'himachal'],
+        duration: '6D / 5N',
+        price: 19499,
+        blurb: 'Pine valleys, riverside cafes, and a Solang Valley day trip through the heart of Himachal.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Valley%20View%20-%20Manali%20-%20Himachal%20Pradesh%20-%20India%20-%2001%20(26521989302).jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Manali', desc: 'Check-in and evening at Mall Road.' },
+            { title: 'Solang Valley', desc: 'Cable car, adventure activities, Atal Tunnel viewpoint.' },
+            { title: 'Manali local', desc: 'Hidimba Temple, Old Manali cafes, Van Vihar.' },
+            { title: 'Manali to Kasol', desc: 'Drive through Parvati Valley, riverside check-in.' },
+            { title: 'Kasol & Tosh village', desc: 'Short trek to Tosh, evening by the Parvati river.' },
+            { title: 'Departure', desc: 'Transfer to Bhuntar / onward journey.' }
+        ],
+        inclusions: ['Hotel/homestay stays', 'Breakfast & dinner daily', 'Private cab throughout', 'Solang cable car ticket'],
+        exclusions: ['Adventure activity charges', 'Lunch', 'Personal expenses']
+    },
+    {
+        title: 'Jaisalmer Fort & Desert Safari',
+        categories: ['heritage', 'desert'],
+        duration: '4D / 3N',
+        price: 14999,
+        blurb: 'Golden Fort havelis by day, camel safari and desert camp under the stars by night.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Fort%20Jaisalmer%20at%20sunset.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Jaisalmer', desc: 'Check-in, evening at Gadisar Lake.' },
+            { title: 'Fort & havelis', desc: 'Jaisalmer Fort, Patwon Ki Haveli, local bazaars.' },
+            { title: 'Sam Sand Dunes', desc: 'Camel safari at sunset, overnight desert camp with folk music.' },
+            { title: 'Departure', desc: 'Transfer back to city / onward journey.' }
+        ],
+        inclusions: ['Hotel + 1 night desert camp', 'Camel safari', 'Breakfast & dinner daily', 'Cultural evening at camp'],
+        exclusions: ['Lunch', 'Fort entry tickets', 'Personal expenses']
+    },
+    {
+        title: 'Golden Triangle Heritage Tour',
+        categories: ['heritage'],
+        trending: true,
+        duration: '6D / 5N',
+        price: 22999,
+        blurb: 'Delhi, Agra and Jaipur — Mughal monuments, pink-city bazaars, and the Taj at sunrise.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Taj-Mahal.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Delhi', desc: 'Red Fort, India Gate, Qutub Minar.' },
+            { title: 'Delhi to Agra', desc: 'Drive to Agra, evening at leisure.' },
+            { title: 'Taj Mahal sunrise', desc: 'Taj Mahal, Agra Fort, drive to Jaipur.' },
+            { title: 'Jaipur city palace', desc: 'City Palace, Jantar Mantar, Hawa Mahal photo stop.' },
+            { title: 'Amber Fort', desc: 'Amber Fort, elephant/jeep ride, local bazaars.' },
+            { title: 'Departure', desc: 'Transfer to Jaipur airport/station.' }
+        ],
+        inclusions: ['Hotel stays', 'Breakfast daily', 'AC private car', 'All monument transfers'],
+        exclusions: ['Monument entry tickets', 'Lunch & dinner', 'Personal expenses']
+    },
+    {
+        title: 'Khatu Shyam Ji Darshan',
+        categories: ['religious'],
+        duration: '2D / 1N',
+        price: 4999,
+        blurb: 'A quick, comfortable pilgrimage run with early darshan access and same-day return option.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Khatu%20Shyam%20Temple.jpg?width=900',
+        itinerary: [
+            { title: 'Departure & darshan', desc: 'Early departure, priority darshan at the temple.' },
+            { title: 'Return', desc: 'Local sightseeing en route, drop back home.' }
+        ],
+        inclusions: ['AC vehicle', 'Priority darshan assistance', 'Hotel (1 night)'],
+        exclusions: ['Meals', 'Personal expenses']
+    },
+    {
+        title: 'Char Dham Yatra',
+        categories: ['religious', 'mountains'],
+        duration: '10D / 9N',
+        price: 34999,
+        blurb: 'Yamunotri, Gangotri, Kedarnath and Badrinath — the complete Himalayan pilgrimage circuit.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kedarnath%20Temple%20with%20Snow%20Covered%20Mountains%20in%20Background.jpg?width=900',
+        itinerary: [
+            { title: 'Haridwar to Barkot', desc: 'Drive towards Yamunotri base.' },
+            { title: 'Yamunotri darshan', desc: 'Trek/pony to the temple, return to Barkot.' },
+            { title: 'Barkot to Uttarkashi', desc: 'Drive via scenic Himalayan roads.' },
+            { title: 'Gangotri darshan', desc: 'Visit Gangotri Temple, return to Uttarkashi.' },
+            { title: 'Uttarkashi to Guptkashi', desc: 'Long scenic drive towards Kedarnath base.' },
+            { title: 'Kedarnath darshan', desc: 'Trek/pony/helicopter option to the temple.' },
+            { title: 'Guptkashi to Badrinath', desc: 'Drive to Badrinath via Joshimath.' },
+            { title: 'Badrinath darshan', desc: 'Temple visit, Mana village excursion.' },
+            { title: 'Return journey', desc: 'Drive back towards Rishikesh/Haridwar.' },
+            { title: 'Departure', desc: 'Drop at Haridwar/Dehradun.' }
+        ],
+        inclusions: ['Hotel/guesthouse stays', 'Breakfast & dinner daily', 'AC vehicle for the full circuit', 'Pony/palki assistance coordination'],
+        exclusions: ['Helicopter tickets (optional)', 'Lunch', 'Personal & pooja expenses']
+    },
+    {
+        title: 'Goa Beach Escape',
+        categories: ['beaches'],
+        trending: true,
+        duration: '4D / 3N',
+        price: 12999,
+        blurb: 'North Goa shacks, South Goa quiet coves, and a sunset cruise on the Mandovi.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Vagator%20Beach%2C%20Goa%2C%20India.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Goa', desc: 'Check-in, evening at Baga/Calangute beach.' },
+            { title: 'North Goa tour', desc: 'Fort Aguada, Anjuna flea market, Chapora Fort.' },
+            { title: 'South Goa & cruise', desc: 'Quiet South Goa beaches, evening Mandovi river cruise.' },
+            { title: 'Departure', desc: 'Leisure morning, transfer to airport.' }
+        ],
+        inclusions: ['Hotel stays', 'Breakfast daily', 'Airport transfers', 'Sunset cruise ticket'],
+        exclusions: ['Lunch & dinner', 'Water sports', 'Personal expenses']
+    },
+    {
+        title: 'Andaman Island Retreat',
+        categories: ['beaches', 'honeymoon'],
+        duration: '5D / 4N',
+        price: 29999,
+        blurb: 'Havelock\'s blue waters, Radhanagar Beach, and a private glass-bottom boat ride.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Radhanagar%20Beach%2C%20Havelock%20Island%2C%20Andaman%2C%20India.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Port Blair', desc: 'Check-in, evening at Corbyn\'s Cove.' },
+            { title: 'Cellular Jail & ferry', desc: 'Light & sound show, ferry to Havelock.' },
+            { title: 'Radhanagar Beach', desc: 'Beach day, glass-bottom boat ride at Elephant Beach.' },
+            { title: 'Havelock leisure', desc: 'Free day for water sports or relaxing.' },
+            { title: 'Departure', desc: 'Ferry back to Port Blair, transfer to airport.' }
+        ],
+        inclusions: ['Hotel/resort stays', 'Breakfast daily', 'Ferry tickets', 'Glass-bottom boat ride'],
+        exclusions: ['Airfare', 'Lunch & dinner', 'Water sports & scuba (optional)']
+    },
+    {
+        title: 'Meghalaya & Shillong Trail',
+        categories: ['northeast'],
+        duration: '6D / 5N',
+        price: 26999,
+        blurb: 'Living root bridges, Cherrapunji waterfalls, and the cleanest village in Asia.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Living%20root%20bridges%2C%20Nongriat%20village%2C%20Meghalaya.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Guwahati to Shillong', desc: 'Drive to Shillong, evening at Police Bazar.' },
+            { title: 'Shillong sightseeing', desc: 'Elephant Falls, Shillong Peak, Umiam Lake.' },
+            { title: 'Cherrapunji', desc: 'Nohkalikai Falls, Mawsmai Caves, living root bridge trek.' },
+            { title: 'Dawki & Mawlynnong', desc: 'Crystal-clear Umngot river, Asia\'s cleanest village.' },
+            { title: 'Return to Shillong', desc: 'Local markets, leisure evening.' },
+            { title: 'Departure', desc: 'Drive back to Guwahati airport.' }
+        ],
+        inclusions: ['Hotel stays', 'Breakfast daily', 'Private vehicle', 'Root bridge trek guide'],
+        exclusions: ['Airfare to Guwahati', 'Lunch & dinner', 'Boating charges']
+    },
+    {
+        title: 'Kashmir Valley & Gulmarg',
+        categories: ['kashmir', 'honeymoon', 'mountains'],
+        trending: true,
+        duration: '6D / 5N',
+        price: 24999,
+        blurb: 'Shikara rides on Dal Lake, a gondola up Gulmarg, and houseboat stays in Srinagar.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shikara%20in%20Dal%20Lake%20in%20Kashmir.JPG?width=900',
+        itinerary: [
+            { title: 'Arrive Srinagar', desc: 'Check-in to houseboat, evening Shikara ride on Dal Lake.' },
+            { title: 'Gulmarg day trip', desc: 'Gondola ride, snow point (seasonal), meadow views.' },
+            { title: 'Pahalgam day trip', desc: 'Betaab Valley, Aru Valley, riverside walk.' },
+            { title: 'Sonmarg day trip', desc: 'Thajiwas Glacier, pony ride (optional).' },
+            { title: 'Srinagar local', desc: 'Mughal Gardens, local handicraft markets.' },
+            { title: 'Departure', desc: 'Transfer to Srinagar airport.' }
+        ],
+        inclusions: ['Houseboat + hotel stays', 'Breakfast & dinner daily', 'Private cab for all day trips', 'Shikara ride'],
+        exclusions: ['Gondola tickets', 'Lunch', 'Pony/sledge charges']
+    },
+    {
+        title: 'Kerala Backwaters & Munnar',
+        categories: ['kerala', 'honeymoon'],
+        trending: true,
+        duration: '6D / 5N',
+        price: 23499,
+        blurb: 'A houseboat night on the Alleppey backwaters, then tea-garden mornings in Munnar.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Allepy%20Backwaters%2C%20Kerala%2C%20India.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Cochin to Munnar', desc: 'Drive to Munnar via Cheeyappara Falls.' },
+            { title: 'Munnar sightseeing', desc: 'Tea gardens, Eravikulam National Park, Mattupetty Dam.' },
+            { title: 'Munnar to Thekkady', desc: 'Periyar Wildlife Sanctuary, spice plantation walk.' },
+            { title: 'Thekkady to Alleppey', desc: 'Check-in to a private houseboat.' },
+            { title: 'Backwater cruise', desc: 'Full-day houseboat cruise through the backwaters.' },
+            { title: 'Departure', desc: 'Transfer to Cochin airport.' }
+        ],
+        inclusions: ['Hotel + 1 night houseboat', 'All meals on houseboat', 'Breakfast daily elsewhere', 'Private vehicle'],
+        exclusions: ['Airfare to Cochin', 'Lunch & dinner (outside houseboat)', 'Entry tickets']
+    },
+    {
+        title: 'Shimla–Manali Honeymoon Special',
+        categories: ['himachal', 'honeymoon', 'mountains'],
+        duration: '5D / 4N',
+        price: 18999,
+        blurb: 'Mall Road evenings, candlelight dinners, and private cab transfers throughout.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Christ%20church%20on%20Mall%20road%20shimla.JPG?width=900',
+        itinerary: [
+            { title: 'Arrive Shimla', desc: 'Check-in, evening at Mall Road & Ridge.' },
+            { title: 'Shimla sightseeing', desc: 'Kufri, Jakhoo Temple, candlelight dinner.' },
+            { title: 'Shimla to Manali', desc: 'Scenic drive, evening at Manali Mall Road.' },
+            { title: 'Manali sightseeing', desc: 'Solang Valley, Hidimba Temple, couple photo session.' },
+            { title: 'Departure', desc: 'Transfer to Bhuntar / onward journey.' }
+        ],
+        inclusions: ['Couple-friendly hotel stays', 'Breakfast & 1 candlelight dinner', 'Private cab throughout', 'Room decoration on arrival'],
+        exclusions: ['Lunch', 'Adventure activities', 'Personal expenses']
+    },
+    {
+        title: 'Ranthambore Wildlife Safari',
+        categories: ['wildlife'],
+        duration: '3D / 2N',
+        price: 15999,
+        blurb: 'Two guided jungle safaris with a real shot at spotting a wild Bengal tiger.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tiger%20in%20Ranthambhore.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive & evening safari', desc: 'Check-in, afternoon jungle safari (Zone-based).' },
+            { title: 'Morning safari', desc: 'Early morning safari, Ranthambore Fort visit.' },
+            { title: 'Departure', desc: 'Leisure morning, transfer to station/airport.' }
+        ],
+        inclusions: ['Resort stay', 'Breakfast daily', '2 jungle safaris (canter/gypsy)', 'Naturalist guide'],
+        exclusions: ['Safari camera fees', 'Lunch & dinner', 'Fort entry ticket']
+    },
+    {
+        title: 'Dubai City & Desert Tour',
+        categories: ['international'],
+        duration: '5D / 4N',
+        price: 49999,
+        blurb: 'Burj Khalifa, a dune-bashing desert safari, and a dhow cruise dinner on the marina.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dubai%20Skyline%20mit%20Burj%20Khalifa%20(cropped).jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Dubai', desc: 'Check-in, evening Dhow Cruise dinner at the Marina.' },
+            { title: 'City tour', desc: 'Burj Khalifa (124th floor), Dubai Mall, Fountain show.' },
+            { title: 'Desert safari', desc: 'Dune bashing, camel ride, BBQ dinner with live shows.' },
+            { title: 'Leisure / Abu Dhabi option', desc: 'Free day or optional Abu Dhabi city tour.' },
+            { title: 'Departure', desc: 'Transfer to Dubai International Airport.' }
+        ],
+        inclusions: ['Hotel stays', 'Breakfast daily', 'Dhow cruise & desert safari', 'Burj Khalifa ticket', 'Airport transfers'],
+        exclusions: ['International airfare', 'Visa charges', 'Lunch & dinner (except cruise/safari)']
+    },
+    {
+        title: 'Salasar Balaji Darshan',
+        categories: ['religious'],
+        duration: '2D / 1N',
+        price: 5499,
+        blurb: 'A devotional trip to the Salasar Hanuman temple, one of Rajasthan\'s most visited pilgrim sites.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Salasar%2C%20rajisthan.jpg?width=900',
+        itinerary: [
+            { title: 'Depart & darshan', desc: 'Early departure, temple darshan, evening aarti at Salasar Dham.' },
+            { title: 'Return', desc: 'Local market visit, drop back home.' }
+        ],
+        inclusions: ['AC vehicle', 'Hotel (1 night)', 'Darshan assistance'],
+        exclusions: ['Meals', 'Personal expenses']
+    },
+    {
+        title: 'Udaipur Lake City Tour',
+        categories: ['heritage'],
+        duration: '4D / 3N',
+        price: 17999,
+        badge: 'Best Seller',
+        trending: true,
+        blurb: 'City Palace, Lake Pichola boat rides, and sunset views from Jag Mandir in the City of Lakes.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Palace%2C%20Udaipur%2C%20Rajasthan.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Udaipur', desc: 'Check-in, evening at Fateh Sagar Lake.' },
+            { title: 'City Palace & Lake Pichola', desc: 'Palace museum tour, boat ride to Jag Mandir.' },
+            { title: 'Local sightseeing', desc: 'Saheliyon Ki Bari, Bagore Ki Haveli, evening cultural show.' },
+            { title: 'Departure', desc: 'Transfer to Udaipur airport/station.' }
+        ],
+        inclusions: ['Hotel stays', 'Breakfast daily', 'Boat ride ticket', 'Private cab'],
+        exclusions: ['Palace entry tickets', 'Lunch & dinner']
+    },
+    {
+        title: 'Thailand Bangkok–Phuket Tour',
+        categories: ['international'],
+        duration: '6D / 5N',
+        price: 54999,
+        badge: 'New',
+        blurb: 'Bangkok city lights and Phuket\'s beaches — temples, markets, and island-hopping in one trip.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bangkok%20skyline%2C%20Bangkok%2C%20Thailand.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Bangkok', desc: 'Check-in, evening at Asiatique Riverfront.' },
+            { title: 'Bangkok city tour', desc: 'Grand Palace, Wat Arun, floating market.' },
+            { title: 'Fly to Phuket', desc: 'Check-in, evening at Patong Beach.' },
+            { title: 'Phi Phi Island tour', desc: 'Island hopping, snorkeling, Maya Bay viewpoint.' },
+            { title: 'Phuket leisure', desc: 'Free day, or optional water sports.' },
+            { title: 'Departure', desc: 'Transfer to Phuket International Airport.' }
+        ],
+        inclusions: ['Hotel stays', 'Breakfast daily', 'Domestic flight Bangkok–Phuket', 'Phi Phi Island tour'],
+        exclusions: ['International airfare', 'Visa charges', 'Lunch & dinner']
+    },
+    {
+        title: 'Statue of Unity Gujarat Tour',
+        categories: ['heritage'],
+        duration: '3D / 2N',
+        price: 11999,
+        blurb: 'The world\'s tallest statue, Sardar Sarovar Dam, and the Valley of Flowers viewpoint in Kevadia.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Statue%20of%20Unity.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Kevadia', desc: 'Check-in, evening at the Sardar Sarovar Dam viewpoint.' },
+            { title: 'Statue of Unity', desc: 'Viewing gallery, Valley of Flowers, evening laser show.' },
+            { title: 'Departure', desc: 'Drop to Vadodara airport/station.' }
+        ],
+        inclusions: ['Hotel stay', 'Breakfast daily', 'Statue viewing gallery ticket', 'Private cab'],
+        exclusions: ['Laser show ticket', 'Lunch & dinner']
+    },
+    {
+        title: 'Rishikesh Rafting & Yoga Retreat',
+        categories: ['adventure', 'mountains'],
+        duration: '3D / 2N',
+        price: 8999,
+        badge: 'Limited Slots',
+        blurb: 'White-water rafting on the Ganges, riverside camping, and sunrise yoga on the ghats.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rishikesh%2C%20Lakshman%20Jhula.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Rishikesh', desc: 'Check-in, evening Ganga Aarti at Triveni Ghat.' },
+            { title: 'Rafting & camping', desc: 'Grade II–III rapids, overnight riverside camp.' },
+            { title: 'Yoga & departure', desc: 'Sunrise yoga session, Laxman Jhula visit, drop-off.' }
+        ],
+        inclusions: ['Camp/hotel stay', 'Rafting with safety gear', 'Yoga session', 'Breakfast & dinner'],
+        exclusions: ['Lunch', 'Bungee jumping (optional)']
+    },
+    {
+        title: 'Spiti Valley Expedition',
+        categories: ['mountains', 'adventure'],
+        duration: '8D / 7N',
+        price: 32999,
+        blurb: 'High-altitude monasteries, moonscape valleys, and one of the most remote road trips in India.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Key%20Monastery%2C%20Spiti%20Valley%2C%20Himachal%20Pradesh.jpg?width=900',
+        itinerary: [
+            { title: 'Shimla to Kalpa', desc: 'Scenic drive via Narkanda.' },
+            { title: 'Kalpa to Nako', desc: 'Cross into the cold desert region.' },
+            { title: 'Nako to Kaza', desc: 'Tabo Monastery visit en route.' },
+            { title: 'Kaza local', desc: 'Key Monastery, Kibber village.' },
+            { title: 'Chandratal Lake', desc: 'Full-day excursion to the moon lake.' },
+            { title: 'Kaza to Manali', desc: 'Cross the Kunzum Pass.' },
+            { title: 'Manali local', desc: 'Rest day, Solang Valley.' },
+            { title: 'Departure', desc: 'Transfer to Bhuntar / onward journey.' }
+        ],
+        inclusions: ['Hotel/guesthouse stays', 'Breakfast & dinner daily', 'Inner line permits', 'Private vehicle'],
+        exclusions: ['Lunch', 'Personal expenses', 'Oxygen cylinder (optional)']
+    },
+    {
+        title: 'Coorg Hill Retreat',
+        categories: ['honeymoon', 'mountains'],
+        duration: '4D / 3N',
+        price: 16999,
+        badge: 'New',
+        blurb: 'Coffee plantation walks, Abbey Falls, and misty hill views in the "Scotland of India".',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/The%20scenic%20Abbey%20Falls.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Coorg', desc: 'Check-in, evening at Raja\'s Seat.' },
+            { title: 'Coffee plantation tour', desc: 'Guided walk, tasting session, Abbey Falls visit.' },
+            { title: 'Dubare & Golden Temple', desc: 'Elephant camp, Namdroling Monastery.' },
+            { title: 'Departure', desc: 'Transfer to Mysuru/Bengaluru.' }
+        ],
+        inclusions: ['Resort stay', 'Breakfast daily', 'Plantation tour', 'Private cab'],
+        exclusions: ['Lunch & dinner', 'Elephant camp activities']
+    },
+    {
+        title: 'Gangtok–Sikkim Monastery Tour',
+        categories: ['northeast', 'mountains'],
+        duration: '5D / 4N',
+        price: 21999,
+        blurb: 'Tibetan monasteries, Tsomgo Lake, and views of Kanchenjunga from India\'s cleanest state.',
+        img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Enchey%20Monastery%20-%20Gangtok%20-%20Sikkim%20-%20India.jpg?width=900',
+        itinerary: [
+            { title: 'Arrive Gangtok', desc: 'Check-in, evening at MG Marg.' },
+            { title: 'Tsomgo Lake & Baba Mandir', desc: 'High-altitude lake, optional cable car.' },
+            { title: 'Monastery tour', desc: 'Rumtek Monastery and Enchey Monastery visits.' },
+            { title: 'Namchi excursion', desc: 'Char Dham and Samdruptse statue.' },
+            { title: 'Departure', desc: 'Transfer to Bagdogra airport.' }
+        ],
+        inclusions: ['Hotel stays', 'Breakfast daily', 'Permits for Tsomgo Lake', 'Private vehicle'],
+        exclusions: ['Cable car ticket', 'Lunch & dinner']
+    }
+];
+
+/* ============ render category pills with live counts ============ */
+const categoryBar = document.getElementById('categoryBar');
+let activeCategory = 'all';
+
+function countFor(key){
+    if(key === 'all') return PACKAGES.length;
+    return PACKAGES.filter(p => p.categories.includes(key)).length;
+}
+
+function renderCategoryBar(){
+    categoryBar.innerHTML = CATEGORIES.map(cat => `
+        <div class="catPill ${cat.key === activeCategory ? 'active' : ''}" data-key="${cat.key}">
+            <span>${cat.icon}</span><span>${cat.label}</span>
+            <span class="count">${countFor(cat.key)}</span>
+        </div>
+    `).join('');
+
+    categoryBar.querySelectorAll('.catPill').forEach(pill => {
+        pill.addEventListener('click', () => {
+            activeCategory = pill.dataset.key;
+            renderCategoryBar();
+            renderPackages();
+        });
+    });
+}
+
+/* ============ render package cards ============ */
+const pkgGrid = document.getElementById('pkgGrid');
+const emptyState = document.getElementById('emptyState');
+const CONTACT_PHONE = '+919784568787';
+const CONTACT_WHATSAPP = '919784568787';
+const waLink = (title) => `https://wa.me/${CONTACT_WHATSAPP}?text=${encodeURIComponent(`Hi, I'd like the price and availability for "${title}".`)}`;
+
+/* ============ shared package card template (used by grid + trending strip) ============ */
+function pkgCardHTML(p, i, isTrend){
+    const catLabel = CATEGORIES.find(c => c.key === p.categories[0])?.label || '';
+    return `
+        <div class="pkgCard" style="animation-delay:${Math.min(i * 0.05, 0.4)}s">
+            <div class="pkgImgWrap">
+                <img src="./${p.img}" alt="${p.title}" loading="lazy">
+            </div>
+            ${p.badge ? `<span class="pkgBadge">${p.badge}</span>` : ''}
+            <div class="pkgTopRow">
+                <span class="pkgTag">${isTrend ? '🔥 ' : ''}${catLabel}</span>
+                <span class="pkgDuration">${p.duration}</span>
+            </div>
+            <div class="pkgBody">
+                <h3>${p.title}</h3>
+                <p>${p.blurb}</p>
+                <div class="pkgStub">
+                    <div class="pkgVerify">
+                        <span class="from">Ask for</span>
+                        <span class="verifyLabel">Price & Availability</span>
+                    </div>
+                    <div class="pkgActions">
+                        <button type="button" class="pkgDetailsBtn" data-title="${p.title}">Details</button>
+                        <a class="pkgContactBtn call" href="tel:${CONTACT_PHONE}" title="Call us" aria-label="Call us">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1l-2.3 2.3z" fill="#fff"/></svg>
+                        </a>
+                        <a class="pkgContactBtn whatsapp" href="${waLink(p.title)}" target="_blank" rel="noopener" title="WhatsApp us" aria-label="WhatsApp us">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function wirePkgCardEvents(container, list){
+    container.querySelectorAll('.pkgDetailsBtn').forEach(btn=>{
+        btn.addEventListener('click', () => openPkgModal(btn.dataset.title));
+    });
+    container.querySelectorAll('.pkgCard').forEach((card, i) => {
+        const p = list[i];
+        card.querySelector('.pkgImgWrap').style.cursor = 'pointer';
+        card.querySelector('.pkgImgWrap').addEventListener('click', () => openPkgModal(p.title));
+        card.querySelector('.pkgBody h3').style.cursor = 'pointer';
+        card.querySelector('.pkgBody h3').addEventListener('click', () => openPkgModal(p.title));
+    });
+    container.querySelectorAll('.pkgContactBtn').forEach(btn=>{
+        btn.addEventListener('click', function(e){
+            const rect = this.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            const size = Math.max(rect.width, rect.height);
+            ripple.className = 'ripple';
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+            ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+            this.appendChild(ripple);
+            setTimeout(()=>ripple.remove(), 600);
+        });
+    });
+}
+
+function renderPackages(){
+    let visible = activeCategory === 'all'
+        ? PACKAGES
+        : PACKAGES.filter(p => p.categories.includes(activeCategory));
+
+    const query = (document.getElementById('pkgSearchInput')?.value || '').trim().toLowerCase();
+    if(query){
+        visible = visible.filter(p =>
+            p.title.toLowerCase().includes(query) || p.blurb.toLowerCase().includes(query)
+        );
+    }
+
+    const sortBy = document.getElementById('pkgSortSelect')?.value || 'recommended';
+    visible = [...visible];
+    if(sortBy === 'duration-asc') visible.sort((a,b) => parseInt(a.duration) - parseInt(b.duration));
+    if(sortBy === 'duration-desc') visible.sort((a,b) => parseInt(b.duration) - parseInt(a.duration));
+    if(sortBy === 'name') visible.sort((a,b) => a.title.localeCompare(b.title));
+
+    pkgGrid.innerHTML = visible.map((p, i) => pkgCardHTML(p, i, false)).join('');
+    emptyState.classList.toggle('show', visible.length === 0);
+    wirePkgCardEvents(pkgGrid, visible);
+}
+
+/* ============ DETAILS MODAL ============ */
+const pkgModalOverlay = document.getElementById('pkgModalOverlay');
+const pkgModal = document.getElementById('pkgModal');
+
+function openPkgModal(title){
+    const p = PACKAGES.find(pkg => pkg.title === title);
+    if(!p) return;
+
+    const catLabel = CATEGORIES.find(c => c.key === p.categories[0])?.label || '';
+
+    pkgModal.innerHTML = `
+        <div class="pkgModalImg">
+            <img src="./${p.img}" alt="${p.title}">
+            <span class="pkgTag">${catLabel}</span>
+            <span class="pkgDuration">${p.duration}</span>
+            <button type="button" class="pkgModalClose" aria-label="Close">✕</button>
+        </div>
+        <div class="pkgModalBody">
+            <h2>${p.title}</h2>
+            <p class="blurb">${p.blurb}</p>
+
+            <h4>Day-by-day itinerary</h4>
+            <div class="itineraryList">
+                ${p.itinerary.map((d, i) => `
+                    <div class="itineraryItem">
+                        <div class="itineraryDay">${i + 1}</div>
+                        <div class="itineraryText">
+                            <strong>Day ${i + 1} — ${d.title}</strong>
+                            <span>${d.desc}</span>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+
+            <h4>What's included / not included</h4>
+            <div class="inclExclGrid">
+                <ul class="yes">${p.inclusions.map(x => `<li>${x}</li>`).join('')}</ul>
+                <ul class="no">${p.exclusions.map(x => `<li>${x}</li>`).join('')}</ul>
+            </div>
+
+            <div class="pkgModalFooter">
+                <div class="pkgVerify">
+                    <span class="from">Ask for</span>
+                    <span class="verifyLabel">Price & Availability</span>
+                </div>
+                <div class="pkgActions">
+                    <a class="pkgModalContactBtn call" href="tel:${CONTACT_PHONE}">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1l-2.3 2.3z" fill="#fff"/></svg>
+                        Call Us
+                    </a>
+                    <a class="pkgModalContactBtn whatsapp" href="${waLink(p.title)}" target="_blank" rel="noopener">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+
+    pkgModal.querySelector('.pkgModalClose').addEventListener('click', closePkgModal);
+    pkgModalOverlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePkgModal(){
+    pkgModalOverlay.classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+pkgModalOverlay.addEventListener('click', (e) => {
+    if(e.target === pkgModalOverlay) closePkgModal();
+});
+document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && pkgModalOverlay.classList.contains('show')) closePkgModal();
+});
+
+/* ============ hero parallax, live stats, scroll cue ============ */
+const heroSection = document.getElementById('pkgHeroSection');
+heroSection.addEventListener('mousemove', (e)=>{
+    const r = heroSection.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    heroSection.style.setProperty('--mx', (px*10) + 'px');
+    heroSection.style.setProperty('--my', (py*10) + 'px');
+});
+
+document.getElementById('statPkgCount').textContent = PACKAGES.length + '+';
+document.getElementById('statCatCount').textContent = (CATEGORIES.length - 1); // exclude "All"
+
+document.getElementById('scrollCue').addEventListener('click', ()=>{
+    document.getElementById('categoryBar').scrollIntoView({ behavior:'smooth', block:'start' });
+});
+
+document.querySelectorAll('#heroQuickCats .qc').forEach(qc => {
+    qc.addEventListener('click', () => {
+        activeCategory = qc.dataset.cat;
+        renderCategoryBar();
+        renderPackages();
+        document.getElementById('categoryBar').scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+});
+
+/* ============ BACKEND ============ */
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+
+/* ============ SEARCH + SORT wiring ============ */
+document.getElementById('pkgSearchInput').addEventListener('input', renderPackages);
+document.getElementById('pkgSortSelect').addEventListener('change', renderPackages);
+
+/* ============ TRENDING STRIP ============ */
+/* ============ TRENDING CAROUSEL — infinite autoplay, pauses on hover ============ */
+let trendIndex = 0;
+let trendAutoplayTimer = null;
+const trendList = PACKAGES.filter(p => p.trending);
+
+function renderTrending(){
+    const track = document.getElementById('trendingTrack');
+    track.innerHTML = trendList.map((p, i) => pkgCardHTML(p, i, true)).join('');
+    wirePkgCardEvents(track, trendList);
+
+    trendIndex = 0;
+    updateTrendTrack();
+    startTrendAutoplay();
+}
+
+function updateTrendTrack(){
+    const track = document.getElementById('trendingTrack');
+    const card = track.querySelector('.pkgCard');
+    if(!card) return;
+    const cardWidth = card.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    track.style.transform = `translateX(-${trendIndex * (cardWidth + gap)}px)`;
+}
+
+function goToTrendSlide(i){
+    trendIndex = (i + trendList.length) % trendList.length;
+    updateTrendTrack();
+}
+function trendNext(){ goToTrendSlide(trendIndex + 1); }
+function trendPrev(){ goToTrendSlide(trendIndex - 1); }
+
+function startTrendAutoplay(){
+    stopTrendAutoplay();
+    trendAutoplayTimer = setInterval(trendNext, 4000); // infinite loop, advances every 4s
+}
+function stopTrendAutoplay(){
+    if(trendAutoplayTimer) clearInterval(trendAutoplayTimer);
+}
+
+document.getElementById('trendNext').addEventListener('click', () => { trendNext(); startTrendAutoplay(); });
+document.getElementById('trendPrev').addEventListener('click', () => { trendPrev(); startTrendAutoplay(); });
+const trendCarouselEl = document.getElementById('trendingCarousel');
+trendCarouselEl.addEventListener('mouseenter', stopTrendAutoplay);
+trendCarouselEl.addEventListener('mouseleave', startTrendAutoplay);
+window.addEventListener('resize', updateTrendTrack);
+
+/* ============ BEST TIME TO VISIT ============ */
+const PLANNING_TIPS = [
+    { ic:'🏔️', region:'Ladakh & Kashmir', season:'Apr – Jun, Sep – Nov', note:'Roads open post-winter; avoid Jul–Aug monsoon landslides.' },
+    { ic:'⛰️', region:'Himachal (Manali/Shimla)', season:'Mar – Jun, Oct – Dec', note:'Snow season Dec–Feb is scenic but roads can close.' },
+    { ic:'🏖️', region:'Goa', season:'Nov – Feb', note:'Cool, dry weather — peak season, book stays early.' },
+    { ic:'🌴', region:'Kerala', season:'Sep – Mar', note:'Post-monsoon backwaters are at their most lush.' },
+    { ic:'🐫', region:'Rajasthan & Desert', season:'Oct – Mar', note:'Summers exceed 45°C — stick to winter months.' },
+    { ic:'🌿', region:'North East (Meghalaya)', season:'Oct – Apr', note:'Avoid heavy monsoon months (Jun–Aug) for root-bridge treks.' }
+];
+function renderPlanning(){
+    document.getElementById('planningGrid').innerHTML = PLANNING_TIPS.map(t => `
+        <div class="planCard">
+            <div class="icBadge">${t.ic}</div>
+            <h4>${t.region}</h4>
+            <span class="season">${t.season}</span>
+            <p>${t.note}</p>
+        </div>
+    `).join('');
+}
+
+/* ============ PHOTO GALLERY ============
+   `own: true` marks the one photo confirmed to already exist on your own
+   server (from your homepage's Featured Destinations strip) — used as-is.
+   The rest are free-license stock photos with a brand mark added so they
+   read as "yours" until you swap in real trip photos. */
+const GALLERY_PHOTOS = [
+    { label: 'Ladakh', tall:true, src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Khardung%20La%20(mountain%20pass)%2C%20Ladakh%2C%20North%20India.jpg' },
+    { label: 'Goa', src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Vagator%20Beach%2C%20Goa%2C%20India.jpg' },
+    { label: 'Kashmir', src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shikara%20in%20Dal%20Lake%20in%20Kashmir.JPG' },
+    { label: 'Kerala', src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Allepy%20Backwaters%2C%20Kerala%2C%20India.jpg' },
+    { label: 'Jaisalmer', tall:true, src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Fort%20Jaisalmer%20at%20sunset.jpg' },
+    { label: 'Meghalaya', src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Living%20root%20bridges%2C%20Nongriat%20village%2C%20Meghalaya.jpg' },
+    { label: 'Himachal Pradesh', own:true, src: '/images/paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg' },
+    { label: 'Andaman Islands', src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Radhanagar%20Beach%2C%20Havelock%20Island%2C%20Andaman%2C%20India.jpg' }
+];
+function renderGallery(){
+    document.getElementById('galleryGrid').innerHTML = GALLERY_PHOTOS.map(g => {
+        const thumb = g.own ? g.src : `${g.src}?width=600`;
+        const full = g.own ? g.src : `${g.src}?width=1400`;
+        return `
+        <div class="galleryItem ${g.tall ? 'tall' : ''}" data-full="${full}">
+            <img src="./${thumb}" alt="${g.label} — Namdev's Tour & Travels" loading="lazy">
+            <div class="galBrandMark">
+                <img src="././images/logo03.png" alt="">
+                <span>Namdev's</span>
+            </div>
+            <div class="galOverlay">📍 ${g.label}</div>
+        </div>
+    `;
+    }).join('');
+    document.querySelectorAll('.galleryItem').forEach(item => {
+        item.addEventListener('click', () => openPhotoLightbox(item.dataset.full));
+    });
+}
+function openPhotoLightbox(src){
+    const overlay = document.createElement('div');
+    overlay.className = 'videoLightbox show';
+    overlay.innerHTML = `
+        <div style="max-width:44rem; width:100%; position:relative;">
+            <button type="button" style="position:absolute; top:-2.6rem; right:0; width:2.2rem; height:2.2rem; border-radius:50%; background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✕</button>
+            <img src="./${src}" style="width:100%; border-radius:.8rem; display:block;">
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    const close = () => overlay.remove();
+    overlay.querySelector('button').addEventListener('click', close);
+    overlay.addEventListener('click', (e) => { if(e.target === overlay) close(); });
+}
+
+/* ============ VIDEO REEL GALLERY ============
+   PLACE YOUR VIDEO FILES HERE:
+   Create a folder named "videos" at your site root (same level as index.html,
+   booktour.html, tourpack.html) and drop your .mp4 files in there. Then set
+   each `src` below to match, e.g. "/videos/ladakh-reel.mp4".
+   Recommended: vertical 9:16 mp4 (H.264), under ~15-20MB each so they load
+   fast — trim/compress longer clips if needed.
+   `poster` is the still image shown before the video starts playing. */
+const VIDEO_REELS = [
+    { title: 'Ladakh Bike Ride', poster: 'https://commons.wikimedia.org/wiki/Special:FilePath/Khardung%20La%20(mountain%20pass)%2C%20Ladakh%2C%20North%20India.jpg?width=500', src: '/videos/ladakh-reel.mp4' },
+    { title: 'Goa Sunset Cruise', poster: 'https://commons.wikimedia.org/wiki/Special:FilePath/Vagator%20Beach%2C%20Goa%2C%20India.jpg?width=500', src: '/videos/goa-reel.mp4' },
+    { title: 'Kashmir Shikara Ride', poster: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shikara%20in%20Dal%20Lake%20in%20Kashmir.JPG?width=500', src: '/videos/kashmir-reel.mp4' },
+    { title: 'Kerala Backwaters', poster: 'https://commons.wikimedia.org/wiki/Special:FilePath/Allepy%20Backwaters%2C%20Kerala%2C%20India.jpg?width=500', src: '/videos/kerala-reel.mp4' }
+];
+function renderVideos(){
+    document.getElementById('videoGrid').innerHTML = VIDEO_REELS.map((v, i) => `
+        <div class="videoCard" data-index="${i}">
+            <video class="videoInline" muted loop playsinline preload="none" poster="${v.poster}"></video>
+            <div class="videoExpandHint">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="videoLabel">${v.title}</div>
+        </div>
+    `).join('');
+    document.querySelectorAll('.videoCard').forEach(card => {
+        card.addEventListener('click', () => openVideoLightbox(VIDEO_REELS[card.dataset.index].src));
+        videoAutoplayObserver.observe(card);
+    });
+}
+
+/* local videos autoplay (muted, looped) as soon as their card scrolls into view — pause when scrolled away */
+const videoAutoplayObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const video = entry.target.querySelector('.videoInline');
+        const src = VIDEO_REELS[entry.target.dataset.index].src;
+        if(entry.isIntersecting){
+            if(!video.getAttribute('src')) video.src = src;
+            video.play().catch(() => {}); // ignore autoplay-blocked errors
+        } else {
+            video.pause();
+        }
+    });
+}, { threshold: 0.5 });
+
+const videoLightbox = document.getElementById('videoLightbox');
+const videoLightboxPlayer = document.getElementById('videoLightboxPlayer');
+function openVideoLightbox(src){
+    videoLightboxPlayer.src = src;
+    videoLightboxPlayer.muted = false;
+    videoLightboxPlayer.play().catch(() => {});
+    videoLightbox.classList.add('show');
+}
+function closeVideoLightbox(){
+    videoLightboxPlayer.pause();
+    videoLightboxPlayer.src = '';
+    videoLightbox.classList.remove('show');
+}
+document.getElementById('videoLightboxClose').addEventListener('click', closeVideoLightbox);
+videoLightbox.addEventListener('click', (e) => { if(e.target === videoLightbox) closeVideoLightbox(); });
+
+/* ============ TESTIMONIALS ============ */
+const TESTIMONIALS = [
+    { name:'Rohit Sharma', trip:'Ladakh Bike Expedition', rating:5, quote:'Every detail was handled — bikes, permits, camp stays. Best trip I\'ve done with friends.' },
+    { name:'Priya Nair', trip:'Kerala Backwaters & Munnar', rating:5, quote:'The houseboat night was magical. Booking was smooth, OTP verification felt secure too.' },
+    { name:'Amit & Sneha', trip:'Kashmir Valley & Gulmarg', rating:5, quote:'Our honeymoon trip was perfectly planned. The team even adjusted our itinerary on short notice.' },
+    { name:'Vikram Singh', trip:'Golden Triangle Heritage Tour', rating:4, quote:'Great guides at every fort, very knowledgeable. Only wish we had one more day in Jaipur.' },
+    { name:'Ananya Rao', trip:'Goa Beach Escape', rating:5, quote:'Quick 4-day escape, zero planning stress. The sunset cruise was the highlight.' },
+    { name:'Karan Mehta', trip:'Char Dham Yatra', rating:5, quote:'Long journey made easy — comfortable stays and a driver who knew every route well.' }
+];
+function renderTestimonials(){
+    document.getElementById('testimonialGrid').innerHTML = TESTIMONIALS.map(t => `
+        <div class="testimonialCard">
+            <div class="stars">${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</div>
+            <p class="quote">"${t.quote}"</p>
+            <div class="testimonialPerson">
+                <div class="avatar">${t.name.split(' ').map(n => n[0]).join('').slice(0,2)}</div>
+                <div>
+                    <b>${t.name}</b>
+                    <span>${t.trip}</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+/* ============ FAQ ============ */
+const FAQS = [
+    { q:'Do I need to pay anything to enquire or request a custom trip?', a:'No — browsing, enquiring, and requesting a custom itinerary are completely free. Payment is only discussed once you decide to confirm a booking.' },
+    { q:'Why do you verify my email with an OTP?', a:'It confirms the booking is genuinely from you and not a bot or mistyped submission, so our team can reach out on a real, working email.' },
+    { q:'What ID proof is needed to confirm a booking?', a:'Aadhaar, PAN, Voter ID, Driving Licence, or Passport for Indian nationals; Passport or Visa copy for foreign nationals. You can upload it during booking or share it later at pickup.' },
+    { q:'Can I customize an existing package?', a:'Yes — most packages can be adjusted for extra days, different hotel categories, or added stops. Mention it in the booking notes or use the custom trip request form above.' },
+    { q:'What is your cancellation policy?', a:'Cancellations made 7+ days before the trip start date are eligible for a refund minus a small processing fee. Reach out to our team directly for specifics on your booking.' },
+    { q:'Do you offer group or corporate bookings?', a:'Yes, for groups of 10 or more (family functions, corporate offsites, school trips) we offer custom pricing — contact us directly via WhatsApp or the enquiry form.' }
+];
+function renderFaq(){
+    document.getElementById('faqList').innerHTML = FAQS.map((f, i) => `
+        <div class="faqItem" data-index="${i}">
+            <button type="button" class="faqQ">
+                <span>${f.q}</span>
+                <span class="plus">+</span>
+            </button>
+            <div class="faqA">${f.a}</div>
+        </div>
+    `).join('');
+    document.querySelectorAll('.faqQ').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.faqItem').classList.toggle('open');
+        });
+    });
+}
+
+/* ============ BLOG / TRAVEL GUIDES TEASER ============
+   Placeholder posts — link each to a real blog post URL once /blog.html
+   and individual post pages exist on the site. */
+const BLOG_POSTS = [
+    { tag:'Ladakh', title:'Best Time to Ride Ladakh: A Month-by-Month Guide', excerpt:'When the passes actually open, when they get crowded, and when to avoid altogether.', img:'https://commons.wikimedia.org/wiki/Special:FilePath/Khardung%20La%20(mountain%20pass)%2C%20Ladakh%2C%20North%20India.jpg?width=500', url:'/blog.html' },
+    { tag:'Packing', title:'What to Pack for a Char Dham Yatra', excerpt:'Altitude, cold nights, and long walking days — the essentials people forget.', img:'https://commons.wikimedia.org/wiki/Special:FilePath/Kedarnath%20Temple%20with%20Snow%20Covered%20Mountains%20in%20Background.jpg?width=500', url:'/blog.html' },
+    { tag:'Kashmir', title:'Srinagar in 3 Days: A Realistic Itinerary', excerpt:'What\'s actually doable without rushing between Dal Lake, Gulmarg, and Pahalgam.', img:'https://commons.wikimedia.org/wiki/Special:FilePath/Shikara%20in%20Dal%20Lake%20in%20Kashmir.JPG?width=500', url:'/blog.html' }
+];
+function renderBlog(){
+    const el = document.getElementById('blogGrid');
+    if(!el) return;
+    el.innerHTML = BLOG_POSTS.map(b => `
+        <a class="blogCard" href="${b.url}">
+            <div class="blogCardImg"><img src="./${b.img}" alt="${b.title}" loading="lazy"></div>
+            <div class="blogCardBody">
+                <span class="blogCardTag">${b.tag}</span>
+                <h3>${b.title}</h3>
+                <p>${b.excerpt}</p>
+                <span class="blogReadMore">Read more →</span>
+            </div>
+        </a>
+    `).join('');
+}
+
+/* ============ TRIP COST CALCULATOR ============
+   Rough per-person-per-day baseline by trip type, purely indicative —
+   adjust BASE_PER_DAY to match your real average pricing. */
+const BASE_PER_DAY = {
+    mountains: 3200, heritage: 2600, religious: 1800, beaches: 3400,
+    northeast: 3100, kashmir: 3600, kerala: 3300, himachal: 2900,
+    honeymoon: 3800, wildlife: 3500, desert: 2800, international: 8500, adventure: 2700
+};
+function initCalculator(){
+    const typeSelect = document.getElementById('calc-type');
+    if(!typeSelect) return;
+    typeSelect.innerHTML = CATEGORIES.filter(c => c.key !== 'all')
+        .map(c => `<option value="${c.key}">${c.icon} ${c.label}</option>`).join('');
+
+    function recalc(){
+        const type = typeSelect.value || 'mountains';
+        const travelers = Math.max(1, parseInt(document.getElementById('calc-travelers').value) || 1);
+        const days = Math.max(1, parseInt(document.getElementById('calc-days').value) || 1);
+        const hotelMult = parseFloat(document.getElementById('calc-hotel').value) || 1;
+        const perDay = (BASE_PER_DAY[type] || 3000) * hotelMult;
+        const total = Math.round((perDay * travelers * days) / 100) * 100;
+        document.getElementById('calcAmount').innerHTML = `₹${total.toLocaleString('en-IN')} <span>for ${travelers} traveler${travelers > 1 ? 's' : ''}, ${days} day${days > 1 ? 's' : ''}</span>`;
+    }
+    ['calc-type','calc-travelers','calc-days','calc-hotel'].forEach(id => {
+        document.getElementById(id).addEventListener('input', recalc);
+        document.getElementById(id).addEventListener('change', recalc);
+    });
+    recalc();
+}
+
+/* ============ CUSTOM TRIP REQUEST FORM ============ */
+const cfCategorySelect = document.getElementById('cf-category');
+cfCategorySelect.innerHTML = '<option value="" disabled selected>Trip Type</option>' +
+    CATEGORIES.filter(c => c.key !== 'all').map(c => `<option value="${c.label}">${c.icon} ${c.label}</option>`).join('');
+
+/* live validation — same alive feel as the booking page: shake + valid/invalid borders */
+const cfValidators = {
+    'cf-name': v => v.trim().length >= 2,
+    'cf-phone': v => /^(\+?\d{1,3}[-\s]?)?\d{10}$/.test(v.trim()),
+    'cf-email': v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+    'cf-destination': v => v.trim().length >= 2
+};
+Object.keys(cfValidators).forEach(id => {
+    const input = document.getElementById(id);
+    input.addEventListener('blur', () => {
+        if(input.value.trim() === '') return;
+        const valid = cfValidators[id](input.value);
+        input.classList.toggle('valid', valid);
+        input.classList.toggle('invalid', !valid);
+        if(!valid){
+            const row = input.closest('.cfRow');
+            row.classList.remove('shake'); void row.offsetWidth; row.classList.add('shake');
+        }
+    });
+    input.addEventListener('input', () => {
+        if(input.classList.contains('invalid') && cfValidators[id](input.value)){
+            input.classList.remove('invalid'); input.classList.add('valid');
+        }
+    });
+});
+
+document.getElementById('customTripForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('cfSubmitBtn');
+    const status = document.getElementById('cfStatus');
+    const name = document.getElementById('cf-name').value.trim();
+    const phone = document.getElementById('cf-phone').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const destination = document.getElementById('cf-destination').value.trim();
+
+    let ok = true;
+    Object.keys(cfValidators).forEach(id => {
+        const input = document.getElementById(id);
+        const valid = cfValidators[id](input.value);
+        input.classList.toggle('valid', valid);
+        input.classList.toggle('invalid', !valid);
+        if(!valid){
+            ok = false;
+            const row = input.closest('.cfRow');
+            row.classList.remove('shake'); void row.offsetWidth; row.classList.add('shake');
+        }
+    });
+
+    if(!ok){
+        status.className = 'cfStatus bad';
+        status.textContent = 'Please fix the highlighted fields.';
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.className = 'cfStatus';
+    status.textContent = '';
+
+    const payload = {
+        formType: 'Custom Trip Request',
+        name, phone, email, destination,
+        category: cfCategorySelect.value,
+        travelers: document.getElementById('cf-travelers').value,
+        startDate: document.getElementById('cf-startdate').value,
+        budget: document.getElementById('cf-budget').value,
+        message: document.getElementById('cf-message').value.trim()
+    };
+
+    try{
+        const res = await fetch(GOOGLE_SHEET_URL, {
+            method: 'POST', headers: {'Content-Type':'text/plain'},
+            body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+        if(result.result === 'success'){
+            status.className = 'cfStatus ok';
+            status.textContent = 'Got it! Our team will reach out with a custom itinerary shortly.';
+            document.getElementById('customTripForm').reset();
+        } else {
+            status.className = 'cfStatus bad';
+            status.textContent = result.message || 'Something went wrong. Please try again.';
+        }
+    }catch(err){
+        console.error(err);
+        status.className = 'cfStatus bad';
+        status.textContent = 'Network error. Please try again.';
+    }
+    btn.disabled = false;
+    btn.textContent = 'Request My Custom Trip';
+});
+
+/* ============ NEWSLETTER SIGNUP ============ */
+document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('newsletterBtn');
+    const status = document.getElementById('newsletterStatus');
+    const email = document.getElementById('newsletterEmail').value.trim();
+
+    btn.disabled = true;
+    btn.textContent = 'Subscribing...';
+    status.textContent = '';
+
+    try{
+        const res = await fetch(GOOGLE_SHEET_URL, {
+            method: 'POST', headers: {'Content-Type':'text/plain'},
+            body: JSON.stringify({ formType: 'Newsletter Signup', email })
+        });
+        const result = await res.json();
+        status.textContent = result.result === 'success'
+            ? 'Subscribed! Watch your inbox for trip ideas.'
+            : (result.message || 'Something went wrong. Please try again.');
+        if(result.result === 'success') document.getElementById('newsletterForm').reset();
+    }catch(err){
+        console.error(err);
+        status.textContent = 'Network error. Please try again.';
+    }
+    btn.disabled = false;
+    btn.textContent = 'Subscribe';
+});
+
+/* ============ scroll-reveal for new sections ============ */
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('in');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+renderTrending();
+renderPlanning();
+renderBlog();
+renderGallery();
+renderVideos();
+renderTestimonials();
+renderFaq();
+initCalculator();
+
+renderCategoryBar();
+renderPackages();
+
+/* ============ BACK TO TOP ============ */
+const backToTopBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    backToTopBtn.classList.toggle('show', window.scrollY > 600);
+});
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
+<!-- nav responsive -->
+<script>
+function showsidebar(){ document.querySelector('.sidebar').classList.add('show'); }
+function hidesidebar(){ document.querySelector('.sidebar').classList.remove('show'); }
+</script>
+<script src="././finalanimation.js"></script>
+<script src="././experimental_claude.js"></script>
+
+</body>
+</html>

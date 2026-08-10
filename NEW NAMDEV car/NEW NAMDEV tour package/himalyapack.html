@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="./images/logo03.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himalaya & Mountain Tour Packages — Namdev's Tour & Travels</title>
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./finalanimation.css">
+<link rel="stylesheet" href="./experimental_claude.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+
+:root{
+    --mtnInk:#23201C; --mtnMuted:#8A7F70; --mtnAccent:#328ADF; --mtnIce:#6BB4EE; --mtnGold:#C9973A;
+    /* TODO: replace with the font-family declared in /style.css once shared, e.g. --mtnFont: 'Poppins', sans-serif; */
+    --mtnFont:'Nunito Sans', sans-serif;
+}
+*{ margin:0; padding:0; box-sizing:border-box; text-decoration:none; list-style:none; }
+body{ overflow-x:hidden; font-family:var(--mtnFont); color:var(--mtnInk); background:#FBFAF8; }
+html{ scroll-behavior:smooth; }
+
+/* ===== NEW SECTIONS: price/batch, fitness, reviews, faq, packing ===== */
+.mtnBookingRow{ display:grid; grid-template-columns:1.1fr 1fr; gap:1.3rem; margin-bottom:1rem; }
+.mtnPriceCard{
+    background:linear-gradient(135deg,#fff, #F6F9FC); border:1px solid rgba(50,138,223,0.18); border-radius:1rem;
+    padding:1.4rem 1.5rem; display:flex; flex-direction:column; gap:.5rem; box-shadow:0 6px 18px rgba(35,32,28,0.05);
+}
+.mtnPriceCard .mtnPriceLabel{ font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--mtnMuted); font-weight:700; }
+.mtnPriceCard .mtnPriceValue{ font-size:1.9rem; font-weight:700; color:var(--mtnInk); }
+.mtnPriceCard .mtnPriceValue span{ font-size:.85rem; font-weight:600; color:var(--mtnMuted); }
+.mtnPriceCard .mtnPriceNote{ font-size:.78rem; color:var(--mtnMuted); }
+.mtnBatchCard{
+    background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:1rem; padding:1.4rem 1.5rem;
+    display:flex; flex-direction:column; gap:.7rem; box-shadow:0 6px 18px rgba(35,32,28,0.05);
+}
+.mtnBatchCard h5{ font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; color:var(--mtnMuted); font-weight:700; }
+.mtnBatchDates{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.mtnBatchPill{
+    font-size:.78rem; font-weight:600; padding:.4rem .8rem; border-radius:999px;
+    background:rgba(50,138,223,0.08); color:var(--mtnAccent); border:1px solid rgba(50,138,223,0.2);
+}
+.mtnWhatsappRow{ margin-top:.2rem; }
+.mtnWhatsappBtn{
+    display:inline-flex; align-items:center; gap:.5rem; background:#25D366; color:#fff; font-weight:700;
+    font-size:.85rem; padding:.7rem 1.2rem; border-radius:.6rem; transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+}
+.mtnWhatsappBtn:hover{ transform:translateY(-3px); box-shadow:0 10px 22px rgba(37,211,102,0.35); }
+@media screen and (max-width:760px){ .mtnBookingRow{ grid-template-columns:1fr; } }
+
+.mtnFitnessGrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.mtnFitnessStat{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; padding:1.1rem; text-align:center; }
+.mtnFitnessStat strong{ display:block; font-size:1.02rem; color:var(--mtnInk); margin-bottom:.15rem; }
+.mtnFitnessStat span{ font-size:.73rem; color:var(--mtnMuted); }
+.mtnFitnessBarWrap{ grid-column:1 / -1; background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; padding:1.1rem 1.3rem; }
+.mtnFitnessBarWrap .mtnFitnessBarLabel{ display:flex; justify-content:space-between; font-size:.78rem; color:var(--mtnMuted); margin-bottom:.5rem; font-weight:600; }
+.mtnFitnessBarTrack{ height:.55rem; border-radius:999px; background:rgba(35,32,28,0.07); overflow:hidden; }
+.mtnFitnessBarFill{ height:100%; border-radius:999px; background:linear-gradient(90deg,var(--mtnAccent),var(--mtnIce)); transition:width 1.1s cubic-bezier(.16,.84,.44,1); }
+@media screen and (max-width:760px){ .mtnFitnessGrid{ grid-template-columns:1fr 1fr; } }
+
+.mtnReviewsGrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.3rem; }
+.mtnReviewCard{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:1rem; padding:1.3rem 1.4rem; box-shadow:0 6px 18px rgba(35,32,28,0.05); }
+.mtnReviewTop{ display:flex; align-items:center; gap:.7rem; margin-bottom:.6rem; }
+.mtnReviewAvatar{
+    width:2.4rem; height:2.4rem; border-radius:50%; background:linear-gradient(135deg,var(--mtnAccent),var(--mtnIce));
+    color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem; flex-shrink:0;
+}
+.mtnReviewName{ font-size:.88rem; font-weight:700; color:var(--mtnInk); }
+.mtnReviewStars{ color:var(--mtnGold); font-size:.75rem; letter-spacing:.1em; }
+.mtnReviewCard p{ font-size:.84rem; color:#585858; line-height:1.65; }
+@media screen and (max-width:900px){ .mtnReviewsGrid{ grid-template-columns:1fr; } }
+
+.mtnFaqList{ display:flex; flex-direction:column; gap:.7rem; }
+.mtnFaqItem{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; overflow:hidden; transition:border-color .25s ease; }
+.mtnFaqItem:hover{ border-color:rgba(50,138,223,0.3); }
+.mtnFaqHead{ width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem; background:none; border:none; padding:1rem 1.3rem; cursor:pointer; text-align:left; font-size:.88rem; font-weight:700; color:var(--mtnInk); }
+.mtnFaqIcon{ color:var(--mtnMuted); flex-shrink:0; transition:transform .35s cubic-bezier(.34,1.56,.64,1), color .3s ease; }
+.mtnFaqItem.mtnFaqOpen .mtnFaqIcon{ transform:rotate(45deg); color:var(--mtnAccent); }
+.mtnFaqBody{ max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,.84,.44,1), padding .4s ease; padding:0 1.3rem; }
+.mtnFaqItem.mtnFaqOpen .mtnFaqBody{ max-height:12rem; padding:0 1.3rem 1.1rem; }
+.mtnFaqBody p{ font-size:.84rem; color:#585858; line-height:1.65; }
+
+.mtnPackGrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:.7rem 1.5rem; }
+.mtnPackItem{ display:flex; align-items:flex-start; gap:.6rem; font-size:.85rem; color:#585858; }
+.mtnPackItem i{ color:var(--mtnAccent); margin-top:.2rem; flex-shrink:0; }
+@media screen and (max-width:600px){ .mtnPackGrid{ grid-template-columns:1fr; } }
+
+/* ===== SCROLL REVEAL ===== */
+.mtnReveal{ opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.16,.84,.44,1), transform .7s cubic-bezier(.16,.84,.44,1); }
+.mtnReveal.mtnInView{ opacity:1; transform:translateY(0); }
+.mtnReveal.mtnDelay1{ transition-delay:.08s; } .mtnReveal.mtnDelay2{ transition-delay:.16s; } .mtnReveal.mtnDelay3{ transition-delay:.24s; }
+
+/* ===== HERO ===== */
+.mtnHero{
+    position:relative; height:32rem; width:100%; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+}
+.mtnHeroBg{
+    position:absolute; inset:-2%; width:104%; height:104%; background-size:cover; background-position:center;
+    background-image:url(https://images.unsplash.com/photo-1544198365-f5d60b6d8190?q=80&w=1920&auto=format&fit=crop);
+    animation:mtnKenBurns 22s ease-in-out infinite alternate;
+    filter:saturate(1.05);
+}
+@keyframes mtnKenBurns{
+    0%{ transform:scale(1) translate(0,0); }
+    100%{ transform:scale(1.14) translate(-1.2%,-1.5%); }
+}
+.mtnHeroOverlay{
+    position:absolute; inset:0; z-index:2;
+    background:linear-gradient(180deg, rgba(16,20,26,0.22) 0%, rgba(10,14,20,0.55) 55%, rgba(8,12,17,0.9) 100%);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:0 1.5rem;
+}
+.mtnHeroGlow{
+    position:absolute; z-index:1; inset:0; pointer-events:none;
+    background:radial-gradient(60% 50% at 50% 40%, rgba(50,138,223,0.28), transparent 70%);
+    mix-blend-mode:screen;
+}
+.mtnSnowLayer{ position:absolute; inset:0; z-index:3; pointer-events:none; overflow:hidden; }
+.mtnSnowLayer span{
+    position:absolute; top:-5%; display:block; width:.35rem; height:.35rem; border-radius:50%;
+    background:rgba(255,255,255,0.75); filter:blur(.2px);
+    animation:mtnSnowFall linear infinite;
+}
+@keyframes mtnSnowFall{
+    0%{ transform:translateY(-5vh) translateX(0); opacity:0; }
+    8%{ opacity:.9; }
+    100%{ transform:translateY(105vh) translateX(2.5rem); opacity:.15; }
+}
+.mtnTag{
+    font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); backdrop-filter:blur(6px);
+    padding:.4rem 1.1rem; border-radius:999px; display:inline-flex; align-items:center; gap:.4rem;
+    opacity:0; animation:mtnFadeUp .9s ease .15s forwards;
+}
+.mtnTag i{ font-size:.85rem; color:var(--mtnGold); }
+.mtnHeroOverlay h1{
+    font-size:2.9rem; font-weight:400; margin:.8rem 0 .5rem; letter-spacing:.01em;
+    opacity:0; animation:mtnFadeUp .9s ease .32s forwards;
+    background:linear-gradient(100deg,#fff 30%, #EAF3FC 55%, #fff 80%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+}
+.mtnHeroOverlay p{
+    font-size:.98rem; opacity:0; max-width:38rem; line-height:1.7; color:#E7ECEF;
+    animation:mtnFadeUp .9s ease .48s forwards;
+}
+@keyframes mtnFadeUp{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
+.mtnScrollCue{
+    position:absolute; z-index:4; bottom:1.6rem; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:.3rem; color:#fff; opacity:.85;
+    opacity:0; animation:mtnFadeUp .9s ease .75s forwards;
+}
+.mtnScrollCue span{ font-size:.68rem; text-transform:uppercase; letter-spacing:.1em; }
+.mtnScrollCue i{ font-size:1.1rem; animation:mtnBounce 1.8s ease-in-out infinite; }
+@keyframes mtnBounce{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(7px); } }
+@media screen and (max-width:600px){ .mtnHero{ height:26rem; } .mtnHeroOverlay h1{ font-size:2.1rem; } }
+
+/* ===== OVERVIEW ===== */
+.mtnOverview{ width:74%; max-width:60rem; margin:3rem auto; text-align:center; }
+.mtnOverview p{ color:#585858; line-height:1.7; font-size:.95rem; }
+
+/* ===== PACKAGE TABS ===== */
+.mtnTabsBar{
+    position:sticky; top:0; z-index:200; background:rgba(251,250,248,0.92); backdrop-filter:blur(10px);
+    max-width:100%; margin:0 auto; padding:1.2rem 1.5rem;
+    display:flex; justify-content:center; gap:.7rem; flex-wrap:wrap;
+    border-bottom:1px solid rgba(35,32,28,0.08);
+}
+.mtnTabBtn{
+    position:relative; background:#fff; border:1px solid rgba(35,32,28,0.15); color:var(--mtnInk);
+    padding:.62rem 1.25rem; border-radius:999px; font-size:.82rem; font-weight:600; cursor:pointer;
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, border-color .25s ease, color .25s ease, background .25s ease;
+}
+.mtnTabBtn:hover{ border-color:var(--mtnAccent); color:var(--mtnAccent); transform:translateY(-2px); box-shadow:0 8px 18px rgba(50,138,223,0.16); }
+.mtnTabBtn.mtnTabActive{ background:var(--mtnAccent); border-color:var(--mtnAccent); color:#fff; box-shadow:0 8px 20px rgba(50,138,223,0.3); }
+
+/* ===== PACKAGE PANEL ===== */
+.mtnPanel{ display:none; max-width:72rem; margin:0 auto; padding:2.5rem 1.5rem 4rem; opacity:0; }
+.mtnPanel.mtnPanelActive{ display:block; animation:mtnPanelIn .55s cubic-bezier(.16,.84,.44,1) forwards; }
+@keyframes mtnPanelIn{ from{ opacity:0; transform:translateY(18px); } to{ opacity:1; transform:translateY(0); } }
+
+.mtnPanelBanner{ position:relative; height:19rem; border-radius:1.2rem; overflow:hidden; margin-bottom:2rem; box-shadow:0 16px 36px rgba(35,32,28,0.14); }
+.mtnPanelBanner img{ width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.16,.84,.44,1); }
+.mtnPanelBanner:hover img{ transform:scale(1.07); }
+.mtnPanelBannerText{
+    position:absolute; inset:0; background:linear-gradient(0deg, rgba(16,20,17,0.92), rgba(16,20,17,0.1) 65%, transparent 100%);
+    display:flex; flex-direction:column; justify-content:flex-end; padding:1.8rem; color:#fff;
+}
+.mtnPanelBannerText span{ font-size:.75rem; color:var(--mtnGold); text-transform:uppercase; letter-spacing:.07em; font-weight:700; display:inline-flex; align-items:center; gap:.4rem; }
+.mtnPanelBannerText h2{ font-size:1.95rem; font-weight:400; margin-top:.3rem; }
+
+.mtnPanelIntro{ color:#585858; font-size:.95rem; line-height:1.75; margin-bottom:2rem; }
+
+.mtnStatsRow{ display:grid; grid-template-columns:repeat(4, 1fr); gap:1rem; margin-bottom:2.5rem; }
+.mtnStatBox{
+    background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; padding:1.1rem; text-align:center;
+    box-shadow:0 4px 14px rgba(35,32,28,0.05);
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, border-color .3s ease;
+}
+.mtnStatBox:hover{ transform:translateY(-5px); box-shadow:0 14px 28px rgba(50,138,223,0.15); border-color:rgba(50,138,223,0.3); }
+.mtnStatBox i{ font-size:1.3rem; color:var(--mtnAccent); margin-bottom:.4rem; display:inline-block; transition:transform .3s ease; }
+.mtnStatBox:hover i{ transform:scale(1.15) rotate(-4deg); }
+.mtnStatBox strong{ display:block; font-size:1.05rem; color:var(--mtnInk); }
+.mtnStatBox span{ font-size:.75rem; color:var(--mtnMuted); }
+
+.mtnPanel h3.mtnSubHeading{
+    font-size:1.3rem; font-weight:600; margin:2.5rem 0 1.2rem; position:relative; padding-left:1rem;
+}
+.mtnPanel h3.mtnSubHeading::before{
+    content:""; position:absolute; left:0; top:.15rem; bottom:.15rem; width:4px; background:var(--mtnAccent); border-radius:2px;
+}
+
+.mtnItinerary{ display:flex; flex-direction:column; gap:.7rem; }
+.mtnDay{ background:#fff; border:1px solid rgba(35,32,28,0.08); border-radius:.8rem; overflow:hidden; transition:border-color .25s ease, box-shadow .25s ease; }
+.mtnDay:hover{ border-color:rgba(50,138,223,0.3); box-shadow:0 6px 16px rgba(35,32,28,0.06); }
+.mtnDayHead{
+    width:100%; display:flex; align-items:center; gap:1rem; background:none; border:none; padding:1rem 1.3rem;
+    cursor:pointer; text-align:left;
+}
+.mtnDayNum{
+    flex-shrink:0; width:2.4rem; height:2.4rem; border-radius:50%; background:rgba(50,138,223,0.1);
+    color:var(--mtnAccent); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem;
+    transition:background .3s ease, color .3s ease, transform .3s ease;
+}
+.mtnDay.mtnDayOpen .mtnDayNum{ background:var(--mtnAccent); color:#fff; transform:scale(1.06); }
+.mtnDayHead strong{ flex:1; font-size:.92rem; }
+.mtnDayIcon{ color:var(--mtnMuted); transition:transform .35s cubic-bezier(.34,1.56,.64,1), color .3s ease; }
+.mtnDay.mtnDayOpen .mtnDayIcon{ transform:rotate(180deg); color:var(--mtnAccent); }
+.mtnDayBody{ max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,.84,.44,1), padding .4s ease; padding:0 1.3rem; }
+.mtnDay.mtnDayOpen .mtnDayBody{ max-height:14rem; padding:0 1.3rem 1.2rem 4.1rem; }
+.mtnDayBody p{ font-size:.85rem; color:#585858; line-height:1.65; }
+
+.mtnPlacesGrid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1.3rem; }
+.mtnPlaceCard{ background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 6px 18px rgba(35,32,28,0.07); transition:transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease; }
+.mtnPlaceCard:hover{ transform:translateY(-6px); box-shadow:0 18px 34px rgba(35,32,28,0.14); }
+.mtnPlaceCard .mtnPlaceImgWrap{ overflow:hidden; height:9rem; }
+.mtnPlaceCard img{ width:100%; height:9rem; object-fit:cover; transition:transform .8s cubic-bezier(.16,.84,.44,1); display:block; }
+.mtnPlaceCard:hover img{ transform:scale(1.1); }
+.mtnPlaceCard .mtnPlaceBody{ padding:1rem 1.1rem 1.2rem; }
+.mtnPlaceCard h4{ font-size:.98rem; margin-bottom:.4rem; }
+.mtnPlaceCard p{ font-size:.8rem; color:var(--mtnMuted); line-height:1.55; }
+
+.mtnIncExc{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.mtnIncBox, .mtnExcBox{ background:#fff; border-radius:.8rem; padding:1.3rem 1.4rem; border:1px solid rgba(35,32,28,0.08); transition:transform .3s ease, box-shadow .3s ease; }
+.mtnIncBox:hover, .mtnExcBox:hover{ transform:translateY(-3px); box-shadow:0 10px 22px rgba(35,32,28,0.08); }
+.mtnIncBox h4{ color:#2E7D46; font-size:.95rem; margin-bottom:.8rem; display:flex; align-items:center; gap:.4rem; }
+.mtnExcBox h4{ color:#B33A3A; font-size:.95rem; margin-bottom:.8rem; display:flex; align-items:center; gap:.4rem; }
+.mtnIncBox ul, .mtnExcBox ul{ display:flex; flex-direction:column; gap:.55rem; }
+.mtnIncBox li, .mtnExcBox li{ font-size:.83rem; color:#585858; display:flex; align-items:flex-start; gap:.5rem; }
+.mtnIncBox li i{ color:#2E7D46; margin-top:.15rem; }
+.mtnExcBox li i{ color:#B33A3A; margin-top:.15rem; }
+
+.mtnWhyBox{
+    position:relative; overflow:hidden;
+    background:linear-gradient(135deg, rgba(50,138,223,0.09), rgba(201,151,58,0.09));
+    border:1px solid rgba(50,138,223,0.12);
+    border-radius:1rem; padding:1.6rem 1.8rem; margin:2.5rem 0; display:flex; gap:1.2rem; align-items:flex-start;
+}
+.mtnWhyBox::before{
+    content:""; position:absolute; top:-40%; right:-10%; width:12rem; height:12rem; border-radius:50%;
+    background:radial-gradient(circle, rgba(50,138,223,0.15), transparent 70%); pointer-events:none;
+}
+.mtnWhyBox i{ font-size:1.6rem; color:var(--mtnGold); flex-shrink:0; margin-top:.2rem; }
+.mtnWhyBox p{ font-size:.9rem; color:#585858; line-height:1.7; position:relative; }
+
+.mtnAltBadge{
+    display:inline-flex; align-items:center; gap:.4rem; background:rgba(46,139,107,0.1); color:var(--mtnAccent);
+    font-size:.78rem; font-weight:700; padding:.35rem .8rem; border-radius:999px; margin-bottom:1.4rem;
+}
+
+.mtnPanelCta{
+    position:relative; overflow:hidden;
+    margin-top:2.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+    background:linear-gradient(120deg, var(--mtnInk) 60%, #35302A 100%); border-radius:1rem; padding:1.6rem 1.8rem; color:#fff;
+}
+.mtnPanelCta::after{
+    content:""; position:absolute; top:-60%; right:-6%; width:14rem; height:14rem; border-radius:50%;
+    background:radial-gradient(circle, rgba(50,138,223,0.22), transparent 70%); pointer-events:none;
+}
+.mtnPanelCta div h4{ font-size:1.1rem; margin-bottom:.2rem; }
+.mtnPanelCta div p{ font-size:.82rem; color:#D3C9C9; }
+.mtnPanelCtaBtn{
+    position:relative; background:var(--mtnAccent); color:#fff; padding:.8rem 1.6rem; border-radius:.6rem;
+    font-weight:600; font-size:.9rem; white-space:nowrap; display:inline-flex; align-items:center; gap:.5rem;
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1), background .3s ease, box-shadow .3s ease;
+}
+.mtnPanelCtaBtn:hover{ background:var(--mtnIce); transform:translateY(-3px); box-shadow:0 10px 22px rgba(107,180,238,0.4); }
+
+@media screen and (max-width:900px){
+    .mtnStatsRow{ grid-template-columns:1fr 1fr; }
+    .mtnPlacesGrid{ grid-template-columns:1fr 1fr; }
+    .mtnIncExc{ grid-template-columns:1fr; }
+}
+@media screen and (max-width:600px){
+    .mtnPlacesGrid{ grid-template-columns:1fr; }
+    .mtnPanelBanner{ height:12rem; }
+    .mtnPanelBannerText h2{ font-size:1.4rem; }
+}
+
+/* ===== BOOKING FORM ===== */
+.mtnBookForm{
+    max-width:32rem; margin:4rem auto; background:#fff; border-radius:1rem; padding:2rem;
+    box-shadow:0 8px 24px rgba(30,42,38,0.09); display:flex; flex-direction:column; gap:1rem;
+}
+.mtnBookForm h2{ font-size:1.3rem; text-align:center; }
+.mtnBookForm input, .mtnBookForm select{
+    width:100%; background:#F3F6F4; border:1px solid rgba(30,42,38,0.1); border-radius:.6rem;
+    padding:.75rem .9rem; font-size:.9rem; outline:none; font-family:inherit; color:var(--mtnInk);
+}
+.mtnBookForm input:focus, .mtnBookForm select:focus{ border-color:var(--mtnAccent); }
+.mtnBookForm button{ background:var(--mtnAccent); color:#fff; border:none; border-radius:.6rem; padding:.9rem; font-weight:600; cursor:pointer; }
+.mtnBookForm button:hover{ background:var(--mtnInk); }
+.mtnSendOtpBtn{ background:var(--mtnInk); color:#fff; border:none; border-radius:.5rem; padding:.7rem 1rem; cursor:pointer; }
+.mtnOtpInput{ width:100%; padding:.7rem; border-radius:.5rem; border:1px solid #ccc; }
+</style>
+</head>
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a  href="./index.html">Home</a></li>
+                <li class="hideonmobile navHasDropdown">
+    <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+    <div class="navDropdown">
+        <div class="navDropdownCol">
+            <h4>Luxury Buses</h4>
+            <a href="">Volvo Bus</a>
+            <a href="">Winger</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Luxury Cars</h4>
+            <a href="">Innova Crysta</a>
+            <a href="">Kia Carnival</a>
+            <a href="">Honda City</a>
+            <a href="">Etios</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Economical Cars</h4>
+            <a href="">Swift Dzire</a>
+            <a href="">Ertiga</a>
+            <a href="">Innova</a>
+        </div>
+    </div>
+</li>
+            <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="./icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+    <!-- loader / animation -->
+    <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+
+<div class="mtnHero">
+    <div class="mtnHeroBg"></div>
+    <div class="mtnHeroGlow"></div>
+    <div class="mtnSnowLayer" id="mtnSnowLayer"></div>
+    <div class="mtnHeroOverlay">
+        <span class="mtnTag"><i class="ti ti-tent"></i> Himalaya &amp; Mountain Escapes</span>
+        <h1>Himalaya &amp; Mountain Tour Packages</h1>
+        <p>Ten unforgettable journeys through India's greatest mountain landscapes — treks, valleys, monasteries, and hill towns, all planned end to end.</p>
+    </div>
+    <div class="mtnScrollCue"><span>Explore Packages</span><i class="ti ti-chevron-down"></i></div>
+</div>
+
+<div class="mtnOverview mtnReveal mtnInView">
+    <p>Choose a mountain escape below to see the full journey — day-by-day itinerary, every place you'll visit, what's included, and why this trip is worth the altitude.</p>
+</div>
+
+<div class="mtnTabsBar">
+    <button class="mtnTabBtn mtnTabActive" onclick="mtnShowPanel('kashmir')">Kashmir Great Lakes</button>
+    <button class="mtnTabBtn" onclick="mtnShowPanel('ladakh')">Manali–Leh–Ladakh</button>
+    <button class="mtnTabBtn" onclick="mtnShowPanel('spiti')">Spiti Valley</button>
+    <button class="mtnTabBtn" onclick="mtnShowPanel('kedarkantha')">Kedarkantha Trek</button>
+    <button class="mtnTabBtn" onclick="mtnShowPanel('valleyofflowers')">Valley of Flowers</button>
+    <button class="mtnTabBtn" onclick="mtnShowPanel('sikkim')">Darjeeling &amp; Sikkim</button>
+    <button class="mtnTabBtn" onclick="mtnShowPanel('mcleodganj')">Dharamshala–McLeodganj</button>
+    <button class="mtnTabBtn" onclick="mtnShowPanel('kumaon')">Nainital &amp; Kumaon</button>
+    <button class="mtnTabBtn" onclick="mtnShowPanel('auli')">Auli &amp; Chopta</button>
+    <button class="mtnTabBtn" onclick="mtnShowPanel('manali')">Manali &amp; Solang</button>
+</div>
+
+<!-- ===================== 1. KASHMIR GREAT LAKES ===================== -->
+<div class="mtnPanel mtnPanelActive" id="mtnPanel-kashmir">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=1600&auto=format&fit=crop" alt="Kashmir Great Lakes">
+        <div class="mtnPanelBannerText"><span>Trekking Expedition · Jammu &amp; Kashmir</span><h2>Kashmir Great Lakes Trek</h2></div>
+    </div>
+    <p class="mtnPanelIntro">The Kashmir Great Lakes Trek is widely regarded as the finest high-altitude walk in the Indian Himalayas, threading through the Sonamarg range and stringing together seven glacial lakes across roughly 72 kilometres of meadows, birch forests, and ridgelines. Each day brings a distinct landscape — dense pine forest gives way to open bugyals (alpine pastures), which in turn open onto turquoise lakes framed by snow. We handle the full logistics chain: certified trek leaders, quality tented camps, all meals on the trail, and the forest permits required for the Sonamarg-to-Naranag crossing, so your only job is to walk and take it in.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>8 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>7 Lakes</strong><span>Places covered</span></div>
+        <div class="mtnStatBox"><i class="ti ti-mountain"></i><strong>Challenging</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-sun"></i><strong>Jul – Sep</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-compass"></i><p>Few treks in India pack in as many alpine lakes in one route. Vishansar and Gadsar shift colour through the day, and the Gadsar Pass crossing at over 4,100m is the trek's high point, both literally and in the memories it leaves behind.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1</span><strong>Arrival in Sonamarg</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Arrive in Sonamarg, acclimatize, briefing on the route and gear check.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">2-3</span><strong>Nichnai to Vishansar Lake</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Trek through pine forests to Nichnai, then cross Nichnai Pass to reach Vishansar Lake.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">4-5</span><strong>Gadsar Pass to Satsar</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Cross the Gadsar Pass, descend to Gadsar Lake, continue to the Satsar lake cluster.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">6-7</span><strong>Gangbal Lake &amp; Naranag</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Trek to Gangbal Lake beneath Mount Harmukh, then descend to Naranag.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">8</span><strong>Return to Srinagar</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive from Naranag back to Srinagar, drop-off at hotel or airport.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1601652442571-a06adba53531?q=80&w=800&auto=format&fit=crop" alt="Vishansar Lake"><div class="mtnPlaceBody"><h4>Vishansar Lake</h4><p>A glacial lake ringed by meadows, one of the trek's most photographed stops.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1626016570251-ed37e8a15b17?q=80&w=800&auto=format&fit=crop" alt="Gadsar Pass"><div class="mtnPlaceBody"><h4>Gadsar Pass</h4><p>The trek's highest crossing, opening onto sweeping valley views.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1580289142397-3b747afe7d9d?q=80&w=800&auto=format&fit=crop" alt="Gangbal Lake"><div class="mtnPlaceBody"><h4>Gangbal Lake</h4><p>Twin lake beneath Mount Harmukh, the trek's dramatic finale.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> Camping equipment &amp; guide</li><li><i class="ti ti-check"></i> All meals during trek</li><li><i class="ti ti-check"></i> Sonamarg–Naranag transfers</li><li><i class="ti ti-check"></i> Permits</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Personal trekking gear</li><li><i class="ti ti-x"></i> Porter/mule for personal baggage</li><li><i class="ti ti-x"></i> Travel insurance</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹18,999 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing camps · GST extra</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">12 Jul</span><span class="mtnBatchPill">26 Jul</span><span class="mtnBatchPill">9 Aug</span><span class="mtnBatchPill">23 Aug</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Kashmir%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>4,191m</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>8-11 km/day</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>12-16 trekkers</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>80%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Challenging fitness needed</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:80%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">PM</div><div><div class="mtnReviewName">Priya M.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Genuinely the best trek I've done in India. The lake colours change through the day and our guide knew exactly when to time each viewpoint.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">AS</div><div><div class="mtnReviewName">Arjun S.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Camping crew was excellent — hot meals every night even at 4,000m. Gadsar Pass day was tough but worth every step.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">NK</div><div><div class="mtnReviewName">Neha K.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Beautiful route, well organised. Would recommend better boots than I brought — the terrain gets rocky near the passes.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Do I need prior trekking experience?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Some multi-day trekking experience is recommended given the altitude and daily distances, but first-timers with good general fitness have completed it successfully with training beforehand.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is there mobile network on the route?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>No — network drops after Sonamarg. We carry a satellite phone with the trek leader for emergencies.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">What if I can't complete the Gadsar Pass crossing?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Our trek leaders carry basic medical supplies and can arrange a safe descent with a local guide if needed; this is discussed during the pre-trek briefing.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Can I rent trekking gear locally?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, sleeping bags, trekking poles, and microspikes can be rented in Sonamarg — let us know in advance and we'll arrange it.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Waterproof trekking shoes</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>4-season sleeping bag</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Trekking poles</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Thermal base layers</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Windproof jacket</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Headlamp with spare batteries</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen & sunglasses</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Personal first-aid kit</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for the Kashmir Great Lakes Trek?</h4><p>Talk to our team to lock in your preferred batch dates.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<!-- ===================== 2. MANALI-LEH-LADAKH ===================== -->
+<div class="mtnPanel" id="mtnPanel-ladakh">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1589224988423-cf95c8f2d5f3?q=80&w=1600&auto=format&fit=crop" alt="Ladakh landscape">
+        <div class="mtnPanelBannerText"><span>Road Expedition · Himachal Pradesh &amp; Ladakh</span><h2>Manali–Leh–Ladakh Circuit</h2></div>
+    </div>
+    <p class="mtnPanelIntro">Regularly ranked among the world's great road trips, this circuit carries you from the green Kullu valley in Manali, over the Rohtang and Baralacha passes, and into the stark, high-altitude desert of Ladakh — a landscape so different from Himachal that it feels like crossing into another country entirely. Along the way you camp at Sarchu on the border of two states, cross Tanglang La at over 5,300 metres, and finish among the monasteries, markets, and lakes surrounding Leh. Because rapid altitude gain is the single biggest risk on this route, we build in dedicated acclimatization stops at Manali and again on arrival in Leh, rather than rushing the itinerary.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>9 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>6 Regions</strong><span>Places covered</span></div>
+        <div class="mtnStatBox"><i class="ti ti-mountain"></i><strong>Moderate</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-sun"></i><strong>Jun – Sep</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-route"></i><p>The overland route through Sarchu and the Moore Plains is as much the destination as Leh itself — a stretch of high-altitude desert unlike anywhere else in India. We pace the altitude gain carefully so the journey stays comfortable, not just scenic.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1-2</span><strong>Manali arrival &amp; acclimatization</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Arrive in Manali, rest day for acclimatization, short visits to Solang Valley and Old Manali.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">3-4</span><strong>Manali to Sarchu via Rohtang</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Cross Rohtang Pass and Baralacha La, overnight camp at Sarchu on the Himachal-Ladakh border.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">5</span><strong>Sarchu to Leh via Tanglang La</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive across Tanglang La, one of the world's highest motorable passes, arrive in Leh.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">6-7</span><strong>Pangong Tso &amp; Nubra Valley</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Day trip to Pangong Tso, then cross Khardung La into the Nubra Valley for a night among the dunes.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">8</span><strong>Leh sightseeing</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Visit Shanti Stupa, Leh Palace, and Thiksey Monastery around the town.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">9</span><strong>Departure from Leh</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Transfer to Leh airport for onward flight, or continue independently.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop" alt="Pangong Tso"><div class="mtnPlaceBody"><h4>Pangong Tso</h4><p>A vast high-altitude lake that shifts colour through the day.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1589308078057-2a29fb87f5a6?q=80&w=800&auto=format&fit=crop" alt="Nubra Valley"><div class="mtnPlaceBody"><h4>Nubra Valley</h4><p>Sand dunes and double-humped camels against a backdrop of snow peaks.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1585116938581-de5c1d1e6ee0?q=80&w=800&auto=format&fit=crop" alt="Thiksey Monastery"><div class="mtnPlaceBody"><h4>Thiksey Monastery</h4><p>A striking hilltop monastery echoing the Potala Palace in miniature.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> AC/4x4 vehicle for the full circuit</li><li><i class="ti ti-check"></i> Hotel &amp; camp stays</li><li><i class="ti ti-check"></i> Daily breakfast &amp; dinner</li><li><i class="ti ti-check"></i> Inner line permits</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Oxygen cylinder (available on request)</li><li><i class="ti ti-x"></i> Lunch</li><li><i class="ti ti-x"></i> Travel insurance</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹34,500 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing · vehicle & fuel included</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">1 Jun</span><span class="mtnBatchPill">15 Jun</span><span class="mtnBatchPill">6 Jul</span><span class="mtnBatchPill">20 Jul</span><span class="mtnBatchPill">3 Aug</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Ladakh%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>5,328m (Tanglang La)</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>150-220 km/day drive</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>10-14 travelers</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>55%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Moderate — altitude, not fitness, is the challenge</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:55%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">RD</div><div><div class="mtnReviewName">Rohan D.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Sarchu camp under the stars was unforgettable. The team paced the acclimatization perfectly — nobody in our group had altitude issues.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">SK</div><div><div class="mtnReviewName">Simran K.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Pangong at sunset is even better than the photos. Vehicles were comfortable for the long drive days.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">VT</div><div><div class="mtnReviewName">Vikram T.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Incredible trip overall. One long drive day was tiring — worth asking to split it if you can add a day.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">How do you manage altitude sickness risk?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>We build in rest days at Manali and on arrival in Leh, keep daily altitude gain within safe limits, and carry oxygen cylinders in the support vehicle throughout Ladakh.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is the Rohtang/Baralacha route open year-round?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>No, the route is typically open from May/June to October depending on snow clearance; we confirm exact dates closer to your batch.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">What kind of vehicle is used?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>SUVs (Innova/Xylo or similar) suited to high-altitude terrain, with an experienced mountain driver for the full circuit.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Are permits needed for Pangong and Nubra?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, inner line permits are required for both and are arranged by our team as part of the package.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Warm jacket (down/fleece)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Thermal wear</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sturdy walking shoes</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunglasses (UV protection)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Lip balm & moisturizer</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Personal medication + Diamox (consult doctor)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Woolen cap & gloves</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank & extra memory cards</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Basic motion-sickness medicine</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for Manali–Leh–Ladakh?</h4><p>We pace the altitude so the journey stays comfortable.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<!-- ===================== 3. SPITI VALLEY ===================== -->
+<div class="mtnPanel" id="mtnPanel-spiti">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1626016570251-ed37e8a15b17?q=80&w=1600&auto=format&fit=crop" alt="Spiti Valley">
+        <div class="mtnPanelBannerText"><span>High-Altitude Desert · Himachal Pradesh</span><h2>Spiti Valley Expedition</h2></div>
+    </div>
+    <p class="mtnPanelIntro">Spiti — literally the "middle land" between India and Tibet — is a high-altitude cold desert of ochre cliffs, glacial rivers, and whitewashed monasteries that feels closer to the Tibetan plateau than to the rest of Himachal Pradesh. This circuit takes the classic overland route from Shimla through the apple orchards and terraced fields of Kinnaur, crosses into Spiti proper, and loops back via Manali, giving you both entry and exit through different terrain rather than a there-and-back drive. Along the way you'll pass through villages that rank among the highest motorable settlements on earth, each one still running on centuries-old Buddhist traditions.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>8 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>5 Villages</strong><span>Places covered</span></div>
+        <div class="mtnStatBox"><i class="ti ti-mountain"></i><strong>Moderate</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-sun"></i><strong>May – Oct</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-tent"></i><p>Key Monastery has stood on its hilltop since the 11th century, and Komic and Langza sit among the highest motorable villages on earth. The stark, lunar landscape of Spiti feels closer to Tibet than the rest of Himachal.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1-2</span><strong>Shimla to Kinnaur</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive from Shimla along the Sutlej valley into Kinnaur, overnight in Kalpa or Sangla.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">3-4</span><strong>Kinnaur to Kaza</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Cross into Spiti via Nako, continue to Kaza, the region's main town.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">5-6</span><strong>Key, Kibber, Langza &amp; Komic</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Visit Key Monastery, the fossil village of Langza, and Komic, one of the highest villages with a motorable road.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">7</span><strong>Chandratal Lake</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive to Chandratal, the crescent-shaped "Moon Lake," camp overnight.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">8</span><strong>Return via Manali</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Cross Kunzum Pass and Rohtang, descend into Manali for departure.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1626016570251-ed37e8a15b17?q=80&w=800&auto=format&fit=crop" alt="Key Monastery"><div class="mtnPlaceBody"><h4>Key Monastery</h4><p>A centuries-old monastery perched dramatically on a hilltop.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1591018773425-4cf5c6f9b3a2?q=80&w=800&auto=format&fit=crop" alt="Chandratal Lake"><div class="mtnPlaceBody"><h4>Chandratal Lake</h4><p>A crescent-shaped high-altitude lake ringed by barren peaks.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1601758064135-c5f5e0f5c5f0?q=80&w=800&auto=format&fit=crop" alt="Kaza town"><div class="mtnPlaceBody"><h4>Kaza</h4><p>Spiti's main town and base for exploring the surrounding villages.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> SUV for hill terrain</li><li><i class="ti ti-check"></i> Hotel &amp; homestay accommodation</li><li><i class="ti ti-check"></i> Daily breakfast &amp; dinner</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Lunch</li><li><i class="ti ti-x"></i> Monastery entry donations</li><li><i class="ti ti-x"></i> Travel insurance</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹27,999 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing · homestays & hotels included</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">18 May</span><span class="mtnBatchPill">8 Jun</span><span class="mtnBatchPill">13 Jul</span><span class="mtnBatchPill">10 Aug</span><span class="mtnBatchPill">14 Sep</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Spiti%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>4,551m (Kunzum Pass)</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>120-180 km/day drive</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>8-12 travelers</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>50%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Moderate — mostly vehicle-based with short walks</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:50%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">AR</div><div><div class="mtnReviewName">Ananya R.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Key Monastery at sunrise was worth waking up early for. Komic and Langza felt like another planet — highly recommend.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">FA</div><div><div class="mtnReviewName">Farhan A.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Roads are rough in places but that's part of Spiti's charm. Homestay in Kaza was a trip highlight.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">MS</div><div><div class="mtnReviewName">Meera S.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Chandratal camping was the best night of the whole trip. Guide was knowledgeable about local Buddhist culture.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is Spiti safe for solo female travelers?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, our groups are mixed and guided throughout, with vetted homestays and hotels; solo travelers join a shared group departure.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">What's the road condition like?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Sections between Kinnaur and Kaza can be rough with occasional landslide delays; we build buffer time into the schedule.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Do I need any special permits?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Indian nationals don't need a permit for most of Spiti; foreign nationals may need a Protected Area Permit, which we assist with.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is there ATM/network access in Spiti?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Limited — Kaza has one or two ATMs that aren't always stocked. We recommend carrying sufficient cash from Manali or Shimla.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Warm layered clothing</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking shoes</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen (high SPF, strong UV at altitude)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Cash (limited ATM access)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Personal medication</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Dust mask/scarf for rough road stretches</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Light daypack</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Camera with extra storage</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for the Spiti Valley Expedition?</h4><p>India's cold desert, planned door to door.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<!-- ===================== 4. KEDARKANTHA TREK ===================== -->
+<div class="mtnPanel" id="mtnPanel-kedarkantha">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1600&auto=format&fit=crop" alt="Kedarkantha snow trek">
+        <div class="mtnPanelBannerText"><span>Winter Trek · Uttarakhand</span><h2>Kedarkantha Winter Trek</h2></div>
+    </div>
+    <p class="mtnPanelIntro">Kedarkantha is consistently rated one of India's most popular winter treks, and for good reason — it delivers a genuine snow-summit experience without demanding prior high-altitude trekking history. Starting from the timber-frame village of Sankri, the route climbs steadily through snow-laden pine and oak forest, opens into wide meadows, and culminates in a pre-dawn summit push to 3,800 metres for a 360-degree panorama that takes in the Garhwal and Kinnaur ranges together. The gradual altitude gain, well-marked trail, and established campsites make this an ideal first Himalayan trek for anyone reasonably fit and comfortable with cold-weather camping.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>6 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>3,800m</strong><span>Summit altitude</span></div>
+        <div class="mtnStatBox"><i class="ti ti-mountain"></i><strong>Easy-Moderate</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-snowflake"></i><strong>Dec – Apr</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-binoculars"></i><p>The summit view takes in the Swargarohini and Bandarpoonch ranges in one sweep, and the campsite at Juda Ka Talab — a frozen lake ringed by pines — is reason enough on its own. It's an ideal first trek for winter beginners.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1</span><strong>Dehradun to Sankri</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive from Dehradun to Sankri, the trek's base village, overnight stay.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">2</span><strong>Sankri to Juda Ka Talab</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Trek through pine and oak forest to the frozen lake campsite of Juda Ka Talab.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">3</span><strong>Juda Ka Talab to Kedarkantha Base</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Continue climbing through open meadows to the base camp below the summit.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">4</span><strong>Summit day &amp; descent</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Pre-dawn summit push, panoramic views, descend to Hargaon campsite.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">5-6</span><strong>Descend to Sankri &amp; departure</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Trek down to Sankri, drive back to Dehradun.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800&auto=format&fit=crop" alt="Kedarkantha Summit"><div class="mtnPlaceBody"><h4>Kedarkantha Summit</h4><p>360-degree views of the Garhwal and Kinnaur ranges from 3,800m.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop" alt="Juda Ka Talab"><div class="mtnPlaceBody"><h4>Juda Ka Talab</h4><p>A frozen alpine lake and one of the trek's most scenic campsites.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?q=80&w=800&auto=format&fit=crop" alt="Sankri village"><div class="mtnPlaceBody"><h4>Sankri Village</h4><p>A quiet Himalayan village and gateway to several treks in the region.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> Camping equipment &amp; trek guide</li><li><i class="ti ti-check"></i> All meals during trek</li><li><i class="ti ti-check"></i> Dehradun–Sankri–Dehradun transfers</li><li><i class="ti ti-check"></i> Forest permits</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Snow gear &amp; gaiters (rentable)</li><li><i class="ti ti-x"></i> Porter for personal bags</li><li><i class="ti ti-x"></i> Travel insurance</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹12,499 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing camps · all meals included</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">20 Dec</span><span class="mtnBatchPill">27 Dec</span><span class="mtnBatchPill">3 Jan</span><span class="mtnBatchPill">17 Jan</span><span class="mtnBatchPill">7 Feb</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Kedarkantha%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>3,800m</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>6-8 km/day</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>14-18 trekkers</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>45%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Easy-Moderate — a good first snow trek</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:45%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">KN</div><div><div class="mtnReviewName">Kabir N.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Perfect first winter trek. Summit sunrise made the early start completely worth it.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">IP</div><div><div class="mtnReviewName">Ishita P.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Snow the whole way from day 2 — magical. Camp food was surprisingly good for that altitude.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">YG</div><div><div class="mtnReviewName">Yash G.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Great trek, well guided. Get proper snow boots — the rental ones were a bit worn.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is this suitable for a first-time trekker?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, Kedarkantha is widely recommended as a first Himalayan trek — moderate daily distances, well-marked trail, and experienced guides throughout.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Will there be snow guaranteed?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Snow cover is near-certain from late December through March; earlier December batches may have partial snow depending on the season.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">What's the age range you accept?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Generally 10 to 55 years, subject to a basic fitness declaration; please check with us for exceptions.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Do I need to carry my own backpack?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>You carry a light daypack; porters/mules handle the main luggage and camping equipment.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Waterproof snow boots</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Gaiters</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Thermal inners (upper & lower)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Fleece jacket + windproof shell</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Woolen cap, gloves, neck warmer</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>4-season sleeping bag (or rentable)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Trekking poles</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Headlamp</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunglasses (snow glare)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle with insulation</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for the Kedarkantha Trek?</h4><p>A great first winter trek — we handle the logistics.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<!-- ===================== 5. VALLEY OF FLOWERS ===================== -->
+<div class="mtnPanel" id="mtnPanel-valleyofflowers">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=1600&auto=format&fit=crop" alt="Valley of Flowers">
+        <div class="mtnPanelBannerText"><span>UNESCO Trek · Uttarakhand</span><h2>Valley of Flowers &amp; Hemkund Sahib</h2></div>
+    </div>
+    <p class="mtnPanelIntro">The Valley of Flowers is a UNESCO World Heritage site that, for a few short weeks each monsoon, transforms into a carpet of hundreds of alpine flower species set against glaciers and waterfalls — a sight botanists and casual trekkers alike travel from across the world to see. We pair the valley visit with a climb to Hemkund Sahib, a Sikh shrine sitting beside a pristine glacial lake at over 4,300 metres, one of the highest gurudwaras in the world. Both destinations are reached on foot from the same base village, making this a compact but genuinely rewarding trek for anyone drawn to Himalayan flora and high-altitude pilgrimage in equal measure.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>6 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>2 Treks</strong><span>Places covered</span></div>
+        <div class="mtnStatBox"><i class="ti ti-mountain"></i><strong>Moderate</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-flower"></i><strong>Jul – Aug</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-cable-car"></i><p>The valley is at its fullest bloom for only a few weeks each monsoon, making the timing of this trip matter more than most. We plan the batch dates around peak bloom so you see the valley at its best.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1</span><strong>Haridwar to Govindghat</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive from Haridwar to Govindghat via Joshimath, the trek's starting point.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">2</span><strong>Trek to Ghangaria</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Trek alongside the Pushpawati river to the base village of Ghangaria.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">3</span><strong>Valley of Flowers day trek</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Full day exploring the flower-carpeted valley, return to Ghangaria by evening.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">4</span><strong>Hemkund Sahib</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Steep climb to Hemkund Sahib and its glacial lake at over 4,300m, return to Ghangaria.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">5-6</span><strong>Descend &amp; return to Haridwar</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Trek down to Govindghat, drive back to Haridwar for departure.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=800&auto=format&fit=crop" alt="Valley of Flowers"><div class="mtnPlaceBody"><h4>Valley of Flowers</h4><p>A UNESCO site blanketed in wildflowers through the monsoon.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=800&auto=format&fit=crop" alt="Hemkund Sahib"><div class="mtnPlaceBody"><h4>Hemkund Sahib</h4><p>A Sikh shrine beside a glacial lake at over 4,300m altitude.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=800&auto=format&fit=crop" alt="Ghangaria"><div class="mtnPlaceBody"><h4>Ghangaria</h4><p>The base village and gateway to both the valley and the shrine.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> Haridwar–Govindghat transfers</li><li><i class="ti ti-check"></i> Guesthouse stays in Ghangaria</li><li><i class="ti ti-check"></i> Trek guide &amp; permits</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Meals</li><li><i class="ti ti-x"></i> Pony/palki charges</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹15,999 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing guesthouse · GST extra</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">10 Jul</span><span class="mtnBatchPill">24 Jul</span><span class="mtnBatchPill">7 Aug</span><span class="mtnBatchPill">21 Aug</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Valleyofflowers%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>4,329m (Hemkund Sahib)</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>10-14 km/day</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>10-14 trekkers</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>60%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Moderate — steep sections near Hemkund</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:60%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">DV</div><div><div class="mtnReviewName">Deepika V.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>The valley in full bloom is something else — worth planning your dates around peak flowering.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">SB</div><div><div class="mtnReviewName">Sanjay B.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Hemkund Sahib climb is steep but the lake at the top is stunning. Bring good rain gear, it drizzles often in monsoon.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">RC</div><div><div class="mtnReviewName">Ritu C.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Well organised and paced. Ghangaria as base camp was comfortable.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">When is peak bloom?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Typically late July to mid-August, though it varies slightly year to year with monsoon timing; we track this and recommend batch dates accordingly.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is it a difficult trek?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>The Valley of Flowers portion is moderate; the additional climb to Hemkund Sahib is steeper and more strenuous.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is camping inside the valley allowed?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>No, camping inside the Valley of Flowers National Park is prohibited — all visits are day treks from Ghangaria.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">What if it rains during the trek?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Monsoon showers are common and part of what makes the valley bloom; we recommend proper rain gear and the trek generally continues as planned.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Rain jacket & pack cover</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Waterproof trekking shoes</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Quick-dry clothing</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Trekking poles</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen & sunglasses</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Personal medication</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Insect repellent</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Light woolens for Hemkund</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Camera / phone with weatherproof case</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for the Valley of Flowers?</h4><p>We plan around peak bloom for the best experience.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<!-- ===================== 6. DARJEELING & SIKKIM ===================== -->
+<div class="mtnPanel" id="mtnPanel-sikkim">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1544544928-4dee900cb0c3?q=80&w=1600&auto=format&fit=crop" alt="Darjeeling tea gardens">
+        <div class="mtnPanelBannerText"><span>Hill Station Circuit · West Bengal &amp; Sikkim</span><h2>Darjeeling – Gangtok – Sikkim</h2></div>
+    </div>
+    <p class="mtnPanelIntro">This eastern Himalayan circuit pairs two of India's most distinctive hill regions. Darjeeling brings colonial-era charm, rolling tea estates, and the UNESCO-listed Darjeeling Himalayan Railway, all set against regular views of Kanchenjunga, the world's third-highest peak. Crossing into Sikkim, the pace shifts toward Buddhist culture and high-altitude landscape — Gangtok's monasteries, the bustling MG Marg promenade, and a day trip to the glacial Tsomgo Lake near the Chinese border. Together the two halves give a fuller picture of the eastern Himalayas than either destination offers alone, and permits for Sikkim's protected areas are arranged as part of the package.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>7 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>5 Sites</strong><span>Places covered</span></div>
+        <div class="mtnStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-sun"></i><strong>Mar – Jun, Oct – Dec</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-camera"></i><p>Tiger Hill at sunrise, with Kanchenjunga turning gold across the horizon, is the single most-requested moment on this trip — we build the itinerary around getting you there on a clear morning.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1-2</span><strong>Bagdogra to Darjeeling</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive up to Darjeeling, visit tea gardens and the Himalayan Mountaineering Institute.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">3</span><strong>Tiger Hill sunrise &amp; toy train</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Pre-dawn visit to Tiger Hill for sunrise over Kanchenjunga, ride the Darjeeling Himalayan toy train.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">4-5</span><strong>Drive to Gangtok</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Cross into Sikkim, drive to Gangtok, visit Rumtek Monastery and MG Marg.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">6</span><strong>Tsomgo Lake &amp; Nathula</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Day trip to Tsomgo Lake and (permit-permitting) Nathula Pass on the Indo-China border.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">7</span><strong>Return to Bagdogra</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive back to Bagdogra for onward travel.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1544544928-4dee900cb0c3?q=80&w=800&auto=format&fit=crop" alt="Darjeeling tea gardens"><div class="mtnPlaceBody"><h4>Darjeeling Tea Gardens</h4><p>Rolling estates producing some of the world's finest tea.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1585116938581-de5c1d1e6ee0?q=80&w=800&auto=format&fit=crop" alt="Rumtek Monastery"><div class="mtnPlaceBody"><h4>Rumtek Monastery</h4><p>One of Sikkim's most significant Buddhist monasteries.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1544198365-f5d60b6d8190?q=80&w=800&auto=format&fit=crop" alt="Tsomgo Lake"><div class="mtnPlaceBody"><h4>Tsomgo Lake</h4><p>A glacial lake at over 3,700m, framed by snow-capped peaks.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> AC vehicle for the full circuit</li><li><i class="ti ti-check"></i> Hotel stays</li><li><i class="ti ti-check"></i> Daily breakfast</li><li><i class="ti ti-check"></i> Sikkim permit assistance</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Lunch &amp; dinner</li><li><i class="ti ti-x"></i> Toy train ticket (subject to availability)</li><li><i class="ti ti-x"></i> Nathula permit fee</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹22,499 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing hotels · breakfast included</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">5 Mar</span><span class="mtnBatchPill">2 Apr</span><span class="mtnBatchPill">1 Oct</span><span class="mtnBatchPill">22 Oct</span><span class="mtnBatchPill">12 Nov</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Sikkim%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>3,753m (Tsomgo Lake)</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>City-based with day trips</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>10-16 travelers</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>25%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Easy — minimal walking required</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:25%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">TJ</div><div><div class="mtnReviewName">Tanvi J.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Tiger Hill sunrise over Kanchenjunga was breathtaking, exactly as promised. Toy train ride was a fun bonus.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">KM</div><div><div class="mtnReviewName">Karan M.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Gangtok is lovely and clean. Nathula was closed due to weather on our trip — worth knowing it's not guaranteed.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">PL</div><div><div class="mtnReviewName">Pooja L.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Great balance of culture and scenery. Rumtek Monastery was a highlight I wasn't expecting to love as much as I did.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is Nathula Pass visit guaranteed?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>No — Nathula is subject to weather, border conditions, and permit approval on the day; it's included as a day trip but not guaranteed to open.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Do foreign nationals need a special permit for Sikkim?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, an Inner Line Permit is required and can be arranged on arrival or in advance with your documents.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">What's the best time for clear Kanchenjunga views?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>October to December and March to May typically offer the clearest skies; monsoon months (June-September) have more cloud cover.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is the toy train ticket guaranteed?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>It's subject to availability and can sell out in peak season; we book as early as possible but recommend flexibility.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Warm jacket for Tsomgo Lake day</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking shoes</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Rain jacket (monsoon months)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunglasses</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Personal medication</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Light daypack</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Camera</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Valid photo ID (for permits)</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for Darjeeling &amp; Sikkim?</h4><p>Tea gardens, monasteries, and Kanchenjunga in one trip.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<!-- ===================== 7. DHARAMSHALA-MCLEODGANJ ===================== -->
+<div class="mtnPanel" id="mtnPanel-mcleodganj">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1626016570251-ed37e8a15b17?q=80&w=1600&auto=format&fit=crop" alt="McLeodganj monastery">
+        <div class="mtnPanelBannerText"><span>Hill Town Getaway · Himachal Pradesh</span><h2>Dharamshala – McLeodganj – Triund</h2></div>
+    </div>
+    <p class="mtnPanelIntro">McLeodganj has been home to the Dalai Lama and the Tibetan government-in-exile since 1960, and that history shapes everything about the town — prayer flags strung between cafés, Tibetan bakeries, and a genuinely international, laid-back atmosphere unlike anywhere else in Himachal. This short getaway blends that cultural side with easy mountain access: mornings spent around the Namgyal Monastery and the town's markets, afternoons at Bhagsu Falls, and a full-day hike up to the Triund ridge for close, unobstructed views of the Dhauladhar range. It's an ideal trip for travelers who want a genuine mountain experience without committing to a multi-day trek.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>4 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>4 Sites</strong><span>Places covered</span></div>
+        <div class="mtnStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-sun"></i><strong>Mar – Jun, Sep – Nov</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-flag-3"></i><p>Triund is one of the most rewarding short hikes in the Indian Himalayas — a single day's walk delivers a front-row view of the Dhauladhar range, with the option to camp overnight under a clear mountain sky.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1</span><strong>Arrival in McLeodganj</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Arrive, check in, evening at leisure exploring the main square and cafés.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">2</span><strong>Namgyal Monastery &amp; Bhagsu Falls</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Visit the Dalai Lama's Namgyal Monastery, walk to Bhagsu Falls and Bhagsunag Temple.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">3</span><strong>Triund day hike</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Day hike up to Triund ridge for panoramic Dhauladhar views, return by evening.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">4</span><strong>Departure</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Morning at leisure, transfer for onward travel.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1585116938581-de5c1d1e6ee0?q=80&w=800&auto=format&fit=crop" alt="Namgyal Monastery"><div class="mtnPlaceBody"><h4>Namgyal Monastery</h4><p>The Dalai Lama's residence monastery, open to visitors.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=800&auto=format&fit=crop" alt="Triund"><div class="mtnPlaceBody"><h4>Triund Ridge</h4><p>A short trek delivering close-up views of the Dhauladhar range.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1580289142397-3b747afe7d9d?q=80&w=800&auto=format&fit=crop" alt="Bhagsu Falls"><div class="mtnPlaceBody"><h4>Bhagsu Falls</h4><p>A popular waterfall walk on the edge of McLeodganj town.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> 3 nights hotel</li><li><i class="ti ti-check"></i> Local vehicle for sightseeing</li><li><i class="ti ti-check"></i> Trek guide for Triund</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Meals</li><li><i class="ti ti-x"></i> Camping gear (available on request)</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹9,499 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing hotel · breakfast included</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">15 Mar</span><span class="mtnBatchPill">12 Apr</span><span class="mtnBatchPill">20 Sep</span><span class="mtnBatchPill">18 Oct</span><span class="mtnBatchPill">8 Nov</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Mcleodganj%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>2,875m (Triund)</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>9 km round trip (Triund day hike)</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>6-12 travelers</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>40%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Easy-Moderate — one day hike included</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:40%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">AR</div><div><div class="mtnReviewName">Aditi R.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Triund hike views of the Dhauladhar range were incredible, and the town itself has such a relaxed vibe.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">RV</div><div><div class="mtnReviewName">Rahul V.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Loved the Tibetan food and monastery visits. Hike is doable for beginners but wear proper shoes.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">SD</div><div><div class="mtnReviewName">Sneha D.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Perfect short trip. McLeodganj's cafés alone are worth the visit.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is the Triund hike suitable for beginners?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, it's one of the more accessible Himalayan day hikes — moderate incline, well-marked trail, roughly 4-5 hours round trip at a relaxed pace.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Can I camp overnight at Triund instead of returning?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, overnight camping at Triund can be arranged on request for an additional cost — let us know when booking.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is McLeodganj crowded in peak season?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>It can get busy May-June and October, but the town handles tourist volume well; we recommend booking accommodation early for those months.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Do I get to see the Dalai Lama?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>His public appearances are not guaranteed and depend on his schedule and teachings calendar, which we cannot control or predict.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking/hiking shoes</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Light jacket (evenings are cool)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Rain gear (afternoon showers possible)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Daypack for the Triund hike</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Cash (small vendors, monastery donations)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Camera</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Personal medication</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for Dharamshala &amp; McLeodganj?</h4><p>An easy hill escape with a rewarding day hike built in.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<!-- ===================== 8. NAINITAL & KUMAON ===================== -->
+<div class="mtnPanel" id="mtnPanel-kumaon">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1601758064135-c5f5e0f5c5f0?q=80&w=1600&auto=format&fit=crop" alt="Nainital lake">
+        <div class="mtnPanelBannerText"><span>Lake &amp; Hill Circuit · Uttarakhand</span><h2>Nainital &amp; Kumaon Hills</h2></div>
+    </div>
+    <p class="mtnPanelIntro">Kumaon is often overshadowed by Garhwal's bigger pilgrimage routes, but it holds some of Uttarakhand's most rewarding hill towns for travelers who want scenery without strenuous trekking. The lake town of Nainital, built around the crescent-shaped Naini Lake, anchors this circuit, which then extends to Kausani for what's regarded as one of the widest uninterrupted views of the Nanda Devi and Trishul massif accessible entirely by road, and finally to Ranikhet, a quiet former colonial cantonment town known for its pine forests, orchards, and unhurried pace. It's a gentle, family-friendly circuit that still delivers genuine Himalayan views.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>5 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>3 Towns</strong><span>Places covered</span></div>
+        <div class="mtnStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-sun"></i><strong>Mar – Jun, Sep – Nov</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-sunrise"></i><p>Kausani's uninterrupted view of the Nanda Devi and Trishul peaks is one of the widest Himalayan panoramas accessible by road anywhere in Kumaon — no trek required.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1-2</span><strong>Nainital arrival &amp; sightseeing</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Arrive, boating on Naini Lake, visit Naina Devi Temple and Mall Road.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">3</span><strong>Drive to Kausani</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Scenic drive to Kausani, evening views of the Nanda Devi range.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">4</span><strong>Ranikhet</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive to Ranikhet, visit Jhula Devi Temple and the golf course.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">5</span><strong>Departure</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Morning at leisure, transfer for onward travel.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1601758064135-c5f5e0f5c5f0?q=80&w=800&auto=format&fit=crop" alt="Naini Lake"><div class="mtnPlaceBody"><h4>Naini Lake</h4><p>The heart of Nainital, ringed by hills and colonial architecture.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop" alt="Kausani"><div class="mtnPlaceBody"><h4>Kausani</h4><p>Wide, uninterrupted views of the Nanda Devi and Trishul peaks.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?q=80&w=800&auto=format&fit=crop" alt="Ranikhet"><div class="mtnPlaceBody"><h4>Ranikhet</h4><p>A quiet cantonment town known for its pine forests and orchards.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> AC vehicle for the full circuit</li><li><i class="ti ti-check"></i> 4 nights hotel</li><li><i class="ti ti-check"></i> Daily breakfast</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Lunch &amp; dinner</li><li><i class="ti ti-x"></i> Boating charges</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹13,999 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing hotels · breakfast included</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">1 Apr</span><span class="mtnBatchPill">22 Apr</span><span class="mtnBatchPill">15 Sep</span><span class="mtnBatchPill">13 Oct</span><span class="mtnBatchPill">3 Nov</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Kumaon%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>1,890m (Kausani)</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>City-based with short walks</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>8-14 travelers</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>15%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Easy — suitable for all ages</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:15%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">AP</div><div><div class="mtnReviewName">Alok P.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Kausani's view of Nanda Devi at sunrise is one of the best mountain views I've seen without any trekking.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">GN</div><div><div class="mtnReviewName">Geeta N.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Nainital was a bit crowded on the weekend we visited, but Ranikhet more than made up for it with its peace and quiet.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">MT</div><div><div class="mtnReviewName">Manish T.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Great gentle trip for our parents — no strenuous activity but still felt like a real hill vacation.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is this trip suitable for elderly travelers?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, it's one of our easiest circuits — mostly sightseeing with minimal walking, well suited to families with elderly members or young children.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is boating on Naini Lake included?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Boating charges are not included in the package but can be arranged on-site for a nominal additional cost.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Which town has the best mountain views?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Kausani, hands down — it offers the widest uninterrupted view of the Nanda Devi and Trishul range of any town in Kumaon.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is this trip good in monsoon season?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>We recommend avoiding July-August due to landslide risk on hill roads; March-June and September-November are ideal.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking shoes</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Light woolens (evenings are cool year-round)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Rain jacket (if traveling Sep)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Camera</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Personal medication</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Light daypack</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Valid photo ID</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for Nainital &amp; Kumaon?</h4><p>Gentle hill circuit, big Himalayan views.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<!-- ===================== 9. AULI & CHOPTA ===================== -->
+<div class="mtnPanel" id="mtnPanel-auli">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop" alt="Auli snow slopes">
+        <div class="mtnPanelBannerText"><span>Snow &amp; Meadow Circuit · Uttarakhand</span><h2>Auli &amp; Chopta – Tungnath</h2></div>
+    </div>
+    <p class="mtnPanelIntro">Auli is best known for its ski slopes and one of Asia's longest cable car rides, offering sweeping views of the Nanda Devi range without any trekking required. This circuit extends from there to Chopta, often nicknamed "mini Switzerland" for its rolling meadows, and on to the short but rewarding trek past Tungnath — the highest Shiva temple in the world at over 3,600 metres — up to the Chandrashila summit. From the top, a single unbroken panorama takes in the Nanda Devi, Trishul, and Kedarnath ranges together, making this one of the best altitude-to-effort ratios of any trek in Uttarakhand.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>6 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>4 Sites</strong><span>Places covered</span></div>
+        <div class="mtnStatBox"><i class="ti ti-mountain"></i><strong>Easy-Moderate</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-snowflake"></i><strong>Nov – Mar</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-backpack"></i><p>Chandrashila summit, reached via the short trek past Tungnath, opens onto Nanda Devi, Trishul, and the Kedarnath range all at once — a big payoff for a relatively short, well-marked trail.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1-2</span><strong>Rishikesh to Auli</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive to Auli via Joshimath, cable car ride, time on the ski slopes or viewpoints.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">3</span><strong>Auli to Chopta</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Drive to Chopta, known as "mini Switzerland," check in for the evening.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">4</span><strong>Tungnath &amp; Chandrashila trek</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Trek to Tungnath Temple and on to Chandrashila summit for panoramic views.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">5-6</span><strong>Return to Rishikesh</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Descend, drive back to Rishikesh for departure.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop" alt="Auli slopes"><div class="mtnPlaceBody"><h4>Auli</h4><p>Snow-covered slopes with cable car views of Nanda Devi.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1626016570251-ed37e8a15b17?q=80&w=800&auto=format&fit=crop" alt="Tungnath Temple"><div class="mtnPlaceBody"><h4>Tungnath Temple</h4><p>The highest Shiva temple in the world, reached by a short trek.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=800&auto=format&fit=crop" alt="Chandrashila summit"><div class="mtnPlaceBody"><h4>Chandrashila Summit</h4><p>A 360-degree Himalayan panorama beyond Tungnath.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> AC vehicle for the full circuit</li><li><i class="ti ti-check"></i> Hotel &amp; guesthouse stays</li><li><i class="ti ti-check"></i> Trek guide for Chandrashila</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Cable car ticket in Auli</li><li><i class="ti ti-x"></i> Meals</li><li><i class="ti ti-x"></i> Skiing/gear rental</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹16,999 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing hotel & camps · breakfast & dinner included</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">25 Nov</span><span class="mtnBatchPill">20 Dec</span><span class="mtnBatchPill">15 Jan</span><span class="mtnBatchPill">12 Feb</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Auli%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>4,000m (Chandrashila)</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>8-10 km/day (Tungnath-Chandrashila)</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>10-14 travelers</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>55%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Moderate — one trekking day included</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:55%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">NS</div><div><div class="mtnReviewName">Nikhil S.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Chandrashila summit view is unreal — Nanda Devi, Trishul, and Kedarnath range all in one frame.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">RA</div><div><div class="mtnReviewName">Ritika A.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Auli's cable car ride alone was worth the trip. Combining it with the Tungnath trek made for a perfectly balanced itinerary.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">VK</div><div><div class="mtnReviewName">Varun K.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Great trip overall, weather was cold at Chopta so pack more layers than you think you need.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Do I need trekking experience for Chandrashila?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Basic fitness is enough — the trek to Tungnath and on to Chandrashila is moderate in difficulty, well suited to first-time trekkers with some walking stamina.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is skiing included in the package?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Skiing/gear rental at Auli is available at additional cost and can be arranged locally during your stay.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">How cold does it get at Chopta?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Winter nights can drop well below freezing; warm layered clothing is essential, especially November through February.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is the cable car ride included?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>The Auli cable car ticket is not included by default but can be added — let us know when booking.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Warm jacket & thermal layers</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Waterproof trekking shoes</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Woolen cap & gloves</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Trekking poles</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Headlamp</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunglasses (snow glare in winter)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Rain gear (if traveling outside winter)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Personal medication</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for Auli &amp; Chopta?</h4><p>Snow slopes and a summit view, in one easy circuit.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<!-- ===================== 10. MANALI & SOLANG ===================== -->
+<div class="mtnPanel" id="mtnPanel-manali">
+    <div class="mtnPanelBanner">
+        <img src="./https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1600&auto=format&fit=crop" alt="Solang Valley">
+        <div class="mtnPanelBannerText"><span>Family Mountain Getaway · Himachal Pradesh</span><h2>Manali &amp; Solang Valley</h2></div>
+    </div>
+    <p class="mtnPanelIntro">Manali remains Himachal's most accessible mountain getaway, and this itinerary is built around that accessibility — a relaxed, family-friendly break with no trekking fitness or high-altitude acclimatization required. Days are split between the cedar-forest charm of Old Manali and Hadimba Temple, an adventure-focused day at Solang Valley covering paragliding, zorbing, and cable car rides, and a snow excursion to Rohtang Pass or the Manu Temple area depending on permit availability. It's the easiest way to bring genuine mountain air, snow, and light adventure into a short trip, which is why it remains one of our most-booked packages for families and first-time hill travelers.</p>
+    <div class="mtnStatsRow">
+        <div class="mtnStatBox"><i class="ti ti-calendar-time"></i><strong>4 Days</strong><span>Duration</span></div>
+        <div class="mtnStatBox"><i class="ti ti-map-2"></i><strong>3 Sites</strong><span>Places covered</span></div>
+        <div class="mtnStatBox"><i class="ti ti-walk"></i><strong>Easy</strong><span>Difficulty</span></div>
+        <div class="mtnStatBox"><i class="ti ti-sun"></i><strong>Year-round</strong><span>Best time</span></div>
+    </div>
+    <div class="mtnWhyBox"><i class="ti ti-snowflake"></i><p>This is the easiest way to bring snow, mountain air, and adventure activities into one trip without any trekking fitness required — a favourite for families and first-time hill travelers alike.</p></div>
+    <h3 class="mtnSubHeading">Day-by-Day Itinerary</h3>
+    <div class="mtnItinerary">
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">1</span><strong>Arrival in Manali</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Arrive, check in, evening walk around Old Manali and Mall Road.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">2</span><strong>Solang Valley</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Day trip to Solang Valley for paragliding, zorbing, or cable car rides.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">3</span><strong>Rohtang Pass / Hadimba Temple</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Day trip to Rohtang Pass (permit-dependent) or Hadimba Temple and the Manu Temple as an alternate.</p></div></div>
+        <div class="mtnDay"><button class="mtnDayHead" onclick="mtnToggleDay(this)"><span class="mtnDayNum">4</span><strong>Departure</strong><i class="ti ti-chevron-down mtnDayIcon"></i></button><div class="mtnDayBody"><p>Morning at leisure, transfer for onward travel.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Places You'll Visit</h3>
+    <div class="mtnPlacesGrid">
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop" alt="Solang Valley"><div class="mtnPlaceBody"><h4>Solang Valley</h4><p>A hub for adventure sports set against a wide snow-lined valley.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1589224988423-cf95c8f2d5f3?q=80&w=800&auto=format&fit=crop" alt="Rohtang Pass"><div class="mtnPlaceBody"><h4>Rohtang Pass</h4><p>A high mountain pass offering snow even outside peak winter.</p></div></div>
+        <div class="mtnPlaceCard"><img src="./https://images.unsplash.com/photo-1601652442571-a06adba53531?q=80&w=800&auto=format&fit=crop" alt="Hadimba Temple"><div class="mtnPlaceBody"><h4>Hadimba Temple</h4><p>A striking wooden temple set inside a cedar forest.</p></div></div>
+    </div>
+    <h3 class="mtnSubHeading">Inclusions &amp; Exclusions</h3>
+    <div class="mtnIncExc">
+        <div class="mtnIncBox"><h4><i class="ti ti-circle-check"></i> Included</h4><ul><li><i class="ti ti-check"></i> AC vehicle for sightseeing</li><li><i class="ti ti-check"></i> 3 nights hotel</li><li><i class="ti ti-check"></i> Daily breakfast</li></ul></div>
+        <div class="mtnExcBox"><h4><i class="ti ti-circle-x"></i> Not Included</h4><ul><li><i class="ti ti-x"></i> Adventure activity charges</li><li><i class="ti ti-x"></i> Rohtang Pass permit fee</li><li><i class="ti ti-x"></i> Lunch &amp; dinner</li></ul></div>
+    </div>
+    
+    <h3 class="mtnSubHeading">Trip Cost &amp; Batch Dates</h3>
+    <div class="mtnBookingRow">
+        <div class="mtnPriceCard">
+            <span class="mtnPriceLabel">Starting From</span>
+            <div class="mtnPriceValue">₹8,999 <span>/ person</span></div>
+            <span class="mtnPriceNote">per person, twin-sharing hotel · breakfast included</span>
+        </div>
+        <div class="mtnBatchCard">
+            <h5>Upcoming Batches</h5>
+            <div class="mtnBatchDates"><span class="mtnBatchPill">Available year-round, weekly departures</span></div>
+            <div class="mtnWhatsappRow"><a class="mtnWhatsappBtn" href="https://wa.me/919784568787?text=Hi,%20I'd%20like%20to%20enquire%20about%20the%20Manali%20package" target="_blank"><i class="ti ti-brand-whatsapp"></i> Enquire on WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Fitness &amp; Altitude Snapshot</h3>
+    <div class="mtnFitnessGrid">
+        <div class="mtnFitnessStat"><i class="ti ti-arrow-bar-to-up" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>3,978m (Rohtang, permit-dependent)</strong><span>Max Altitude</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-route" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>City-based with day trips</strong><span>Daily Distance</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-users" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>Any group size</strong><span>Group Size</span></div>
+        <div class="mtnFitnessStat"><i class="ti ti-heartbeat" style="color:var(--mtnAccent);font-size:1.2rem;margin-bottom:.3rem;display:block;"></i><strong>10%</strong><span>Fitness Demand</span></div>
+        <div class="mtnFitnessBarWrap">
+            <div class="mtnFitnessBarLabel"><span>Beginner</span><span>Easy — no trekking required</span><span>Expert</span></div>
+            <div class="mtnFitnessBarTrack"><div class="mtnFitnessBarFill" style="width:10%;"></div></div>
+        </div>
+    </div>
+
+    <h3 class="mtnSubHeading">Traveler Reviews</h3>
+    <div class="mtnReviewsGrid"><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">DR</div><div><div class="mtnReviewName">Divya R.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Perfect family trip — kids loved Solang Valley's activities and we got snow at Rohtang too.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">AS</div><div><div class="mtnReviewName">Amit S.</div><div class="mtnReviewStars">★★★★☆</div></div></div><p>Great value short trip. Rohtang permits can be tricky to get in peak season, so book early through the agency.</p></div><div class="mtnReviewCard"><div class="mtnReviewTop"><div class="mtnReviewAvatar">KM</div><div><div class="mtnReviewName">Kajal M.</div><div class="mtnReviewStars">★★★★★</div></div></div><p>Old Manali cafés and Hadimba Temple were lovely. Relaxed pace, nothing felt rushed.</p></div></div>
+
+    <h3 class="mtnSubHeading">Frequently Asked Questions</h3>
+    <div class="mtnFaqList"><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Do I need a permit for Rohtang Pass?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, and daily visitor numbers are capped by the government; we arrange this in advance but recommend booking your batch a few weeks ahead in peak season.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Is this trip suitable for young children?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Yes, it's one of our most family-friendly itineraries — minimal walking and activities that suit a wide age range.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">What if Rohtang Pass is closed?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>We substitute with Solang Valley's snow point or additional time in Old Manali/Hadimba Temple depending on conditions.</p></div></div><div class="mtnFaqItem"><button class="mtnFaqHead" onclick="mtnToggleFaq(this)">Are adventure activities at Solang Valley included?<i class="ti ti-plus mtnFaqIcon"></i></button><div class="mtnFaqBody"><p>Entry to Solang Valley is included; individual activities like paragliding and zorbing are paid on-site based on what you choose.</p></div></div></div>
+
+    <h3 class="mtnSubHeading">What to Pack</h3>
+    <div class="mtnPackGrid"><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Warm jacket</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Comfortable walking shoes</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Sunscreen</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Light woolens for Rohtang</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Rain jacket (monsoon months)</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Reusable water bottle</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Camera</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Power bank</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Personal medication</span></div><div class="mtnPackItem"><i class="ti ti-square-rounded-check"></i><span>Cash for activities at Solang</span></div></div>
+
+<div class="mtnPanelCta"><div><h4>Ready for Manali &amp; Solang?</h4><p>An easy mountain break, great for families.</p></div><a href="#mtnBookForm" class="mtnPanelCtaBtn">Book This Package <i class="ti ti-arrow-right"></i></a></div>
+</div>
+
+<form class="mtnBookForm" id="mtnBookForm" data-formtype="Mountain Package Booking">
+    <h2>Book Pack Now</h2>
+    <input type="text" name="name" placeholder="ENTER THE FULL NAME">
+    <input type="email" name="email" placeholder="ENTER THE E-MAIL">
+    <input type="text" name="phone" placeholder="ENTER THE PHONE">
+    <input type="date" name="date">
+    <input type="number" name="people" placeholder="ENTER NO. OF TRAVELERS">
+    <select name="pack">
+        <option value="none" selected disabled>Select the Pack</option>
+        <option value="Kashmir Great Lakes Trek">Kashmir Great Lakes Trek</option>
+        <option value="Manali–Leh–Ladakh Circuit">Manali–Leh–Ladakh Circuit</option>
+        <option value="Spiti Valley Expedition">Spiti Valley Expedition</option>
+        <option value="Kedarkantha Winter Trek">Kedarkantha Winter Trek</option>
+        <option value="Valley of Flowers & Hemkund Sahib">Valley of Flowers &amp; Hemkund Sahib</option>
+        <option value="Darjeeling – Gangtok – Sikkim">Darjeeling – Gangtok – Sikkim</option>
+        <option value="Dharamshala – McLeodganj – Triund">Dharamshala – McLeodganj – Triund</option>
+        <option value="Nainital & Kumaon Hills">Nainital &amp; Kumaon Hills</option>
+        <option value="Auli & Chopta – Tungnath">Auli &amp; Chopta – Tungnath</option>
+        <option value="Manali & Solang Valley">Manali &amp; Solang Valley</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+    <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+<!-- footer form connection  -->
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+<script>
+function mtnShowSidebar(){ document.getElementById('mtnSidebar')?.classList.add('mtnShow'); }
+function mtnHideSidebar(){ document.getElementById('mtnSidebar')?.classList.remove('mtnShow'); }
+
+/* ---- Drifting snow layer in the hero ---- */
+(function mtnBuildSnow(){
+    const layer = document.getElementById('mtnSnowLayer');
+    if (!layer) return;
+    const count = window.innerWidth < 640 ? 16 : 30;
+    for (let i = 0; i < count; i++){
+        const flake = document.createElement('span');
+        const size = (Math.random() * 0.35 + 0.15).toFixed(2);
+        flake.style.left = (Math.random() * 100) + '%';
+        flake.style.width = flake.style.height = size + 'rem';
+        flake.style.opacity = (Math.random() * 0.5 + 0.3).toFixed(2);
+        flake.style.animationDuration = (Math.random() * 9 + 7).toFixed(1) + 's';
+        flake.style.animationDelay = (Math.random() * -12).toFixed(1) + 's';
+        layer.appendChild(flake);
+    }
+})();
+
+/* ---- Scroll-reveal for cards, stat boxes, itinerary & inclusion blocks ---- */
+(function mtnInitReveal(){
+    const targets = document.querySelectorAll(
+        '.mtnStatBox, .mtnPlaceCard, .mtnDay, .mtnIncBox, .mtnExcBox, .mtnWhyBox, .mtnPanelBanner, .mtnPanelCta, .mtnReviewCard, .mtnFaqItem, .mtnPriceCard, .mtnBatchCard, .mtnFitnessStat'
+    );
+    targets.forEach((el, i) => {
+        el.classList.add('mtnReveal');
+        el.classList.add('mtnDelay' + ((i % 3) + 1));
+    });
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting){
+                entry.target.classList.add('mtnInView');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(el => io.observe(el));
+})();
+
+/* Re-run reveal observation whenever a tab panel becomes active (its cards start hidden each time) */
+function mtnRevealPanel(panelEl){
+    const targets = panelEl.querySelectorAll('.mtnReveal');
+    targets.forEach((el, i) => {
+        el.classList.remove('mtnInView');
+        setTimeout(() => el.classList.add('mtnInView'), 60 + (i % 6) * 70);
+    });
+}
+
+function mtnShowPanel(key){
+    document.querySelectorAll('.mtnPanel').forEach(p => p.classList.remove('mtnPanelActive'));
+    const activePanel = document.getElementById('mtnPanel-' + key);
+    activePanel.classList.add('mtnPanelActive');
+    document.querySelectorAll('.mtnTabBtn').forEach(b => b.classList.remove('mtnTabActive'));
+    event.currentTarget.classList.add('mtnTabActive');
+    window.scrollTo({ top: document.querySelector('.mtnTabsBar').offsetTop - 80, behavior: 'smooth' });
+    mtnRevealPanel(activePanel);
+}
+
+function mtnToggleDay(headBtn){
+    const day = headBtn.closest('.mtnDay');
+    const wasOpen = day.classList.contains('mtnDayOpen');
+    day.parentElement.querySelectorAll('.mtnDay.mtnDayOpen').forEach(d => d.classList.remove('mtnDayOpen'));
+    if (!wasOpen) day.classList.add('mtnDayOpen');
+}
+
+function mtnToggleFaq(headBtn){
+    const item = headBtn.closest('.mtnFaqItem');
+    item.classList.toggle('mtnFaqOpen');
+}
+
+const MTN_GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+
+document.querySelectorAll("form[data-formtype]").forEach(form => {
+    const emailField = form.querySelector('[name="email"]');
+    const submitBtn = form.querySelector('[type="submit"]');
+    if (!emailField || !submitBtn) return;
+
+    const otpWrap = document.createElement("div");
+    otpWrap.innerHTML = `
+        <button type="button" class="mtnSendOtpBtn">Send OTP</button>
+        <input type="text" class="mtnOtpInput" placeholder="Enter OTP" style="display:none;">
+    `;
+    submitBtn.parentNode.insertBefore(otpWrap, submitBtn);
+    submitBtn.style.display = "none";
+
+    const sendOtpBtn = otpWrap.querySelector(".mtnSendOtpBtn");
+    const otpInput = otpWrap.querySelector(".mtnOtpInput");
+
+    sendOtpBtn.addEventListener("click", async () => {
+        if (!emailField.value) { alert("Please enter your email first."); return; }
+        sendOtpBtn.disabled = true;
+        sendOtpBtn.textContent = "Sending...";
+        try {
+            const res = await fetch(MTN_GOOGLE_SHEET_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify({ action: "sendOtp", email: emailField.value })
+            });
+            const result = await res.json();
+            if (result.result === "success") {
+                alert("OTP sent to your email.");
+                otpInput.style.display = "block";
+                submitBtn.style.display = "block";
+                sendOtpBtn.textContent = "Resend OTP";
+            } else {
+                alert(result.message || "Failed to send OTP.");
+                sendOtpBtn.textContent = "Send OTP";
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Could not send OTP. Please try again.");
+            sendOtpBtn.textContent = "Send OTP";
+        }
+        sendOtpBtn.disabled = false;
+    });
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        if (!otpInput.value) { alert("Please enter the OTP sent to your email."); return; }
+
+        const formData = new FormData(form);
+        const payload = { action: "verifySubmit", formType: form.dataset.formtype, otp: otpInput.value };
+        formData.forEach((value, key) => { payload[key] = value; });
+
+        try {
+            const res = await fetch(MTN_GOOGLE_SHEET_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify(payload)
+            });
+            const result = await res.json();
+            if (result.result === "success") {
+                alert("Thank you! Your request has been submitted.");
+                form.reset();
+                otpInput.style.display = "none";
+                submitBtn.style.display = "none";
+                sendOtpBtn.textContent = "Send OTP";
+            } else {
+                alert(result.message || "Invalid OTP. Please try again.");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Something went wrong. Please try again.");
+        }
+    });
+});
+</script>
+
+            <!-- loader -->
+             <script src="././finalanimation.js"></script>
+             <script src="././experimental_claude.js"></script>
+</body>
+</html>

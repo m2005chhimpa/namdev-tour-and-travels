@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./images/logo03.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert Pack Namdev's </title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./fortpack.css">
+    <link rel="stylesheet" href="./finalanimation.css">
+
+    <style>
+        .container1{
+            background-image: url(/images/Camel_Decorated_in_Jaisalmer_Desert_Safari\ -\ Copy.jpg);
+        }
+        </style>
+
+
+</head>
+
+<body>
+    <div class="container-1">
+        
+     <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)"> 
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a class="active" href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+            <li><a href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+            <!-- <li onclick="showsidebar()" style="font-size: 32px;"><a href=""><img src="./icons/menu.png" alt=""></a></li> -->
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a class="active" href="./index.html">Home</a></li>
+            <li class="hideonmobile"><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <!-- <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li> -->
+            <li class="hideonmobile"><a href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+    
+    </div>
+
+    <!--  -->
+
+    <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+
+    <div class="overview">
+        <p>
+            It seems like you're asking for an overview of a "desert pack," but it's not clear what specific context or product you're referring to. "Desert pack" could be used in different contexts, such as a travel package, a video game asset pack, or even a term related to military operations. Could you please provide more details or clarify your question so that I can offer a more accurate and helpful response?
+            These deserts exhibit unique ecosystems, and despite their harsh conditions, they are home to various flora and fauna adapted to the arid environment. The Thar Desert, in particular, is culturally significant and has a rich history associated with the ancient Indus Valley Civilization.
+        </p>
+    </div>
+
+    <div class="luxuryr" id="one">
+        <div class="img1">
+            <img  src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="">
+        </div>
+        <div class="data">
+            A <span>"Thar Desert Adventure Pack"</span> would typically refer to a curated travel package or tour itinerary designed to provide travelers with an exciting and immersive experience in the Thar Desert of India. Such adventure packs aim to combine exploration of the desert's natural beauty, cultural richness, and thrilling activities. Here's a general outline of what a Thar Desert Adventure Pack might include:
+
+
+            <div class="imgs">
+                <img class="i" src="././icons/favicon-32x32.png" alt="">
+                <!-- class="i" <img src="././icons/flight.png" alt=""> -->
+                <img class="i" src="././icons/hopterl.png" alt="">
+                <img class="i" src="././icons/meal.png" alt="">
+                <img class="i" src="././icons/unik.webp" alt="">
+
+                <a href="#" class="bbook">
+                    <div>
+                        Book Now
+                    </div>
+                </a>
+                <a href="./NEW NAMDEV car/fortdeatils.html" id="view">
+                    <div>
+                        View More
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="luxuryr" id="sec">
+
+
+        <div class="data">
+            <span>A "Rann of Kutch Extravaganza Pack"</span> refers to a curated travel package or tour itinerary designed to offer an immersive and enriching experience in the Rann of Kutch region in Gujarat, India. This pack typically combines exploration of the unique landscape of the Rann of Kutch, cultural encounters, and participation in the vibrant events and festivals that take place in the region, such as the Rann Utsav. Here's a conceptual breakdown of what a Rann of Kutch Extravaganza Pack might include:
+
+
+            <div class="imgs">
+                <img class="i" src="././icons/favicon-32x32.png" alt="">
+                <!-- class="i" <img src="././icons/flight.png" alt=""> -->
+                <img class="i" src="././icons/hopterl.png" alt="">
+                <img class="i" src="././icons/meal.png" alt="">
+                <img class="i" src="././icons/unik.webp" alt="">
+
+                <a href="#" class="bbook">
+                    <div>
+                        Book Now
+                    </div>
+                </a>
+                <a href="./NEW NAMDEV car/fortdeatils.html" id="view">
+                    <div>
+                        View More
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        
+         <div class="img1">
+            <img 
+                src="./https://media.istockphoto.com/id/490280174/photo/green-lagoon.jpg?s=612x612&w=0&k=20&c=HW7F8IqCLsCS83HYkZsB42UAsq40soJJ3zze16ni7b4="
+                alt="">
+        </div>
+       
+
+    </div>
+
+    <div class="luxuryr" id="thd">
+        <div class="img1">
+            <img src="./https://media.istockphoto.com/id/1397977352/photo/ancient-nabataean-palace-tomb-carved-in-sandstone-rock-petra-jordan.jpg?s=612x612&w=0&k=20&c=oJWboHdIDXt8-ftELq16NrmxjYEckBm2sAJ6YeNl8fs="
+                alt="">
+        </div>
+        <div class="data">
+            <span>A "Dunes and Palaces Tour"</span> pack is a curated travel package or tour itinerary designed to provide a comprehensive and contrasted experience by combining the exploration of desert dunes with visits to historic palaces. This type of travel package aims to offer a diverse range of experiences, from the serene and majestic landscapes of sand dunes to the grandeur and architectural marvels of palaces. Here's an outline of what a Dunes and Palaces Tour pack might include:
+
+
+
+            <div class="imgs">
+                <img class="i" src="././icons/favicon-32x32.png" alt="">
+                <!-- class="i" <img src="././icons/flight.png" alt=""> -->
+                <img class="i" src="././icons/hopterl.png" alt="">
+                <img class="i" src="././icons/meal.png" alt="">
+                <img class="i" src="././icons/unik.webp" alt="">
+
+                <a href="#" class="bbook">
+                    <div>
+                        Book Now
+                    </div>
+                </a>
+                <a href="./NEW NAMDEV car/fortdeatils.html" id="view">
+                    <div>
+                        View More
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <form action="">
+        <div class="carform" id="carform">
+            <h1 style="color: #121212;margin-top: 1%; margin-left: 5%; text-decoration: underline;">Book Pack Now</h1>
+
+            <input type="text" placeholder="ENTER THE FULL NAME">
+            <input type="text" name="email" placeholder="ENTER THE E-MAIL">
+            <input type="text" name="Phone" placeholder="ENTER THE PHONE">
+            <input type="date" name="date" placeholder="DD-MM-YYYY">
+            <input type="number" name="passanger" placeholder="ENTER NO. OF TRAVELERS">
+            <!-- <input type="number" name="DAYS" placeholder="ENTER NO. OF DAYS"> -->
+
+            <select name="cartype" id="cartype ">
+                <option value="none" selected>Select the Pack/option>
+                <option value="Volvo">Luxury Retreatoption>
+                <option value="innovacry">Family-Friendly</option>
+                <option value="ertiga">Chills and Thrills/option>
+                <option value="sdzire">Curise and Beach </option>
+                <!-- <option value="city">Honda City</option> -->
+            </select>
+            <input style="background-color: #328ADF; padding: 0%;" type="submit" onclick="notify()"
+                placeholder="Submit">
+        </div>
+    </form>
+
+ 
+            <footer>
+            <div id="fo" class="footeroverlay">
+
+                    <div class="texilink">
+
+                        <form data-formtype="Get in Touch" id="heroEnquiryForm">
+                        <div class="gettouch">
+                            <h1>Get in Touch</h1>
+
+                          <div class="holder">
+                              Name : <input name="name" style="width:14rem; background:transparent; border:none;" type="text">
+                              <hr>
+                          </div>
+
+                            <div class="holder">
+                                Email_id : <input name="email" style="width:14rem; background:transparent; border:none;" type="text">
+                                <hr>
+                            </div>
+
+                            <div class="holder">
+                               Mobile : <input name="phone" style="width:14rem; background:transparent; border:none;"type="text">
+                                <hr>
+                            </div>
+
+                           <div class="holder">
+                                No. of people : <input name="no of people" style="width:14rem; background:transparent; border:none;" type="text">
+                              <hr>
+                           </div>
+
+                           <div class="holder">
+                               Destination : <input name="destination" style="width:14rem; background:transparent; border:none;" type="text">
+                              <hr>
+                          </div>
+
+                           <div class="holder">
+                             Car : <input name="car" style="width:14rem; background:transparent; border:none;" type="text">
+                             <hr>
+                          </div>
+                                     <br>
+                            <div class="getsubmit">
+                                 <input style="width: 6.5rem; height: 1.9rem;border-radius: 0.5rem; margin-top: 2.5rem; background: #328ADF;display: flex; align-items: center; justify-content: center; padding: .8rem 1.5; cursor: pointer;"
+                                 onclick="notify()" type="submit">
+                           </div>
+
+                               <img style="position:absolute; margin-top: 5rem; height: 5.8rem; width:6.5rem;"
+                                   src="././images/logo03.png" alt="">
+
+                        </div> 
+                        </form>
+                    </div>
+
+                    <!--  -->
+                   
+
+                    <!--  -->
+
+                   <div class="texilink">
+                      <div class="textt">
+                            At Namdev's Tour & Travel's we're dedicated to crafting exceptional travel experiences that ignite
+                            wanderlust and create everlasting memories. Our passion for sustainable travel, commitment
+                            to personalized service, and pursuit of off-the-beaten-path adventures define who we are.
+                            <br><br>
+                            <span style="text-transform:uppercase;">
+                                 Contact us to start planning your dream getaway today.
+                            </span>
+                            <br><br>
+                            <span style="color: #328ADF;">
+                                +91 9784568787, 
+                                +91 9784568787 <br>
+                                namdevtourtravels@gmail.com 
+                                infonamdevtour@gmail.com
+                            </span>
+                            <br><br>
+                            <span>
+                             <img src="./icons/web ivon/Location Icon.svg" alt="">
+                             Namdev's Tour & Travels 302, Shree Krishna Plaza,Near Gaurav Tower,Malviya Nagar,Jaipur, Rajasthan – 302017 India
+                            </span>
+                            <div style="width: 100%; height: 40%;  margin-top: 1.5rem;">
+                               <a href="">   <img style="position: absolute;" src="./images/Maps.png" alt=""></a>
+                            </div>
+        
+                        </div>
+                    </div>
+
+                    <div class="texilink" style="justify-content: center;">
+                        <div class="taxibox" style="display: inline-block; margin-top: 2rem; margin-left: 1rem;">
+                            <li><h1 style="color:antiquewhite">
+                               Taxi Services</h1>
+
+                            </li>
+                            <br><br>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to mathura</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Ahmedabad</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Delhi</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Agra</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to khatu shyam ji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to salasar balaji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to udaipur</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to ajmer</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to mathura</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Ahmedabad</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Delhi</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Agra</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to khatu shyam ji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to salasar balaji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to udaipur</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to ajmer</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to mathura</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Ahmedabad</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/NEW NAMDEV tour package/new delhi.html"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Delhi</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Agra</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to khatu shyam ji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to salasar balaji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to udaipur</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to ajmer</h4> </a></li>
+                        
+                        </div>
+                     </div>
+                
+
+
+            </div>   
+
+            <div class="footnav">
+                <a href="./index.html"> <li>Home</li> </a>
+                <a href="./tourpack.html"> <li>Service's</li> </a>
+                <a href="./tourpack.html"> <li>Tour Packages</li> </a>
+                <a href="./contact.html"> <li>Contact us</li> </a>
+                <a href="./about.html"> <li>About us</li> </a>
+            </div>
+
+        </footer>
+
+
+            <div class="copyright" style=" text-align: center;">
+                
+                <p>&copy; 2026 Namdev's Tour & Travels. All Rights Reserved.</p>
+            </div>
+
+
+
+
+    <script src="././finalanimation.js"></script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="png" href="./images/logo03.png">
+<title>What's in Jodhpur | Namdev's Tour & Travels</title>
+
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./finalanimation.css">
+<link rel="stylesheet" href="./experimental_claude.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --blue:#328ADF; --blue-deep:#0E76BC;
+    --khaki:#9AA04A; --khaki-light:#D9DBB0;
+    --coral:#F2653F; --coral-light:#FAAB78;
+    --ink:#1A1815; --paper:#FFFFFF; --mist:#F3F6FA;
+    --line: rgba(26,24,21,0.12);
+    /* --font: 'Nunito Sans', sans-serif; */
+}
+*{ box-sizing:border-box; }
+.jodhpur-page{
+     /* font-family: var(--font); */
+     color: var(--ink); 
+     background: var(--paper); 
+    }
+.jodhpur-page h1,.jodhpur-page h2,.jodhpur-page h3{ 
+    /* font-family: var(--font); */
+     font-weight:800; }
+
+@media (prefers-reduced-motion: reduce){
+    .jodhpur-page *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+    .jd-hero-bg{ transform:none !important; }
+}
+
+/* ---------- HERO ---------- */
+.jd-hero{ position:relative; height:73vh; min-height:26rem; overflow:hidden; }
+.jd-hero-bg{
+    /* position:absolute; inset:-10% -5%; */
+        position:absolute; 
+        inset:0;
+        background-image:url("/images/hero/jodhpur.png");
+        background-size:cover;
+        background-position:center;
+        animation: jslKenBurns 10s ease-in-out infinite alternate; /* 2. Ken Burns background zoom */
+      }
+      @keyframes jslKenBurns{
+        0%{ transform: scale(1) translate(0,0); }
+        100%{ transform: scale(1.14) translate(-1.5%, -1%); }
+      }
+.jd-hero-overlay{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(14,60,90,.35), rgba(26,24,21,.8)); }
+.jd-hero-content{ position:relative; z-index:1; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 1.5rem; color:#fff; }
+.jd-hero-eyebrow{ font-size:.8rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color: var(--coral-light); margin-bottom:.8rem; opacity:0; animation: jdRise .7s ease forwards; }
+.jd-hero-content h1{ font-size: clamp(2.2rem,5vw,3.6rem); margin:0 0 .8rem; opacity:0; animation: jdRise .8s ease .12s forwards; }
+.jd-hero-content p{ max-width:38rem; color:rgba(255,255,255,.85); font-size:1rem; line-height:1.7; opacity:0; animation: jdRise .8s ease .24s forwards; }
+@keyframes jdRise{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);} }
+.jd-hero-stats{ display:flex; gap:2.4rem; margin-top:1.6rem; flex-wrap:wrap; justify-content:center; opacity:0; animation: jdRise .8s ease .36s forwards; }
+.jd-hero-stats .stat strong{ display:block; font-size:1.3rem; color: var(--coral-light); }
+.jd-hero-stats .stat span{ font-size:.74rem; opacity:.85; }
+.jd-scroll-cue{ position:absolute; bottom:1.2rem; left:50%; transform:translateX(-50%); z-index:1; animation: jdBounce 1.8s infinite; }
+@keyframes jdBounce{ 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,8px);} }
+
+/* ---------- Intro ---------- */
+.jd-intro{ max-width:52rem; margin:4rem auto 3rem; padding:0 1.5rem; text-align:center; }
+.jd-intro .eyebrow{ font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--blue); margin-bottom:.6rem; }
+.jd-intro h2{ font-size:1.9rem; margin:0 0 1rem; }
+.jd-intro p{ color:#585858; font-size:.96rem; line-height:1.75; }
+
+/* ---------- Route rail + attractions ---------- */
+.jd-tour-wrap{ max-width:74rem; margin:0 auto 4rem; padding:0 1.5rem; display:grid; grid-template-columns: 3.5rem 1fr; gap:2rem; }
+.jd-rail{ position:sticky; top:2rem; height:100%; display:flex; justify-content:center; }
+.jd-rail-line{ position:relative; width:3px; background: var(--line); border-radius:999px; }
+.jd-rail-fill{ position:absolute; top:0; left:0; width:100%; background: linear-gradient(180deg, var(--khaki), var(--coral)); border-radius:999px; height:0%; transition: height .2s linear; }
+
+.jd-cards{ display:flex; flex-direction:column; gap:2.2rem; }
+.jd-card{
+    display:grid; grid-template-columns: 1fr 1fr; gap:0;
+    background:#fff; border-radius:1.2rem; overflow:hidden;
+    box-shadow: 0 12px 32px rgba(26,24,21,0.07);
+    opacity:0; transform:translateY(28px); transition: opacity .6s ease, transform .6s ease;
+}
+.jd-card.in-view{ opacity:1; transform:translateY(0); }
+.jd-card.reverse{ direction:rtl; }
+.jd-card.reverse > *{ direction:ltr; }
+
+.jd-card-media{ position:relative; overflow:hidden; min-height:16rem; cursor:zoom-in; background: var(--mist); }
+.jd-card-media img{ width:100%; height:100%; object-fit:cover; display:block; transition: transform .5s ease; }
+.jd-card-media:hover img{ transform: scale(1.08); }
+.jd-card-tag{ position:absolute; top:1rem; left:1rem; background:rgba(255,255,255,.92); color:var(--ink); font-size:.68rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:.35rem .75rem; border-radius:999px; }
+.jd-zoom-hint{ position:absolute; bottom:.8rem; right:.8rem; background:rgba(26,24,21,.55); color:#fff; font-size:.7rem; padding:.3rem .6rem; border-radius:.4rem; opacity:0; transition: opacity .25s ease; }
+.jd-card-media:hover .jd-zoom-hint{ opacity:1; }
+
+.jd-card-body{ padding:1.8rem 2rem; display:flex; flex-direction:column; }
+.jd-card-body h3{ font-size:1.4rem; margin:0 0 .3rem; color: var(--blue-deep); }
+.jd-card-facts{ display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1rem; }
+.jd-fact{ font-size:.74rem; font-weight:600; color:var(--ink); background: var(--mist); border:1px solid var(--line); padding:.32rem .7rem; border-radius:999px; }
+.jd-card-body p{ color:#585858; font-size:.9rem; line-height:1.7; margin:0 0 1.2rem; flex:1; }
+
+.jd-card-actions{ display:flex; align-items:center; gap:.8rem; flex-wrap:wrap; }
+.jd-add-btn{
+    display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; user-select:none;
+    border:1.5px solid var(--line); background:#fff; padding:.6rem 1.1rem; border-radius:999px;
+    font-size:.85rem; font-weight:700; color:var(--ink); transition: all .2s ease;
+}
+.jd-add-btn:hover{ border-color: var(--khaki); }
+.jd-add-btn.added{ background: var(--khaki); border-color: var(--khaki); color:#fff; }
+.jd-add-btn .check{ width:16px; height:16px; }
+.jd-book-link{
+    display:inline-flex; align-items:center; gap:.4rem; text-decoration:none; font-weight:700; font-size:.85rem;
+    color:#fff; background: linear-gradient(90deg, var(--blue-deep), var(--blue)); padding:.6rem 1.1rem; border-radius:999px;
+    box-shadow: 0 8px 18px rgba(50,138,223,.28); transition: transform .2s ease;
+}
+.jd-book-link:hover{ transform: translateY(-2px); }
+
+@media (max-width:900px){
+    .jd-tour-wrap{ grid-template-columns:1fr; }
+    .jd-rail{ display:none; }
+    .jd-card, .jd-card.reverse{ grid-template-columns:1fr; direction:ltr; }
+    .jd-card-media{ min-height:13rem; }
+}
+
+/* ---------- section heading (shared) ---------- */
+.jd-section{ max-width:74rem; margin: 5rem auto; padding:0 1.5rem; }
+.jd-section .heading{ text-align:center; margin-bottom:2.2rem; }
+.jd-section .heading .eyebrow{ font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--blue); }
+.jd-section .heading h2{ font-size:1.9rem; margin:.4rem 0 0; }
+.jd-section .heading p{ color:#585858; font-size:.92rem; max-width:36rem; margin:.7rem auto 0; }
+
+/* ---------- suggested itineraries ---------- */
+.jd-itin-tabs{ display:flex; justify-content:center; gap:.6rem; margin-bottom:2rem; flex-wrap:wrap; }
+.jd-itin-tab{ background:#fff; border:1.5px solid var(--line); color:var(--ink); font-weight:700; font-size:.85rem; padding:.6rem 1.3rem; border-radius:999px; cursor:pointer; transition: all .2s ease; }
+.jd-itin-tab:hover{ border-color:var(--blue); }
+.jd-itin-tab.active{ background:var(--blue); border-color:var(--blue); color:#fff; }
+.jd-itin-panel{ display:none; }
+.jd-itin-panel.active{ display:block; animation: jdRise .4s ease; }
+.jd-itin-days{ display:flex; flex-direction:column; gap:1rem; max-width:44rem; margin:0 auto; }
+.jd-itin-day{ background:#fff; border:1px solid var(--line); border-radius:1rem; padding:1.3rem 1.5rem; display:flex; gap:1.2rem; }
+.jd-itin-daynum{ flex-shrink:0; width:2.6rem; height:2.6rem; border-radius:50%; background:linear-gradient(135deg,var(--khaki),var(--blue-deep)); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; }
+.jd-itin-day h4{ margin:0 0 .3rem; font-size:1rem; }
+.jd-itin-day p{ margin:0; font-size:.85rem; color:#585858; line-height:1.6; }
+
+/* ---------- practical info ---------- */
+.jd-practical-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; }
+.jd-practical-card{ background:var(--mist); border-radius:1.1rem; padding:1.6rem 1.7rem; }
+.jd-practical-card h3{ font-size:1.1rem; margin:0 0 .8rem; display:flex; align-items:center; gap:.5rem; }
+.jd-practical-card h3 svg{ width:20px; height:20px; color:var(--blue); }
+.jd-practical-card ul{ margin:0; padding-left:1.1rem; }
+.jd-practical-card li{ font-size:.87rem; color:#585858; line-height:1.75; }
+.jd-practical-card p{ font-size:.87rem; color:#585858; line-height:1.75; margin:0; }
+@media (max-width:800px){ .jd-practical-grid{ grid-template-columns:1fr; } }
+
+/* ---------- food & shopping ---------- */
+.jd-strip-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(13rem,1fr)); gap:1.1rem; }
+.jd-strip-card{ background:#fff; border:1px solid var(--line); border-radius:1rem; padding:1.3rem; text-align:center; transition: transform .2s ease, box-shadow .2s ease; }
+.jd-strip-card:hover{ transform:translateY(-4px); box-shadow:0 12px 26px rgba(26,24,21,.08); }
+.jd-strip-icon{ font-size:1.8rem; margin-bottom:.6rem; }
+.jd-strip-card h4{ margin:0 0 .3rem; font-size:.95rem; }
+.jd-strip-card p{ margin:0; font-size:.8rem; color:#8A8A8A; line-height:1.5; }
+
+/* ---------- map ---------- */
+.jd-map-wrap{ border-radius:1.1rem; overflow:hidden; box-shadow:0 12px 32px rgba(26,24,21,.08); border:1px solid var(--line); }
+.jd-map-wrap iframe{ width:100%; height:24rem; border:0; display:block; }
+
+/* ---------- FAQ ---------- */
+.jd-faq-list{ max-width:46rem; margin:0 auto; display:flex; flex-direction:column; gap:.8rem; }
+.jd-faq-item{ background:#fff; border:1px solid var(--line); border-radius:.8rem; overflow:hidden; }
+.jd-faq-q{ width:100%; display:flex; justify-content:space-between; align-items:center; background:none; border:none; padding:1.1rem 1.3rem; font-size:.92rem; font-weight:700; color:var(--ink); text-align:left; cursor:pointer; }
+.jd-faq-icon{ flex-shrink:0; color:var(--blue); transition: transform .3s ease; }
+.jd-faq-item.open .jd-faq-icon{ transform:rotate(45deg); }
+.jd-faq-a{ max-height:0; overflow:hidden; transition:max-height .35s ease, padding .35s ease; padding:0 1.3rem; }
+.jd-faq-item.open .jd-faq-a{ max-height:12rem; padding:0 1.3rem 1.2rem; }
+.jd-faq-a p{ margin:0; font-size:.87rem; color:#585858; line-height:1.65; }
+
+/* ---------- reviews ---------- */
+.jd-reviews{ max-width:74rem; margin: 5rem auto; padding:0 1.5rem; }
+.jd-reviews .heading{ text-align:center; margin-bottom:2.4rem; }
+.jd-reviews .heading .eyebrow{ font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--blue); }
+.jd-reviews .heading h2{ font-size:1.9rem; margin:.4rem 0 0; }
+.jd-review-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(16rem,1fr)); gap:1.4rem; }
+.jd-review-card{
+    background:#fff; border:1px solid var(--line); border-radius:1rem; padding:1.5rem;
+    opacity:0; transform:translateY(20px); transition: opacity .5s ease, transform .5s ease;
+}
+.jd-review-card.in-view{ opacity:1; transform:translateY(0); }
+.jd-review-card .stars{ color: var(--coral); font-size:.9rem; margin-bottom:.6rem; }
+.jd-review-card p{ font-size:.88rem; color:#585858; line-height:1.65; margin:0 0 1rem; }
+.jd-review-card .who{ font-weight:700; font-size:.85rem; }
+
+/* ---------- floating itinerary summary ---------- */
+.jd-plan-fab{
+    position:fixed; right:1.5rem; bottom:1.5rem; z-index:900;
+    background: linear-gradient(135deg, var(--blue-deep), var(--ink) 140%);
+    color:#fff; border-radius:1.1rem; padding:1rem 1.2rem; width:15.5rem;
+    box-shadow: 0 16px 36px rgba(26,24,21,.28);
+    transform: translateY(140%); transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.jd-plan-fab.show{ transform: translateY(0); }
+.jd-plan-fab h4{ margin:0 0 .2rem; font-size:.95rem; }
+.jd-plan-fab .sub{ font-size:.74rem; opacity:.75; margin-bottom:.8rem; }
+.jd-plan-fab .count{ font-weight:800; color: var(--coral-light); }
+.jd-plan-fab a{
+    display:flex; align-items:center; justify-content:center; gap:.4rem; text-decoration:none;
+    background: var(--coral); color:#fff; font-weight:700; font-size:.85rem; padding:.65rem; border-radius:.7rem;
+    transition: transform .2s ease;
+}
+.jd-plan-fab a:hover{ transform: translateY(-2px); }
+
+/* ---------- sticky mini book bar ---------- */
+.jd-sticky-bar{
+    position:fixed; top:0; left:0; right:0; z-index:850;
+    background:#fff; border-bottom:1px solid var(--line); box-shadow:0 6px 18px rgba(26,24,21,.06);
+    display:flex; align-items:center; justify-content:space-between; padding:.7rem 1.5rem;
+    transform: translateY(-110%); transition: transform .35s ease;
+}
+.jd-sticky-bar.show{ transform: translateY(0); }
+.jd-sticky-bar span{ font-weight:700; font-size:.9rem; }
+.jd-sticky-bar a{
+    text-decoration:none; background: var(--blue); color:#fff; font-weight:700; font-size:.82rem;
+    padding:.55rem 1.1rem; border-radius:999px; transition: transform .2s ease;
+}
+.jd-sticky-bar a:hover{ transform: translateY(-2px); }
+
+/* ---------- lightbox ---------- */
+.jd-lightbox{ position:fixed; inset:0; background:rgba(26,24,21,.9); z-index:1000; display:none; align-items:center; justify-content:center; padding:2rem; }
+.jd-lightbox.show{ display:flex; }
+.jd-lightbox img{ max-width:90vw; max-height:85vh; border-radius:.6rem; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+.jd-lightbox-close{ position:absolute; top:1.5rem; right:1.8rem; color:#fff; font-size:2rem; cursor:pointer; line-height:1; background:none; border:none; }
+</style>
+</head>
+<body class="jodhpur-page">
+
+<!-- ============ NAV (matches the rest of the site) ============ -->
+ <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)"> 
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+            <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+            <!-- <li onclick="showsidebar()" style="font-size: 32px;"><a href=""><img src="./icons/menu.png" alt=""></a></li> -->
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a  href="./index.html">Home</a></li>
+                <li class="hideonmobile navHasDropdown">
+    <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+    <div class="navDropdown">
+        <div class="navDropdownCol">
+            <h4>Luxury Buses</h4>
+            <a href="">Volvo Bus</a>
+            <a href="">Winger</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Luxury Cars</h4>
+            <a href="">Innova Crysta</a>
+            <a href="">Kia Carnival</a>
+            <a href="">Honda City</a>
+            <a href="">Etios</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Economical Cars</h4>
+            <a href="">Swift Dzire</a>
+            <a href="">Ertiga</a>
+            <a href="">Innova</a>
+        </div>
+    </div>
+</li>
+            <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+    <!-- loader / animation -->
+    <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+<!-- ============ STICKY MINI BOOK BAR ============ -->
+<!-- <div class="jd-sticky-bar" id="jdStickyBar">
+    <span>Exploring Jodhpur?</span>
+    <a href="./booktour.html" target="_blank">Book a Tour</a>
+</div> -->
+
+<!-- ============ HERO ============ -->
+<section class="jd-hero" id="jdHero">
+    <div class="jd-hero-bg" id="jdHeroBg"></div>
+    <div class="jd-hero-overlay"></div>
+    <div class="jd-hero-content">
+        <div class="jd-hero-eyebrow">The Blue City</div>
+        <h1>What's in Jodhpur</h1>
+        <p>A fort on a sheer rock face, a city painted blue at its feet, and a royal history that still shapes daily life here. Here's what's worth your time.</p>
+        <div class="jd-hero-stats">
+            <div class="stat"><strong>9</strong><span>Must-see spots</span></div>
+            <div class="stat"><strong>1-2</strong><span>Days recommended</span></div>
+            <div class="stat"><strong>4.9★</strong><span>Traveler rating</span></div>
+        </div>
+    </div>
+    <div class="jd-scroll-cue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M6 13l6 6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="jd-intro">
+    <div class="eyebrow">Tour Packages</div>
+    <h2>Plan your Jodhpur itinerary</h2>
+    <p>Namdev's Tour &amp; Travels packages bundle transport, accommodation, guided tours, meals, and other essentials into one plan — tailored to your interests, pace, and budget. Tap "Add to my plan" on any spot below to start building your own Jodhpur itinerary as you scroll.</p>
+</section>
+
+<!-- ============ ATTRACTIONS ============ -->
+<div class="jd-tour-wrap">
+    <div class="jd-rail">
+        <div class="jd-rail-line" id="jdRailLine">
+            <div class="jd-rail-fill" id="jdRailFill"></div>
+        </div>
+    </div>
+    <div class="jd-cards" id="jdCards"></div>
+</div>
+
+<!-- ============ SUGGESTED ITINERARIES ============ -->
+<section class="jd-section">
+    <div class="heading">
+        <div class="eyebrow">Plan It Out</div>
+        <h2>Suggested Jodhpur itineraries</h2>
+        <p>Not sure how to sequence your visit? Here's how these spots fit into 1, 2, or 3 days.</p>
+    </div>
+    <div class="jd-itin-tabs" id="jdItinTabs">
+        <button class="jd-itin-tab active" data-day="1">1 Day</button>
+        <button class="jd-itin-tab" data-day="2">2 Days</button>
+        <button class="jd-itin-tab" data-day="3">3 Days</button>
+    </div>
+
+    <div class="jd-itin-panel active" data-day="1">
+        <div class="jd-itin-days">
+            <div class="jd-itin-day"><div class="jd-itin-daynum">1</div><div>
+                <h4>Morning — Mehrangarh Fort &amp; Phool Mahal</h4>
+                <p>Start at the fort early to beat both the heat and the crowds — Phool Mahal sits right inside it, so cover both together.</p>
+            </div></div>
+            <div class="jd-itin-day"><div class="jd-itin-daynum">2</div><div>
+                <h4>Afternoon — Jaswant Thada &amp; Umaid Bhawan Palace</h4>
+                <p>Jaswant Thada is a short drive from the fort; Umaid Bhawan Palace rounds out the afternoon with a very different, Art Deco-era feel.</p>
+            </div></div>
+            <div class="jd-itin-day"><div class="jd-itin-daynum">3</div><div>
+                <h4>Evening — Sardar Market &amp; the Clock Tower</h4>
+                <p>End the day in the old city for street food and shopping around the iconic clock tower.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <div class="jd-itin-panel" data-day="2">
+        <div class="jd-itin-days">
+            <div class="jd-itin-day"><div class="jd-itin-daynum">1</div><div>
+                <h4>Day 1 — The fort &amp; royal Jodhpur</h4>
+                <p>Mehrangarh Fort and Phool Mahal in the morning, Jaswant Thada and Umaid Bhawan Palace in the afternoon, Sardar Market in the evening.</p>
+            </div></div>
+            <div class="jd-itin-day"><div class="jd-itin-daynum">2</div><div>
+                <h4>Day 2 — Lakes, gardens &amp; the desert park</h4>
+                <p>Rao Jodha Desert Rock Park in the cooler morning hours, Mandore Gardens and Chamunda Mataji Temple midday, Kaylana or Balsamand Lake for a calm evening.</p>
+            </div></div>
+        </div>
+    </div>
+
+    <div class="jd-itin-panel" data-day="3">
+        <div class="jd-itin-days">
+            <div class="jd-itin-day"><div class="jd-itin-daynum">1</div><div>
+                <h4>Day 1 — Mehrangarh &amp; royal Jodhpur</h4>
+                <p>Mehrangarh Fort, Phool Mahal, Jaswant Thada, Umaid Bhawan Palace.</p>
+            </div></div>
+            <div class="jd-itin-day"><div class="jd-itin-daynum">2</div><div>
+                <h4>Day 2 — History &amp; nature</h4>
+                <p>Rao Jodha Desert Rock Park, Mandore Gardens, Chamunda Mataji Temple.</p>
+            </div></div>
+            <div class="jd-itin-day"><div class="jd-itin-daynum">3</div><div>
+                <h4>Day 3 — Lakes &amp; the old city</h4>
+                <p>Kaylana Lake in the morning, Balsamand Lake midday, Sardar Market and the Clock Tower in the evening.</p>
+            </div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PRACTICAL INFO ============ -->
+<section class="jd-section">
+    <div class="heading">
+        <div class="eyebrow">Before You Go</div>
+        <h2>Good to know</h2>
+    </div>
+    <div class="jd-practical-grid">
+        <div class="jd-practical-card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>Best time to visit</h3>
+            <p>October to March is the most comfortable window — Jodhpur sits on the edge of the Thar Desert, so summers (April–June) run very hot. If you're visiting Mehrangarh Fort in warmer months, plan for an early morning start.</p>
+        </div>
+        <div class="jd-practical-card">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h18M3 6h18M3 18h18"/></svg>How to reach Jodhpur</h3>
+            <ul>
+                <li><strong>By air:</strong> Jodhpur Airport connects to Delhi, Mumbai, and other major cities.</li>
+                <li><strong>By train:</strong> Jodhpur Junction is well-connected across Rajasthan and to Delhi.</li>
+                <li><strong>By road:</strong> A common add-on from Jaipur or Udaipur — we can arrange the car either way.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOOD & SHOPPING ============ -->
+<section class="jd-section">
+    <div class="heading">
+        <div class="eyebrow">While You're Here</div>
+        <h2>What to eat &amp; where to shop</h2>
+    </div>
+    <div class="jd-strip-grid">
+        <div class="jd-strip-card"><div class="jd-strip-icon">🥟</div><h4>Mawa Kachori</h4><p>Jodhpur's signature sweet-savoury kachori, stuffed with a khoya (mawa) filling.</p></div>
+        <div class="jd-strip-card"><div class="jd-strip-icon">🥤</div><h4>Makhaniya Lassi</h4><p>A rich, buttery lassi topped with malai — a Jodhpur specialty best had chilled.</p></div>
+        <div class="jd-strip-card"><div class="jd-strip-icon">🌶️</div><h4>Mirchi Bada</h4><p>Large stuffed, batter-fried chillies — a favourite street-food snack in the old city.</p></div>
+        <div class="jd-strip-card"><div class="jd-strip-icon">🕰️</div><h4>Clock Tower &amp; Sardar Market</h4><p>The heart of old Jodhpur — spices, textiles, and street food all around the tower.</p></div>
+        <div class="jd-strip-card"><div class="jd-strip-icon">🧣</div><h4>Bandhej (Tie-Dye)</h4><p>Rajasthan's traditional tie-dye fabric, widely sold across Jodhpur's markets.</p></div>
+        <div class="jd-strip-card"><div class="jd-strip-icon">👞</div><h4>Mojari / Juttis</h4><p>Handcrafted leather footwear with traditional embroidery — a classic Jodhpur souvenir.</p></div>
+    </div>
+</section>
+
+<!-- ============ MAP ============ -->
+<section class="jd-section">
+    <div class="heading">
+        <div class="eyebrow">Get Your Bearings</div>
+        <h2>Where everything is</h2>
+        <p>A quick look at how these spots sit relative to each other before you plan your route.</p>
+    </div>
+    <div class="jd-map-wrap">
+        <iframe src="./https://www.google.com/maps?q=Jodhpur,Rajasthan&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of Jodhpur"></iframe>
+    </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="jd-section">
+    <div class="heading">
+        <div class="eyebrow">Quick Answers</div>
+        <h2>Frequently asked questions</h2>
+    </div>
+    <div class="jd-faq-list" id="jdFaqList">
+        <div class="jd-faq-item">
+            <button class="jd-faq-q"><span>Why is Jodhpur called the Blue City?</span><svg class="jd-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+            <div class="jd-faq-a"><p>Many homes in the old city, near Mehrangarh Fort, are painted blue — historically linked to Brahmin households and believed to help keep interiors cooler. The view from the fort over the blue rooftops is one of Jodhpur's signature sights.</p></div>
+        </div>
+        <div class="jd-faq-item">
+            <button class="jd-faq-q"><span>How many days do I need in Jodhpur?</span><svg class="jd-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+            <div class="jd-faq-a"><p>A full day covers the essentials — Mehrangarh Fort, Jaswant Thada, and Umaid Bhawan Palace. Two days lets you add the lakes, gardens, and the desert park at an easier pace.</p></div>
+        </div>
+        <div class="jd-faq-item">
+            <button class="jd-faq-q"><span>Can Namdev's Tour &amp; Travels arrange a car for all of this?</span><svg class="jd-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+            <div class="jd-faq-a"><p>Yes — pick your spots above using "Add to my plan" and continue straight to booking; we'll build the route and vehicle around it.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="jd-reviews">
+    <div class="heading">
+        <div class="eyebrow">Traveler Stories</div>
+        <h2>What visitors say about Jodhpur trips</h2>
+    </div>
+    <div class="jd-review-grid">
+        <div class="jd-review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Mehrangarh Fort at sunrise was worth the early alarm — the view over the blue city from the ramparts is something else. Our guide knew every corner of it."</p>
+            <div class="who">— Kavita R.</div>
+        </div>
+        <div class="jd-review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Umaid Bhawan Palace felt completely different from every other palace we saw in Rajasthan — the Art Deco style really stands out. Glad our guide pointed that out."</p>
+            <div class="who">— Arjun D.</div>
+        </div>
+        <div class="jd-review-card">
+            <div class="stars">★★★★☆</div>
+            <p>"Loved the quieter side of Jodhpur too — Rao Jodha Park and Mandore Gardens gave us a break from the crowds after two busy days of forts and palaces."</p>
+            <div class="who">— Meera T.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FLOATING ITINERARY PANEL ============ -->
+<div class="jd-plan-fab" id="jdPlanFab">
+    <h4>Your Jodhpur plan</h4>
+    <div class="sub"><span class="count" id="jdPlanCount">0</span> spots selected</div>
+    <a href="#" id="jdPlanLink" target="_blank">Continue to booking →</a>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="jd-lightbox" id="jdLightbox">
+    <button class="jd-lightbox-close" id="jdLightboxClose">&times;</button>
+    <img id="jdLightboxImg" src="" alt="">
+</div>
+
+<!-- ============ FOOTER (matches the rest of the site) ============ -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <!-- <form class="footer-form" form-type="footer_GIT" data-formtype="Get in Touch" id="heroEnquiryForm">
+                <div class="form-row">
+                    <input name="name" type="text" placeholder="Your Name">
+                </div>
+                <div class="form-row">
+                    <input name="email" type="email" placeholder="Your Email">
+                </div>
+                <div class="form-row">
+                    <input name="phone" type="text" placeholder="Mobile Number">
+                </div>
+                <div class="form-row form-row-split">
+                    <input name="count" type="text" placeholder="No. of People">
+                    <input name="car" type="text" placeholder="Car">
+                </div>
+                <div class="form-row">
+                    <input name="destination" type="text" placeholder="Destination">
+                </div>
+                <button type="submit" class="footer-submit-btn">
+                    Send Enquiry
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </form> -->
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+<!-- footer form backend linking -->
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+<script>
+function showsidebar(){ document.querySelector('.sidebar').classList.add('show'); }
+function hidesidebar(){ document.querySelector('.sidebar').classList.remove('show'); }
+
+/* ---------- attraction data ---------- */
+const ATTRACTIONS = [
+    { name:"Mehrangarh Fort", type:"Fort", built:"1459", duration:"~2.5 hrs",
+      img:"/images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg",
+      text:"One of India's largest forts, standing on a hilltop above the city. Founded by Rao Jodha, it offers sweeping views over Jodhpur's blue rooftops and houses a museum of royal artifacts, armour, and palanquins." },
+    { name:"Phool Mahal", type:"Royal Chamber", built:null, duration:"~30 min",
+      img:"./pack img/jodhpur/Phool Mahal.jpg",
+      text:"The \"Flower Palace\" — one of the most opulent chambers inside Mehrangarh Fort, with gold-leaf work and Rajput-era murals reflecting the artistic taste of the Rathore rulers." },
+    { name:"Jaswant Thada", type:"Cenotaph", built:"1899", duration:"~45 min",
+      img:"./pack img/jodhpur/Jaswant Thada.jpg",
+      text:"A marble memorial built for Maharaja Jaswant Singh II by his son, Maharaja Sardar Singh. Its intricately carved white marble and calm gardens make it a peaceful contrast to the fort above it." },
+    { name:"Umaid Bhawan Palace", type:"Palace", built:"1943", duration:"~1.5 hrs",
+      img:"https://www.greavesindia.com/wp-content/uploads/2023/10/shutterstock_2231719273-1024x683.jpg",
+      text:"One of the largest private residences in the world, blending Art Deco design with traditional Rajput style. Part royal residence, part museum, part luxury hotel — a very different architectural mood from the rest of Jodhpur." },
+    { name:"Mandore Gardens", type:"Historic Gardens", built:null, duration:"~1 hr",
+      img:"https://ebnw.net/wp-content/uploads/2021/02/Mandore-Garden-in-Jodhpur.jpg",
+      text:"The ruins of Mandore Fort sit alongside a garden of royal cenotaphs and a Shiva temple known for its carved sculptures — a quieter, greener stop with real historical weight." },
+    { name:"Kaylana Lake", type:"Lake", built:"1872", duration:"~1 hr",
+      img:"https://www.rajasthanbhumitours.com/blog/wp-content/uploads/2024/09/Kaylana-Lake-A-Tranquil-Oasis-Amidst-Jodhpurs-Desert-Landscape.jpg",
+      text:"An artificial lake on the edge of the city, popular for boating and — in winter — birdwatching, as migratory species stop here in the cooler months." },
+    { name:"Balsamand Lake", type:"Lake", built:"1159", duration:"~45 min",
+      img:"./pack img/jodhpur/Bal Samad Lake.jpg",
+      text:"One of the oldest man-made lakes in the region, originally built as a reservoir with an adjoining royal summer palace on its banks — now a quieter, garden-lined retreat outside the main city bustle." },
+    { name:"Chamunda Mataji Temple", type:"Temple", built:null, duration:"~30 min",
+      img:"https://thumbs.dreamstime.com/b/jodhpur-rajasthan-india-december-ancient-hindu-temple-mehrangarh-fort-jodhpur-rooftop-view-cityscape-ancient-hindu-179620656.jpg",
+      text:"The Rathore royal family's chosen deity temple, standing just beyond the walls of Mehrangarh Fort. Many visitors combine it with the fort visit for the added sunset view over the city from the same ridge." },
+    { name:"Rao Jodha Desert Rock Park", type:"Nature Park", built:"2011", duration:"~1.5 hrs",
+      img:"https://media.tripinvites.com/places/jodhpur/rao-jodha-desert-rock-park/rao-jodha-desert-rock-park-featured.jpg",
+      text:"An ecological restoration project beneath Mehrangarh Fort, reviving the native rocky desert landscape and its local flora — a calmer, nature-focused counterpoint to the forts and palaces nearby." }
+];
+
+const cardsWrap = document.getElementById('jdCards');
+const selected = new Set();
+
+ATTRACTIONS.forEach((a, i) => {
+    const card = document.createElement('div');
+    card.className = 'jd-card' + (i % 2 === 1 ? ' reverse' : '');
+    card.innerHTML = `
+        <div class="jd-card-media" data-img="${a.img}" data-name="${a.name}">
+            <img src="./${a.img}" alt="${a.name}" loading="lazy">
+            <span class="jd-card-tag">${a.type}</span>
+            <span class="jd-zoom-hint">Click to enlarge</span>
+        </div>
+        <div class="jd-card-body">
+            <h3>${a.name}</h3>
+            <div class="jd-card-facts">
+                ${a.built ? `<span class="jd-fact">Built ${a.built}</span>` : ''}
+                <span class="jd-fact">${a.type}</span>
+                <span class="jd-fact">Suggested: ${a.duration}</span>
+            </div>
+            <p>${a.text}</p>
+            <div class="jd-card-actions">
+                <div class="jd-add-btn" data-name="${a.name}">
+                    <svg class="check" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span class="label">Add to my plan</span>
+                </div>
+                <a class="jd-book-link" href="./booktour.html" target="_blank">Book this spot →</a>
+            </div>
+        </div>
+    `;
+    cardsWrap.appendChild(card);
+});
+
+/* ---------- itinerary picker ---------- */
+const planFab = document.getElementById('jdPlanFab');
+const planCount = document.getElementById('jdPlanCount');
+const planLink = document.getElementById('jdPlanLink');
+
+function updatePlan(){
+    planCount.textContent = selected.size;
+    planFab.classList.toggle('show', selected.size > 0);
+    const list = [...selected].join(', ');
+    planLink.href = '/booktour.html?destination=' + encodeURIComponent('Jodhpur — ' + list);
+}
+document.querySelectorAll('.jd-add-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        const name = btn.dataset.name;
+        if(selected.has(name)){
+            selected.delete(name);
+            btn.classList.remove('added');
+            btn.querySelector('.label').textContent = 'Add to my plan';
+        } else {
+            selected.add(name);
+            btn.classList.add('added');
+            btn.querySelector('.label').textContent = 'Added ✓';
+        }
+        updatePlan();
+    });
+});
+
+/* ---------- lightbox ---------- */
+const lightbox = document.getElementById('jdLightbox');
+const lightboxImg = document.getElementById('jdLightboxImg');
+document.querySelectorAll('.jd-card-media').forEach(media=>{
+    media.addEventListener('click', ()=>{
+        lightboxImg.src = media.dataset.img;
+        lightboxImg.alt = media.dataset.name;
+        lightbox.classList.add('show');
+    });
+});
+document.getElementById('jdLightboxClose').addEventListener('click', ()=> lightbox.classList.remove('show'));
+lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) lightbox.classList.remove('show'); });
+
+/* ---------- itinerary tabs ---------- */
+document.querySelectorAll('#jdItinTabs .jd-itin-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+        const day = tab.dataset.day;
+        document.querySelectorAll('#jdItinTabs .jd-itin-tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.jd-itin-panel').forEach(p=>p.classList.toggle('active', p.dataset.day === day));
+    });
+});
+
+/* ---------- FAQ accordion ---------- */
+document.querySelectorAll('.jd-faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        const item = btn.closest('.jd-faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.jd-faq-item.open').forEach(i=>i.classList.remove('open'));
+        if(!wasOpen) item.classList.add('open');
+    });
+});
+
+/* ---------- scroll reveal ---------- */
+const revealTargets = document.querySelectorAll('.jd-card, .jd-review-card');
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+revealTargets.forEach(t=>observer.observe(t));
+
+/* ---------- hero parallax + rail progress + sticky bar ---------- */
+const heroBg = document.getElementById('jdHeroBg');
+const hero = document.getElementById('jdHero');
+const stickyBar = document.getElementById('jdStickyBar');
+const railFill = document.getElementById('jdRailFill');
+const tourWrap = document.querySelector('.jd-tour-wrap');
+
+function onScroll(){
+    const y = window.scrollY;
+    const heroH = hero.offsetHeight;
+    if(y < heroH + 200){
+        heroBg.style.transform = `translateY(${y * 0.35}px)`;
+    }
+    stickyBar.classList.toggle('show', y > heroH - 80);
+    if(tourWrap){
+        const rect = tourWrap.getBoundingClientRect();
+        const total = rect.height - window.innerHeight * 0.5;
+        const passed = Math.min(Math.max(-rect.top, 0), total);
+        const pct = total > 0 ? (passed / total) * 100 : 0;
+        railFill.style.height = pct + '%';
+    }
+}
+window.addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+</script>
+<script src="././finalanimation.js"></script>
+<script src="././experimental_claude.js"></script>
+</body>
+</html>

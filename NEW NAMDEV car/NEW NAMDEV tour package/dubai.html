@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./finalanimation.css">
+    <!-- <link rel="stylesheet" href="./dubai.css"> -->
+     <link rel="stylesheet" href="fortpack.css">
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="container">
+
+            <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)"> 
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a class="active" href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+            <li><a href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+            <!-- <li onclick="showsidebar()" style="font-size: 32px;"><a href=""><img src="./icons/menu.png" alt=""></a></li> -->
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a class="active" href="./index.html">Home</a></li>
+            <li class="hideonmobile"><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <!-- <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li> -->
+            <li class="hideonmobile"><a href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="./icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+    <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+
+
+
+
+
+
+        </div>
+    </header>
+
+    <div class="overview">
+        <p>
+            Embark on a journey to the jewel of the Middle East with our exclusive Dubai tour package! A city that
+            seamlessly blends tradition and modernity, Dubai captivates with its iconic skyline, cultural richness, and
+            unparalleled luxury. Our meticulously crafted itinerary ensures that you experience the best of this vibrant
+            metropolis, offering a perfect blend of awe-inspiring architecture, thrilling adventures, and rich cultural
+            encounters.
+            <br>
+            join us on an unforgettable escapade as we unlock the secrets of Dubai, a city that seamlessly blends
+            tradition and opulence. Whether you seek adventure in the desert, relaxation on pristine beaches, or a taste
+            of the high life in a cosmopolitan city, our Dubai package promises an experience like no other.
+            Book now and let the enchantment of Dubai unfold before you. Your extraordinary adventure awaits!
+        </p>
+    </div>
+
+    <div class="luxuryr" id="one">
+        <div class="img1">
+            
+            <img src="./https://lp-cms-production.imgix.net/2022-06/Qatar_Families_beach.jpg?uto=compress&fit=crop&format=auto&q=50&w=1200&h=800"
+                alt="">
+        </div>
+        <div class="data">
+            <span>A "Luxury Retreat Package"</span> for Dubai is designed to provide travelers with an opulent and
+            indulgent
+            experience, combining world-class accommodations, exclusive amenities, and personalized services. Here are
+            the details that typically define a Luxury Retreat Package for Dubai:
+            <br>Accommodations: Stay in renowned 5-star hotels or luxury resorts, known for their exceptional service
+            and opulent surroundings.
+            Options may include iconic properties such as the Burj Al Arab, Atlantis The Palm, or Jumeirah Al Naseem.
+            Access to suites or premium room categories with breathtaking views of the city, sea, or iconic landmarks.
+            VIP check-in and personalized services throughout the stay.
+           
+            <div class="imgs">
+                <img class="i" src="././icons/favicon-32x32.png" alt="">
+                <!-- class="i" <img src="././icons/flight.png" alt=""> -->
+                <img class="i" src="././icons/hopterl.png" alt="">
+                <img class="i" src="././icons/meal.png" alt="">
+                <img class="i" src="././icons/unik.webp" alt="">
+
+                <a href="#" class="bbook">
+                    <div>
+                        Book Now
+                    </div>
+                </a>
+                <a href="./NEW NAMDEV car/fortdeatils.html" id="view">
+                    <div>
+                        View More
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="luxuryr" id="sec">
+        <div class="data">
+            <span>A "Family-Friendly Adventure Package"</span> for Dubai is crafted to provide families with a
+            well-rounded and enjoyable experience, offering a mix of entertaining activities, child-friendly
+            attractions, and accommodations suitable for all ages. Here are the details that typically define a
+            Family-Friendly Adventure Package for Dubai:
+            <br>
+            Accommodations: Stay in family-friendly hotels or resorts known for their amenities catering to children and
+            adults alike.
+            Accommodation options may include family suites, interconnected rooms, or kid-themed rooms.
+            Access to family pools, water slides, and play areas within the hotel premises.
+            Babysitting services or kids' clubs for supervised activities.
+
+
+            
+            <div class="imgs">
+                <img class="i" src="././icons/favicon-32x32.png" alt="">
+                <!-- class="i" <img src="././icons/flight.png" alt=""> -->
+                <img class="i" src="././icons/hopterl.png" alt="">
+                <img class="i" src="././icons/meal.png" alt="">
+                <img class="i" src="././icons/unik.webp" alt="">
+
+                <a href="#" class="bbook">
+                    <div>
+                        Book Now
+                    </div>
+                </a>
+                <a href="./NEW NAMDEV car/fortdeatils.html" id="view">
+                    <div>
+                        View More
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+        <div class="img1">
+            
+            <img src="./https://lp-cms-production.imgix.net/2022-06/Qatar_Families_beach.jpg?uto=compress&fit=crop&format=auto&q=50&w=1200&h=800"
+                alt="">
+        </div>
+
+    </div>
+
+    <div class="luxuryr" id="thd">
+        <div class="img1">
+            
+            <img src="./https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/41/e1/1f/radisson-beach-resort.jpg?=700&h=-1&s=1"
+                alt="">
+        </div>
+        <div class="data">
+            <span>A "Cruise and Beach Retreat Package"</span> for Dubai is crafted to provide travelers with a perfect
+            blend of relaxation and exploration, combining the luxury of cruising along the coast with idyllic days
+            spent on Dubai's stunning beaches. Here are the details that typically define a Cruise and Beach Retreat
+            Package for Dubai:
+            <br>
+            Accommodations:Stay in upscale beachfront hotels or resorts offering direct access to the sandy
+            shores.Accommodations may include spacious suites or private villas with stunning ocean views.
+           
+            <div class="imgs">
+                <img class="i" src="././icons/favicon-32x32.png" alt="">
+                <!-- class="i" <img src="././icons/flight.png" alt=""> -->
+                <img class="i" src="././icons/hopterl.png" alt="">
+                <img class="i" src="././icons/meal.png" alt="">
+                <img class="i" src="././icons/unik.webp" alt="">
+
+                <a href="#" class="bbook">
+                    <div>
+                        Book Now
+                    </div>
+                </a>
+                <a href="./NEW NAMDEV car/fortdeatils.html" id="view">
+                    <div>
+                        View More
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="luxuryr" id="frth">
+        <div class="data">
+            <span>A "Thrills and Chills Package"</span> for Dubai is designed to cater to adventure seekers and those
+            looking for exhilarating experiences. It combines high-energy activities, adrenaline-pumping adventures, and
+            opportunities to explore the more adventurous side of Dubai. Here are the details that typically define a
+            Thrills and Chills Package for Dubai:
+            <br>
+            Accommodations:Stay in hotels or resorts strategically located for easy access to adventure activities and
+            attractions.
+            Accommodations may range from mid-range to luxury options based on preferences.
+            
+            <div class="imgs">
+                <img class="i" src="././icons/favicon-32x32.png" alt="">
+                <!-- class="i" <img src="././icons/flight.png" alt=""> -->
+                <img class="i" src="././icons/hopterl.png" alt="">
+                <img class="i" src="././icons/meal.png" alt="">
+                <img class="i" src="././icons/unik.webp" alt="">
+
+                <a href="#" class="bbook">
+                    <div>
+                        Book Now
+                    </div>
+                </a>
+                <a href="./NEW NAMDEV car/fortdeatils.html" id="view">
+                    <div>
+                        View More
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+
+        <div class="img1">
+            
+            <img src="./https://plus.unsplash.com/premium_photo-1661943659036-aa040d92ee64?=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZHViYWl8ZW58MHx8MHx8fDA%3D"
+                alt="">
+        </div>
+    </div>
+
+
+    <form action="">
+        <div class="carform" id="carform">
+            <h1 style="color: #121212;margin-top: 1%; margin-left: 5%; text-decoration: underline;">Book Pack Now</h1>
+
+            <input type="text" placeholder="ENTER THE FULL NAME">
+            <input type="text" name="email" placeholder="ENTER THE E-MAIL">
+            <input type="text" name="Phone" placeholder="ENTER THE PHONE">
+            <input type="date" name="date" placeholder="DD-MM-YYYY">
+            <input type="number" name="passanger" placeholder="ENTER NO. OF TRAVELERS">
+            <!-- <input type="number" name="DAYS" placeholder="ENTER NO. OF DAYS"> -->
+
+            <select name="cartype" id="cartype ">
+                <option value="none" selected>Select the Pack/option>
+                <option value="Volvo">Luxury Retreatoption>
+                <option value="innovacry">Family-Friendly</option>
+                <option value="ertiga">Chills and Thrills/option>
+                <option value="sdzire">Curise and Beach </option>
+                <!-- <option value="city">Honda City</option> -->
+            </select>
+            <input style="background-color: #328ADF; padding: 0%;" type="submit" onclick="notify()"
+                placeholder="Submit">
+        </div>
+    </form>
+
+    <div class="question">
+        <h2>Frequently Asked Question for this Pack</h2>
+        <br><br>
+
+        
+        <span>What is the best time to visit Dubai ?</span><br>
+        Dubai is most enjoyable during the winter months, from November to March, when the weather is cooler. <br><br>
+        
+        <span>What is the currency in Dubai?</span><br>
+        The currency used in Dubai is the United Arab Emirates Dirham (AED). <br><br>
+        
+        <span>Do I need a visa to visit Dubai?</span><br>
+        Depending on your nationality, you may need a visa to enter Dubai. Check the visa requirements before traveling. <br><br>
+        
+<span>        What is the official language in Dubai?</span><br>
+        Arabic is the official language, but English is widely spoken and understood. <br><br>
+        
+<span>        Is it safe to travel to Dubai?</span><br>
+        Dubai is generally considered a safe destination for tourists. However, it's always wise to practice common 
+        travel safety precautions.<br><br>
+        
+<span>        What is the dress code in Dubai?</span><br>
+        While Dubai is modern and cosmopolitan, it's respectful to dress modestly in public areas. Swimwear is 
+        acceptable at beaches and pools.<br><br>
+<span>        
+        Can I drink alcohol in Dubai?</span><br>
+        Alcohol is available in licensed venues like hotels and clubs. However, public intoxication is not tolerated. <br><br>
+        
+        <span>What are the must-visit attractions in Dubai?</span><br>
+        Popular attractions include the Burj Khalifa, Dubai Mall, Burj Al Arab, Palm Jumeirah, and the Dubai Fountain. <br><br>
+        
+<span>        How is the transportation system in Dubai?</span><br>
+        Dubai has a well-developed public transportation system, including the metro, buses, and taxis. Renting a car is 
+        also a common option.<br><br>
+<span>        
+            Is it necessary to tip in Dubai?</span><br>
+        Tipping is appreciated but not obligatory. A service charge is often included in bills at hotels and 
+        restaurants.<br><br>
+        
+        <span>Are there any cultural norms I should be aware of?</span><br>
+        Respect local customs and traditions, such as avoiding public displays of affection and dressing modestly in 
+        religious areas.<br><br>
+        
+        <span>What is the voltage and plug type in Dubai?</span><br>
+        The standard voltage is 230V, and the plug type is the British-style three-pin plug. <br><br>
+        
+        <span>How can I stay connected to the internet in Dubai?</span><br>
+        Dubai has widespread Wi-Fi coverage, and you can also purchase local SIM cards for data access. <br><br>
+<span>        
+           What are the shopping hours in Dubai?</span><br>
+        Malls generally open from 10 am to 10 pm, while smaller shops may close for a few hours in the afternoon. <br><br>
+        
+<span>        Are there any specific health precautions I should take?</span><br>
+        Tap water is safe to drink, but it's advisable to drink bottled water. Also, be aware of the strong sun, so use 
+        sunscreen and stay hydrated.<br><br>
+
+
+    </div>
+
+
+
+
+            <!-- ////////////////////////////////////////////// -->
+            <!-- ////////////////////////////////////////////// -->
+          <!-- Newsletter strip -->
+<div class="footer-newsletter">
+    <div class="newsletter-inner">
+        <div class="newsletter-text">
+            <h3>Get exclusive travel deals</h3>
+            <p>Subscribe and be the first to know about new packages and offers.</p>
+        </div>
+        <form class="newsletter-form" data-formtype="Newsletter Signup">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Jaisalmer</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/490280174/photo/green-lagoon.jpg?s=612x612&w=0&k=20&c=HW7F8IqCLsCS83HYkZsB42UAsq40soJJ3zze16ni7b4=" alt="Rann of Kutch">
+                <span>Rann of Kutch</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/1397977352/photo/ancient-nabataean-palace-tomb-carved-in-sandstone-rock-petra-jordan.jpg?s=612x612&w=0&k=20&c=oJWboHdIDXt8-ftELq16NrmxjYEckBm2sAJ6YeNl8fs=" alt="Heritage Forts">
+                <span>Heritage Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://lp-cms-production.imgix.net/2022-06/Qatar_Families_beach.jpg?uto=compress&fit=crop&format=auto&q=50&w=1200&h=800" alt="Dubai">
+                <span>Dubai</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/41/e1/1f/radisson-beach-resort.jpg?=700&h=-1&s=1" alt="Beach Retreats">
+                <span>Beach Retreats</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./tourpack.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./tourpack.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./tourpack.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Agra Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./tourpack.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./tourpack.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./tourpack.html">Desert Triangle Tour</a></li>
+            <li><a href="./tourpack.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./tourpack.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./tourpack.html">Rajasthan Tour Package</a></li>
+            <li><a href="./tourpack.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./tourpack.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./tourpack.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./tourpack.html">Spiritual India Tour</a></li>
+            <li><a href="./tourpack.html">Classical India Tour</a></li>
+            <li><a href="./tourpack.html">Best of India Tour</a></li>
+            <li><a href="./tourpack.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/NEW NAMDEV tour package/new delhi.html">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Get in Touch" id="heroEnquiryForm">
+                <div class="form-row">
+                    <input name="name" type="text" placeholder="Your Name">
+                </div>
+                <div class="form-row">
+                    <input name="email" type="email" placeholder="Your Email">
+                </div>
+                <div class="form-row">
+                    <input name="phone" type="text" placeholder="Mobile Number">
+                </div>
+                <div class="form-row form-row-split">
+                    <input name="no of people" type="text" placeholder="No. of People">
+                    <input name="car" type="text" placeholder="Car">
+                </div>
+                <div class="form-row">
+                    <input name="destination" type="text" placeholder="Destination">
+                </div>
+                <button type="submit" class="footer-submit-btn">
+                    Send Enquiry
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+            <!-- ////////////////////////////////////////////// -->
+            <!-- ////////////////////////////////////////////// -->
+
+
+
+                    <script src="././finalanimation.js"></script>
+</body>
+
+</html>

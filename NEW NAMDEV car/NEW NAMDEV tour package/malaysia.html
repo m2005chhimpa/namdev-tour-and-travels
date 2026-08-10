@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="./images/logo03.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malaysia Tour Package — Namdev's Tour & Travels</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<!-- Your shared site nav/footer stylesheet(s) go here, e.g.: -->
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./finalanimation.css">
+<link rel="stylesheet" href="./experimental_claude.css">
+<style>
+:root{ --malInk:#23201C; --malMuted:#8A7F70; --malAccent:#328ADF; }
+
+/* ===== HERO ===== */
+.malHero{
+    position:relative; height:24rem; width:100%;
+    background-size:cover; background-position:center;
+    background-image:url(https://d2g4iwshf24scx.cloudfront.net//Visa-Images/Malaysia%20Visa_128/malaysia-visa-banner-image.jpg);
+}
+.malHeroOverlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(35,32,28,0.3), rgba(35,32,28,0.75));
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; color:#fff; padding:0 1.5rem;
+}
+.malHeroOverlay h1{ font-size:2.4rem; font-weight:400; margin:.6rem 0 .4rem; font-family:inherit; }
+.malHeroOverlay p{ font-size:.95rem; opacity:.9; }
+.malTag{
+    font-size:.7rem; font-weight:700; text-transform:uppercase;
+    background:rgba(255,255,255,0.15); color:#fff; padding:.3rem .8rem; border-radius:999px;
+}
+/* ===== SIDEBAR FAILSAFE — guarantees hidden-by-default regardless of external CSS load order ===== */
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 20rem;
+    max-width: 80vw;
+    color: #FBFBFB;
+    z-index: 999;
+    background-color: #121212;
+    transform: translateX(100%);
+    transition: transform .3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    gap: 1rem;
+}
+.sidebar li a{ color: #D3C9C9; }
+.sidebar.show{
+    transform: translateX(0);
+}
+
+#menuicon{ display: none; cursor: pointer; }
+
+@media screen and (max-width: 1024px){
+    #firstnav li.hideonmobile{ display: none; }
+    .booka{ display: none; }
+    #menuicon{ display: flex; }
+}
+
+/* ===== OVERVIEW ===== */
+.malOverview{ width:74%; max-width:60rem; margin:3rem auto; text-align:center; }
+.malOverview p{ color:#585858; line-height:1.7; font-size:.95rem; }
+
+/* ===== PACKAGE CARDS ===== */
+.malPkgCard{
+    max-width:70rem; margin:2.5rem auto; padding:1.5rem;
+    border:1px solid rgba(35,32,28,0.1); border-radius:1rem;
+    display:flex; gap:2rem; align-items:center;
+    box-shadow:0 8px 24px rgba(35,32,28,0.05);
+}
+.malPkgImg{ flex-shrink:0; width:20rem; }
+.malPkgImg img{ width:100%; height:16rem; object-fit:cover; border-radius:.8rem; display:block; }
+.malPkgBody{ flex:1; color:#585858; font-size:.92rem; line-height:1.65; }
+.malPkgBody h3{ font-weight:700; font-size:1.15rem; color:var(--malInk); margin-bottom:.5rem; }
+.malPkgIcons{ display:flex; align-items:center; gap:1rem; margin-top:1.3rem; flex-wrap:wrap; }
+.malPkgIcons img{ width:1.8rem; height:1.8rem; object-fit:contain; opacity:.7; }
+.malBookNow{
+    background:var(--malAccent); color:#fff; padding:.6rem 1.3rem; border-radius:999px;
+    font-size:.85rem; font-weight:600; text-decoration:none; transition:background .2s ease, transform .2s ease;
+}
+.malBookNow:hover{ background:var(--malInk); transform:translateY(-2px); }
+.malViewMore{
+    background:transparent; border:1px solid rgba(35,32,28,0.2); color:var(--malInk);
+    padding:.6rem 1.3rem; border-radius:999px; font-size:.85rem; font-weight:600; text-decoration:none; transition:all .2s ease;
+}
+.malViewMore:hover{ border-color:var(--malAccent); color:var(--malAccent); }
+
+@media screen and (max-width:768px){
+    .malPkgCard{ flex-direction:column; }
+    .malPkgImg{ width:100%; }
+}
+
+/* ===== BOOKING FORM ===== */
+.malBookForm{
+    max-width:32rem; margin:3rem auto; background:#fff; border-radius:1rem;
+    padding:2rem; box-shadow:0 8px 24px rgba(35,32,28,0.08);
+    display:flex; flex-direction:column; gap:1rem;
+}
+.malBookForm h2{ font-size:1.3rem; text-align:center; color:var(--malInk); }
+.malBookForm input, .malBookForm select{
+    width:100%; background:#F7F5F1; border:1px solid rgba(35,32,28,0.1); border-radius:.6rem;
+    padding:.75rem .9rem; font-size:.9rem; outline:none; font-family:inherit; color:var(--malInk);
+}
+.malBookForm input:focus, .malBookForm select:focus{ border-color:var(--malAccent); }
+.malBookForm button{
+    background:var(--malAccent); color:#fff; border:none; border-radius:.6rem; padding:.9rem;
+    font-weight:600; cursor:pointer; transition:background .2s ease;
+}
+.malBookForm button:hover{ background:var(--malInk); }
+.malSendOtpBtn{ background:var(--malInk); color:#fff; border:none; border-radius:.5rem; padding:.7rem 1rem; cursor:pointer; }
+.malOtpInput{ width:100%; padding:.7rem; border-radius:.5rem; border:1px solid #ccc; }
+
+/* ===== FAQ ===== */
+.malFaqSection{ max-width:60rem; margin:6rem auto; padding:0 1.5rem; }
+.malFaqHeading{ text-align:center; font-size:2.6rem; font-weight:400; position:relative; padding-bottom:1rem; color:var(--malInk); }
+.malFaqHeading::after{ content:""; display:block; width:3.5rem; height:3px; background:linear-gradient(90deg, var(--malAccent), transparent); margin:.8rem auto 0; }
+.malFaqIntro{ text-align:center; color:#585858; margin:1rem 0 2.5rem; }
+.malFaqList{ display:flex; flex-direction:column; gap:.8rem; }
+.malFaqItem{ background:#fff; border:1px solid rgba(35,32,28,0.1); border-radius:.8rem; overflow:hidden; transition:border-color .2s ease; }
+.malFaqItem:hover{ border-color:rgba(50,138,223,0.4); }
+.malFaqQuestion{
+    width:100%; display:flex; align-items:center; justify-content:space-between; background:none; border:none;
+    padding:1.2rem 1.4rem; font-size:.95rem; font-weight:500; color:var(--malInk); text-align:left; cursor:pointer;
+}
+.malFaqIcon{ flex-shrink:0; color:var(--malAccent); transition:transform .3s ease; }
+.malFaqItem.malOpen .malFaqIcon{ transform:rotate(135deg); }
+.malFaqAnswer{ max-height:0; overflow:hidden; transition:max-height .35s ease, padding .35s ease; padding:0 1.4rem; }
+.malFaqItem.malOpen .malFaqAnswer{ max-height:12rem; padding:0 1.4rem 1.3rem; }
+.malFaqAnswer p{ color:#585858; font-size:.88rem; line-height:1.65; }
+</style>
+</head>
+<body>
+
+        <!-- loader / animation -->
+    <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+
+<!-- ===================================================== -->
+<!-- Your shared site <nav> include goes here (not included) -->
+      <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)"> 
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a class="active" href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+            <li><a href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+            <!-- <li onclick="showsidebar()" style="font-size: 32px;"><a href=""><img src="./icons/menu.png" alt=""></a></li> -->
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a class="active" href="./index.html">Home</a></li>
+                <li class="hideonmobile navHasDropdown">
+    <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+    <div class="navDropdown">
+        <div class="navDropdownCol">
+            <h4>Luxury Buses</h4>
+            <a href="">Volvo Bus</a>
+            <a href="">Winger</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Luxury Cars</h4>
+            <a href="">Innova Crysta</a>
+            <a href="">Kia Carnival</a>
+            <a href="">Honda City</a>
+            <a href="">Etios</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Economical Cars</h4>
+            <a href="">Swift Dzire</a>
+            <a href="">Ertiga</a>
+            <a href="">Innova</a>
+        </div>
+    </div>
+</li>
+            <li class="hideonmobile"><a href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+<!-- ===================================================== -->
+
+<div class="malHero">
+    <div class="malHeroOverlay">
+        <span class="malTag">International Tour</span>
+        <h1>Malaysia Tour Package</h1>
+        <p>Modern city skylines, rainforests, and pristine beaches — all in one unforgettable trip.</p>
+    </div>
+</div>
+
+<div class="malOverview">
+    <p>
+        Malaysia is a diverse and vibrant destination offering a wide range of attractions for every kind
+        of traveler — from nature and adventure to history, culture, and modern city experiences.
+        Malaysia's multicultural identity adds depth to every trip, whether you're drawn to nature-based
+        adventures, cultural exploration, or a relaxing beach retreat.
+    </p>
+</div>
+
+<div class="malPkgCard">
+    <div class="malPkgImg">
+        <img src="./https://media.istockphoto.com/id/1479374768/photo/panoramic-of-kuala-lumpur-city-at-night-malaysia.webp?b=1&s=170667a&w=0&k=20&c=Lhd9AdGj5TzZIZaH7bgK-HgPgIpBkrCWXAnusBrb6PA=" alt="Kuala Lumpur skyline at night">
+    </div>
+    <div class="malPkgBody">
+        <h3>Classic Malaysia Tour Package</h3>
+        A pre-arranged, well-rounded itinerary covering the key and iconic attractions of Malaysia —
+        designed for travelers who want a hassle-free introduction to the country's culture, cities,
+        and natural beauty without planning every detail themselves.
+        <div class="malPkgIcons">
+            <img src="././icons/favicon-32x32.png" alt="">
+            <img src="././icons/hopterl.png" alt="">
+            <img src="././icons/meal.png" alt="">
+            <img src="././icons/unik.webp" alt="">
+            <a href="#malBookForm" class="malBookNow">Book Now</a>
+            <a href="./NEW NAMDEV car/NEW NAMDEV tour package/malaysiadetails.html" class="malViewMore">View More</a>
+        </div>
+    </div>
+</div>
+
+<div class="malPkgCard">
+    <div class="malPkgBody">
+        <h3>Malaysian Adventure Package</h3>
+        Designed for adventure enthusiasts, this package showcases Malaysia's diverse landscapes and
+        ecosystems through a balance of adrenaline-pumping outdoor activities and opportunities to
+        appreciate the country's natural beauty and cultural diversity.
+        <div class="malPkgIcons">
+            <img src="././icons/favicon-32x32.png" alt="">
+            <img src="././icons/hopterl.png" alt="">
+            <img src="././icons/meal.png" alt="">
+            <img src="././icons/unik.webp" alt="">
+            <a href="#malBookForm" class="malBookNow">Book Now</a>
+            <a href="./NEW NAMDEV car/NEW NAMDEV tour package/malaysiadetails.html" class="malViewMore">View More</a>
+        </div>
+    </div>
+    <div class="malPkgImg">
+        <img src="./https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREbW02mwUGXLoXaIYjArXguVBPAVWYKW_tpg&usqp=CAU" alt="Malaysia rainforest">
+    </div>
+</div>
+
+<div class="malPkgCard">
+    <div class="malPkgImg">
+        <img src="./https://images.unsplash.com/photo-1508062878650-88b52897f298?q=80&w=1200&auto=format&fit=crop" alt="Rainforest and beach in Malaysia">
+    </div>
+    <div class="malPkgBody">
+        <h3>Rainforest and Beach Combo Package</h3>
+        A curated experience blending the lush, biodiverse rainforests of Malaysia with the relaxation
+        of its pristine coastal beaches — a balanced vacation of adventure, culture, and downtime.
+        <div class="malPkgIcons">
+            <img src="././icons/favicon-32x32.png" alt="">
+            <img src="././icons/hopterl.png" alt="">
+            <img src="././icons/meal.png" alt="">
+            <img src="././icons/unik.webp" alt="">
+            <a href="#malBookForm" class="malBookNow">Book Now</a>
+            <a href="./NEW NAMDEV car/NEW NAMDEV tour package/malaysiadetails.html" class="malViewMore">View More</a>
+        </div>
+    </div>
+</div>
+
+<form class="malBookForm" id="malBookForm" data-formtype="Malaysia Package Booking">
+    <h2>Book Pack Now</h2>
+    <input type="text" name="name" placeholder="ENTER THE FULL NAME">
+    <input type="email" name="email" placeholder="ENTER THE E-MAIL">
+    <input type="text" name="phone" placeholder="ENTER THE PHONE">
+    <input type="date" name="date">
+    <input type="number" name="people" placeholder="ENTER NO. OF TRAVELERS">
+    <select name="car">
+        <option value="none" selected disabled>Select the Pack</option>
+        <option value="Luxury Retreat">Luxury Retreat</option>
+        <option value="Family-Friendly">Family-Friendly</option>
+        <option value="Chills and Thrills">Chills and Thrills</option>
+        <option value="Cruise and Beach">Cruise and Beach</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+<div class="malFaqSection">
+    <h2 class="malFaqHeading">Frequently asked questions</h2>
+    <p class="malFaqIntro">Everything you need to know about the Malaysia tour package.</p>
+
+    <div class="malFaqList">
+        <div class="malFaqItem">
+            <button class="malFaqQuestion"><span>What does the Malaysia package include?</span><i class="ti ti-plus malFaqIcon"></i></button>
+            <div class="malFaqAnswer"><p>Standard inclusions are accommodation, transportation, and specified sightseeing activities. Meals and optional add-ons vary by chosen package.</p></div>
+        </div>
+        <div class="malFaqItem">
+            <button class="malFaqQuestion"><span>Do I need a visa to visit Malaysia?</span><i class="ti ti-plus malFaqIcon"></i></button>
+            <div class="malFaqAnswer"><p>Visa requirements depend on your nationality. We'll guide you through the process once your travel dates are confirmed.</p></div>
+        </div>
+        <div class="malFaqItem">
+            <button class="malFaqQuestion"><span>What's the best time of year to visit?</span><i class="ti ti-plus malFaqIcon"></i></button>
+            <div class="malFaqAnswer"><p>Malaysia is enjoyable year-round, though December to February typically offers the most pleasant weather across the country.</p></div>
+        </div>
+        <div class="malFaqItem">
+            <button class="malFaqQuestion"><span>Can I customize the itinerary?</span><i class="ti ti-plus malFaqIcon"></i></button>
+            <div class="malFaqAnswer"><p>Yes — every package can be tailored to your preferred mix of city, rainforest, and beach experiences.</p></div>
+        </div>
+        <div class="malFaqItem">
+            <button class="malFaqQuestion"><span>Is this package suitable for families?</span><i class="ti ti-plus malFaqIcon"></i></button>
+            <div class="malFaqAnswer"><p>Yes, the Family-Friendly option is designed specifically with children and multi-generational groups in mind.</p></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============ FOOTER (matches the rest of the site) ============ -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <!-- <form class="footer-form" form-type="footer_GIT" data-formtype="Get in Touch" id="heroEnquiryForm">
+                <div class="form-row">
+                    <input name="name" type="text" placeholder="Your Name">
+                </div>
+                <div class="form-row">
+                    <input name="email" type="email" placeholder="Your Email">
+                </div>
+                <div class="form-row">
+                    <input name="phone" type="text" placeholder="Mobile Number">
+                </div>
+                <div class="form-row form-row-split">
+                    <input name="count" type="text" placeholder="No. of People">
+                    <input name="car" type="text" placeholder="Car">
+                </div>
+                <div class="form-row">
+                    <input name="destination" type="text" placeholder="Destination">
+                </div>
+                <button type="submit" class="footer-submit-btn">
+                    Send Enquiry
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </form> -->
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+<!-- footer form backend linking -->
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+<!-- ===================================================== -->
+<!-- Your shared site <footer> include goes here (not included) -->
+<!-- ===================================================== -->
+
+<script>
+/* ===== FAQ ACCORDION ===== */
+document.querySelectorAll('.malFaqQuestion').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.malFaqItem');
+        const wasOpen = item.classList.contains('malOpen');
+        document.querySelectorAll('.malFaqItem.malOpen').forEach(o => o.classList.remove('malOpen'));
+        if (!wasOpen) item.classList.add('malOpen');
+    });
+});
+
+/* ===== BOOKING FORM: OTP + GOOGLE SHEET SUBMISSION ===== */
+const MAL_GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec";
+
+document.querySelectorAll("form[data-formtype]").forEach(form => {
+    const emailField = form.querySelector('[name="email"]');
+    const submitBtn = form.querySelector('[type="submit"]');
+    if (!emailField || !submitBtn) return;
+
+    const otpWrap = document.createElement("div");
+    otpWrap.innerHTML = `
+        <button type="button" class="malSendOtpBtn">Send OTP</button>
+        <input type="text" class="malOtpInput" placeholder="Enter OTP" style="display:none;">
+    `;
+    submitBtn.parentNode.insertBefore(otpWrap, submitBtn);
+    submitBtn.style.display = "none";
+
+    const sendOtpBtn = otpWrap.querySelector(".malSendOtpBtn");
+    const otpInput = otpWrap.querySelector(".malOtpInput");
+
+    sendOtpBtn.addEventListener("click", async () => {
+        if (!emailField.value) { alert("Please enter your email first."); return; }
+        sendOtpBtn.disabled = true;
+        sendOtpBtn.textContent = "Sending...";
+        try {
+            const res = await fetch(MAL_GOOGLE_SHEET_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify({ action: "sendOtp", email: emailField.value })
+            });
+            const result = await res.json();
+            if (result.result === "success") {
+                alert("OTP sent to your email.");
+                otpInput.style.display = "block";
+                submitBtn.style.display = "block";
+                sendOtpBtn.textContent = "Resend OTP";
+            } else {
+                alert(result.message || "Failed to send OTP.");
+                sendOtpBtn.textContent = "Send OTP";
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Could not send OTP. Please try again.");
+            sendOtpBtn.textContent = "Send OTP";
+        }
+        sendOtpBtn.disabled = false;
+    });
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        if (!otpInput.value) { alert("Please enter the OTP sent to your email."); return; }
+
+        const formData = new FormData(form);
+        const payload = { action: "verifySubmit", formType: form.dataset.formtype, otp: otpInput.value };
+        formData.forEach((value, key) => { payload[key] = value; });
+
+        try {
+            const res = await fetch(MAL_GOOGLE_SHEET_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify(payload)
+            });
+            const result = await res.json();
+            if (result.result === "success") {
+                alert("Thank you! Your booking request has been submitted.");
+                form.reset();
+                otpInput.style.display = "none";
+                submitBtn.style.display = "none";
+                sendOtpBtn.textContent = "Send OTP";
+            } else {
+                alert(result.message || "Invalid OTP. Please try again.");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Something went wrong. Please try again.");
+        }
+    });
+});
+</script>
+<!-- for responsiveness -->
+ <script>
+    
+                function showsidebar(){
+                 document.querySelector('.sidebar').classList.add('show');
+                    }
+                function hidesidebar(){
+                 document.querySelector('.sidebar').classList.remove('show');
+                }
+ </script>
+<!-- loader animation -->
+ <script src="././finalanimation.js"></script>
+ <script src="././experimental_claude.js"></script>
+
+</body>
+</html>

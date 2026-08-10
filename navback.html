@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    
+ .navbar{
+    /* background-color: blue; */
+    height: 5.625rem;
+    display: flex;
+    width: 100%;
+    box-shadow: 0px 0px 0px  1px #328ADF;
+    flex-shrink: 0;
+}
+.navbar img{
+    padding: .2rem;
+    position: relative;
+    margin-left: 9.4rem;
+}
+.navbar ul{
+    margin-left: 17rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.8rem;
+}
+
+.chkbtn{
+    line-height: 80px;
+    /* position: absolute; */
+    float: right;
+    /* margin-right: .1rem; */
+    position: absolute;
+    right: -99%;
+    top: 1.7%;
+    /* left: 14%; */
+    margin-top: 1rem;
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+
+@media (max-width: 800px){
+    .chkbtn{
+        display: block;
+    }
+    .booka{
+        display: none;
+    }
+    .navbar {
+        box-shadow: none;
+    }
+}
+
+
+
+
+
+
+.navbar ul  li .active{
+    color: #328ADF;
+    /* text-decoration: underline; */
+    border-bottom:.8px solid #328ADF;
+}
+.navbar ul a{
+    color: black;
+    text-decoration: none;
+}
+.navbar ul a:hover{
+    border-bottom:.8px solid #328ADF;
+    color: #328ADF;
+}
+.navbar .book:hover{
+    background-color: #252F36;
+    scale: 1.05;
+}
+.navbar .book{
+    margin-left: 13.5rem;
+    display: inline-flex;
+padding: 0.8125rem 1.375rem;
+justify-content: center;
+margin-top: 1rem;
+align-items: center;
+gap: 0.625rem;
+border-radius: 0.5rem;
+background: #328ADF;
+
+    color: var(--white, #FBFBFB);
+/* font-family: Genos; */
+font-size: 1rem;
+font-style: normal;
+font-weight: 500;
+line-height: 1.5rem; /* 150% */
+}
+
+.submenu1{
+    display: none;
+    width: 112px;
+    /* color: white; */
+    text-align: center;
+    border-radius: 5px;
+}
+.submenu1 li a {
+    color: white;
+}
+.submenu1 li a:hover  {
+    color: #121212;
+
+}
+
+.navbar ul li:hover .submenu1{
+    display: block;
+    position: absolute;
+    background-color: #328ADF;
+    color: white;
+    /* margin-top: 1%; */
+    /* margin-left: 1%; */
+}
+.navbar ul li:hover .submenu1 ul{
+    display: block;
+    margin-left: 1%;
+}
+.navbar ul li:hover .submenu1 ul li{
+    padding:1.7%;
+    margin-top: 1.5%;
+    border-bottom:  1px dotted white;
+    background: transparent;
+}
+
+
+.submenu2{
+    display: none;
+    width: 100px;
+    background-color: #328ADF;
+    color: #FFF;
+    border-radius: 5px;
+}
+.hoberme:hover .submenu2{
+    display: block;
+    position: absolute;
+    z-index: 1;
+    margin-left: 110px;
+} */
+
+
+
+
+</style>
+
+<body>
+    
+
+
+
+
+
+
+<header>
+        <div class="navbar">
+            <img src="././images/logo03.png" alt="">
+            <ul>
+                <li><a class="active" href="">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services's</a>
+                   <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                         <div class="submenu2">
+                            <ul> 
+                                <li><a href=""> Volvo Bus </a></li>
+                                <li><a href=""> Winger </a></li>
+                            </ul>
+                         </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul> 
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty  </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                             </div>
+                            
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul> 
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova  </a></li>
+                                </ul>
+                             </div>
+                            
+                        </li>
+                        <!-- <li> <a href=""> variety 1</a></li> -->
+                    </ul>                    
+                   </div>
+                </li>
+                <li><a href="./tourpack.html">Tour Package </a></li>
+                <li><a href="./about.html">About </a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+
+            </ul>
+            <a class="booka" href="./booktour.html" target="_blank">
+                <div class="book">
+                    Book a Tour
+                </div>
+            </a>
+        </div>
+        
+    <input type="checkbox" id="check">
+    <label for="check" class="chkbtn">
+        <img src="././icons/menu.png" alt="">
+    </label>
+    </header>
+
+    </body>
+</html>

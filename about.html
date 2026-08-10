@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="icon" type="png" href="./images/logo03.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./finalanimation.css">
+    <link rel="stylesheet" href="./experimental_claude.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Namdev's Tour & Travels</title>
+
+    <style>
+      /* ============================================================
+         ABOUT REBUILD — scoped under .about-page so nothing here
+         collides with your existing site-wide CSS files.
+      ============================================================ */
+      :root{
+        --nt-primary: #328ADF;
+        --nt-primary-light: #4EA8FF;
+        --nt-secondary: #6B4A2E;
+        --nt-gold: #F2C14E;
+        --nt-ink: #23201C;
+        --nt-muted: #8A7F70;
+        --nt-bg: #F8F7F4;
+        --nt-shadow: 0 8px 24px rgba(35,32,28,0.08);
+        --nt-shadow-hover: 0 20px 44px rgba(35,32,28,0.16);
+      }
+
+      .about-page{
+        background: var(--nt-bg);
+        font-family: 'Inter', sans-serif;
+        color: var(--nt-ink);
+      }
+      .about-page h1, .about-page h2, .about-page h3, .about-page .brand-font{
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 700;
+      }
+
+      /* ---------- Hero ---------- */
+      .about-hero{
+        background: linear-gradient(120deg, var(--nt-ink) 0%, var(--nt-secondary) 45%, var(--nt-primary) 100%);
+        color:#fff;
+        padding: 3.6rem 1.5rem 4.4rem;
+        text-align:center;
+      }
+      .about-hero .eyebrow{
+        font-family:'Rajdhani', sans-serif;
+        letter-spacing:.2em;
+        text-transform:uppercase;
+        font-size:.82rem;
+        color: var(--nt-gold);
+        margin-bottom:.6rem;
+      }
+      .about-hero h1{
+        font-size: clamp(2rem, 4.4vw, 3.1rem);
+        margin: 0 0 .6rem 0;
+      }
+      .about-hero h3{
+        font-weight:500;
+        font-family:'Inter',sans-serif;
+        font-size: 1.05rem;
+        color: rgba(255,255,255,0.85);
+        margin: 0 0 1rem;
+      }
+      .about-hero p{
+        max-width: 42rem;
+        margin: 0 auto;
+        color: rgba(255,255,255,0.8);
+        font-size: .96rem;
+        line-height:1.7;
+      }
+      .about-hero p span{ color: var(--nt-gold); font-weight:600; }
+      .about-hero-stats{
+        display:flex;
+        justify-content:center;
+        gap: 2.6rem;
+        margin-top: 2rem;
+        flex-wrap:wrap;
+      }
+      .about-hero-stats .stat{ display:flex; flex-direction:column; align-items:center; }
+      .about-hero-stats strong{ font-family:'Rajdhani',sans-serif; font-size:1.3rem; color: var(--nt-gold); }
+      .about-hero-stats span{ font-size:.72rem; opacity:.85; }
+
+      /* ---------- Story sections ---------- */
+      .about-story{
+        max-width: 74rem;
+        margin: 4.5rem auto;
+        padding: 0 1.5rem;
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items:center;
+        opacity:0;
+        transform: translateY(28px);
+        transition: opacity .6s ease, transform .6s ease;
+      }
+      .about-story.in-view{ opacity:1; transform:translateY(0); }
+      .about-story.reverse{ direction: rtl; }
+      .about-story.reverse > *{ direction: ltr; }
+
+      .about-story-media{
+        position:relative;
+        border-radius: 1.2rem;
+        overflow:hidden;
+        box-shadow: var(--nt-shadow);
+        aspect-ratio: 4/3.2;
+      }
+      .about-story-media img{
+        width:100%; height:100%;
+        object-fit: cover;
+        display:block;
+      }
+
+      .about-story-text .eyebrow{
+        font-family:'Rajdhani',sans-serif;
+        font-size:.8rem;
+        letter-spacing:.18em;
+        text-transform:uppercase;
+        color: var(--nt-primary);
+        margin-bottom:.6rem;
+      }
+      .about-story-text h2{
+        font-size: 1.8rem;
+        margin: 0 0 1rem;
+      }
+      .about-story-text p{
+        font-size:.92rem;
+        line-height:1.75;
+        color: var(--nt-muted);
+        margin-bottom: 1rem;
+      }
+      .about-story-text p:last-child{ margin-bottom:0; }
+      .about-story-text strong{ color: var(--nt-ink); }
+
+      /* ---------- Values grid ---------- */
+      .about-values{
+        max-width: 74rem;
+        margin: 5rem auto 4.5rem;
+        padding: 0 1.5rem;
+      }
+      .about-section-heading{
+        text-align:center;
+        margin-bottom: 2.6rem;
+      }
+      .about-section-heading .eyebrow{
+        font-family:'Rajdhani',sans-serif;
+        font-size:.8rem;
+        letter-spacing:.18em;
+        text-transform:uppercase;
+        color: var(--nt-primary);
+        margin-bottom:.5rem;
+      }
+      .about-section-heading h2{
+        font-size: 1.9rem;
+        position:relative;
+        display:inline-block;
+        padding-bottom:.8rem;
+        margin:0;
+      }
+      .about-section-heading h2::after{
+        content:"";
+        position:absolute;
+        left:50%; bottom:0;
+        transform:translateX(-50%);
+        width:3.4rem; height:3px;
+        background: linear-gradient(90deg, var(--nt-primary), transparent);
+      }
+      .about-section-heading p{
+        color: var(--nt-muted);
+        font-size:.9rem;
+        margin-top: .8rem;
+        max-width: 34rem;
+        margin-left:auto; margin-right:auto;
+      }
+
+      .about-values-grid{
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 1.4rem;
+      }
+      .about-value-card{
+        background:#fff;
+        border-radius: 1rem;
+        box-shadow: var(--nt-shadow);
+        padding: 1.8rem 1.6rem;
+        opacity:0;
+        transform: translateY(24px);
+        transition: opacity .55s ease, transform .55s ease, box-shadow .3s ease;
+      }
+      .about-value-card.in-view{ opacity:1; transform:translateY(0); }
+      .about-value-card:hover{
+        box-shadow: var(--nt-shadow-hover);
+        transform: translateY(-6px);
+      }
+      .about-value-card.in-view:hover{ transform: translateY(-6px); }
+      .about-value-icon{
+        width: 3rem; height:3rem;
+        border-radius: .8rem;
+        background: linear-gradient(135deg, var(--nt-primary), var(--nt-secondary));
+        display:flex; align-items:center; justify-content:center;
+        margin-bottom: 1rem;
+      }
+      .about-value-icon svg{ width:1.5rem; height:1.5rem; stroke:#fff; fill:none; }
+      .about-value-card h3{
+        font-size: 1.1rem;
+        margin: 0 0 .5rem;
+      }
+      .about-value-card p{
+        font-size:.83rem;
+        line-height:1.6;
+        color: var(--nt-muted);
+        margin:0;
+      }
+
+      /* ---------- CTA banner ---------- */
+      .about-cta{
+        max-width: 74rem;
+        margin: 0 auto 5rem;
+        padding: 0 1.5rem;
+      }
+      .about-cta-inner{
+        background: linear-gradient(120deg, var(--nt-ink) 0%, var(--nt-secondary) 55%, var(--nt-primary) 100%);
+        border-radius: 1.4rem;
+        padding: 3rem 2rem;
+        text-align:center;
+        color:#fff;
+        opacity:0;
+        transform: translateY(24px);
+        transition: opacity .6s ease, transform .6s ease;
+      }
+      .about-cta-inner.in-view{ opacity:1; transform:translateY(0); }
+      .about-cta-inner h2{
+        font-size: 1.7rem;
+        margin: 0 0 .7rem;
+      }
+      .about-cta-inner p{
+        color: rgba(255,255,255,0.82);
+        font-size:.92rem;
+        max-width: 34rem;
+        margin: 0 auto 1.6rem;
+        line-height:1.65;
+      }
+      .about-cta-btn{
+        display:inline-flex;
+        align-items:center;
+        gap:.5rem;
+        background: linear-gradient(90deg, var(--nt-primary-light), var(--nt-gold));
+        color: var(--nt-ink);
+        font-family:'Rajdhani',sans-serif;
+        font-weight:700;
+        font-size:.95rem;
+        letter-spacing:.03em;
+        text-transform:uppercase;
+        padding: .85rem 1.8rem;
+        border-radius: .8rem;
+        text-decoration:none;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .about-cta-btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(242,193,78,0.35);
+      }
+
+      @media (max-width: 800px){
+        .about-story, .about-story.reverse{
+          grid-template-columns: 1fr;
+          direction: ltr;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        .about-story, .about-value-card, .about-cta-inner{ transition:none; opacity:1; transform:none; }
+      }
+    </style>
+
+</head>
+
+<body class="about-page">
+
+        <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+
+
+
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a  href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="./tourpack.html">Tour Packages</a></li>
+            <li><a class="active" href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a href="./index.html">Home</a></li>
+            <li class="hideonmobile"><a  href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+            <li class="hideonmobile"><a href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a class="active" href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <div class="about-hero">
+        <div class="eyebrow">About Us</div>
+        <h1>Welcome to Namdev's Tour &amp; Travels</h1>
+        <h3>Your Gateway to Extraordinary Journeys</h3>
+        <p>
+            Discover the world with <span>Namdev's Tour &amp; Travels</span> — your trusted companion in wanderlust.
+            We're more than a travel agency; we're your personal passport to extraordinary adventures and unforgettable memories.
+        </p>
+        <div class="about-hero-stats">
+            <div class="stat"><strong>15+</strong><span>Years Experience</span></div>
+            <div class="stat"><strong>10,000+</strong><span>Happy Travelers</span></div>
+            <div class="stat"><strong>4.9★</strong><span>Average Rating</span></div>
+        </div>
+    </div>
+
+    <!-- ============ STORY: mission / who we are ============ -->
+    <div class="about-story" id="aboutStory1">
+        <div class="about-story-media">
+            <img src="././images/logotext.png" alt="Namdev's Tour & Travels" loading="lazy">
+        </div>
+        <div class="about-story-text">
+            <div class="eyebrow">Who We Are</div>
+            <h2>Travel should be more than a journey — it should be a story</h2>
+            <p>
+                At Namdev's Tour &amp; Travels, our dedicated team of avid explorers and travel enthusiasts is
+                committed to crafting exceptional travel experiences tailored to your dreams and desires.
+            </p>
+            <p>
+                Our mission is simple: to transform your travel dreams into reality. With a team of dedicated
+                experts and a commitment to excellence, we offer a wide range of services that cater to every
+                traveler's desires — whether you're seeking relaxation on pristine beaches, cultural immersion
+                in historic cities, adrenaline-pumping adventures, or seamless corporate travel solutions.
+            </p>
+        </div>
+    </div>
+
+    <!-- ============ STORY: purpose / how we work ============ -->
+    <div class="about-story reverse" id="aboutStory2">
+        <div class="about-story-media">
+            <img src="././stock photos/AdobeStock_127054881.jpeg" alt="Travel planning at Namdev's Tour & Travels" loading="lazy">
+        </div>
+        <div class="about-story-text">
+            <div class="eyebrow">Our Purpose</div>
+            <h2>Bringing the world closer, one itinerary at a time</h2>
+            <p>
+                With years of experience, a global network of partners, and a keen eye for detail, we take pride
+                in creating itineraries that go beyond the ordinary. Your journey with us is marked by comfort,
+                authenticity, and the thrill of discovery.
+            </p>
+            <p>
+                Our mission is to create extraordinary and memorable travel experiences by offering expertly
+                crafted itineraries, exceptional service, and unwavering dedication to our clients' needs — making
+                exploration and discovery <strong>accessible, enjoyable, and enriching</strong>.
+            </p>
+        </div>
+    </div>
+
+    <!-- ============ VALUES ============ -->
+    <div class="about-values">
+        <div class="about-section-heading">
+            <div class="eyebrow">What Drives Us</div>
+            <h2>Our Core Values</h2>
+            <p>The principles and beliefs that define our culture and shape how we work with every traveler.</p>
+        </div>
+
+        <div class="about-values-grid" id="aboutValuesGrid">
+            <!-- cards injected by JS from a single data source below -->
+        </div>
+    </div>
+
+    <!-- ============ CTA ============ -->
+    <div class="about-cta">
+        <div class="about-cta-inner" id="aboutCta">
+            <h2>Your journey begins here</h2>
+            <p>Join us on a voyage of a lifetime and explore the world with confidence. Discover, explore, and experience it all with Namdev's Tour &amp; Travels.</p>
+            <a class="about-cta-btn" href="./booktour.html" target="_blank">
+                Book a Tour
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+
+<!-- footer form connection  -->\
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+
+  <script>
+                function showsidebar(){
+                 document.querySelector('.sidebar').classList.add('show');
+                    }
+                function hidesidebar(){
+                 document.querySelector('.sidebar').classList.remove('show');
+                }
+            </script>
+    <script>
+        function notify() {
+            alert("Sorry we are Unalbe to fetch data \n Please use +91 4154545854 OR namdevtourandtravels@gmail.com \n To communicate with us..");
+        }
+    </script>
+
+                <script src="././finalanimation.js" ></script>
+
+    <!-- ============================================================
+         ABOUT REBUILD — values grid render + scroll animations
+    ============================================================ -->
+    <script>
+    (function(){
+      const VALUES = [
+        {
+          title: "Excellence",
+          text: "We are dedicated to delivering top-notch service, attention to detail, and continuous improvement in everything we do.",
+          icon: '<svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 5.9 6.4.6-4.8 4.4 1.4 6.3L12 16l-5.6 3.2 1.4-6.3L3 9.5l6.4-.6z"/></svg>'
+        },
+        {
+          title: "Customer-Centric",
+          text: "Our clients are at the heart of our business. We put their needs, preferences, and satisfaction above all else.",
+          icon: '<svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6c0 5-8.8 10.4-8.8 10.4S3.2 13.6 3.2 8.6a4.6 4.6 0 0 1 8.8-1.8A4.6 4.6 0 0 1 20.8 8.6z"/></svg>'
+        },
+        {
+          title: "Integrity",
+          text: "We uphold the highest ethical standards, ensuring honesty, transparency, and trust in all our interactions.",
+          icon: '<svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>'
+        },
+        {
+          title: "Innovation",
+          text: "We embrace creativity and innovation to provide fresh, exciting travel experiences and solutions.",
+          icon: '<svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6V16h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3z"/></svg>'
+        },
+        {
+          title: "Responsibility",
+          text: "We are committed to responsible and sustainable travel, respecting the environment, local cultures, and communities.",
+          icon: '<svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>'
+        },
+        {
+          title: "Teamwork",
+          text: "We foster a collaborative and supportive work environment, where every team member's contribution is valued.",
+          icon: '<svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6M14.5 20c0-2.6 1.9-4.8 4.3-5.6"/></svg>'
+        },
+        {
+          title: "Passion",
+          text: "We are fueled by a genuine passion for travel, exploration, and adventure, which we share with every client.",
+          icon: '<svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4.4 0 7-2.8 7-6.5 0-3-1.8-4.9-3-6.7-.3 1.4-1.1 2.4-2 2.4C15 8 15.5 5 12 2c.5 3-1.5 4.7-3 6.7C7.5 10.7 5 12.5 5 14.5 5 18.2 7.6 21 12 21z"/></svg>'
+        }
+      ];
+
+      const grid = document.getElementById('aboutValuesGrid');
+      VALUES.forEach((v, i) => {
+        const card = document.createElement('div');
+        card.className = 'about-value-card';
+        card.style.transitionDelay = (i % 4) * 0.08 + 's';
+        card.innerHTML = `
+          <div class="about-value-icon">${v.icon}</div>
+          <h3>${v.title}</h3>
+          <p>${v.text}</p>
+        `;
+        grid.appendChild(card);
+      });
+
+      const revealTargets = document.querySelectorAll('.about-story, .about-value-card, .about-cta-inner');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealTargets.forEach(t => observer.observe(t));
+    })();
+    </script>
+
+
+</body>
+
+</html>

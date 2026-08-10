@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore Ujjain with Namdev's Tour & Travels — Mahakaleshwar, Mahakal Lok, Kal Bhairav, Ram Ghat, Harsiddhi Temple and more. Build your Ujjain itinerary and book your journey.">
+<title>Explore Ujjain | Mahakal, Temples & Sacred Places | Namdev's Tour & Travels</title>
+<link rel="icon" type="image/png" href="./images/logo03.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./finalanimation.css">
+    <link rel="stylesheet" href="./experimental_claude.css">
+<style>
+:root{
+    --blue:#328ADF;
+    --blue-deep:#1269A8;
+    --saffron:#E87928;
+    --saffron-deep:#B94D12;
+    --gold:#D5A43A;
+    --gold-light:#F4D98B;
+    --ink:#17202A;
+    --paper:#fff;
+    --mist:#F4F8FC;
+    --warm:#F7FBFF;
+    --line:rgba(50,138,223,.14);
+    --font:'Nunito Sans',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--paper)}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+.u-page{overflow:hidden}
+
+/* ---------- NAV ---------- */
+
+/* ---------- HERO ---------- */
+.u-hero{
+    position:relative;min-height:92vh;overflow:hidden;
+    width: calc(100%-6rem);
+    height: 55vh;
+    /* border-radius: 1.25rem; */
+    border: 1px solid white;
+    background:#123B5D url("https://t3.ftcdn.net/jpg/12/63/45/92/360_F_1263459227_KloX79EqWLZTNKvxWoobr69lHeVSH0zM.jpg") center/cover no-repeat;
+}
+.u-hero:before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 50% 30%,rgba(232,121,40,.18),transparent 30%),
+      linear-gradient(180deg,rgba(18,59,93,.20),rgba(8,34,57,.88));
+}
+.u-hero-glow{
+    position:absolute;width:28rem;height:28rem;border-radius:50%;
+    background:rgba(50,138,223,.20);filter:blur(35px);
+    left:50%;top:35%;transform:translate(-50%,-50%);
+    animation:heroPulse 4s ease-in-out infinite
+}
+@keyframes heroPulse{50%{transform:translate(-50%,-50%) scale(1.18);opacity:.55}}
+
+.u-om{
+    position:absolute;right:8%;top:15%;font-family:serif;font-size:clamp(7rem,18vw,15rem);
+    color:rgba(255,255,255,.055);line-height:1;user-select:none;
+    animation:omFloat 6s ease-in-out infinite
+}
+@keyframes omFloat{50%{transform:translateY(-14px) rotate(2deg)}}
+
+.u-trishul{
+    position:absolute;left:7%;bottom:12%;font-size:clamp(3rem,8vw,6rem);
+    color:rgba(244,217,139,.14);animation:trishulFloat 5s ease-in-out infinite
+}
+@keyframes trishulFloat{50%{transform:translateY(-18px)}}
+
+.u-particle{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--gold-light);opacity:.5;animation:rise linear infinite}
+@keyframes rise{from{transform:translateY(20px);opacity:0}20%{opacity:.6}90%{opacity:.2}to{transform:translateY(-90vh);opacity:0}}
+
+.u-hero-content{
+    position:relative;z-index:2;min-height:92vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;color:#fff;padding:5rem 1.5rem 6rem
+}
+.u-eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--gold-light)}
+.u-hero h1{font-size:clamp(3rem,7vw,6rem);line-height:.98;margin:.7rem 0 1rem;font-weight:900;letter-spacing:-.04em}
+.u-hero h1 span{color:var(--gold-light)}
+.u-hero p{max-width:45rem;font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.86);margin:0}
+.u-hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:1.7rem}
+.u-primary,.u-secondary{
+    display:inline-flex;align-items:center;gap:.45rem;padding:.75rem 1.25rem;border-radius:999px;font-weight:800;font-size:.85rem;transition:.25s
+}
+.u-primary{background:var(--saffron);color:#fff;box-shadow:0 10px 25px rgba(232,121,40,.3)}
+.u-secondary{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;backdrop-filter:blur(8px)}
+.u-primary:hover,.u-secondary:hover{transform:translateY(-3px)}
+.u-hero-stats{display:flex;gap:3rem;margin-top:2.2rem;flex-wrap:wrap;justify-content:center}
+.u-stat strong{display:block;font-size:1.45rem;color:var(--gold-light)}
+.u-stat span{font-size:.72rem;color:rgba(255,255,255,.7)}
+.u-scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:3;color:#fff;text-align:center;font-size:.65rem;letter-spacing:.12em}
+.u-scroll i{display:block;width:1px;height:36px;background:rgba(255,255,255,.5);margin:8px auto 0;animation:scrollLine 1.5s infinite}
+@keyframes scrollLine{50%{transform:scaleY(.45);transform-origin:top}}
+
+/* ---------- INTRO ---------- */
+.u-intro{max-width:54rem;margin:5rem auto 3.5rem;padding:0 1.5rem;text-align:center}
+.u-intro .u-kicker,.u-heading .u-kicker{font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:var(--saffron);font-weight:800}
+.u-intro h2,.u-heading h2{font-size:clamp(1.8rem,4vw,2.45rem);margin:.45rem 0 .8rem;letter-spacing:-.025em}
+.u-intro p,.u-heading p{color:#626262;line-height:1.75;font-size:.94rem}
+
+/* ---------- MAHAKAL MOMENT ---------- */
+.u-mahakal-moment{
+    max-width:74rem;margin:0 auto 5rem;padding:0 1.5rem
+}
+.u-moment-box{
+    position:relative;overflow:hidden;border-radius:1.5rem;
+    background:linear-gradient(135deg,#0D4F86,#328ADF 58%,#0B7BA8);
+    color:#fff;padding:3rem;
+    box-shadow:0 20px 50px rgba(25,23,20,.16)
+}
+.u-moment-box:after{
+    content:"ॐ";position:absolute;right:3%;top:-35%;font-family:serif;font-size:22rem;
+    color:rgba(255,255,255,.06);pointer-events:none
+}
+.u-moment-content{position:relative;z-index:1;max-width:48rem}
+.u-moment-content .u-kicker{color:#DCEEFF;font-weight:800;letter-spacing:.16em;font-size:.72rem;text-transform:uppercase}
+.u-moment-content h2{font-size:clamp(1.8rem,4vw,3rem);margin:.4rem 0 .8rem}
+.u-moment-content p{color:rgba(255,255,255,.75);line-height:1.75;margin:0}
+.u-moment-pill{display:inline-flex;margin-top:1.2rem;padding:.55rem .8rem;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:var(--gold-light);font-size:.76rem;font-weight:700}
+
+/* ---------- PLACES ---------- */
+.u-section{max-width:74rem;margin:5rem auto;padding:0 1.5rem}
+.u-heading{text-align:center;margin-bottom:2.4rem}
+.u-heading p{max-width:38rem;margin:.65rem auto 0}
+.u-place-list{display:flex;flex-direction:column;gap:1.8rem}
+.u-place{
+    display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:1.3rem;
+    overflow:hidden;box-shadow:0 12px 35px rgba(25,23,20,.07);
+    opacity:0;transform:translateY(28px);transition:.65s ease
+}
+.u-place.visible{opacity:1;transform:none}
+.u-place.reverse{direction:rtl}
+.u-place.reverse>*{direction:ltr}
+.u-place-media{min-height:21rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#ece7df,#f8f8f8)}
+.u-place-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.u-place:hover .u-place-media img{transform:scale(1.06)}
+.u-place-tag{position:absolute;left:1rem;top:1rem;padding:.35rem .7rem;background:rgba(255,255,255,.92);border-radius:999px;font-size:.67rem;text-transform:uppercase;font-weight:800;letter-spacing:.06em}
+.u-place-no{position:absolute;right:1rem;bottom:1rem;width:2.5rem;height:2.5rem;border-radius:50%;display:grid;place-items:center;background:rgba(20,15,10,.65);color:#fff;font-weight:900}
+.u-place-body{padding:2rem;display:flex;flex-direction:column}
+.u-place-body h3{font-size:1.45rem;color:var(--blue-deep);margin:0 0 .3rem}
+.u-place-meta{display:flex;flex-wrap:wrap;gap:.45rem;margin:.45rem 0 1rem}
+.u-meta{font-size:.7rem;font-weight:700;background:var(--mist);border:1px solid var(--line);padding:.3rem .65rem;border-radius:999px}
+.u-place-body p{font-size:.9rem;color:#606060;line-height:1.75;margin:0 0 1.2rem;flex:1}
+.u-place-actions{display:flex;gap:.7rem;flex-wrap:wrap}
+.u-add{border:1px solid var(--line);background:#fff;padding:.62rem 1rem;border-radius:999px;font-size:.8rem;font-weight:800;cursor:pointer;transition:.2s}
+.u-add:hover{border-color:var(--saffron)}
+.u-add.added{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.u-book{background:var(--blue);color:#fff;padding:.62rem 1rem;border-radius:999px;font-size:.8rem;font-weight:800;transition:.2s}
+.u-book:hover{transform:translateY(-2px)}
+
+/* ---------- SACRED ROUTE ---------- */
+.u-route{background:linear-gradient(180deg,#fff,#F5FAFE);padding:5rem 0}
+.u-route-inner{max-width:74rem;margin:auto;padding:0 1.5rem}
+.u-timeline{position:relative;max-width:56rem;margin:2.5rem auto 0}
+.u-timeline:before{content:"";position:absolute;left:20px;top:0;bottom:0;width:2px;background:linear-gradient(var(--saffron),var(--gold),var(--blue))}
+.u-step{position:relative;padding:0 0 2rem 4rem}
+.u-step-dot{position:absolute;left:10px;top:2px;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--saffron);box-shadow:0 0 0 5px rgba(232,121,40,.08)}
+.u-step h3{margin:0 0 .3rem;font-size:1.05rem}
+.u-step p{margin:0;color:#666;font-size:.87rem;line-height:1.65}
+
+/* ---------- RITUAL CARDS ---------- */
+.u-ritual-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.u-ritual{padding:1.5rem;border:1px solid var(--line);border-radius:1rem;background:#fff;transition:.25s;position:relative;overflow:hidden}
+.u-ritual:before{content:"";position:absolute;inset:auto -20% -65% auto;width:10rem;height:10rem;border-radius:50%;background:rgba(50,138,223,.08)}
+.u-ritual:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(25,23,20,.08)}
+.u-ritual-icon{font-size:1.8rem;margin-bottom:.5rem}
+.u-ritual h3{margin:0 0 .35rem;font-size:1rem}
+.u-ritual p{margin:0;color:#666;font-size:.8rem;line-height:1.6}
+.u-official{display:inline-block;margin-top:.8rem;color:var(--blue-deep);font-weight:800;font-size:.75rem}
+
+/* ---------- ITINERARY ---------- */
+.u-tabs{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-bottom:1.7rem}
+.u-tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.6rem 1.2rem;font-size:.82rem;font-weight:800;cursor:pointer}
+.u-tab.active{background:var(--saffron);color:#fff;border-color:var(--saffron)}
+.u-panel{display:none;max-width:46rem;margin:auto}
+.u-panel.active{display:block;animation:uRise .4s ease}
+@keyframes uRise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.u-day{display:flex;gap:1rem;padding:1.2rem 1.3rem;border:1px solid var(--line);border-radius:1rem;margin-bottom:.8rem}
+.u-day-num{flex:0 0 2.5rem;height:2.5rem;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue-deep),var(--blue));color:#fff;font-weight:900}
+.u-day h4{margin:0 0 .25rem;font-size:.95rem}
+.u-day p{margin:0;color:#666;font-size:.82rem;line-height:1.6}
+
+/* ---------- PRACTICAL ---------- */
+.u-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.u-info{background:var(--mist);border-radius:1.1rem;padding:1.5rem}
+.u-info h3{margin:0 0 .6rem;font-size:1rem}
+.u-info p,.u-info li{font-size:.84rem;line-height:1.7;color:#666}
+.u-info ul{margin:.3rem 0 0;padding-left:1.1rem}
+
+/* ---------- MAP ---------- */
+.u-map{border:1px solid var(--line);border-radius:1.2rem;overflow:hidden;box-shadow:0 12px 30px rgba(25,23,20,.07)}
+.u-map iframe{width:100%;height:25rem;border:0;display:block}
+
+/* ---------- FAQ ---------- */
+.u-faq{max-width:48rem;margin:auto}
+.u-faq-item{border:1px solid var(--line);border-radius:.8rem;margin-bottom:.65rem;overflow:hidden;background:#fff}
+.u-faq-q{width:100%;border:0;background:#fff;padding:1rem 1.2rem;display:flex;justify-content:space-between;text-align:left;font-weight:800;cursor:pointer}
+.u-faq-a{max-height:0;overflow:hidden;padding:0 1.2rem;transition:.35s}
+.u-faq-item.open .u-faq-a{max-height:12rem;padding:0 1.2rem 1.1rem}
+.u-faq-a p{margin:0;color:#666;font-size:.83rem;line-height:1.7}
+.u-faq-icon{transition:.25s;color:var(--saffron)}
+.u-faq-item.open .u-faq-icon{transform:rotate(45deg)}
+
+/* ---------- PLAN FAB ---------- */
+.u-plan{
+    position:fixed;right:1.3rem;bottom:1.3rem;width:17rem;z-index:1800;
+    background:linear-gradient(135deg,#0D4F86,#1269A8);color:#fff;border-radius:1.1rem;padding:1rem 1.1rem;
+    box-shadow:0 18px 45px rgba(0,0,0,.28);transform:translateY(150%);transition:.45s cubic-bezier(.34,1.56,.64,1)
+}
+.u-plan.show{transform:none}
+.u-plan h4{margin:0 0 .15rem;font-size:.95rem}
+.u-plan small{color:rgba(255,255,255,.65)}
+.u-plan-count{color:var(--gold-light);font-weight:900}
+.u-plan a{display:flex;justify-content:center;margin-top:.75rem;background:var(--saffron);color:#fff;border-radius:.7rem;padding:.62rem;font-size:.8rem;font-weight:800}
+
+/* ---------- FOOTER ---------- */
+.u-footer{background:#0D2538;color:#fff;margin-top:5rem;padding:3.5rem 1.5rem 1.2rem}
+.u-footer-inner{max-width:74rem;margin:auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr;gap:2.5rem}
+.u-footer img{max-width:150px}
+.u-footer h3{font-size:.9rem;margin:0 0 1rem}
+.u-footer p,.u-footer a,.u-footer li{font-size:.78rem;color:rgba(255,255,255,.62);line-height:1.7}
+.u-footer ul{list-style:none;margin:0;padding:0}
+.u-footer li{margin:.25rem 0}
+.u-footer a:hover{color:#fff}
+.u-footer-bottom{max-width:74rem;margin:2.5rem auto 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.u-wa{position:fixed;right:1.3rem;bottom:1.3rem;width:3.5rem;height:3.5rem;border-radius:50%;background:#25D366;display:grid;place-items:center;color:#fff;z-index:1700;box-shadow:0 10px 25px rgba(0,0,0,.2);font-size:1.35rem}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+    .u-nav{padding:0 1rem}.u-nav-links,.u-nav-book{display:none}.u-menu{display:block;position:absolute;right:1rem}
+    .u-nav-logo{left:1rem}
+    .u-place,.u-place.reverse{grid-template-columns:1fr;direction:ltr}
+    .u-place-media{min-height:15rem}
+    .u-ritual-grid,.u-info-grid{grid-template-columns:1fr}
+    .u-footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+    .u-hero,.u-hero-content{min-height:88vh}
+    .u-hero h1{font-size:3rem}
+    .u-hero-stats{gap:1.4rem}
+    .u-moment-box{padding:2rem 1.4rem}
+    .u-section,.u-mahakal-moment{padding-left:1rem;padding-right:1rem}
+    .u-footer-inner{grid-template-columns:1fr}
+    .u-plan{right:.8rem;left:.8rem;width:auto}
+    .u-wa{bottom:5.7rem}
+}
+@media(prefers-reduced-motion:reduce){
+    *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+
+/* ===== NAMDEV MOTION + IMAGE FALLBACK UPGRADE ===== */
+.u-nav::after{content:"";position:absolute;left:50%;bottom:-1px;width:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--saffron),var(--blue));transform:translateX(-50%);transition:width .7s ease}
+.u-nav:hover::after{width:100%}
+.u-nav-links a{transition:color .25s ease,transform .25s ease}
+.u-nav-links a:hover{color:var(--blue);transform:translateY(-2px)}
+.u-nav-book{overflow:hidden;position:absolute}
+.u-nav-book::before{content:"";position:absolute;top:0;left:-120%;width:70%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .65s}
+.u-nav-book:hover::before{left:140%}
+
+.u-hero-content>*{animation:uHeroIn .8s cubic-bezier(.2,.8,.2,1) both}
+.u-hero-content .u-eyebrow{animation-delay:.1s}.u-hero-content h1{animation-delay:.2s}.u-hero-content p{animation-delay:.3s}
+.u-hero-content .u-hero-actions{animation-delay:.4s}.u-hero-content .u-hero-stats{animation-delay:.5s}
+@keyframes uHeroIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+.u-place{will-change:transform,box-shadow}
+.u-place::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:1.3rem;box-shadow:inset 0 0 0 1px rgba(50,138,223,.05)}
+.u-place{position:relative}
+.u-place-media::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.17) 50%,transparent 70%);transform:translateX(-120%);transition:transform .9s ease}
+.u-place:hover .u-place-media::after{transform:translateX(120%)}
+.u-place-body h3{transition:color .25s ease,transform .25s ease}
+.u-place:hover .u-place-body h3{color:var(--saffron);transform:translateX(3px)}
+
+.u-moment-box{overflow:hidden}
+.u-moment-box::before{content:"";position:absolute;width:22rem;height:22rem;border-radius:50%;right:-8rem;bottom:-13rem;border:1px solid rgba(255,255,255,.13);box-shadow:0 0 0 40px rgba(255,255,255,.025),0 0 0 80px rgba(255,255,255,.018);animation:mandalaPulse 5s ease-in-out infinite}
+@keyframes mandalaPulse{50%{transform:scale(1.06) rotate(8deg);opacity:.75}}
+
+.u-step{opacity:0;transform:translateX(-18px);transition:.7s ease}
+.u-step.in{opacity:1;transform:none}
+.u-step:nth-child(2){transition-delay:.08s}.u-step:nth-child(3){transition-delay:.16s}.u-step:nth-child(4){transition-delay:.24s}.u-step:nth-child(5){transition-delay:.32s}
+.u-step-dot{transition:transform .3s,box-shadow .3s}
+.u-step:hover .u-step-dot{transform:scale(1.25);box-shadow:0 0 0 8px rgba(232,121,40,.1)}
+
+.u-ritual{transform:translateY(0)}
+.u-ritual-icon{display:inline-block;transition:transform .4s}
+.u-ritual:hover .u-ritual-icon{transform:translateY(-5px) rotate(-6deg) scale(1.12)}
+
+.u-tab{transition:.25s}
+.u-tab:hover{transform:translateY(-2px);border-color:rgba(50,138,223,.35)}
+.u-day{transition:transform .25s,box-shadow .25s,border-color .25s}
+.u-day:hover{transform:translateX(5px);border-color:rgba(50,138,223,.28);box-shadow:0 8px 22px rgba(50,138,223,.07)}
+
+.u-info{transition:transform .3s,box-shadow .3s}
+.u-info:hover{transform:translateY(-4px);box-shadow:0 10px 25px rgba(50,138,223,.08)}
+
+.u-map{transition:transform .3s,box-shadow .3s}
+.u-map:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(50,138,223,.11)}
+
+.u-faq-item{transition:transform .25s,border-color .25s}
+.u-faq-item:hover{transform:translateX(3px);border-color:rgba(50,138,223,.25)}
+
+.u-plan.show{animation:planPop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes planPop{from{opacity:.3;transform:translateY(150%) scale(.96)}to{opacity:1;transform:none}}
+
+.u-wa{animation:waPulse 2.4s ease-in-out infinite}
+@keyframes waPulse{0%,100%{box-shadow:0 10px 25px rgba(0,0,0,.2),0 0 0 0 rgba(37,211,102,.28)}50%{box-shadow:0 10px 25px rgba(0,0,0,.2),0 0 0 10px rgba(37,211,102,0)}}
+
+.u-image-fallback{
+    position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:1.5rem;
+    background:linear-gradient(135deg,#eaf4fb,#f9fbfd);color:#1269A8
+}
+.u-image-fallback strong{display:block;font-size:1rem}.u-image-fallback span{display:block;margin-top:.25rem;font-size:.7rem;color:#6b7782}
+
+</style>
+</head>
+
+<body>
+<div class="u-page">
+
+<!-- ============ NAV (matches the rest of the site) ============ -->
+ <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)"> 
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+            <li><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+            <!-- <li onclick="showsidebar()" style="font-size: 32px;"><a href=""><img src="./icons/menu.png" alt=""></a></li> -->
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a  href="./index.html">Home</a></li>
+                <li class="hideonmobile navHasDropdown">
+    <a href="./NEW NAMDEV car/CAR.HTML">Services <i class="ti ti-chevron-down navDropdownArrow"></i></a>
+    <div class="navDropdown">
+        <div class="navDropdownCol">
+            <h4>Luxury Buses</h4>
+            <a href="">Volvo Bus</a>
+            <a href="">Winger</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Luxury Cars</h4>
+            <a href="">Innova Crysta</a>
+            <a href="">Kia Carnival</a>
+            <a href="">Honda City</a>
+            <a href="">Etios</a>
+        </div>
+        <div class="navDropdownCol">
+            <h4>Economical Cars</h4>
+            <a href="">Swift Dzire</a>
+            <a href="">Ertiga</a>
+            <a href="">Innova</a>
+        </div>
+    </div>
+</li>
+            <li class="hideonmobile"><a class="active" href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="././icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+    <!-- loader / animation -->
+    <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>
+
+
+
+<section class="u-hero">
+    <div class="u-hero-glow"></div>
+    <div class="u-om">ॐ</div>
+    <div class="u-trishul">🔱</div>
+    <div class="u-particle" style="left:12%;bottom:4%;animation-duration:7s"></div>
+    <div class="u-particle" style="left:25%;bottom:2%;animation-duration:9s;animation-delay:2s"></div>
+    <div class="u-particle" style="left:72%;bottom:0%;animation-duration:8s;animation-delay:1s"></div>
+    <div class="u-particle" style="left:86%;bottom:5%;animation-duration:10s;animation-delay:3s"></div>
+
+    <div class="u-hero-content">
+        <div class="u-eyebrow">The City of Mahakal</div>
+        <h1>Discover <span>Ujjain</span></h1>
+        <p>Where the sacred Shipra, ancient temples, celestial timekeeping and the presence of Mahakal come together to create one of India's most powerful spiritual journeys.</p>
+        <div class="u-hero-actions">
+            <a class="u-primary" href="#places">Explore Sacred Places ↓</a>
+            <a class="u-secondary" href="./booktour.html" target="_blank">Plan My Ujjain Trip</a>
+        </div>
+        <div class="u-hero-stats">
+            <div class="u-stat"><strong>10+</strong><span>Places to explore</span></div>
+            <div class="u-stat"><strong>1–2</strong><span>Days recommended</span></div>
+            <div class="u-stat"><strong>12</strong><span>Jyotirlingas · Mahakal</span></div>
+        </div>
+    </div>
+    <div class="u-scroll">SCROLL<i></i></div>
+</section>
+
+<section class="u-intro">
+    <div class="u-kicker">Ujjain Travel Guide</div>
+    <h2>A journey through faith, history &amp; the Shipra</h2>
+    <p>Ujjain is more than a temple stop. Explore Mahakaleshwar and Mahakal Lok, walk beside Ram Ghat, discover Kal Bhairav and Harsiddhi, and step into the stories of Krishna, ancient astronomy and the old city.</p>
+</section>
+
+<section class="u-mahakal-moment">
+    <div class="u-moment-box">
+        <div class="u-moment-content">
+            <div class="u-kicker">The Mahakal Moment</div>
+            <h2>Begin with Mahakal. Experience Ujjain beyond the temple.</h2>
+            <p>Build your day around the spiritual heart of the city, then continue through its ghats, temples, heritage and living traditions. For ritual bookings, always verify the latest schedule and availability through the official Shri Mahakaleshwar Temple portal.</p>
+            <a class="u-moment-pill" href="https://www.shrimahakaleshwar.mp.gov.in/services/" target="_blank" rel="noopener">Official temple services ↗</a>
+        </div>
+    </div>
+</section>
+
+<section class="u-section" id="places">
+    <div class="u-heading">
+        <div class="u-kicker">Sacred Ujjain</div>
+        <h2>Places worth experiencing</h2>
+        <p>Not just a checklist — each stop adds a different chapter to your Ujjain journey.</p>
+    </div>
+
+    <div class="u-place-list" id="uPlaceList"></div>
+</section>
+
+<section class="u-route">
+    <div class="u-route-inner">
+        <div class="u-heading">
+            <div class="u-kicker">The Sacred Route</div>
+            <h2>How to experience Ujjain in a day</h2>
+            <p>A practical flow designed around the city's major spiritual and heritage stops.</p>
+        </div>
+
+        <div class="u-timeline">
+            <div class="u-step"><span class="u-step-dot"></span><h3>1 · Start with Mahakaleshwar</h3><p>Begin your day around the Mahakal area and allow time for the temple experience and surrounding complex.</p></div>
+            <div class="u-step"><span class="u-step-dot"></span><h3>2 · Walk through Mahakal Lok</h3><p>Continue through the grand corridor and its sculptural storytelling before moving deeper into the old sacred quarter.</p></div>
+            <div class="u-step"><span class="u-step-dot"></span><h3>3 · Harsiddhi &amp; Kal Bhairav</h3><p>Visit two very different expressions of Ujjain's Shaiva and Shakti traditions.</p></div>
+            <div class="u-step"><span class="u-step-dot"></span><h3>4 · Ram Ghat at the Shipra</h3><p>Slow down by the river and experience the atmosphere of one of Ujjain's best-known ghats.</p></div>
+            <div class="u-step"><span class="u-step-dot"></span><h3>5 · Evening heritage stop</h3><p>Finish with Gopal Mandir, Ved Shala or another nearby heritage stop depending on your pace.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="u-section">
+    <div class="u-heading">
+        <div class="u-kicker">Mahakal Experiences</div>
+        <h2>Plan around the moments that matter</h2>
+        <p>Ritual schedules and access rules can change, so confirm details on the official temple portal before travelling.</p>
+    </div>
+    <div class="u-ritual-grid">
+        <article class="u-ritual"><div class="u-ritual-icon">🕉️</div><h3>Bhasma Aarti</h3><p>A signature Mahakaleshwar ritual. Advance planning is important; check the official portal for current booking availability and rules.</p><a class="u-official" href="https://www.shrimahakaleshwar.mp.gov.in/services/bhasmaarti" target="_blank" rel="noopener">Check official booking ↗</a></article>
+        <article class="u-ritual"><div class="u-ritual-icon">🪔</div><h3>Temple Aarti</h3><p>Include an aarti experience in your itinerary when the current temple schedule allows it.</p><a class="u-official" href="https://www.shrimahakaleshwar.mp.gov.in/services/" target="_blank" rel="noopener">View temple services ↗</a></article>
+        <article class="u-ritual"><div class="u-ritual-icon">🌊</div><h3>Shipra Evening</h3><p>Leave time for Ram Ghat and the riverfront rather than rushing from one temple to the next.</p></article>
+    </div>
+</section>
+
+<section class="u-section">
+    <div class="u-heading">
+        <div class="u-kicker">Plan It Out</div>
+        <h2>Suggested Ujjain itineraries</h2>
+        <p>Choose a pace that works for your trip — from a focused Mahakal visit to a fuller city experience.</p>
+    </div>
+
+    <div class="u-tabs">
+        <button class="u-tab active" data-day="1">1 Day</button>
+        <button class="u-tab" data-day="2">2 Days</button>
+        <button class="u-tab" data-day="3">3 Days</button>
+    </div>
+
+    <div class="u-panel active" data-day="1">
+        <div class="u-day"><div class="u-day-num">1</div><div><h4>Mahakaleshwar → Mahakal Lok</h4><p>Begin with the spiritual heart of Ujjain and continue through the surrounding temple complex.</p></div></div>
+        <div class="u-day"><div class="u-day-num">2</div><div><h4>Harsiddhi → Kal Bhairav</h4><p>Explore two major sacred traditions and then slow down near the Shipra.</p></div></div>
+        <div class="u-day"><div class="u-day-num">3</div><div><h4>Ram Ghat → Evening Heritage</h4><p>Enjoy the riverfront and finish with Gopal Mandir or Ved Shala.</p></div></div>
+    </div>
+
+    <div class="u-panel" data-day="2">
+        <div class="u-day"><div class="u-day-num">1</div><div><h4>Mahakal &amp; Old Ujjain</h4><p>Mahakaleshwar, Mahakal Lok, Harsiddhi Temple, Gopal Mandir and Ram Ghat.</p></div></div>
+        <div class="u-day"><div class="u-day-num">2</div><div><h4>Temples, Krishna &amp; Astronomy</h4><p>Kal Bhairav, Sandipani Ashram, Mangalnath and Ved Shala, with time for a relaxed city evening.</p></div></div>
+    </div>
+
+    <div class="u-panel" data-day="3">
+        <div class="u-day"><div class="u-day-num">1</div><div><h4>Mahakal Day</h4><p>Mahakaleshwar, Mahakal Lok, Harsiddhi Temple and the old sacred quarter.</p></div></div>
+        <div class="u-day"><div class="u-day-num">2</div><div><h4>Shaiva &amp; Krishna Heritage</h4><p>Kal Bhairav, Sandipani Ashram, Mangalnath, Gopal Mandir and nearby heritage stops.</p></div></div>
+        <div class="u-day"><div class="u-day-num">3</div><div><h4>Shipra &amp; Ancient Science</h4><p>Ram Ghat, Ved Shala and a slower exploration of Ujjain before departure.</p></div></div>
+    </div>
+</section>
+
+<section class="u-section">
+    <div class="u-heading">
+        <div class="u-kicker">Before You Go</div>
+        <h2>Good to know</h2>
+    </div>
+    <div class="u-info-grid">
+        <div class="u-info"><h3>🛕 Temple planning</h3><p>Ujjain can become very busy around major festivals and important religious dates. Check official temple services before finalising your itinerary, especially if you want a specific ritual.</p></div>
+        <div class="u-info"><h3>🚗 Getting around</h3><ul><li>Ujjain Junction is a major rail connection.</li><li>Indore airport is the nearest major airport, about 53 km away according to the Ujjain district administration.</li><li>Local cab/vehicle arrangements make multi-stop temple routes easier.</li></ul></div>
+        <div class="u-info"><h3>🌅 Best experience</h3><p>Keep some unplanned time. Ujjain works best when you are not rushing between every stop — especially around the Shipra and the old city.</p></div>
+        <div class="u-info"><h3>📌 Respect the place</h3><p>Temple-specific dress, photography, mobile-phone and entry rules can vary. Follow the latest instructions issued by the respective temple authorities.</p></div>
+    </div>
+</section>
+
+<section class="u-section">
+    <div class="u-heading">
+        <div class="u-kicker">Get Your Bearings</div>
+        <h2>Where everything is</h2>
+        <p>Use the map as a starting point, then build your route around temple timings and your preferred pace.</p>
+    </div>
+    <div class="u-map">
+        <iframe src="./https://www.google.com/maps?q=Ujjain,Madhya+Pradesh&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of Ujjain"></iframe>
+    </div>
+</section>
+
+<section class="u-section">
+    <div class="u-heading">
+        <div class="u-kicker">Quick Answers</div>
+        <h2>Ujjain travel FAQs</h2>
+    </div>
+    <div class="u-faq">
+        <div class="u-faq-item"><button class="u-faq-q"><span>How many days are enough for Ujjain?</span><span class="u-faq-icon">＋</span></button><div class="u-faq-a"><p>One full day can cover the major highlights, while two days gives you a much more relaxed experience with additional temples, heritage and the Shipra riverfront.</p></div></div>
+        <div class="u-faq-item"><button class="u-faq-q"><span>Is Mahakaleshwar the main attraction?</span><span class="u-faq-icon">＋</span></button><div class="u-faq-a"><p>Mahakaleshwar is the city's defining pilgrimage landmark, but Ujjain also has Mahakal Lok, Kal Bhairav, Harsiddhi Temple, Ram Ghat, Sandipani Ashram, Ved Shala and several other places worth exploring.</p></div></div>
+        <div class="u-faq-item"><button class="u-faq-q"><span>Can you arrange a car for Ujjain sightseeing?</span><span class="u-faq-icon">＋</span></button><div class="u-faq-a"><p>Yes. Use the plan button on this page or contact Namdev's Tour &amp; Travels to arrange a vehicle around your selected places and travel schedule.</p></div></div>
+        <div class="u-faq-item"><button class="u-faq-q"><span>Can I book Bhasma Aarti through this website?</span><span class="u-faq-icon">＋</span></button><div class="u-faq-a"><p>For the ritual itself, use the official Shri Mahakaleshwar Temple portal. Our travel service can help with transportation and itinerary planning, but temple ritual availability should be confirmed directly with the temple authority.</p></div></div>
+    </div>
+</section>
+
+<section class="u-section">
+    <div class="u-heading">
+        <div class="u-kicker">Make It Your Journey</div>
+        <h2>Build your Ujjain plan</h2>
+        <p>Select the places you want to visit and continue to booking with your chosen route.</p>
+    </div>
+    <div style="text-align:center">
+        <a class="u-primary" href="./booktour.html" target="_blank">Start Planning Ujjain →</a>
+    </div>
+</section>
+
+<div class="u-plan" id="uPlan">
+    <h4>Your Ujjain plan</h4>
+    <small><span class="u-plan-count" id="uPlanCount">0</span> places selected</small>
+    <a href="#" id="uPlanLink" target="_blank">Continue to booking →</a>
+</div>
+
+            <!-- ============ FOOTER (site-wide footer, as provided for Manali) ============ -->
+          <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-glow"></div>
+
+    <!-- Featured destinations strip -->
+    <div class="footer-destinations">
+        <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
+        <div class="destination-row">
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <span>Royal Rajasthan</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg" alt="forts">
+                <span>Heritages & Forts</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/indian-landmark-gadi-sagar-rajasthan.jpg" alt="spirituality">
+                <span>Spirituality</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images/paid/norwegian-fjords-winter.jpg" alt="kashmir">
+                <span>Kashmir</span>
+            </a>
+            <a href="./tourpack.html" class="destination-chip">
+                <img src="././images//paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg" alt="Beach Retreats">
+                <span>Kerlam</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Categorized link columns -->
+<div class="footer-linkgrid">
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Sightseeing &amp; Day Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/jaipur-sightseeing-package-1.html">Jaipur Sightseeing Package 1</a></li>
+            <li><a href="./footer links/jaipur-sightseeing-package-2.html">Jaipur Sightseeing Package 2</a></li>
+            <li><a href="./footer links/Jaipur_Khatu_Shyam_Ji_Tour.html">Jaipur Khatushyamji Tour</a></li>
+            <li><a href="./footer links/Jaipur_Abhaneri_Tour.html">Jaipur Abhaneri Tour</a></li>
+            <li><a href="./footer links/Jaipur_Agra_Tour.html">Jaipur Agra Tour</a></li>
+            <li><a href="./footer links/Jaipur_Pushkar_Tour.html">Jaipur Pushkar Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ranthambore_Tour.html">Jaipur Ranthambore Tour</a></li>
+            <li><a href="./footer links/Jaipur_to_Ajmer_Pushkar_Tour.html">Jaipur Ajmer Pushkar Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Rajasthan Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/wildlife.html">Rajasthan Wildlife Tour</a></li>
+            <li><a href="./footer links/desert_triangle_tour.html">Desert Triangle Tour</a></li>
+            <li><a href="./footer links/exclusive_rajasthan_tour.html">Exclusive Rajasthan Tour</a></li>
+            <li><a href="./footer links/religious_rajasthan_tour.html">Religious Rajasthan Tour</a></li>
+            <li><a href="./footer links/rajasthan_tour_package.html">Rajasthan Tour Package</a></li>
+            <li><a href="./footer links/cultural_rajasthani_tour.html">Cultural Rajasthan Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Special India Tours</h3>
+        <ul class="arrow-links">
+            <li><a href="./footer links/taj_tiger_safari_tour.html">Taj &amp; Tiger Safari Tour</a></li>
+            <li><a href="./footer links/golden_triangle_tour_india_6d5n.html">Golden Triangle Tour (5N/6D)</a></li>
+            <li><a href="./footer links/spiritual_india_tour_6d5n.html">Spiritual India Tour</a></li>
+            <li><a href="./footer links/classical_indian_tour_8d7n (1).html">Classical India Tour</a></li>
+            <li><a href="./footer links/best_of_india_tour_10d9n.html">Best of India Tour</a></li>
+            <li><a href="./footer links/indian_wildlife_tour_9d8n.html">India Wildlife Tour</a></li>
+        </ul>
+    </div>
+
+    <div class="linkgrid-col">
+        <h3 class="footer-heading">Taxi Services</h3>
+        <ul class="arrow-links two-col-list">
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Airport Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Agra Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Ajmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jaisalmer Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Jodhpur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Mount Abu Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Pushkar Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Udaipur Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Jaipur Salasar Balaji Taxi</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Taxi for Golden Triangle Tour</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="footer-inner">
+
+        <!-- Brand + Get in Touch -->
+        <div class="footer-col footer-brand">
+            <img src="././images/logo03.png" alt="Namdev's Tour & Travels" class="footer-logo">
+            <p class="footer-tagline">
+                Crafting unforgettable journeys across India and beyond — where every trip
+                becomes a story worth telling.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/accounts/edit/?hl=en" aria-label="Instagram"><img src="././icons/web ivon/Instagram.svg" alt=""></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><img src="././icons/web ivon/Twitter.svg" alt=""></a>
+                <a href="https://www.facebook.com/travelwithnamdev" aria-label="Facebook"><img src="././icons/web ivon/Facebook.svg" alt=""></a>
+                <a href="https://www.youtube.com" aria-label="Youtube"><img src="././icons/web ivon/Youtube.svg" alt=""></a>
+            </div>
+
+            <!-- App download badges -->
+            <div class="footer-app-badges">
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2h-11A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22h11a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 17.5 2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+                    <span>Get it on<br><b>Google Play</b></span>
+                </a>
+                <a href="#" class="app-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.12-1.5 2.6-.38 6.45 1.08 8.56.71 1.03 1.56 2.19 2.68 2.15 1.08-.04 1.49-.7 2.79-.7 1.3 0 1.67.7 2.8.68 1.16-.02 1.9-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.46zM15.03 5.4c.58-.71.97-1.7.87-2.68-.83.03-1.85.55-2.45 1.25-.54.62-1.01 1.63-.89 2.58.93.07 1.88-.47 2.47-1.15z"/></svg>
+                    <span>Download on the<br><b>App Store</b></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a></li>
+                <li><a href="./tourpack.html">Tour Packages</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="footer-col">
+            <h3 class="footer-heading">Popular Routes</h3>
+            <div class="footer-routes">
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Mathura</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ahmedabad</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Delhi</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Agra</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Khatu Shyam Ji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Salasar Balaji</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Udaipur</a>
+                <a class="route-pill" href="./NEW NAMDEV car/CAR.HTML">Jaipur → Ajmer</a>
+            </div>
+
+            <!-- Awards / certifications -->
+            <h3 class="footer-heading footer-heading-small">Certified &amp; Trusted</h3>
+            <div class="footer-badges">
+                <span class="cert-badge">IATA Registered</span>
+                <span class="cert-badge">Govt. Approved</span>
+                <span class="cert-badge">10,000+ Happy Travelers</span>
+            </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="footer-col footer-contact-col">
+            <h3 class="footer-heading">Get in Touch</h3>
+
+            <div class="footer-contact-info">
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Location Icon.svg" alt="">
+                    <span>302, Shree Krishna Plaza, Near Gaurav Tower, Malviya Nagar, Jaipur, Rajasthan – 302017</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Phone Icon.svg" alt="">
+                    <span>+91 9784568787</span>
+                </div>
+                <div class="contact-row">
+                    <img src="./icons/web ivon/Email Icon.svg" alt="">
+                    <a href="mailto:namdevtourtravels@gmail.com">namdevtourtravels@gmail.com</a>
+                </div>
+            </div>
+
+            <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
+    <div class="form-row">
+        <input name="name" type="text" placeholder="Your Name">
+    </div>
+    <div class="form-row">
+        <input name="email" type="email" placeholder="Your Email">
+    </div>
+    <div class="form-row">
+        <input name="phone" type="text" placeholder="Mobile Number">
+    </div>
+    <div class="form-row form-row-split">
+        <input name="count" type="text" placeholder="No. of People">
+        <input name="car" type="text" placeholder="Car">
+    </div>
+    <div class="form-row">
+        <input name="destination" type="text" placeholder="Destination">
+    </div>
+    <button type="submit" class="footer-submit-btn">
+        Send Enquiry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</form>
+        </div>
+
+    </div>
+
+    <!-- Payment / trust badges -->
+    <div class="footer-payments">
+        <span class="payments-label">We accept:</span>
+        <div class="payment-icons">
+            <span class="pay-badge">VISA</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">UPI</span>
+            <span class="pay-badge">Paytm</span>
+            <span class="pay-badge">Net Banking</span>
+        </div>
+        <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>100% Secure Payments</span>
+        </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Namdev's Tour &amp; Travels. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="./index.html">Home</a>
+            <a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+            <a href="./tourpack.html">Tour Packages</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/919784568787" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 4.99L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.83 14.13c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.33-1.69-.64-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.21-1.6-1.21-3.06 0-1.45.76-2.17 1.03-2.46.27-.29.6-.36.8-.36.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.78.84 2.09 1 .3.15.5.23.58.36.08.13.08.75-.17 1.45z"/></svg>
+</a>
+
+
+<!-- footer form connection  -->\
+ <script src="././footerform.js"></script>
+ <script src="././files (7)/form-handler.js"></script>
+
+
+
+<script>
+const UJJAIN_PLACES = [
+ {name:"Mahakaleshwar Temple",type:"Jyotirlinga",meta:"Spiritual landmark",duration:"~2–3 hrs",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Mahakaleshwar%20ujjain.jpg",text:"The spiritual heart of Ujjain and one of the twelve celebrated Jyotirlingas. The Mahakal shrine is a defining part of the city's identity and pilgrimage tradition."},
+ {name:"Mahakal Lok",type:"Sacred Corridor",meta:"Art & heritage",duration:"~1–1.5 hrs",img:"https://commons.wikimedia.org/wiki/Special:FilePath/MAHAKAL%20LOK%20UJJAIN.jpg",text:"A monumental pedestrian corridor leading toward the Mahakaleshwar area, filled with gateways, sculptures and visual storytelling inspired by Shaiva traditions."},
+ {name:"Kal Bhairav Temple",type:"Shaiva Temple",meta:"Unique tradition",duration:"~45–60 min",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Kalabhairava%20Temple%20Ujjain.JPG",text:"Dedicated to Kal Bhairav, an important figure in Ujjain's Shaiva tradition. The temple is especially known for its distinctive offering ritual."},
+ {name:"Harsiddhi Temple",type:"Shakti Temple",meta:"Ancient sacred site",duration:"~45 min",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Harsiddhi%20Temple%2C%20Ujjain%2001.jpg",text:"A major sacred site of Ujjain with a strong Shakti tradition. Its distinctive lamp pillars create a memorable visual experience."},
+ {name:"Ram Ghat",type:"Shipra River",meta:"Riverfront",duration:"~45–90 min",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Ram%20ghat%20ujjain.jpg",text:"One of Ujjain's most recognisable riverfront spaces on the Shipra. It is a place to slow down, observe the city and experience its ritual atmosphere."},
+ {name:"Mangalnath Temple",type:"Temple",meta:"Peaceful viewpoint",duration:"~45 min",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Mangalnath%20Ujjain.JPG",text:"A serene temple associated with Mangalnath and traditionally connected with the planet Mars. It offers a quieter side of Ujjain."},
+ {name:"Sandipani Ashram",type:"Historic & Religious",meta:"Krishna connection",duration:"~45–60 min",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Sandipani%20ashram%20of%20ujjain.jpg",text:"A historic and religious site associated with Guru Sandipani. Tradition holds that Krishna and Sudama studied here, making it one of Ujjain's most interesting mythological stops."},
+ {name:"Ved Shala",type:"Astronomy",meta:"Heritage science",duration:"~45–60 min",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Vedh%20Shala%2C%20Ujjain%2005.jpg",text:"Ujjain's historic observatory, also known as Jantar Mantar, reflects the city's long association with astronomy and timekeeping."},
+ {name:"Gopal Mandir",type:"Temple",meta:"Maratha architecture",duration:"~30–45 min",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Shikhara%20of%20Shri%20Dwarkadhish%20Gopal%20Mandir.jpg",text:"A prominent Krishna temple in the heart of the city, known for its marble architecture and strong Maratha-era character."},
+ {name:"Gadkalika Temple",type:"Temple",meta:"Kalidas tradition",duration:"~30–45 min",img:"https://commons.wikimedia.org/wiki/Special:FilePath/Gadkalika-Temple.jpg",text:"An ancient temple dedicated to Maa Gadkalika and traditionally associated with the poet Kalidasa. A worthwhile addition for travellers interested in Ujjain's literary and spiritual heritage."}
+];
+
+const placeList=document.getElementById("uPlaceList");
+const selected=new Set();
+
+UJJAIN_PLACES.forEach((p,i)=>{
+    const el=document.createElement("article");
+    el.className="u-place"+(i%2===1?" reverse":"");
+    el.innerHTML=`
+      <div class="u-place-media">
+        <img src="./${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="u-image-fallback"><div><strong>${p.name}</strong><span>Add the Ujjain photo to ./pack img/ujjain/</span></div></div>
+        <span class="u-place-tag">${p.type}</span>
+        <span class="u-place-no">${String(i+1).padStart(2,"0")}</span>
+      </div>
+      <div class="u-place-body">
+        <h3>${p.name}</h3>
+        <div class="u-place-meta"><span class="u-meta">${p.meta}</span><span class="u-meta">Suggested ${p.duration}</span></div>
+        <p>${p.text}</p>
+        <div class="u-place-actions">
+          <button class="u-add" data-name="${p.name}">＋ Add to my plan</button>
+          <a class="u-book" href="./booktour.html" target="_blank">Book this route →</a>
+        </div>
+      </div>`;
+    placeList.appendChild(el);
+});
+
+const plan=document.getElementById("uPlan");
+const planCount=document.getElementById("uPlanCount");
+const planLink=document.getElementById("uPlanLink");
+
+function updatePlan(){
+    planCount.textContent=selected.size;
+    plan.classList.toggle("show",selected.size>0);
+    planLink.href="./booktour.html?destination="+encodeURIComponent("Ujjain — "+[...selected].join(", "));
+}
+document.querySelectorAll(".u-add").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+        const name=btn.dataset.name;
+        if(selected.has(name)){
+            selected.delete(name);
+            btn.classList.remove("added");
+            btn.textContent="＋ Add to my plan";
+        }else{
+            selected.add(name);
+            btn.classList.add("added");
+            btn.textContent="✓ Added to plan";
+        }
+        updatePlan();
+    });
+});
+
+const reveal=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){e.target.classList.add("visible");reveal.unobserve(e.target)}
+    });
+},{threshold:.12});
+document.querySelectorAll(".u-place").forEach(el=>reveal.observe(el));
+const stepObserver=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");stepObserver.unobserve(e.target)}})
+},{threshold:.18});
+document.querySelectorAll(".u-step").forEach(el=>stepObserver.observe(el));
+
+
+document.querySelectorAll(".u-tab").forEach(tab=>{
+    tab.addEventListener("click",()=>{
+        const day=tab.dataset.day;
+        document.querySelectorAll(".u-tab").forEach(t=>t.classList.remove("active"));
+        document.querySelectorAll(".u-panel").forEach(p=>p.classList.remove("active"));
+        tab.classList.add("active");
+        document.querySelector(`.u-panel[data-day="${day}"]`).classList.add("active");
+    });
+});
+
+document.querySelectorAll(".u-faq-q").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+        const item=btn.parentElement;
+        const open=item.classList.contains("open");
+        document.querySelectorAll(".u-faq-item.open").forEach(x=>x.classList.remove("open"));
+        if(!open)item.classList.add("open");
+    });
+});
+
+const hero=document.querySelector(".u-hero");
+const glow=document.querySelector(".u-hero-glow");
+if(hero && glow && window.matchMedia("(pointer:fine)").matches){
+    hero.addEventListener("pointermove", e=>{
+        const r=hero.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+        glow.style.transform=`translate(calc(-50% + ${x*24}px),calc(-50% + ${y*18}px)) scale(1.04)`;
+    });
+    hero.addEventListener("pointerleave",()=>glow.style.transform="translate(-50%,-50%)");
+}
+</script>
+</div>
+
+
+            <!-- loader -->
+             <script src="././finalanimation.js"></script>
+             <script src="././experimental_claude.js"></script>
+</body>
+</html>

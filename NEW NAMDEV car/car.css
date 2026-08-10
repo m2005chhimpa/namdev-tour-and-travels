@@ -1,0 +1,452 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family:mainfont;
+    /* overflow-x: hidden; */
+
+}
+body{
+    overflow-x:hidden;
+}
+
+@media screen and (max-width:600px) {
+    .carbig{
+        display: none;
+    }
+    #ist{
+        display: none;
+    }
+    #sce {
+        display: none;
+    }
+    #thd {
+        display: none;
+    }
+     #frt {
+        display: none;
+    }
+     #fve{
+        display: none;
+    }
+    #carform{
+        width: 31.25rem;
+        height: 56.8rem;
+        margin-left: 1rem;
+    }
+    #text11{
+        text-align: justify;
+        padding: 0px 1rem;
+    }
+    
+    /* #nul{
+        margin-left: -19.8vw;
+        margin-top: 14vh;
+        justify-content: left;
+        /* background-color: tomato; *
+        gap: 1.3rem;
+    }
+    #limg{
+        margin-left: -2vw;
+        padding: 4%;
+    }
+    #bookd{
+        display: none;
+        /* margin-left:0%; *
+    }
+    #nbook{
+        display: block;
+    }
+    #cnt{
+        position: absolute;
+        margin-left: -4vw;
+    }  
+
+
+    #fo{
+        display: none;
+       }
+       footer{
+        display: none;
+       }
+       .footerresponse{
+        display: block;
+       }
+       #menuicon{
+        display: block;
+       }
+       
+
+.footerresponse{
+    background-color: #121212;
+    opacity: .98;
+    position: relative;
+    width: 100vw;
+}
+.getreponse{
+    width: 80vw;
+    margin: 2rem;
+}
+
+}
+
+#nbook{
+    /* display: none; *
+    position: absolute;
+    top: 3vh;
+    left: 70vw;
+    padding: 0.8125rem 0.375rem;
+justify-content: center;
+align-items: center;
+gap: 0.625rem;
+border-radius: 0.5rem;
+background: #328ADF;
+
+    color: var(--white, #FBFBFB);
+/* font-family: Genos; *
+font-size: 1rem;
+font-style: normal;
+font-weight: 500;
+line-height: 1.5rem; /* 150% *
+}
+ */
+
+}
+
+
+@media screen and (min-width:1000px) {
+    
+    #frt{
+        display: none;
+    }
+    #menuicon{
+        /* display: none; */
+    }
+}
+
+
+
+@media screen and (min-width:1024px) {
+    #show{
+        display: none;
+    }
+    #nbook{
+        display: none;
+    }
+}
+
+
+
+#show{
+    /* display: none; */
+    /* visibility: hidden; */
+}
+.respo{
+    width: 74rem;
+    padding: 1.4rem 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* display: none; */
+    gap: 1rem;
+    /* display: none; */
+    margin-top: 4.6rem;
+    /* margin-left: 14.7vw; */
+
+}
+.respo .carcontain{
+    width: 80vw;
+    height: 38rem;
+    border-radius: 0.5rem;
+    position: relative;
+    border: 1px solid rgba(18, 18, 18, 0.30);
+    }
+
+    .respo .carcontain .carimg{
+        width: 74vw;
+    height: 20.2695rem;
+    /* position: absolute; */
+    
+    flex-shrink: 0;
+    /* border: 1px solid #585858; */
+    }
+    
+    .respo .carcontain .carimg img{
+        width: 71vw;
+         height: 20rem;
+    }
+    
+    
+    
+    .respo .carcontain .line{
+        width: 27.16588rem;
+        
+    height: 0.17994rem;
+    margin-left: 3.8rem;
+    flex-shrink: 0;
+    margin-top: .8rem;
+    display: none;
+    background: var(--primary-color, #328ADF);
+    }
+    .respo .carcontain .text2{
+        color: #000;
+    /* background-color: #328ADF; */
+    text-align: center;
+    margin-top: 1.1rem;
+    /* card heading */
+    /* font-family: Nunito Sans; */
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.75rem; /* 116.667% */
+    }
+    .respo .carcontain .stars{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: .8rem;
+    }
+    .respo .carcontain .view{
+        display: inline-flex;
+    padding: 0.8125rem 1.375rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    bottom: 1vh;
+
+
+    border-radius: 0.5rem;
+    border: 1px solid #328ADF;
+    margin-left: 7.2rem;
+    }
+
+
+
+
+
+
+
+
+
+
+
+/* / */
+
+
+/* .container1{
+    height: 31.25rem;
+    width: 100vw;
+    background-image: url(./image\ 76.png);
+    background-size: cover;
+    background-position: center;
+}
+.navbar ul  li .active{
+    color: #328ADF;
+    border-bottom:.8px solid #328ADF;
+    text-decoration: underline;
+}
+.navbar{
+    background-color: blue;
+    height: 5.625rem;
+    display: flex;
+    width: 100vw;
+    box-shadow: 0px 0px 0px  1px #328ADF;
+    flex-shrink: 0;
+}
+.navbar img{
+    padding: .8rem;
+    position: relative;
+    margin-left: 9.4rem;
+}
+.navbar ul{
+    margin-left: 17rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.8rem;
+
+}
+.navbar a{
+    color: #fff;
+    text-decoration: none;
+}
+.navbar a:hover{
+    color: #328ADF;
+    border-bottom:.8px solid #328ADF;
+}
+.navbar .book{
+    margin-left: 13.5rem;
+    display: inline-flex;
+padding: 0.8125rem 1.375rem;
+justify-content: center;
+align-items: center;
+gap: 0.625rem;
+border-radius: 0.5rem;
+background: #328ADF;
+
+    color: var(--white, #FBFBFB);
+font-family: Genos;
+font-size: 1rem;
+font-style: normal;
+font-weight: 500;
+line-height: 1.5rem; 
+} */
+
+/* / */
+
+
+
+
+.text1{
+    margin-top: 8rem;
+    display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+/* background-color:aquamarine; */
+gap: 1rem;
+}
+.text1 h1{
+    color: var(--black-color, #121212);
+
+/* secondary heading */
+font-family: Odor Mean Chey;
+font-size: 3rem;
+font-style: normal;
+font-weight: 400;
+line-height: 3.625rem; /* 120.833% */
+}
+.text1 p{
+    color: #585858;
+text-align: center;
+padding:0px 10rem;
+/* body text */
+/* font-family: Nunito Sans; */
+font-size: 1rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.5rem; /* 150% */
+}
+
+
+.carbig{
+    /* background-color: aqua; */
+    /* height: 40rem; */
+    /* height: auto; */
+    width: 74rem;
+    padding: 1.4rem 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 4.6rem;
+    margin-left: 14.7vw;
+}
+.carbig .carcontain{
+width: 33rem;
+height: 38rem;
+border-radius: 0.5rem;
+border: 1px solid rgba(18, 18, 18, 0.30);
+}
+.carbig .carcontain .carimg{
+    width: 32rem;
+height: 20.2695rem;
+/* position: absolute; */
+
+flex-shrink: 0;
+/* border: 1px solid #585858; */
+}
+
+.carbig .carcontain .carimg img{
+    width: 32rem;
+     height: 20rem;
+}
+
+
+
+.carbig .carcontain .line{
+    width: 27.16588rem;
+    
+height: 0.17994rem;
+margin-left: 3.8rem;
+flex-shrink: 0;
+margin-top: .8rem;
+background: var(--primary-color, #328ADF);
+}
+.carbig .carcontain .text2{
+    color: #000;
+/* background-color: #328ADF; */
+text-align: center;
+margin-top: 1.1rem;
+/* card heading */
+/* font-family: Nunito Sans; */
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 600;
+line-height: 1.75rem; /* 116.667% */
+}
+.carbig .carcontain .stars{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .8rem;
+}
+.carbig .carcontain .view{
+    display: inline-flex;
+padding: 0.8125rem 1.375rem;
+justify-content: center;
+align-items: center;
+gap: 0.625rem;
+border-radius: 0.5rem;
+border: 1px solid #328ADF;
+margin-left: 13.2rem;
+}
+.view:hover{
+    background-color: #328ADF;
+}
+
+.carform{
+    width: 65.25rem;
+    margin-left: 15.8rem;
+    margin-top: 3rem;
+    height: 32.8rem;
+    border-radius: 8px;
+    /* background-color: #121212; */
+    /* border: 2px solid #585858; */
+    display: flex;
+    flex-direction: column;
+}
+
+.carform input{
+    margin-top: 3%;
+    height: 5.2%;
+    padding: 1%;
+    width: 74%;
+    border: none;
+    border-bottom: 2px solid #328ADF;
+    /* color: #FFF; */
+    margin-left: 5%;
+    /* background-color: #328ADF; */
+    border-radius: 8px;
+    /* background-color: #585858; */
+}
+.carform select{
+    margin-top: 3%;
+    
+    border: none;
+    border-bottom: 2px solid #328ADF;
+    height: 5.2%;
+    border-radius: 8px;
+    /* padding: 1%; */
+    width: 74%;
+    color:#000;
+    margin-left: 5%;
+}
+
+/*  */
+/*  */

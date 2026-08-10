@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="png" href="./images/logo03.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dhreadhun.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./finalanimation.css">
+    <title>Dehradhun Package Namdev's </title>
+</head>
+
+<body>
+
+    <!-- <div class="container1"> -->
+
+        <nav>
+        <ul class="sidebar">
+            <li onclick="hidesidebar()" style="font-size: 32px;"><a href="javascript:void(0)"> 
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="15" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.4"/>
+    <path d="M11 11L21 21M11 21L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+            </a></li>
+            <li><a class="active" href="./index.html">Home</a></li>
+            <li><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+            <li><a href="./tourpack.html">Tour Packages</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact us</a></li>
+            <!-- <li onclick="showsidebar()" style="font-size: 32px;"><a href=""><img src="./icons/menu.png" alt=""></a></li> -->
+        </ul>
+
+        <ul id="firstnav">
+            <img style="height:4.7rem; position: absolute; margin-left: -74%; padding-top: .2%;"
+                src="././images/logo03.png" alt="">
+            <li class="hideonmobile"><a class="active" href="./index.html">Home</a></li>
+            <li class="hideonmobile"><a href="./NEW NAMDEV car/CAR.HTML">Services</a>
+                <!-- <div class="submenu1">
+                    <ul>
+                        <li class="hoberme"> <a href="">Luxury Buses</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Volvo Bus </a></li>
+                                    <li><a href=""> Winger </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hoberme"> <a href=""> Luxury Cars</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Innova Crysita </a></li>
+                                    <li><a href=""> Kia Carnevals </a></li>
+                                    <li><a href=""> Honda CIty </a></li>
+                                    <li><a href=""> Etios </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="hoberme"> <a href=""> Economical Car</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <li><a href=""> Swift Dzire </a></li>
+                                    <li><a href=""> Ertiga </a></li>
+                                    <li><a href=""> Innova </a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li> -->
+            <li class="hideonmobile"><a href="./tourpack.html">Tour Packages</a></li>
+            <li class="hideonmobile"><a href="./about.html">About</a></li>
+            <li class="hideonmobile"><a href="./contact.html">Contact us</a></li>
+            <li id="menuicon" onclick="showsidebar()" ><a id="mnuicon" href="javascript:void(0)"><img src="./icons/menu.png" alt=""></a></li>
+        </ul>
+        <a class="booka" href="./booktour.html" target="_blank">
+            <div class="book">
+                Book a Tour
+            </div>
+        </a>
+    </nav>
+
+    <div id="loader">
+    <div class="logo-wrap">
+        <img src="././images/logo03.png" alt="Namdev Tour & Travels">
+    </div>
+
+    <div class="road-wrap">
+        <svg class="road-svg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+            <path id="roadPath" class="road-edge" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-base" d="M20,190 C220,60 420,300 780,60"></path>
+            <path class="road-lane" d="M20,190 C220,60 420,300 780,60"></path>
+
+            <g id="car">
+                <path class="body" d="M-24,-9 L-17,-9 L-11,-17 L11,-17 L18,-9 L26,-9 C29,-9 31,-6 31,-3 L31,6 C31,8 29,10 27,10 L-26,10 C-28,10 -30,8 -30,6 L-30,-4 C-30,-7 -27,-9 -24,-9 Z"></path>
+                <path class="window" d="M-13,-15 L-8,-9 L9,-9 L13,-15 Z"></path>
+                <circle cx="-16" cy="10" r="7"></circle>
+                <circle class="hub" cx="-16" cy="10" r="2.6"></circle>
+                <circle cx="16" cy="10" r="7"></circle>
+                <circle class="hub" cx="16" cy="10" r="2.6"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <p class="loader-text" id="loaderText">Starting the journey…</p>
+</div>    
+
+
+    <!-- </div> -->
+
+    <div class="text1">
+        <h1> Tour Package<h1>
+                <p id="t11">
+                    Namdev's Tour & Travels propone packages bundel together various travel component such as transpoar
+                    , accommodations , guided tour meals , and other amenities .
+                    They are desgined to cater to diffrent interests , perferences and budgets of treavelers..
+                </p>
+    </div>
+
+    <div class="slider">
+        <div class="slide">
+            <img src="././pack img/dhreadhun/shikhar fall.jfif">
+            <p class="clinettext">
+                <br>
+                 <span style="color:#328ADF;">Shikhar Fall <br>.....</span>
+            </p>
+            <div class="overlays">
+                "Shikhar Fall" in Dehradun or its immediate surroundings. However, it's possible that new attractions or developments have occurred since then. Dehradun, the capital of Uttarakhand in India, is known for its scenic beauty and has various attractions for tourists.If "Shikhar Fall" is a new or less-known spot, 
+                <br>
+
+                <a href="./booktour.html" target="_blank">Book Now </a>
+                
+
+
+
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="././pack img/dhreadhun/kalinga-war-memorial.jpg" alt="">
+
+            <p class="clinettext">
+                <br>
+                 <span style="color:#328ADF;">kalinga war memorial</span>
+            </p>
+            <div class="overlays">
+                Kalinga War Memorial associated with a specific tourist spot. However, the Kalinga War was a historic conflict that took place in 261 BCE between the Maurya Empire, led by Emperor Ashoka, and the state of Kalinga (modern-day Odisha, India). This war had a profound impact on Ashoka, leading him to renounce violence and embrace Buddhism.
+                <br>
+                <a href="./booktour.html">Book now</a>
+
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="././pack img/dhreadhun/mindrolling monastery.jfif" alt="">
+
+            <p class="clinettext">
+                <br>
+                <span style="color:#328ADF;">Mindrolling monastery</span>
+            </p>
+            <div class="overlays">
+                The Mindrolling Monastery is a prominent Buddhist monastery located in Dehradun, Uttarakhand, India. It is one of the largest Tibetan Buddhist centers in the world.When planning a visit to Mindrolling Monastery, it's a good idea to check with local tourism information or the monastery itself for any updated details on visiting hours and events. 
+
+                <br>
+                <a href="./booktour.html">Book now</a>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="slider">
+        <div class="slide">
+            <img src="././pack img/dhreadhun/budha temple.jpg" alt="">
+            <p class="clinettext">
+                <br>
+                <span style="color:#328ADF;">Buddha temple</span>
+            </p>
+
+            <div class="overlays">
+                "Buddha Temple" in Dehradun, India. However, it's possible that new attractions or developments have occurred since then. Dehradun, the capital of Uttarakhand, has several religious and tourist attractions,
+                <br>
+                <a href="./booktour.html">Book now</a>
+
+            </div>
+
+
+        </div>
+
+        <div class="slide">
+            <img src="././pack img/dhreadhun/Inside_the_Anthropological_Museum_.jpg" alt="">
+
+            <p class="clinettext">
+                <br>
+                 <span style="color:#328ADF;">Zolia Anthropological Museum</span>
+            </p>
+
+            <div class="overlays">
+                Zolia Anthropological Museum." It's possible that the museum could be a new establishment or a less widely known attraction. If it's related to anthropology, it might focus on the study of human societies and cultures.
+                <br>
+                <a href="./booktour.html">Book now</a>
+
+            </div>
+
+
+        </div>
+
+        <div class="slide">
+            <img src="././pack img/dhreadhun/malsi deer park.jpg" alt="">
+            <p class="clinettext">
+                <br>
+                 <span style="color:#328ADF;">Malsi deer park</span>
+            </p>
+
+            <div class="overlays">
+                 Malsi Deer Park is a popular tourist destination located in Dehradun, Uttarakhand, India. The park is known for its picturesque surroundings and is home to various species of deer, including spotted deer and nilgai. Visitors can enjoy seeing these animals in a relatively natural habitat.
+                <br>
+                <a href="./booktour.html">Book now</a>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="slider">
+        <div class="slide">
+            <img src="././pack img/dhreadhun/mindrolling monastery.jfif" alt="">
+            <p class="clinettext">
+                <br>
+                 <span style="color:#328ADF;">Mindrolling Monastery</span>
+            </p>
+
+            <div class="overlays">
+                The Mindrolling Monastery is a prominent Tibetan Buddhist monastery located in Dehradun, Uttarakhand.When planning a visit to Mindrolling Monastery.
+                <br>
+                <a href="./booktour.html">Book now</a>
+
+            </div>
+
+
+        </div>
+
+        <div class="slide">
+            <img src="././pack img/dhreadhun/Rajaji-National-Park.jpg" alt="">
+
+            <p class="clinettext">
+                <br>
+                 <span style="color:#328ADF;">Rajaji National Park</span>
+            </p>
+
+            <div class="overlays">
+                Rajaji National Park is a national park and tiger reserve located in the northern Indian state of Uttarakhand. The park plays a crucial role in the conservation of biodiversity, particularly for elephants and tigers.
+                <br>
+                <a href="./booktour.html">Book now</a>
+
+            </div>
+
+
+        </div>
+
+        <div class="slide">
+            <img src="././pack img/dhreadhun/robber cave.jfif" alt="">
+
+            <p class="clinettext">
+                <br>
+                <span style="color:#328ADF;">Robber Cave</span>
+            </p>
+
+            <div class="overlays">
+                Robber's Cave, also known as Guchu Pani, is a popular tourist attraction near Dehradun in the northern Indian state of Uttarakhand. Visitors to Robber's Cave can enjoy a short trek to reach the cave. The experience involves walking through shallow waters inside the cave.
+                <br>
+                <a href="./booktour.html">Book now</a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- -->
+
+        <footer>
+            <div id="fo" class="footeroverlay">
+
+                    <div class="texilink">
+
+                        <form data-formtype="Get in Touch" id="heroEnquiryForm">
+                        <div class="gettouch">
+                            <h1>Get in Touch</h1>
+
+                          <div class="holder">
+                              Name : <input name="name" style="width:14rem; background:transparent; border:none;" type="text">
+                              <hr>
+                          </div>
+
+                            <div class="holder">
+                                Email_id : <input name="email" style="width:14rem; background:transparent; border:none;" type="text">
+                                <hr>
+                            </div>
+
+                            <div class="holder">
+                               Mobile : <input name="phone" style="width:14rem; background:transparent; border:none;"type="text">
+                                <hr>
+                            </div>
+
+                           <div class="holder">
+                                No. of people : <input name="no of people" style="width:14rem; background:transparent; border:none;" type="text">
+                              <hr>
+                           </div>
+
+                           <div class="holder">
+                               Destination : <input name="destination" style="width:14rem; background:transparent; border:none;" type="text">
+                              <hr>
+                          </div>
+
+                           <div class="holder">
+                             Car : <input name="car" style="width:14rem; background:transparent; border:none;" type="text">
+                             <hr>
+                          </div>
+                                     <br>
+                            <div class="getsubmit">
+                                 <input style="width: 6.5rem; height: 1.9rem;border-radius: 0.5rem; margin-top: 2.5rem; background: #328ADF;display: flex; align-items: center; justify-content: center; padding: .8rem 1.5; cursor: pointer;"
+                                 onclick="notify()" type="submit">
+                           </div>
+
+                               <img style="position:absolute; margin-top: 5rem; height: 5.8rem; width:6.5rem;"
+                                   src="././images/logo03.png" alt="">
+
+                        </div> 
+                        </form>
+                    </div>
+
+                    <!--  -->
+                   
+
+                    <!--  -->
+
+                   <div class="texilink">
+                      <div class="textt">
+                            At Namdev's Tour & Travel's we're dedicated to crafting exceptional travel experiences that ignite
+                            wanderlust and create everlasting memories. Our passion for sustainable travel, commitment
+                            to personalized service, and pursuit of off-the-beaten-path adventures define who we are.
+                            <br><br>
+                            <span style="text-transform:uppercase;">
+                                 Contact us to start planning your dream getaway today.
+                            </span>
+                            <br><br>
+                            <span style="color: #328ADF;">
+                                +91 9784568787, 
+                                +91 9784568787 <br>
+                                namdevtourtravels@gmail.com 
+                                infonamdevtour@gmail.com
+                            </span>
+                            <br><br>
+                            <span>
+                             <img src="./icons/web ivon/Location Icon.svg" alt="">
+                             Namdev's Tour & Travels 302, Shree Krishna Plaza,Near Gaurav Tower,Malviya Nagar,Jaipur, Rajasthan – 302017 India
+                            </span>
+                            <div style="width: 100%; height: 40%;  margin-top: 1.5rem;">
+                               <a href="">   <img style="position: absolute;" src="./images/Maps.png" alt=""></a>
+                            </div>
+        
+                        </div>
+                    </div>
+
+                    <div class="texilink" style="justify-content: center;">
+                        <div class="taxibox" style="display: inline-block; margin-top: 2rem; margin-left: 1rem;">
+                            <li><h1 style="color:antiquewhite">
+                               Taxi Services</h1>
+
+                            </li>
+                            <br><br>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to mathura</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Ahmedabad</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Delhi</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Agra</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to khatu shyam ji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to salasar balaji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to udaipur</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to ajmer</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to mathura</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Ahmedabad</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Delhi</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Agra</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to khatu shyam ji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to salasar balaji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to udaipur</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to ajmer</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to mathura</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Ahmedabad</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/NEW NAMDEV tour package/new delhi.html"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Delhi</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to Agra</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to khatu shyam ji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to salasar balaji</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to udaipur</h4> </a></li>
+                            <li><a class="ttlink" href="./NEW NAMDEV car/CAR.HTML"> <h4><img src="././icons/pre.svg" alt=""> jaipur to ajmer</h4> </a></li>
+                        
+                        </div>
+                     </div>
+                
+
+
+            </div>   
+
+            <div class="footnav">
+                <a href="./index.html"> <li>Home</li> </a>
+                <a href="./tourpack.html"> <li>Service's</li> </a>
+                <a href="./tourpack.html"> <li>Tour Packages</li> </a>
+                <a href="./contact.html"> <li>Contact us</li> </a>
+                <a href="./about.html"> <li>About us</li> </a>
+            </div>
+
+        </footer>
+
+
+            <div class="copyright" style=" text-align: center;">
+                
+                <p>&copy; 2026 Namdev's Tour & Travels. All Rights Reserved.</p>
+            </div>
+
+
+            <script src="././finalanimation.js"></script>
+
+
+</body>
+
+</html>
