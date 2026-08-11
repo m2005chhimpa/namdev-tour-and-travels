@@ -1784,7 +1784,7 @@ function pkgCardHTML(p, i, isTrend){
     return `
         <div class="pkgCard" style="animation-delay:${Math.min(i * 0.05, 0.4)}s">
             <div class="pkgImgWrap">
-                <img src="./${p.img}" alt="${p.title}" loading="lazy">
+                <img src="${p.img}" alt="${p.title}" loading="lazy">
             </div>
             ${p.badge ? `<span class="pkgBadge">${p.badge}</span>` : ''}
             <div class="pkgTopRow">
@@ -1875,7 +1875,7 @@ function openPkgModal(title){
 
     pkgModal.innerHTML = `
         <div class="pkgModalImg">
-            <img src="./${p.img}" alt="${p.title}">
+            <img src="${p.img}" alt="${p.title}">
             <span class="pkgTag">${catLabel}</span>
             <span class="pkgDuration">${p.duration}</span>
             <button type="button" class="pkgModalClose" aria-label="Close">✕</button>
@@ -2060,7 +2060,7 @@ function renderGallery(){
         const full = g.own ? g.src : `${g.src}?width=1400`;
         return `
         <div class="galleryItem ${g.tall ? 'tall' : ''}" data-full="${full}">
-            <img src="./${thumb}" alt="${g.label} — Namdev's Tour & Travels" loading="lazy">
+            <img src="${thumb}" alt="${g.label} — Namdev's Tour & Travels" loading="lazy">
             <div class="galBrandMark">
                 <img src="././images/logo03.png" alt="">
                 <span>Namdev's</span>
@@ -2079,7 +2079,7 @@ function openPhotoLightbox(src){
     overlay.innerHTML = `
         <div style="max-width:44rem; width:100%; position:relative;">
             <button type="button" style="position:absolute; top:-2.6rem; right:0; width:2.2rem; height:2.2rem; border-radius:50%; background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✕</button>
-            <img src="./${src}" style="width:100%; border-radius:.8rem; display:block;">
+            <img src="${src}" style="width:100%; border-radius:.8rem; display:block;">
         </div>
     `;
     document.body.appendChild(overlay);
@@ -2212,7 +2212,7 @@ function renderBlog(){
     if(!el) return;
     el.innerHTML = BLOG_POSTS.map(b => `
         <a class="blogCard" href="${b.url}">
-            <div class="blogCardImg"><img src="./${b.img}" alt="${b.title}" loading="lazy"></div>
+            <div class="blogCardImg"><img src="${b.img}" alt="${b.title}" loading="lazy"></div>
             <div class="blogCardBody">
                 <span class="blogCardTag">${b.tag}</span>
                 <h3>${b.title}</h3>
