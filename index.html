@@ -11,34 +11,30 @@
     <link rel="stylesheet" href="./finalanimation.css">
     <link rel="stylesheet" href="./experimental_claude.css">
     <!-- <link rel="stylesheet" href="./temp/tempslide.css"> -->
-    
-    ```html
-<!-- Slick Carousel CSS -->
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
-    integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer" />
 
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
-    integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer" />
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
 
-<!-- Tabler Icons -->
-<link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
 
-<!-- Google reCAPTCHA -->
-<script
-    src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit"
-    async
-    defer>
-</script>
-        
+    <!-- Tabler Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
-        <!--  -->
+    <!-- Google reCAPTCHA -->
+    <script
+        src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit"
+        async
+        defer>
+    </script>
 
 </head>
 
@@ -428,108 +424,6 @@
 }
 </style>
 
-
-
-
-<!-- <script>
-    document.getElementById("openEnquiryModal").addEventListener("click", () => {
-    const location = document.querySelector(".loco").value;
-    const date = document.querySelector(".dte").value;
-    const phone = document.querySelector(".logg").value;
-
-    document.getElementById("enquirySummary").textContent =
-        `${location || "..."} on ${date || "..."} — ${phone || "..."}`;
-
-    document.getElementById("enquiryModal").classList.add("show");
-});
-
-document.getElementById("closeEnquiryModal").addEventListener("click", () => {
-    document.getElementById("enquiryModal").classList.remove("show");
-});
-
-document.getElementById("sendOtpBtn").addEventListener("click", async () => {
-    const email = document.getElementById("enquiryEmail").value;
-    if (!email) {
-        alert("Please enter your email first.");
-        return;
-    }
-
-    const btn = document.getElementById("sendOtpBtn");
-    btn.disabled = true;
-    btn.textContent = "Sending...";
-
-    try {
-        const res = await fetch(GOOGLE_SHEET_URL, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" },
-            body: JSON.stringify({ action: "sendOtp", email: email })
-        });
-        const result = await res.json();
-
-        if (result.result === "success") {
-            alert("OTP sent to your email.");
-            document.getElementById("otpInput").style.display = "block";
-            document.getElementById("confirmBtn").style.display = "inline-block";
-            btn.textContent = "Resend OTP";
-        } else {
-            alert(result.message || "Failed to send OTP.");
-            btn.textContent = "Send OTP";
-        }
-    } catch (err) {
-        console.error(err);
-        alert("Could not send OTP. Please try again.");
-        btn.textContent = "Send OTP";
-    }
-    btn.disabled = false;
-});
-
-document.getElementById("heroEnquiryForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const email = document.getElementById("enquiryEmail").value;
-    const otp = document.getElementById("otpInput").value;
-
-    if (!otp) {
-        alert("Please enter the OTP sent to your email.");
-        return;
-    }
-
-    const payload = {
-        action: "verifySubmit",
-        formType: "Tour Enquiry",
-        location: document.querySelector(".loco").value,
-        date: document.querySelector(".dte").value,
-        phone: document.querySelector(".logg").value,
-        email: email,
-        otp: otp
-    };
-
-    try {
-        const res = await fetch(GOOGLE_SHEET_URL, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" },
-            body: JSON.stringify(payload)
-        });
-        const result = await res.json();
-
-        if (result.result === "success") {
-            alert("Thank you! Your enquiry has been submitted.");
-            document.getElementById("heroEnquiryForm").reset();
-            document.getElementById("enquiryEmail").value = "";
-            document.getElementById("otpInput").value = "";
-            document.getElementById("otpInput").style.display = "none";
-            document.getElementById("confirmBtn").style.display = "none";
-            document.getElementById("enquiryModal").classList.remove("show");
-        } else {
-            alert(result.message || "Invalid OTP. Please try again.");
-        }
-    } catch (err) {
-        console.error(err);
-        alert("Something went wrong. Please try again.");
-    }
-});
-</script> -->
-
         <!-- HOW IT WORK -->
 <div class="hiwSection" id="hiwSection">
     <h2 class="hiwHeading">How it works</h2>
@@ -583,70 +477,54 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/jodhpur.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Jodhpur
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/udaipur.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Udaipur
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/mathura.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Mathura
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/varanasi.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Varansi
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/vrindavan.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Varindavan
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/jaisalmar.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Jaisalmar
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/ujjain.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Ujjain
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/mountabu.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Mount Abu
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/khatu-ji.html" class="place-pill">
             <i class="ti ti-map-pin"></i> khatu ji
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/nanital.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Nanital
-
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
+        </a>
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/newdhreadhun.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Dheradhun
-
+        </a>
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/manali.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Manali
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/mussorri.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Mussorri
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/leh ladakh.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Leh Ladakh
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/salasar-balaji.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Salasar
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/statue of unity.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Statue of Unity
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
         <a href="./NEW NAMDEV car/NEW NAMDEV tour package/rishikesh.html" class="place-pill">
             <i class="ti ti-map-pin"></i> Rishikesh
         </a>
-        <!-- repeat same pattern for all remaining places, unchanged hrefs -->
     </div>
 </div>
 
@@ -664,7 +542,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
     <!-- popular tour slider -->
     <div class="slider1" id="s1">
 
-        <div class="slide1" .>
+        <div class="slide1">
             <img src="././images/pack/wildlifepack.jpg" alt="">
             <div class="stext1">
                 Wild Life
@@ -757,7 +635,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
         </div>
 
         <div class="slide2">
-            <img src="./https://media.istockphoto.com/id/473908802/photo/the-merlion-fountain-and-singapore-skyline.jpg?s=612x612&w=0&k=20&c=LLyCWzAQp1TqgcqBTAelkJs1QXo2YEl_wE6pDYI6cfQ="
+            <img src="https://media.istockphoto.com/id/473908802/photo/the-merlion-fountain-and-singapore-skyline.jpg?s=612x612&w=0&k=20&c=LLyCWzAQp1TqgcqBTAelkJs1QXo2YEl_wE6pDYI6cfQ="
                 alt="">
             <div class="stext1">
                 Singapore
@@ -769,7 +647,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
         </div>
 
         <div class="slide2">
-            <img src="./https://plus.unsplash.com/premium_photo-1661943659036-aa040d92ee64?=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZHViYWl8ZW58MHx8MHx8fDA%3D"
+            <img src="https://plus.unsplash.com/premium_photo-1661943659036-aa040d92ee64?=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZHViYWl8ZW58MHx8MHx8fDA%3D"
                 alt="">
             <div class="stext1">
                 Dubai
@@ -782,7 +660,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
         </div>
 
         <div class="slide2">
-            <img src="./https://media.istockphoto.com/id/1324017792/photo/beautiful-aerial-view-photo-of-saigon-ho-chi-minh-city-at-night.jpg?s=612x612&w=0&k=20&c=pOxIbUUjO1a_XZCc0WNJ9wsRqrT2_8coY695VKS3eRo="
+            <img src="https://media.istockphoto.com/id/1324017792/photo/beautiful-aerial-view-photo-of-saigon-ho-chi-minh-city-at-night.jpg?s=612x612&w=0&k=20&c=pOxIbUUjO1a_XZCc0WNJ9wsRqrT2_8coY695VKS3eRo="
                 alt="">
             <div class="stext1">
                 Vietnam
@@ -793,7 +671,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
         </div>
 
         <div class="slide2">
-            <img src="./https://media.istockphoto.com/id/507551802/photo/istanbul-the-capital-of-turkey.jpg?s=612x612&w=0&k=20&c=2DicSp1j3b8K1Xosz-L4XtCMQ02U0-JhyIGbcaM2te4="
+            <img src="https://media.istockphoto.com/id/507551802/photo/istanbul-the-capital-of-turkey.jpg?s=612x612&w=0&k=20&c=2DicSp1j3b8K1Xosz-L4XtCMQ02U0-JhyIGbcaM2te4="
                 alt="">
             <div class="stext1">
                 Turkey
@@ -806,7 +684,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
         </div>
 
         <div class="slide2">
-            <img src="./https://media.istockphoto.com/id/466842820/photo/petronas-towers.jpg?s=612x612&w=0&k=20&c=X_Kl-W_ulJEzjvaaT8gRNTQWHboyLKaedXol5EPhGdI="
+            <img src="https://media.istockphoto.com/id/466842820/photo/petronas-towers.jpg?s=612x612&w=0&k=20&c=X_Kl-W_ulJEzjvaaT8gRNTQWHboyLKaedXol5EPhGdI="
                 alt="">
             <div class="stext1">
                 Malaysia
@@ -819,7 +697,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
         </div>
 
         <div class="slide2">
-            <img src="./        https://media.istockphoto.com/id/500798563/photo/city-skyline-at-sunset-jakarta-indonesia.jpg?s=612x612&w=0&k=20&c=6v7sNMfwW56F5TxfvXH7lEh7nZynm1aRSK3fF0lICjU="
+            <img src="https://media.istockphoto.com/id/500798563/photo/city-skyline-at-sunset-jakarta-indonesia.jpg?s=612x612&w=0&k=20&c=6v7sNMfwW56F5TxfvXH7lEh7nZynm1aRSK3fF0lICjU="
                 alt="">
             <div class="stext1">
                 Indonesia
@@ -1042,7 +920,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
                 <div style="width:3.2rem; height:3.2rem; border-radius:50%; background:#328ADF; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:600; margin:0 auto;">GN</div>
 
 
-                <h4 class="clientname">usersr4<h4>
+                <h4 class="clientname">usersr4</h4>
                         <div style="display: flex; margin-top: .7rem;">
                             <img src="././icons/web ivon/ion_star.svg" alt="">
                             <img src="././icons/web ivon/ion_star.svg" alt="">
@@ -1364,7 +1242,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
         <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
         <div class="destination-row">
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <img src="https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
                 <span>Royal Rajasthan</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
@@ -1528,28 +1406,6 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
                 </div>
             </div>
 
-            <!-- <form class="footer-form" form-type="footer_GIT" data-formtype="Get in Touch" id="heroEnquiryForm">
-                <div class="form-row">
-                    <input name="name" type="text" placeholder="Your Name">
-                </div>
-                <div class="form-row">
-                    <input name="email" type="email" placeholder="Your Email">
-                </div>
-                <div class="form-row">
-                    <input name="phone" type="text" placeholder="Mobile Number">
-                </div>
-                <div class="form-row form-row-split">
-                    <input name="count" type="text" placeholder="No. of People">
-                    <input name="car" type="text" placeholder="Car">
-                </div>
-                <div class="form-row">
-                    <input name="destination" type="text" placeholder="Destination">
-                </div>
-                <button type="submit" class="footer-submit-btn">
-                    Send Enquiry
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-            </form> -->
             <form class="footer-form" data-formtype="Footer Enquiry" id="footerEnquiryForm">
     <div class="form-row">
         <input name="name" type="text" placeholder="Your Name">
@@ -1612,120 +1468,11 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
 
 <!-- /////////////////////////////////////////////////////////////////////////// -->
 
-     <!-- <script src="././files (7)/config.js"></script> -->
-    <!-- <script src="././files (7)/nav.js"></script> -->
-    <!-- <script src="././files (7)/typed-init.js"></script> --> 
-    <!-- <script src="././files (7)/faq.js"></script>
-    <script src="././files (7)/hiw-animation.js"></script> -->
     <script src="././files (7)/enquiry-form.js"></script>
-    <!-- <script src="././files (7)/otp-form.js"></script> -->
-    <script src="././files (7)/form-handler.js"></script> 
+    <script src="././files (7)/form-handler.js"></script>
 
 <!-- /////////////////////////////////////////////////////////////////////////// -->
 
-
-
-
-<!--for enquriy form  -->
-    <!-- <script>
-    document.getElementById("openEnquiryModal").addEventListener("click", () => {
-    const location = document.querySelector(".loco").value;
-    const date = document.querySelector(".dte").value;
-    const phone = document.querySelector(".logg").value;
-
-    document.getElementById("enquirySummary").textContent =
-        `${location || "..."} on ${date || "..."} — ${phone || "..."}`;
-
-    document.getElementById("enquiryModal").classList.add("show");
-});
-
-document.getElementById("closeEnquiryModal").addEventListener("click", () => {
-    document.getElementById("enquiryModal").classList.remove("show");
-});
-
-document.getElementById("sendOtpBtn").addEventListener("click", async () => {
-    const email = document.getElementById("enquiryEmail").value;
-    if (!email) {
-        alert("Please enter your email first.");
-        return;
-    }
-
-    const btn = document.getElementById("sendOtpBtn");
-    btn.disabled = true;
-    btn.textContent = "Sending...";
-
-    try {
-        const res = await fetch(GOOGLE_SHEET_URL, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" },
-            body: JSON.stringify({ action: "sendOtp", email: email })
-        });
-        const result = await res.json();
-
-        if (result.result === "success") {
-            alert("OTP sent to your email.");
-            document.getElementById("otpInput").style.display = "block";
-            document.getElementById("confirmBtn").style.display = "inline-block";
-            btn.textContent = "Resend OTP";
-        } else {
-            alert(result.message || "Failed to send OTP.");
-            btn.textContent = "Send OTP";
-        }
-    } catch (err) {
-        console.error(err);
-        alert("Could not send OTP. Please try again.");
-        btn.textContent = "Send OTP";
-    }
-    btn.disabled = false;
-});
-
-document.getElementById("heroEnquiryForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const email = document.getElementById("enquiryEmail").value;
-    const otp = document.getElementById("otpInput").value;
-
-    if (!otp) {
-        alert("Please enter the OTP sent to your email.");
-        return;
-    }
-
-    const payload = {
-        action: "verifySubmit",
-        formType: "Tour Enquiry",
-        location: document.querySelector(".loco").value,
-        date: document.querySelector(".dte").value,
-        phone: document.querySelector(".logg").value,
-        email: email,
-        otp: otp
-    };
-
-    try {
-        const res = await fetch(GOOGLE_SHEET_URL, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" },
-            body: JSON.stringify(payload)
-        });
-        const result = await res.json();
-
-        if (result.result === "success") {
-            alert("Thank you! Your enquiry has been submitted.");
-            document.getElementById("heroEnquiryForm").reset();
-            document.getElementById("enquiryEmail").value = "";
-            document.getElementById("otpInput").value = "";
-            document.getElementById("otpInput").style.display = "none";
-            document.getElementById("confirmBtn").style.display = "none";
-            document.getElementById("enquiryModal").classList.remove("show");
-        } else {
-            alert(result.message || "Invalid OTP. Please try again.");
-        }
-    } catch (err) {
-        console.error(err);
-        alert("Something went wrong. Please try again.");
-    }
-});
-</script> -->
-            
 <!-- for frequently ask quesiton section -->
 <script>
            document.querySelectorAll('.tfaqQuestion').forEach(btn => {
@@ -1761,10 +1508,10 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
 
  <!--  -->
  <!-- for automatic text -->
- <script src="./https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+ <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
  <!-- for slick slider -->
- <script src="./https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
- <script src="./https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
      integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             
@@ -1804,19 +1551,14 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
                                 slidesToScroll: 1
                             }
                         }
-                        // You can unslick at a given breakpoint now by adding:
-                        // settings: "unslick"
-                        // instead of a settings object
                     ]
                 });
                 $('.slider2').slick({
-                    //   centerMode: true,
                     centerPadding: '60px',
                     slidesToShow: 3,
                     dots: true,
                     arrows: true,
                     infinite: true,
-
                     autoplay: true,
                     auotplaySpeed: 2000,
                     responsive: [
@@ -1843,16 +1585,12 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
                                 slidesToScroll: 1
                             }
                         }
-                        // You can unslick at a given breakpoint now by adding:
-                        // settings: "unslick"
-                        // instead of a settings object
                     ]
                 });
 
                 $('.feedslider').slick({
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    //   autoplay: true,
                     dots: true,
                     autoplaySpeed: 2000,
                     responsive: [
@@ -1879,19 +1617,14 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
                                 slidesToScroll: 1
                             }
                         }
-                        // You can unslick at a given breakpoint now by adding:
-                        // settings: "unslick"
-                        // instead of a settings object
                     ]
                 });
                  $('.reviewslider').slick({
-                    //   centerMode: true,
                     centerPadding: '60px',
                     slidesToShow: 3,
                     dots: true,
                     arrows: true,
                     infinite: true,
-
                     autoplay: true,
                     auotplaySpeed: 2000,
                     responsive: [
@@ -1918,19 +1651,14 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
                                 slidesToScroll: 1
                             }
                         }
-                        // You can unslick at a given breakpoint now by adding:
-                        // settings: "unslick"
-                        // instead of a settings object
                     ]
                 });
                  $('.tjSlider').slick({
-                    //   centerMode: true,
                     centerPadding: '60px',
                     slidesToShow: 3,
                     dots: true,
                     arrows: true,
                     infinite: true,
-
                     autoplay: true,
                     auotplaySpeed: 2000,
                     responsive: [
@@ -1957,28 +1685,7 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
                                 slidesToScroll: 1
                             }
                         }
-                        // You can unslick at a given breakpoint now by adding:
-                        // settings: "unslick"
-                        // instead of a settings object
                     ]
-                });
-
-                
-
-
-                
-
-                
-
-            </script>
-
-            <script>
-                $('.reviewslider').slick({
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    //   autoplay: true,
-                    dots: true,
-                    autoplaySpeed: 2000,
                 });
             </script>
 
@@ -1992,24 +1699,8 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
                 });
             </script>
 
-            
-            <!-- <script>
-                function notify() {
-                    alert("Sorry we are Unalbe to fetch data \n Please use +91 4154545854 OR namdevtourandtravels@gmail.com \n To communicate with us..");
-                }
-            </script> -->
-
             <!-- for nav responsive -->
              <script>
-                // function showsidebar() {
-                //     const sidebar = document.querySelector('.sidebar')
-                //     sidebar.style.display = 'flex'
-                // }
-                // function hidesidebar() {
-                //     const sidebar = document.querySelector('.sidebar')
-                //     sidebar.style.display = 'none'
-                // } 
-
                 function showsidebar(){
                  document.querySelector('.sidebar').classList.add('show');
                     }
@@ -2017,35 +1708,6 @@ document.getElementById("heroEnquiryForm").addEventListener("submit", async func
                  document.querySelector('.sidebar').classList.remove('show');
                 }
             </script>
-
-        <!-- ENQUIRY FORM BACKEND -->
-            <!-- <script>
-                const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby9VzqY-cSd5Uj3mXI7RJsPpT4joZobZwrm-Fhoe0-T3rNXzoUUqoqisJrXzlBuMeQ4YA/exec"; // your deployed URL
-
-                     document.querySelectorAll("form[data-formtype]").forEach(form => {
-                      form.addEventListener("submit", async function (e) {
-                     e.preventDefault();
-
-                 const formData = new FormData(form);
-                 const payload = { formType: form.dataset.formtype };
-                 formData.forEach((value, key) => { payload[key] = value; });
-
-        try {
-            await fetch(GOOGLE_SHEET_URL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "text/plain" },
-                body: JSON.stringify(payload)
-            });
-            alert("Thank you! Your request has been submitted. We'll get back to you soon.");
-            form.reset();
-        } catch (err) {
-            console.error(err);
-            alert("Something went wrong. Please try again or call us directly at +91 4154545854.");
-        }
-    });
-});
-</script> -->
 
         <!-- for footer form -->
          <script>
@@ -2190,15 +1852,9 @@ window.SITE_CONFIG = {
     </script>
 
 
-     <!-- <script src="./formverif.js"></script> -->
      <!-- loader animations -->
     <script src="././finalanimation.js" ></script>
     <script src="././experimental_claude.js" ></script>
-
-    
-
-   
-
 
 </body>
 
