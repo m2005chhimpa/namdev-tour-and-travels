@@ -1494,10 +1494,19 @@ form.addEventListener('submit', async (e)=>{
         });
         const result = await res.json();
 
-        if(result.result !== 'success'){
-            // Wrong/expired OTP, or a sheet error — show it and let them fix the OTP field, don't wipe the form
+        // if(result.result !== 'success'){
+        //     // Wrong/expired OTP, or a sheet error — show it and let them fix the OTP field, don't wipe the form
+        //     otpStatus.className = 'otpStatus bad';
+        //     otpStatusText.textContent = result.message || 'Something went wrong. Please try again.';
+        //     confirmBtn.disabled = false;
+        //     confirmBtn.textContent = selectedIntent === 'booking' ? 'Confirm booking ✓' : 'Send enquiry ✓';
+        //     return;
+        // }
+       if(result.result !== 'success'){
+            const msg = result.message || 'Something went wrong. Please try again.';
             otpStatus.className = 'otpStatus bad';
-            otpStatusText.textContent = result.message || 'Something went wrong. Please try again.';
+            otpStatusText.textContent = msg;
+            alert(msg); // shows the real server error, wherever you are on screen
             confirmBtn.disabled = false;
             confirmBtn.textContent = selectedIntent === 'booking' ? 'Confirm booking ✓' : 'Send enquiry ✓';
             return;
