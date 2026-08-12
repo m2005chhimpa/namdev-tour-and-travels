@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="https://m2005chhimpa.github.io/namdev-tour-and-travels/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Explore Ujjain with Namdev's Tour & Travels — Mahakaleshwar, Mahakal Lok, Kal Bhairav, Ram Ghat, Harsiddhi Temple and more. Build your Ujjain itinerary and book your journey.">
@@ -576,7 +577,7 @@ button,input{font:inherit}
         <p>Use the map as a starting point, then build your route around temple timings and your preferred pace.</p>
     </div>
     <div class="u-map">
-        <iframe src="./https://www.google.com/maps?q=Ujjain,Madhya+Pradesh&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of Ujjain"></iframe>
+        <iframe src="https://www.google.com/maps?q=Ujjain,Madhya+Pradesh&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of Ujjain"></iframe>
     </div>
 </section>
 
@@ -620,7 +621,7 @@ button,input{font:inherit}
         <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
         <div class="destination-row">
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <img src="https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
                 <span>Royal Rajasthan</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
@@ -873,7 +874,7 @@ UJJAIN_PLACES.forEach((p,i)=>{
     el.className="u-place"+(i%2===1?" reverse":"");
     el.innerHTML=`
       <div class="u-place-media">
-        <img src="./${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="u-image-fallback"><div><strong>${p.name}</strong><span>Add the Ujjain photo to ./pack img/ujjain/</span></div></div>
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="u-image-fallback"><div><strong>${p.name}</strong><span>Add the Ujjain photo to ./pack img/ujjain/</span></div></div>
         <span class="u-place-tag">${p.type}</span>
         <span class="u-place-no">${String(i+1).padStart(2,"0")}</span>
       </div>

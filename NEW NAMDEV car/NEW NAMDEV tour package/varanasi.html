@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="https://m2005chhimpa.github.io/namdev-tour-and-travels/">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +63,7 @@
 .vr-hero-bg{
    position:absolute; 
         inset:0;
-        background-image:url("/images/hero/varansi.png");
+        background-image:url("./images/hero/varansi.png");
         background-size:cover;
         background-position:center;
         animation: jslKenBurns 10s ease-in-out infinite alternate; /* 2. Ken Burns background zoom */
@@ -1398,7 +1399,7 @@
 
     <div class="vr-experience-grid">
         <div class="vr-experience-card">
-            <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20Assi%20Ghat.jpg" alt="Ganga and Assi Ghat" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20Assi%20Ghat.jpg" alt="Ganga and Assi Ghat" loading="lazy">
             <div class="vr-experience-card-content">
                 <h3>Ganga at Assi Ghat</h3>
                 <p>Slow down beside one of Varanasi's most atmospheric riverfront settings.</p>
@@ -1406,7 +1407,7 @@
         </div>
 
         <div class="vr-experience-card">
-            <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/The%20Ganga%20Aarti%2C%20Varanasi.jpg" alt="Phoolon Ki Holi in Varanasi" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Ganga%20Aarti%2C%20Varanasi.jpg" alt="Phoolon Ki Holi in Varanasi" loading="lazy">
             <div class="vr-experience-card-content">
                 <h3>Phoolon Ki Holi</h3>
                 <p>If your dates align, experience one of Kashi's most distinctive flower-filled celebrations.</p>
@@ -1414,7 +1415,7 @@
         </div>
 
         <div class="vr-experience-card">
-            <img src="./https://hinduvism.com/wp-content/uploads/2025/01/Sankat-Mochan-Hanuman-Temple-1.jpg" alt="Varanasi temple lanes" loading="lazy">
+            <img src="https://hinduvism.com/wp-content/uploads/2025/01/Sankat-Mochan-Hanuman-Temple-1.jpg" alt="Varanasi temple lanes" loading="lazy">
             <div class="vr-experience-card-content">
                 <h3>Walk the Old Lanes</h3>
                 <p>Leave the car behind for a while and experience the sounds, colours and everyday rhythm of old Varanasi.</p>
@@ -1433,7 +1434,7 @@
 
     <div class="vr-map-wrap">
         <iframe
-            src="./https://www.google.com/maps?q=Varanasi,Uttar+Pradesh&output=embed"
+            src="https://www.google.com/maps?q=Varanasi,Uttar+Pradesh&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Map of Varanasi">
@@ -1550,23 +1551,23 @@
         <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
         <div class="destination-row">
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Jaisalmer%20Fort%20Rajasthan.jpg" alt="Jaisalmer">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Jaisalmer%20Fort%20Rajasthan.jpg" alt="Jaisalmer">
                 <span>Royal Rajasthan</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Mehrangarh%20Fort%20Jodhpur.jpg" alt="forts">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mehrangarh%20Fort%20Jodhpur.jpg" alt="forts">
                 <span>Heritages & Forts</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Kashi%20Vishwanath%20temple.jpg" alt="spirituality">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kashi%20Vishwanath%20temple.jpg" alt="spirituality">
                 <span>Spirituality</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Sarnath-Varanasi%2001.jpg" alt="kashmir">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sarnath-Varanasi%2001.jpg" alt="kashmir">
                 <span>Kashmir</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20Assi%20Ghat.jpg" alt="Beach Retreats">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20Assi%20Ghat.jpg" alt="Beach Retreats">
                 <span>Kerlam</span>
             </a>
         </div>
@@ -1795,7 +1796,7 @@ const ATTRACTIONS = [
         type:"Temple",
         built:null,
         duration:"~1 hr",
-        img:"/images/KASHI.PNG",
+        img:"./images/KASHI.PNG",
         text:"One of Varanasi's most famous temples, deeply associated with the devotional tradition of Kashi. The atmosphere around the temple and its surrounding lanes is as much a part of the experience as the shrine itself."
     },
     {
@@ -1881,7 +1882,7 @@ ATTRACTIONS.forEach((a,i)=>{
 
     card.innerHTML = `
         <div class="vr-card-media" data-img="${a.img}" data-name="${a.name}">
-            <img src="./${a.img}" alt="${a.name}" loading="lazy">
+            <img src="${a.img}" alt="${a.name}" loading="lazy">
             <span class="vr-card-tag">${a.type}</span>
             <span class="vr-zoom-hint">Click to enlarge</span>
         </div>

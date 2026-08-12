@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<base href="https://m2005chhimpa.github.io/namdev-tour-and-travels/">
     <meta charset="UTF-8">
     <link rel="icon" type="png" href="./images/logo03.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -550,7 +551,7 @@
         <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
         <div class="destination-row">
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <img src="https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
                 <span>Royal Rajasthan</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
@@ -883,7 +884,7 @@
         card.style.transitionDelay = (i % 6) * 0.07 + 's';
         card.innerHTML = `
           ${p.badge ? `<span class="ldk-card-badge must-visit">${p.badge}</span>` : ''}
-          <img class="ldk-card-img" src="./${p.img}" alt="${p.name}" loading="lazy">
+          <img class="ldk-card-img" src="${p.img}" alt="${p.name}" loading="lazy">
           <div class="ldk-card-shade"></div>
           <div class="ldk-card-title">
             <div class="sub">${p.category}</div>

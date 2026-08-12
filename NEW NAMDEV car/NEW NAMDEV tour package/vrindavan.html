@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="https://m2005chhimpa.github.io/namdev-tour-and-travels/">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +63,7 @@
 .vr-hero-bg{
    position:absolute; 
         inset:0;
-        background-image:url("/images/hero/varindavan.png");
+        background-image:url("./images/hero/varindavan.png");
         background-size:cover;
         background-position:center;
         animation: jslKenBurns 10s ease-in-out infinite alternate; /* 2. Ken Burns background zoom */
@@ -1327,7 +1328,7 @@
 
     <div class="vr-experience-grid">
         <div class="vr-experience-card">
-            <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Keshi%20Ghat%20%2831762%29.jpg" alt="Yamuna and Keshi Ghat" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Keshi%20Ghat%20%2831762%29.jpg" alt="Yamuna and Keshi Ghat" loading="lazy">
             <div class="vr-experience-card-content">
                 <h3>Yamuna at Keshi Ghat</h3>
                 <p>Slow down beside one of Vrindavan's most atmospheric riverfront settings.</p>
@@ -1335,7 +1336,7 @@
         </div>
 
         <div class="vr-experience-card">
-            <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Flowers%20Holi%20Celebration.jpg" alt="Phoolon Ki Holi in Vrindavan" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Flowers%20Holi%20Celebration.jpg" alt="Phoolon Ki Holi in Vrindavan" loading="lazy">
             <div class="vr-experience-card-content">
                 <h3>Phoolon Ki Holi</h3>
                 <p>If your dates align, experience one of Braj's most distinctive flower-filled celebrations.</p>
@@ -1343,7 +1344,7 @@
         </div>
 
         <div class="vr-experience-card">
-            <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Street%20in%20vrindavan.jpg" alt="Vrindavan temple lanes" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Street%20in%20vrindavan.jpg" alt="Vrindavan temple lanes" loading="lazy">
             <div class="vr-experience-card-content">
                 <h3>Walk the Old Lanes</h3>
                 <p>Leave the car behind for a while and experience the sounds, colours and everyday rhythm of old Vrindavan.</p>
@@ -1362,7 +1363,7 @@
 
     <div class="vr-map-wrap">
         <iframe
-            src="./https://www.google.com/maps?q=Vrindavan,Uttar+Pradesh&output=embed"
+            src="https://www.google.com/maps?q=Vrindavan,Uttar+Pradesh&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Map of Vrindavan">
@@ -1477,23 +1478,23 @@
         <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
         <div class="destination-row">
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Vrindavan%20%E2%80%93%20Sacred%20City%20of%20Lord%20Krishna%2042.jpg" alt="Jaisalmer">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vrindavan%20%E2%80%93%20Sacred%20City%20of%20Lord%20Krishna%2042.jpg" alt="Jaisalmer">
                 <span>Jaisalmer</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Temple%20of%20Radha%20Ballabh%2052.jpg" alt="Rann of Kutch">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Temple%20of%20Radha%20Ballabh%2052.jpg" alt="Rann of Kutch">
                 <span>Rann of Kutch</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Vrindavan%20temple.jpg" alt="Heritage Forts">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vrindavan%20temple.jpg" alt="Heritage Forts">
                 <span>Heritage Forts</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Vishram%20Ghat.jpg" alt="Dubai">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vishram%20Ghat.jpg" alt="Dubai">
                 <span>Dubai</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Street%20in%20vrindavan.jpg" alt="Beach Retreats">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Street%20in%20vrindavan.jpg" alt="Beach Retreats">
                 <span>Beach Retreats</span>
             </a>
         </div>
@@ -1800,7 +1801,7 @@ ATTRACTIONS.forEach((a,i)=>{
 
     card.innerHTML = `
         <div class="vr-card-media" data-img="${a.img}" data-name="${a.name}">
-            <img src="./${a.img}" alt="${a.name}" loading="lazy">
+            <img src="${a.img}" alt="${a.name}" loading="lazy">
             <span class="vr-card-tag">${a.type}</span>
             <span class="vr-zoom-hint">Click to enlarge</span>
         </div>

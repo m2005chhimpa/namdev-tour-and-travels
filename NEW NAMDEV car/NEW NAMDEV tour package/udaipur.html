@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="https://m2005chhimpa.github.io/namdev-tour-and-travels/">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,8 +65,8 @@
 .dd-hero-bg{
    position:absolute; 
         inset:0;
-        /* background-image:url("/images/paid/aerial-view-lake-pichola-with-palace-jag-niwas.jpg"); */
-        background-image:url("/images/paid/udaipur-city-palace-evening-rajasthan-india.jpg");
+        /* background-image:url("./images/paid/aerial-view-lake-pichola-with-palace-jag-niwas.jpg"); */
+        background-image:url("./images/paid/udaipur-city-palace-evening-rajasthan-india.jpg");
         background-size:cover;
         background-position:center;
         animation: jslKenBurns 10s ease-in-out infinite alternate; /* 2. Ken Burns background zoom */
@@ -1388,7 +1389,7 @@
 
     <div class="dd-map-wrap">
         <iframe
-            src="./https://www.google.com/maps?q=Udaipur,India&output=embed"
+            src="https://www.google.com/maps?q=Udaipur,India&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Map of Udaipur">
@@ -1579,23 +1580,23 @@
         <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
         <div class="destination-row">
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://images.pexels.com/photos/33658449/pexels-photo-33658449.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Jaisalmer">
+                <img src="https://images.pexels.com/photos/33658449/pexels-photo-33658449.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Jaisalmer">
                 <span>Royal Rajasthan</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://images.pexels.com/photos/29981180/pexels-photo-29981180.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="forts">
+                <img src="https://images.pexels.com/photos/29981180/pexels-photo-29981180.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="forts">
                 <span>Heritages & Forts</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Bagore%20ki%20haveli%2C%20Lake%20pichola%2C%20Udaipur%2C%20Rajasthan.jpg" alt="spirituality">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bagore%20ki%20haveli%2C%20Lake%20pichola%2C%20Udaipur%2C%20Rajasthan.jpg" alt="spirituality">
                 <span>Spirituality</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Udaipur%20Gangaur%20Ghat.jpg" alt="kashmir">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Udaipur%20Gangaur%20Ghat.jpg" alt="kashmir">
                 <span>Kashmir</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/Fateh%20Sagar%20Lake%2C%20Udaipur%2C%20Rajasthan.jpg" alt="Beach Retreats">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Fateh%20Sagar%20Lake%2C%20Udaipur%2C%20Rajasthan.jpg" alt="Beach Retreats">
                 <span>Kerlam</span>
             </a>
         </div>
@@ -1935,7 +1936,7 @@ ATTRACTIONS.forEach((place,index)=>{
     card.innerHTML=`
 
         <div class="dd-card-media" data-img="${place.img}" data-name="${place.name}">
-            <img src="./${place.img}" alt="${place.name}" loading="lazy">
+            <img src="${place.img}" alt="${place.name}" loading="lazy">
             <span class="dd-card-badge">${place.badge}</span>
         </div>
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="https://m2005chhimpa.github.io/namdev-tour-and-travels/">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +66,7 @@
     position:absolute;
  position:absolute; 
         inset:0;
-        background-image:url("/images/Himalayas_from_Kullu_Valley\,_Himachal_Pradesh.jpg");
+        background-image:url("./images/Himalayas_from_Kullu_Valley\,_Himachal_Pradesh.jpg");
         /* background-image:url("https://commons.wikimedia.org/wiki/Special:FilePath/Nainital%20Lake%20Top%20View.jpg"); */
         background-size:cover;
         background-position:center;
@@ -1393,7 +1394,7 @@
 
     <div class="dd-map-wrap">
         <iframe
-            src="./https://www.google.com/maps?q=Nainital,India&output=embed"
+            src="https://www.google.com/maps?q=Nainital,India&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Map of Nainital">
@@ -1584,7 +1585,7 @@
         <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
         <div class="destination-row">
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <img src="https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
                 <span>Royal Rajasthan</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
@@ -1939,7 +1940,7 @@ ATTRACTIONS.forEach((place,index)=>{
     card.innerHTML=`
 
         <div class="dd-card-media" data-img="${place.img}" data-name="${place.name}">
-            <img src="./${place.img}" alt="${place.name}" loading="lazy">
+            <img src="${place.img}" alt="${place.name}" loading="lazy">
             <span class="dd-card-badge">${place.badge}</span>
         </div>
 

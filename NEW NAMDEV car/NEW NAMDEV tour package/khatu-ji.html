@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="https://m2005chhimpa.github.io/namdev-tour-and-travels/">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +63,7 @@
 .vr-hero-bg{
     position:absolute; 
         inset:0;
-        background-image:url("/images/hero/khatu.png");
+        background-image:url("./images/hero/khatu.png");
         background-size:inherit;
         background-position:center;
         animation: jslKenBurns 10s ease-in-out infinite alternate; /* 2. Ken Burns background zoom */
@@ -1802,7 +1803,7 @@
 
     <div class="vr-experience-grid">
         <div class="vr-experience-card">
-            <img src="./https://taxiservicesinjodhpur.com/wp-content/uploads/elementor/thumbs/khatu-shyam-qyz3kqky8cdgw0au3ami2adok7h2wkhrim6dxg8n5s.jpg" alt="Shyam and Khatu Shyam Ji Bazaar" loading="lazy">
+            <img src="https://taxiservicesinjodhpur.com/wp-content/uploads/elementor/thumbs/khatu-shyam-qyz3kqky8cdgw0au3ami2adok7h2wkhrim6dxg8n5s.jpg" alt="Shyam and Khatu Shyam Ji Bazaar" loading="lazy">
             <div class="vr-experience-card-content">
                 <h3>Shyam at Khatu Shyam Ji Bazaar</h3>
                 <p>Slow down beside one of Khatu Shyam Ji's most atmospheric riverfront settings.</p>
@@ -1810,7 +1811,7 @@
         </div>
 
         <div class="vr-experience-card">
-            <img src="./https://www.livehindustan.com/lh-img/uploadimage/library/2024/03/21/16_9/16_9_6/khatu_shyam_1711036154.jpeg" alt="Phoolon Ki Holi in Khatu Shyam Ji" loading="lazy">
+            <img src="https://www.livehindustan.com/lh-img/uploadimage/library/2024/03/21/16_9/16_9_6/khatu_shyam_1711036154.jpeg" alt="Phoolon Ki Holi in Khatu Shyam Ji" loading="lazy">
             <div class="vr-experience-card-content">
                 <h3>Phoolon Ki Holi</h3>
                 <p>If your dates align, experience one of Shekhawati's most distinctive flower-filled celebrations.</p>
@@ -1818,7 +1819,7 @@
         </div>
 
         <div class="vr-experience-card">
-            <img src="./https://upload.wikimedia.org/wikipedia/commons/1/12/Khatu_Shyam_Ji_Entrance_Gate.jpg" alt="Khatu Shyam Ji temple lanes" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Khatu_Shyam_Ji_Entrance_Gate.jpg" alt="Khatu Shyam Ji temple lanes" loading="lazy">
             <div class="vr-experience-card-content">
                 <h3>Walk the Old Lanes</h3>
                 <p>Leave the car behind for a while and experience the sounds, colours and everyday rhythm of old Khatu Shyam Ji.</p>
@@ -1837,7 +1838,7 @@
 
     <div class="vr-map-wrap">
         <iframe
-            src="./https://www.google.com/maps?q=Khatu+Shyam+Ji,+Sikar,+Rajasthan&output=embed"
+            src="https://www.google.com/maps?q=Khatu+Shyam+Ji,+Sikar,+Rajasthan&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Map of Khatu Shyam Ji">
@@ -1955,7 +1956,7 @@
         <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
         <div class="destination-row">
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <img src="https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
                 <span>Royal Rajasthan</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
@@ -1971,7 +1972,7 @@
                 <span>Kashmir</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:FilePath/1100_Khidkiyon_Ki_Haveli.jpg" alt="Beach Retreats">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/1100_Khidkiyon_Ki_Haveli.jpg" alt="Beach Retreats">
                 <span>Kerlam</span>
             </a>
         </div>
@@ -2286,7 +2287,7 @@ ATTRACTIONS.forEach((a,i)=>{
 
     card.innerHTML = `
         <div class="vr-card-media" data-img="${a.img}" data-name="${a.name}">
-            <img src="./${a.img}" alt="${a.name}" loading="lazy">
+            <img src="${a.img}" alt="${a.name}" loading="lazy">
             <span class="vr-card-tag">${a.type}</span>
             <span class="vr-zoom-hint">Click to enlarge</span>
         </div>

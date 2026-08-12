@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="https://m2005chhimpa.github.io/namdev-tour-and-travels/">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +65,7 @@
 .dd-hero-bg{
    position:absolute; 
         inset:0;
-        background-image:url("/images/hero/mathura.png");
+        background-image:url("./images/hero/mathura.png");
         background-size:inherit;
         background-position:center;
         animation: jslKenBurns 10s ease-in-out infinite alternate; /* 2. Ken Burns background zoom */
@@ -1356,7 +1357,7 @@
 
     <div class="dd-map-wrap">
         <iframe
-            src="./https://www.google.com/maps?q=Mathura,Uttar+Pradesh&output=embed"
+            src="https://www.google.com/maps?q=Mathura,Uttar+Pradesh&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Map of Mathura">
@@ -1518,7 +1519,7 @@
         <h3 class="footer-heading footer-heading-center">Featured Destinations</h3>
         <div class="destination-row">
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
+                <img src="https://media.istockphoto.com/id/518623051/photo/two-cameleers-camel-drivers-with-camels-in-dunes.jpg?s=612x612&w=0&k=20&c=_GxGPhbmRNCq0s_8ny9C-SH06lnf_ddZjbGg3JIUpHE=" alt="Jaisalmer">
                 <span>Royal Rajasthan</span>
             </a>
             <a href="./tourpack.html" class="destination-chip">
@@ -1797,27 +1798,27 @@
         <div class="destination-row">
 
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathura_India_%282%29.JPG" alt="Krishna Janmabhoomi, Mathura">
+                <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathura_India_%282%29.JPG" alt="Krishna Janmabhoomi, Mathura">
                 <span>Mathura</span>
             </a>
 
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:Redirect/file/Vishram_Ghat.jpg" alt="Vishram Ghat, Mathura">
+                <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Vishram_Ghat.jpg" alt="Vishram Ghat, Mathura">
                 <span>Braj &amp; Ghats</span>
             </a>
 
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:Redirect/file/Grandeur_of_kusum_sarovar.jpg" alt="Kusum Sarovar, Govardhan">
+                <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Grandeur_of_kusum_sarovar.jpg" alt="Kusum Sarovar, Govardhan">
                 <span>Govardhan</span>
             </a>
 
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:Redirect/file/1_GOVARDHAN_PARBAT.jpg" alt="Govardhan Hill, Mathura district">
+                <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/1_GOVARDHAN_PARBAT.jpg" alt="Govardhan Hill, Mathura district">
                 <span>Sacred Braj</span>
             </a>
 
             <a href="./tourpack.html" class="destination-chip">
-                <img src="./https://commons.wikimedia.org/wiki/Special:Redirect/file/Prem_Mandir_Vrindavan_Mathura.jpg" alt="Prem Mandir, Vrindavan">
+                <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Prem_Mandir_Vrindavan_Mathura.jpg" alt="Prem Mandir, Vrindavan">
                 <span>Vrindavan</span>
             </a>
 
@@ -1944,7 +1945,7 @@ ATTRACTIONS.forEach((place,index)=>{
     card.innerHTML=`
 
         <div class="dd-card-media" data-img="${place.img}" data-name="${place.name}">
-            <img src="./${place.img}" alt="${place.name}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Vishram_Ghat.jpg';">
+            <img src="${place.img}" alt="${place.name}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Vishram_Ghat.jpg';">
             <span class="dd-card-badge">${place.badge}</span>
         </div>
 
