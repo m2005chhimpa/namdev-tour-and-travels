@@ -7,10 +7,9 @@
     <link rel="icon" type="png" href="./images/logo03.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./finalanimation.css">
-    <link rel="stylesheet" href="./experimental_claude.css">
-
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../finalanimation.css">
+    <link rel="stylesheet" href="../../experimental_claude.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Jaisalmer Package | Namdev's Tour & Travels</title>
@@ -220,6 +219,7 @@
         width:100%; height:100%;
         object-fit:cover;
         transition: transform .6s ease;
+        cursor:zoom-in;
       }
       /* 7. Image zoom on hover */
       .jsl-card:hover .jsl-card-img{ transform: scale(1.1); }
@@ -227,6 +227,7 @@
       .jsl-card-shade{
         position:absolute; inset:0;
         background: linear-gradient(180deg, rgba(23,20,16,0) 40%, rgba(23,20,16,0.9) 100%);
+        pointer-events:none;
       }
 
       .jsl-card-badge{
@@ -253,6 +254,7 @@
         z-index:2;
         color:#fff;
         transition: transform .4s cubic-bezier(.2,.8,.25,1);
+        pointer-events:none;
       }
       .jsl-card-title h3{ font-size:1.25rem; margin:0; }
       .jsl-card-title .sub{ font-size:.74rem; color: var(--nt-gold); letter-spacing:.04em; text-transform:uppercase; }
@@ -273,6 +275,8 @@
       .jsl-card-overlay h3{ font-size:1.1rem; margin:0 0 .5rem; }
       .jsl-card-overlay p{ font-size:.8rem; line-height:1.55; color: rgba(255,255,255,0.88); margin:0 0 1rem; }
 
+      .jsl-card-actions{ display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
+
       .jsl-book-btn{
         display:inline-flex; align-items:center; gap:.4rem;
         background: var(--nt-gold);
@@ -286,6 +290,122 @@
       }
       /* 10. Button arrow slide on hover */
       .jsl-book-btn:hover{ gap:.7rem; transform: translateY(-2px); }
+
+      .jsl-add-btn{
+        display:inline-flex; align-items:center; gap:.4rem; cursor:pointer; user-select:none;
+        background: rgba(255,255,255,0.12); border:1.5px solid rgba(255,255,255,0.35); color:#fff;
+        font-family:'Rajdhani',sans-serif; font-weight:700; font-size:.85rem; letter-spacing:.03em; text-transform:uppercase;
+        padding:.55rem 1rem; border-radius:.6rem; width:fit-content; transition: all .2s ease;
+      }
+      .jsl-add-btn:hover{ border-color:#fff; }
+      .jsl-add-btn.added{ background: var(--nt-gold); border-color: var(--nt-gold); color: var(--nt-ink); }
+
+      /* ---------- SUGGESTED ITINERARIES ---------- */
+      .jsl-section{ max-width:74rem; margin:5rem auto; padding:0 1.5rem; }
+      .jsl-section .heading{ text-align:center; margin-bottom:2.2rem; }
+      .jsl-section .heading .eyebrow{
+        font-family:'Rajdhani',sans-serif; font-size:.8rem; letter-spacing:.18em; text-transform:uppercase;
+        color: var(--nt-primary);
+      }
+      .jsl-section .heading h2{ font-size:1.9rem; margin:.4rem 0 0; }
+      .jsl-section .heading p{ color:var(--nt-muted); font-size:.92rem; max-width:36rem; margin:.7rem auto 0; }
+
+      .jsl-itin-tabs{ display:flex; justify-content:center; gap:.6rem; margin-bottom:2rem; flex-wrap:wrap; }
+      .jsl-itin-tab{
+        background:#fff; border:1.5px solid rgba(35,32,28,0.14); color:var(--nt-ink);
+        font-weight:700; font-size:.85rem; padding:.6rem 1.3rem; border-radius:999px; cursor:pointer; transition: all .2s ease;
+      }
+      .jsl-itin-tab:hover{ border-color: var(--nt-primary); }
+      .jsl-itin-tab.active{ background: var(--nt-primary); border-color: var(--nt-primary); color:#fff; }
+      .jsl-itin-panel{ display:none; }
+      .jsl-itin-panel.active{ display:block; animation: jslFadeUp .4s ease; }
+      .jsl-itin-days{ display:flex; flex-direction:column; gap:1rem; max-width:44rem; margin:0 auto; }
+      .jsl-itin-day{ background:#fff; border:1px solid rgba(35,32,28,0.1); border-radius:1rem; padding:1.3rem 1.5rem; display:flex; gap:1.2rem; }
+      .jsl-itin-daynum{
+        flex-shrink:0; width:2.6rem; height:2.6rem; border-radius:50%;
+        background: linear-gradient(135deg, var(--nt-gold), var(--nt-primary)); color:#fff; font-weight:800;
+        display:flex; align-items:center; justify-content:center;
+      }
+      .jsl-itin-day h4{ margin:0 0 .3rem; font-size:1rem; }
+      .jsl-itin-day p{ margin:0; font-size:.85rem; color:var(--nt-muted); line-height:1.6; }
+
+      /* ---------- PRACTICAL INFO ---------- */
+      .jsl-practical-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; }
+      .jsl-practical-card{ background:#fff; border-radius:1.1rem; padding:1.6rem 1.7rem; box-shadow: var(--nt-shadow); }
+      .jsl-practical-card h3{ font-size:1.1rem; margin:0 0 .8rem; display:flex; align-items:center; gap:.5rem; }
+      .jsl-practical-card h3 svg{ width:20px; height:20px; color: var(--nt-primary); }
+      .jsl-practical-card ul{ margin:0; padding-left:1.1rem; }
+      .jsl-practical-card li, .jsl-practical-card p{ font-size:.87rem; color:var(--nt-muted); line-height:1.75; }
+      .jsl-practical-card p{ margin:0; }
+      @media(max-width:800px){ .jsl-practical-grid{ grid-template-columns:1fr; } }
+
+      /* ---------- FOOD & SHOPPING ---------- */
+      .jsl-strip-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1.1rem; }
+      .jsl-strip-card{
+        background:#fff; border:1px solid rgba(35,32,28,0.1); border-radius:1rem; padding:1.3rem; text-align:center;
+        transition: transform .25s ease, box-shadow .25s ease;
+      }
+      .jsl-strip-card:hover{ transform: translateY(-4px); box-shadow: var(--nt-shadow-hover); }
+      .jsl-strip-icon{ font-size:1.8rem; margin-bottom:.6rem; }
+      .jsl-strip-card h4{ margin:0 0 .3rem; font-size:.95rem; }
+      .jsl-strip-card p{ margin:0; font-size:.8rem; color:var(--nt-muted); line-height:1.5; }
+
+      /* ---------- MAP ---------- */
+      .jsl-map-wrap{ border-radius:1.1rem; overflow:hidden; box-shadow: var(--nt-shadow); border:1px solid rgba(35,32,28,0.1); }
+      .jsl-map-wrap iframe{ width:100%; height:24rem; border:0; display:block; }
+
+      /* ---------- FAQ ---------- */
+      .jsl-faq-list{ max-width:46rem; margin:0 auto; display:flex; flex-direction:column; gap:.8rem; }
+      .jsl-faq-item{ background:#fff; border:1px solid rgba(35,32,28,0.1); border-radius:.8rem; overflow:hidden; }
+      .jsl-faq-q{
+        width:100%; display:flex; justify-content:space-between; align-items:center; background:none; border:none;
+        padding:1.1rem 1.3rem; font-size:.92rem; font-weight:700; color:var(--nt-ink); text-align:left; cursor:pointer;
+      }
+      .jsl-faq-icon{ flex-shrink:0; color: var(--nt-primary); transition: transform .3s ease; }
+      .jsl-faq-item.open .jsl-faq-icon{ transform: rotate(45deg); }
+      .jsl-faq-a{ max-height:0; overflow:hidden; transition: max-height .35s ease, padding .35s ease; padding:0 1.3rem; }
+      .jsl-faq-item.open .jsl-faq-a{ max-height:14rem; padding:0 1.3rem 1.2rem; }
+      .jsl-faq-a p{ margin:0; font-size:.87rem; color:var(--nt-muted); line-height:1.65; }
+
+      /* ---------- REVIEWS ---------- */
+      .jsl-reviews{ max-width:74rem; margin:5rem auto; padding:0 1.5rem; }
+      .jsl-reviews .heading{ text-align:center; margin-bottom:2.2rem; }
+      .jsl-review-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; }
+      .jsl-review-card{ background:#fff; border:1px solid rgba(35,32,28,0.1); border-radius:1rem; padding:1.5rem; box-shadow: var(--nt-shadow); }
+      .jsl-review-card .stars{ color: var(--nt-gold); letter-spacing:.08em; margin-bottom:.8rem; }
+      .jsl-review-card p{ color:var(--nt-muted); font-size:.86rem; line-height:1.7; margin:0 0 1rem; }
+      .jsl-review-card .who{ font-size:.8rem; font-weight:800; }
+      @media(max-width:900px){ .jsl-review-grid{ grid-template-columns:1fr; } }
+
+      /* ---------- FLOATING PLAN PANEL ---------- */
+      .jsl-plan-fab{
+        position:fixed; right:1.5rem; bottom:1.5rem; z-index:70;
+        background: var(--nt-ink); color:#fff; border-radius:1.1rem; padding:1rem 1.2rem; width:15.5rem;
+        box-shadow: var(--nt-shadow-hover);
+        transform: translateY(140%); transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+      }
+      .jsl-plan-fab.show{ transform: translateY(0); }
+      .jsl-plan-fab h4{ margin:0 0 .2rem; font-size:.95rem; }
+      .jsl-plan-fab .sub{ font-size:.74rem; opacity:.75; margin-bottom:.8rem; }
+      .jsl-plan-fab .count{ font-weight:800; color: var(--nt-gold); }
+      .jsl-plan-fab a{
+        display:flex; align-items:center; justify-content:center; gap:.4rem; text-decoration:none;
+        background: var(--nt-primary); color:#fff; font-weight:700; font-size:.85rem; padding:.65rem; border-radius:.7rem;
+        transition: transform .2s ease;
+      }
+      .jsl-plan-fab a:hover{ transform: translateY(-2px); }
+
+      /* ---------- LIGHTBOX ---------- */
+      .jsl-lightbox{
+        position:fixed; inset:0; background: rgba(35,32,28,0.9); z-index:1000; display:none;
+        align-items:center; justify-content:center; padding:2rem;
+      }
+      .jsl-lightbox.show{ display:flex; }
+      .jsl-lightbox img{ max-width:90vw; max-height:85vh; border-radius:.6rem; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+      .jsl-lightbox-close{
+        position:absolute; top:1.5rem; right:1.8rem; color:#fff; font-size:2rem; cursor:pointer; line-height:1;
+        background:none; border:none;
+      }
 
       /* ---------- CTA ---------- */
       .jsl-cta{ max-width:78rem; margin: 4.5rem auto 4rem; padding:0 1.5rem; }
@@ -481,8 +601,8 @@
 
 
     <!-- ============ HERO ============ -->
-    <div class="jsl-hero">
-        <div class="jsl-hero-bg"></div>
+    <div class="jsl-hero" id="jslHero">
+        <div class="jsl-hero-bg" id="jslHeroBg"></div>
         <div class="jsl-hero-overlay"></div>
         <div class="jsl-hero-content">
             <div class="eyebrow">Rajasthan · Golden City</div>
@@ -520,6 +640,275 @@
         <div class="jsl-grid" id="jslGrid"></div>
     </div>
 
+    <!-- ============ SUGGESTED ITINERARIES ============ -->
+    <section class="jsl-section">
+        <div class="heading">
+            <div class="eyebrow">Plan It Out</div>
+            <h2>Suggested Jaisalmer itineraries</h2>
+            <p>Choose the pace that suits your trip — a focused one-day loop, a relaxed two-day visit, or the full three-day desert experience.</p>
+        </div>
+
+        <div class="jsl-itin-tabs" id="jslItinTabs">
+            <button class="jsl-itin-tab active" data-day="1">1 Day</button>
+            <button class="jsl-itin-tab" data-day="2">2 Days</button>
+            <button class="jsl-itin-tab" data-day="3">3 Days</button>
+        </div>
+
+        <div class="jsl-itin-panel active" data-day="1">
+            <div class="jsl-itin-days">
+                <div class="jsl-itin-day">
+                    <div class="jsl-itin-daynum">1</div>
+                    <div>
+                        <h4>Morning — Jaisalmer Fort &amp; Patwa Haveli</h4>
+                        <p>Start early at the living fort before the heat sets in, then walk through the carved facades of Patwa Haveli in the old city.</p>
+                    </div>
+                </div>
+                <div class="jsl-itin-day">
+                    <div class="jsl-itin-daynum">2</div>
+                    <div>
+                        <h4>Afternoon — Gadisar Lake &amp; Thar Heritage Museum</h4>
+                        <p>A relaxed stop by Gadisar Lake, followed by the Thar Heritage Museum for a quick grounding in Rajasthani culture.</p>
+                    </div>
+                </div>
+                <div class="jsl-itin-day">
+                    <div class="jsl-itin-daynum">3</div>
+                    <div>
+                        <h4>Evening — Sam Sand Dunes</h4>
+                        <p>Drive out to Sam for a camel ride and sunset over the dunes, capped with a desert camp dinner and folk performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jsl-itin-panel" data-day="2">
+            <div class="jsl-itin-days">
+                <div class="jsl-itin-day">
+                    <div class="jsl-itin-daynum">1</div>
+                    <div>
+                        <h4>Day 1 — Fort, havelis &amp; museums</h4>
+                        <p>Jaisalmer Fort, Patwa Haveli, Tazia Tower, Thar Heritage Museum, and an evening by Gadisar Lake.</p>
+                    </div>
+                </div>
+                <div class="jsl-itin-day">
+                    <div class="jsl-itin-daynum">2</div>
+                    <div>
+                        <h4>Day 2 — Desert day</h4>
+                        <p>Full day at Sam Sand Dunes — camel safari, dune bashing, and an overnight desert camp under the stars.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jsl-itin-panel" data-day="3">
+            <div class="jsl-itin-days">
+                <div class="jsl-itin-day">
+                    <div class="jsl-itin-daynum">1</div>
+                    <div>
+                        <h4>Day 1 — Fort &amp; old city</h4>
+                        <p>Jaisalmer Fort, Patwa Haveli, and Tazia Tower, with time to wander the old city's narrow lanes.</p>
+                    </div>
+                </div>
+                <div class="jsl-itin-day">
+                    <div class="jsl-itin-daynum">2</div>
+                    <div>
+                        <h4>Day 2 — Culture &amp; nature</h4>
+                        <p>Thar Heritage Museum, Jaisalmer War Museum, Gadisar Lake, and (time permitting) a day trip to Tanot Mata Temple near the border.</p>
+                    </div>
+                </div>
+                <div class="jsl-itin-day">
+                    <div class="jsl-itin-daynum">3</div>
+                    <div>
+                        <h4>Day 3 — Desert immersion</h4>
+                        <p>A full day and night at Sam Sand Dunes, with camel safari, cultural evening, and sunrise over the desert before departure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PRACTICAL INFO ============ -->
+    <section class="jsl-section">
+        <div class="heading">
+            <div class="eyebrow">Before You Go</div>
+            <h2>Good to know</h2>
+        </div>
+        <div class="jsl-practical-grid">
+            <div class="jsl-practical-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
+                    </svg>
+                    Best time to visit
+                </h3>
+                <p>October to March is by far the most comfortable window — daytime temperatures stay pleasant and desert nights are cool but manageable. Summers regularly cross 45°C and are best avoided.</p>
+            </div>
+            <div class="jsl-practical-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M3 17h18M5 17V8l7-4 7 4v9"/>
+                        <path d="M8 17v3M16 17v3"/>
+                    </svg>
+                    Getting there
+                </h3>
+                <p>Jaisalmer has a small airport with limited seasonal flights, plus a well-connected railway station with direct trains from Jodhpur, Jaipur, and Delhi. It's also an easy road trip from Jodhpur (~5-6 hrs) or Jaipur (~9-10 hrs).</p>
+            </div>
+            <div class="jsl-practical-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 18h16M5 18l2-8h10l2 8M8 10V6h8v4"/>
+                        <circle cx="8" cy="18" r="1.5"/>
+                        <circle cx="16" cy="18" r="1.5"/>
+                    </svg>
+                    Getting around
+                </h3>
+                <p>The fort and old city are best explored on foot, but a private cab is the practical choice for reaching Sam Sand Dunes and other spots spread across the desert outskirts of town.</p>
+            </div>
+            <div class="jsl-practical-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M12 2l2.4 6.2L21 10l-5 4.1 1.7 6.4-5.7-3.5-5.7 3.5L8 14.1 3 10l6.6-1.8L12 2z"/>
+                    </svg>
+                    What to carry
+                </h3>
+                <ul>
+                    <li>Sunscreen, sunglasses, and a hat — the desert sun is intense year-round.</li>
+                    <li>Light cotton clothing for the day, a warm layer for chilly desert nights.</li>
+                    <li>A scarf or bandana to keep dust off during camel rides and dune visits.</li>
+                    <li>Comfortable, closed walking shoes for the fort's uneven stone lanes.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOD & SHOPPING ============ -->
+    <section class="jsl-section">
+        <div class="heading">
+            <div class="eyebrow">Taste &amp; Explore</div>
+            <h2>What to eat &amp; where to shop</h2>
+            <p>The Golden City's food and bazaars are as much a part of the visit as its monuments.</p>
+        </div>
+        <div class="jsl-strip-grid">
+            <div class="jsl-strip-card">
+                <div class="jsl-strip-icon">🍛</div>
+                <h4>Dal Baati Churma</h4>
+                <p>Rajasthan's signature meal — baked wheat rolls, spiced lentils, and sweet crumbled churma — widely available across the old city.</p>
+            </div>
+            <div class="jsl-strip-card">
+                <div class="jsl-strip-icon">🍯</div>
+                <h4>Ghevar &amp; Local Sweets</h4>
+                <p>Look for ghevar and other Rajasthani sweets at old-city shops, especially around festival season.</p>
+            </div>
+            <div class="jsl-strip-card">
+                <div class="jsl-strip-icon">🧵</div>
+                <h4>Sadar Bazaar</h4>
+                <p>The main market for mirror-work textiles, embroidered bags, and Rajasthani jootis — expect to bargain.</p>
+            </div>
+            <div class="jsl-strip-card">
+                <div class="jsl-strip-icon">🎭</div>
+                <h4>Puppets &amp; Handicrafts</h4>
+                <p>Traditional Rajasthani string puppets (kathputli) and carved wooden souvenirs make distinctive, packable gifts.</p>
+            </div>
+            <div class="jsl-strip-card">
+                <div class="jsl-strip-icon">🔥</div>
+                <h4>Desert Camp Dinner</h4>
+                <p>An evening thali with live folk music and dance at the Sam Dunes camp is a highlight most travelers remember long after the trip.</p>
+            </div>
+            <div class="jsl-strip-card">
+                <div class="jsl-strip-icon">🏙️</div>
+                <h4>Rooftop Cafés</h4>
+                <p>Several rooftop restaurants inside the old city offer fort views over dinner — a relaxed way to end the day.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MAP ============ -->
+    <section class="jsl-section">
+        <div class="heading">
+            <div class="eyebrow">Get Your Bearings</div>
+            <h2>Where everything is</h2>
+            <p>A quick look at Jaisalmer before you plan your route between the fort, the old city, and the desert.</p>
+        </div>
+        <div class="jsl-map-wrap">
+            <iframe
+                src="https://www.google.com/maps?q=Jaisalmer,Rajasthan&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Map of Jaisalmer">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="jsl-section">
+        <div class="heading">
+            <div class="eyebrow">Quick Answers</div>
+            <h2>Frequently asked questions</h2>
+        </div>
+        <div class="jsl-faq-list" id="jslFaqList">
+            <div class="jsl-faq-item">
+                <button class="jsl-faq-q">
+                    <span>How many days do I need in Jaisalmer?</span>
+                    <svg class="jsl-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+                <div class="jsl-faq-a"><p>Two days covers the fort, havelis, and a desert camp comfortably. Add a third day if you want to include the Jaisalmer War Museum, Tanot Mata Temple, or a slower pace through the old city.</p></div>
+            </div>
+            <div class="jsl-faq-item">
+                <button class="jsl-faq-q">
+                    <span>Is Jaisalmer Fort still inhabited?</span>
+                    <svg class="jsl-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+                <div class="jsl-faq-a"><p>Yes — it's one of the very few "living forts" left in the world, with roughly a quarter of the old city's population still residing within its 860-year-old walls, running homes, shops, and guesthouses.</p></div>
+            </div>
+            <div class="jsl-faq-item">
+                <button class="jsl-faq-q">
+                    <span>What's the best time for the desert safari?</span>
+                    <svg class="jsl-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+                <div class="jsl-faq-a"><p>Late afternoon into sunset is the classic window — the light on the dunes is at its best and the temperature has dropped from the daytime peak. Overnight camps let you catch sunrise too.</p></div>
+            </div>
+            <div class="jsl-faq-item">
+                <button class="jsl-faq-q">
+                    <span>Can Jaisalmer be combined with Jodhpur or Udaipur?</span>
+                    <svg class="jsl-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+                <div class="jsl-faq-a"><p>Yes — Jaisalmer sits naturally at one end of a Jodhpur-Jaisalmer or wider Rajasthan circuit, and is easily combined with Jodhpur (~5-6 hrs by road) as part of a longer trip.</p></div>
+            </div>
+            <div class="jsl-faq-item">
+                <button class="jsl-faq-q">
+                    <span>Can Namdev's Tour &amp; Travels arrange the full Jaisalmer circuit?</span>
+                    <svg class="jsl-faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+                <div class="jsl-faq-a"><p>Yes — select the places you want using "Add to my plan" on any card above and continue to booking, and we'll arrange the vehicle, guide, and desert camp around your chosen route.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="jsl-reviews">
+        <div class="heading">
+            <div class="eyebrow">Traveler Stories</div>
+            <h2>What visitors say about Jaisalmer trips</h2>
+        </div>
+        <div class="jsl-review-grid">
+            <div class="jsl-review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Staying inside the fort walls made the whole trip feel different from a normal sightseeing stop — you really sense it's a living city, not a museum."</p>
+                <div class="who">— Aditya R.</div>
+            </div>
+            <div class="jsl-review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Sam Dunes at sunset with the camel ride was the highlight of our whole Rajasthan trip. The desert camp dinner and folk show were a great touch."</p>
+                <div class="who">— Simran K.</div>
+            </div>
+            <div class="jsl-review-card">
+                <div class="stars">★★★★☆</div>
+                <p>"Patwa Haveli's carvings were more detailed than we expected. Having a car for the day made it easy to combine the fort, the lake, and the museums."</p>
+                <div class="who">— Rohan D.</div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ CTA ============ -->
     <div class="jsl-cta">
         <div class="jsl-cta-inner" id="jslCta">
@@ -532,11 +921,18 @@
         </div>
     </div>
 
-    <!-- floating sticky book button -->
-    <!-- <a class="jsl-float-btn" id="jslFloatBtn" href="./booktour.html" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Book a Tour</span>
-    </a> -->
+    <!-- ============ FLOATING PLAN PANEL ============ -->
+    <div class="jsl-plan-fab" id="jslPlanFab">
+        <h4>Your Jaisalmer plan</h4>
+        <div class="sub"><span class="count" id="jslPlanCount">0</span> places selected</div>
+        <a href="./booktour.html" id="jslPlanLink" target="_blank">Continue to booking →</a>
+    </div>
+
+    <!-- ============ LIGHTBOX ============ -->
+    <div class="jsl-lightbox" id="jslLightbox">
+        <button class="jsl-lightbox-close" id="jslLightboxClose">&times;</button>
+        <img id="jslLightboxImg" src="" alt="">
+    </div>
 
     <!-- -->
 
@@ -855,6 +1251,17 @@
       ];
 
       const grid = document.getElementById('jslGrid');
+      const selectedPlaces = new Set();
+      const jslPlanFab = document.getElementById('jslPlanFab');
+      const jslPlanCount = document.getElementById('jslPlanCount');
+      const jslPlanLink = document.getElementById('jslPlanLink');
+
+      function updatePlan(){
+        jslPlanCount.textContent = selectedPlaces.size;
+        jslPlanFab.classList.toggle('show', selectedPlaces.size > 0);
+        jslPlanLink.href = './booktour.html?destination=' + encodeURIComponent('Jaisalmer — ' + [...selectedPlaces].join(', '));
+      }
+
       PLACES.forEach((p, i) => {
         const card = document.createElement('div');
         card.className = 'jsl-card';
@@ -862,7 +1269,7 @@
         card.style.transitionDelay = (i % 6) * 0.07 + 's';
         card.innerHTML = `
           ${p.badge ? `<span class="jsl-card-badge must-visit">${p.badge}</span>` : ''}
-          <img class="jsl-card-img" src="${p.img}" alt="${p.name}" loading="lazy">
+          <img class="jsl-card-img" src="${p.img}" alt="${p.name}" loading="lazy" data-lightbox="${p.img}" data-name="${p.name}">
           <div class="jsl-card-shade"></div>
           <div class="jsl-card-title">
             <div class="sub">${p.category}</div>
@@ -871,14 +1278,49 @@
           <div class="jsl-card-overlay">
             <h3>${p.name}</h3>
             <p>${p.text}</p>
-            <a class="jsl-book-btn" href="./booktour.html">
-              Book Now
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <div class="jsl-card-actions">
+              <div class="jsl-add-btn" data-name="${p.name}">＋ Add to my plan</div>
+              <a class="jsl-book-btn" href="./booktour.html">
+                Book Now
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
           </div>
         `;
         grid.appendChild(card);
       });
+
+      // Add-to-plan buttons
+      document.querySelectorAll('.jsl-add-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const name = btn.dataset.name;
+          if(selectedPlaces.has(name)){
+            selectedPlaces.delete(name);
+            btn.classList.remove('added');
+            btn.textContent = '＋ Add to my plan';
+          }else{
+            selectedPlaces.add(name);
+            btn.classList.add('added');
+            btn.textContent = '✓ Added';
+          }
+          updatePlan();
+        });
+      });
+
+      // Lightbox
+      const jslLightbox = document.getElementById('jslLightbox');
+      const jslLightboxImg = document.getElementById('jslLightboxImg');
+      document.querySelectorAll('.jsl-card-img').forEach(img => {
+        img.addEventListener('click', () => {
+          jslLightboxImg.src = img.dataset.lightbox;
+          jslLightboxImg.alt = img.dataset.name;
+          jslLightbox.classList.add('show');
+        });
+      });
+      document.getElementById('jslLightboxClose').addEventListener('click', () => jslLightbox.classList.remove('show'));
+      jslLightbox.addEventListener('click', (e) => { if(e.target === jslLightbox) jslLightbox.classList.remove('show'); });
+      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') jslLightbox.classList.remove('show'); });
 
       // Filters with ripple effect
       document.querySelectorAll('.jsl-filter-pill').forEach(pill => {
@@ -899,6 +1341,28 @@
           document.querySelectorAll('.jsl-card').forEach(card => {
             card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
           });
+        });
+      });
+
+      // Itinerary tabs
+      document.querySelectorAll('#jslItinTabs .jsl-itin-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          const day = tab.dataset.day;
+          document.querySelectorAll('#jslItinTabs .jsl-itin-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          document.querySelectorAll('.jsl-itin-panel').forEach(panel => {
+            panel.classList.toggle('active', panel.dataset.day === day);
+          });
+        });
+      });
+
+      // FAQ accordion
+      document.querySelectorAll('.jsl-faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.jsl-faq-item');
+          const wasOpen = item.classList.contains('open');
+          document.querySelectorAll('.jsl-faq-item.open').forEach(i => i.classList.remove('open'));
+          if(!wasOpen) item.classList.add('open');
         });
       });
 
@@ -934,14 +1398,12 @@
       }, { threshold: 0.5 });
       statObserver.observe(document.querySelector('.jsl-hero-stats'));
 
-      // Scroll progress bar + floating book button visibility
+      // Scroll progress bar
       const progress = document.getElementById('jslProgress');
-      const floatBtn = document.getElementById('jslFloatBtn');
       window.addEventListener('scroll', () => {
         const h = document.documentElement;
         const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
         progress.style.width = scrolled + '%';
-        floatBtn.classList.toggle('show', h.scrollTop > 500);
       });
     })();
     </script>
