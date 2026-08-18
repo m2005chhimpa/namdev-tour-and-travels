@@ -582,89 +582,89 @@ nav ul li:hover .submenu1 ul li {
 
 @keyframes backgroundchng {
     0% {
-        background-image: url("./images/jaipur.jpg");
+        background-image: url(./images/jaipur.jpg);
     }
 
     5% {
-        background-image: url("./images/The\ Amber\ Fort.png");
+        background-image: url(./images/The\ Amber\ Fort.png);
 
     }
 
     10% {
-        background-image: url("./images/udaipur-1533708339.jpg");
+        background-image: url(./images/udaipur-1533708339.jpg);
     }
 
     15% {
-        background-image: url("/images/jaisalmer\ fort.jpg");
+        background-image: url(/images/jaisalmer\ fort.jpg);
     }
 
     20% {
-        background-image: url("/images/Himalayas_from_Kullu_Valley\,_Himachal_Pradesh.jpg");
+        background-image: url(/images/Himalayas_from_Kullu_Valley\,_Himachal_Pradesh.jpg);
 
     }
 
     25% {
-        background-image: url("./images/paid/aerial-view-lake-pichola-with-palace-jag-niwas.jpg")
+        background-image: url(./images/paid/aerial-view-lake-pichola-with-palace-jag-niwas.jpg)
     }
 
     30% {
-        background-image: url("./images/paid/agra-fort-elephants-view-india.jpg")
+        background-image: url(./images/paid/agra-fort-elephants-view-india.jpg)
     }
 
     35% {
-        background-image: url("./images/paid/ajmeri-gate-sunset-jaipur-rajasthan-india.jpg")
+        background-image: url(./images/paid/ajmeri-gate-sunset-jaipur-rajasthan-india.jpg)
     }
 
     40% {
-        background-image: url("./images/paid/cameleers-camel-drivers-sunset-thar-desert-sunset-jaisalmer-rajasthan-india.jpg")
+        background-image: url(./images/paid/cameleers-camel-drivers-sunset-thar-desert-sunset-jaisalmer-rajasthan-india.jpg)
     }
 
     45% {
-        background-image: url("./images/paid/golden-fort.jpg")
+        background-image: url(./images/paid/golden-fort.jpg)
     }
 
     50% {
-        background-image: url("./images/paid/hawa-mahal-palace-jaipur-india-s-famous-sight.jpg")
+        background-image: url(./images/paid/hawa-mahal-palace-jaipur-india-s-famous-sight.jpg)
     }
 
     55% {
-        background-image: url("./images/paid/indian-cameleers-camel-driver-with-camel-silhouettes-dunes-sunset-jaisalmer-rajasthan-india.jpg")
+        background-image: url(./images/paid/indian-cameleers-camel-driver-with-camel-silhouettes-dunes-sunset-jaisalmer-rajasthan-india.jpg)
     }
 
     60% {
-        background-image: url("./images/paid/indian-landmark-gadi-sagar-rajasthan.jpg")
+        background-image: url(./images/paid/indian-landmark-gadi-sagar-rajasthan.jpg)
     }
 
     65% {
-        background-image: url("./images/paid/jal-mahal-water-palace-jaipur-rajasthan-india.jpg")
+        background-image: url(./images/paid/jal-mahal-water-palace-jaipur-rajasthan-india.jpg)
     }
 
     70% {
-        background-image: url("./images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg")
+        background-image: url(./images/paid/jaswant-thada-mehrangarh-fort-background-sunset-jaswant-thada-is-cenotaph-located-jodhpur-it-was-used-cremation-royal-family-marwar-jodhpur-rajasthan-india.jpg)
     }
 
     75% {
-        background-image: url("./images/paid/norwegian-fjords-winter.jpg")
+        background-image: url(./images/paid/norwegian-fjords-winter.jpg)
     }
 
     80% {
-        background-image: url("./images/paid/royal-cenotaphs-historic-rulers-also-known-as-jaisalmer-chhatris-bada-bagh-jaisalmer-rajasthan-india-cenotaphs-made-yellow-sandstone-sunset.jpg")
+        background-image: url(./images/paid/royal-cenotaphs-historic-rulers-also-known-as-jaisalmer-chhatris-bada-bagh-jaisalmer-rajasthan-india-cenotaphs-made-yellow-sandstone-sunset.jpg)
     }
 
     85% {
-        background-image: url("./images/paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg")
+        background-image: url(./images/paid/spring-kullu-valley-himalaya-mountains-himachal-pradesh-india.jpg)
     }
 
     90% {
-        background-image: url("./images/paid/udaipur-city-palace-evening-rajasthan-india.jpg")
+        background-image: url(./images/paid/udaipur-city-palace-evening-rajasthan-india.jpg)
     }
 
     95% {
-        background-image: url("./images/paid/udaipur-city-palace-evening-view-udaipur-india.jpg")
+        background-image: url(./images/paid/udaipur-city-palace-evening-view-udaipur-india.jpg)
     }
 
     100% {
-        background-image: url("./images/paid/view-dal-lake.jpg")
+        background-image: url(./images/paid/view-dal-lake.jpg)
     }
 
 }
